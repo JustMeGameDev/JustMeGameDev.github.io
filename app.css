@@ -1,2 +1,16 @@
- .body-bg-custom {
-    background-color: whitesmoke  }
+.body-bg-custom {
+   background-color: gainsboro;  
+}
+.roundcorners{
+   border-radius: 25px;
+   width: 500px;
+   height: 500px;
+}
+.padded{
+   padding-left: 5px;
+}
+ .carousel-item img{
+   height: max-content;
+   border-radius: 15px;
+
+}

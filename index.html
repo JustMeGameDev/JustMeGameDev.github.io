@@ -15,8 +15,8 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img class="rounded" src="/img/logo.Purple.png" href="index.html" alt="logo" width="60" height="60" >
+          <a class="navbar-brand" href="index.html">
+            <img class="rounded" src="/img/logo.Purple.png"alt="logo" width="60" height="60" >
           </a>
         
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,17 +25,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html#Home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#About-me">About Me</a>
+                <a class="nav-link active" href="index.html#About-me">About Me</a>
               </li>
               <li>
-                <a class="nav-link active" href="project.html">Projects</a>
+                <a class="nav-link active" href="Projects.html">Projects</a>
               </li>
             
             <li class="nav-item">
-              <a class="nav-link active" href="contact.html">Contact</a>
+              <a class="nav-link active" href="index.html#Contact">Contact</a>
             </li>
             </ul>
             
@@ -47,34 +47,48 @@
     <br>
     <br>
     <section class="hero text-center">
-      <h1  id="About-me"class="display-5 fw-bold">About me</h1>
+      <h1  id="Home"class="display-5 fw-bold">A little about me</h1>
       <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4 text-center">Hello! And welcome to my porfolio, where i show you my work. I am currently still a first year Game Development studend at Noorderpoort Art & multimedia in Groningen, the Netherlands.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <p class="lead mb-4 text-center">Hello! And welcome to my porfolio, where i show you my work. I am currently still a second year Game Development student at Noorderpoort Art & multimedia in Groningen, the Netherlands.</p>
         </div>
+        <br>
+
+        <a class="btn btn-outline-dark" href="#About-me">More About me</a>
       </div>
   </section>
-  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">  
-</div>
-</section>
-<section class="latest">
-<div class="container col-xxl-8 px-4 py-5">
-<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-<div class="col-10 col-sm-8 col-lg-6">
-  <img src="/img/Before Nightfall.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-</div>
-<div class="col-lg-6">
-  <h1 class="display-5 fw-bold lh-1 mb-3">Before Nightfall  <span class="badge bg-secondary">New</span></h1>
-  <p class="lead">In Before Nightfall you play as a castle defender where you go around defending castles for other kings and lords to make money.</p>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-    <button type="button" class="btn btn-dark btn-lg px-4 me-md-2">Play it</button>
-    <button type="button" class="btn btn-outline-dark btn-lg px-4">Check Git</button>
-  </div>
-</div>
-</div>
-</div>
-</section>
-
+  
+  
+  <br>
+  <br>
+  <br>
+  <section class="hero text-center">
+    <h3 class="display-6 fw-bold">Some Games i worked on</h3>
+    </section>
+    <br>
+      <div id="next" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#next" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#next" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="7500">
+            <img src="/img/logo_big_cheese.png" class="d-block mx-auto">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Big Cheese Donte  <span class="badge bg-warning text-dark">W.I.P.</span></h5>
+              <a class="btn btn-outline-secondary btn-lg px-4 me-md-2" href="Projects.html#BigCheese">More info!</a>
+            </div>
+          </div>
+          <div class="carousel-item "data-bs-interval="7500">
+            <img src="/img/Before Nightfall.png" class="d-block mx-auto">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Before Nightfall  <span class="badge bg-danger">New</span></h5>
+              <a class="btn btn-outline-secondary btn-lg px-4 me-md-2" href="Projects.html#BNF">More info!</a>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>
   </main>
 
 
