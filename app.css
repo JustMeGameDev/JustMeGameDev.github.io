@@ -1,5 +1,5 @@
 .body-bg-custom {
-   background-color: gainsboro;  
+   background-color: whitesmoke;  
 }
 .roundcorners{
    border-radius: 25px;
@@ -13,4 +13,12 @@
    height: max-content;
    border-radius: 15px;
 
+}
+.outlining
+{
+   outline-style: solid;
+   outline-color: grey;
+   background-color: gainsboro;
+   outline-width: 3px;
+   border-radius: 15px;
 }
