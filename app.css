@@ -1,15 +1,20 @@
-.body-bg-custom {
-   background-color: whitesmoke;  
+.body-bg-custom 
+{
+   background-color: gainsboro;  
+   
 }
-.roundcorners{
+.roundcorners
+{
    border-radius: 25px;
    width: 500px;
    height: 500px;
 }
-.padded{
+.padded
+{
    padding-left: 5px;
 }
- .carousel-item img{
+ .carousel-item img
+ {
    height: max-content;
    border-radius: 15px;
 
@@ -17,8 +22,38 @@
 .outlining
 {
    outline-style: solid;
-   outline-color: grey;
-   background-color: gainsboro;
-   outline-width: 3px;
-   border-radius: 15px;
+   outline-color: rgb(200, 200, 200);
+   outline-width: 2px;
+   border-radius: 7.5px;
+   margin: 20px;
+}
+.portred
+{
+   height: 750px;
+   width: auto;
+   border-radius: 7.5px;
+   margin: 20px;
+   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+}
+.aboutme_text
+{
+   margin-top: 60px;
+}
+.resume_bt
+{
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 20px;
+   margin-bottom: 60px;
+}
+.linkedin_bt
+{
+   margin-top: 20px;
+   margin-bottom: 60px;
+}
+.main_custom
+{
+   
+   padding: auto;
+
 }
