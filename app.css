@@ -1,3 +1,7 @@
+@font-face {
+   font-family: "Godfather";
+   src: url("/Fonts/TheGodfather-rgRK.ttf");
+}
 .body-bg-custom 
 {
    
@@ -64,13 +68,61 @@
    padding-bottom: 30px;
    background-color: #848884;
 }
-a {
+a 
+{
    color: rgb(40, 40, 40);
    text-decoration: none;
 }
 
-a:hover { 
+a:hover
+{ 
    color: rgb(81, 81, 81);
    text-decoration:none; 
    cursor:pointer;  
 }
+.article
+{
+margin-right: 80px;
+}
+.logo
+{
+   
+   border-radius: 25px;
+   max-width: 100%;
+   height: max-content;
+   width: auto;
+   margin: 30px ;
+}
+.gameinfo
+{
+   margin: 35px;
+   outline: 2px;
+   outline-style: solid;
+   outline-color: #6b6d6b;
+   outline-width: 2px;
+   border-radius: 10px;
+   
+}
+.BigCheese
+{
+   font-family: Godfather ;
+}
+.articel-Padd
+{
+   margin-top: 20px;
+}
+.padding-30
+{
+   padding: 30px;
+}
+.reveal{
+   position: relative;
+   transform: translateY(150px);
+   opacity: 0;
+   transition: 1s all ease;
+ }
+ 
+ .reveal.active{
+   transform: translateY(0);
+   opacity: 1;
+ }
