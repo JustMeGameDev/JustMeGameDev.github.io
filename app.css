@@ -2,6 +2,11 @@
    font-family: "Godfather";
    src: url("/Fonts/TheGodfather-rgRK.ttf");
 }
+@font-face{
+   font-family: "Medieval";
+   src: url("/Fonts/MedievalSharp-Regular.ttf");
+}
+
 .body-bg-custom 
 {
    
@@ -125,4 +130,18 @@ margin-right: 80px;
  .reveal.active{
    transform: translateY(0);
    opacity: 1;
+ }
+ .snippit{
+   border-radius: 25px;
+   max-width: 100%;
+   height: 500px;
+   width: auto;
+   margin: 30px ;
+ }
+ .BNF{
+   font-family: Medieval ;
+ }
+ .camera{
+   height: fit-content;
+   width: auto;
  }
