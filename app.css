@@ -141,7 +141,14 @@ margin-right: 80px;
  .BNF{
    font-family: Medieval ;
  }
- .camera{
-   height: fit-content;
-   width: auto;
- }
+
+ .main-container {
+   display: flex;
+   flex-wrap: wrap
+}
+.main-container .video-block {
+   padding: 40px;
+   width: 100%;
+   max-width: 768px;
+   min-width: 300px
+}
