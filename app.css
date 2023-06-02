@@ -35,6 +35,7 @@
    outline-width: 2px;
    border-radius: 7.5px;
    margin: 20px;
+   outline-offset: 20px;
 }
 .portred
 {
@@ -58,6 +59,8 @@
 .linkedin_bt
 {
    margin-top: 20px;
+   height: 64px;
+   width: 64px;
    margin-bottom: 60px;
 }
  .divider
@@ -184,3 +187,29 @@ margin-right: 80px;
    justify-content: space-between;
    display: flex;
 }
+code {
+   font-family: Consolas,"courier new";
+   color: crimson;
+   padding: 2px;
+   font-size: 105%;
+   width: 150px;
+   height: auto;
+ }
+ .padding-10{
+   padding: 10px; 
+ }
+ .margin-60{
+   margin: 60px;  
+ }
+.roundcorners
+{
+   border-radius: 25px;
+   width: 100%;
+   height: auto;
+   
+}
+.margin-top-20{
+   margin-top: 20px;
+}  
+
+
