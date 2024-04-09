@@ -1,0 +1,142 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.solar-system {
+  position: relative;
+  width: calc(330px * 1.5); /* Increased from 300px */
+  height: calc(330px * 1.5); /* Increased from 300px */
+}
+
+.sun {
+  position: absolute;
+  width: calc(55px * 1.1); /* Adjust based on your preference */
+  height: calc(55px * 1.1);
+  border-radius: 50%;
+  background-image: url('/img/solar/sun.png');
+  background-size: cover;
+  background-position: center; /* Ensures the image is centered */
+  z-index: 5;
+  top: 50%; /* Center the div vertically */
+  left: 50%; /* Center the div horizontally */
+  transform: translate(-50%, -50%); /* Adjust positioning to truly center */
+  cursor: pointer;
+}
+
+
+.orbit {
+  position: absolute;
+  border: 1px dashed white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+}
+
+/* Defining orbit sizes with custom properties (all increased by 10%) */
+.orbit:nth-child(2) {
+  --orbit-size: 110px; /* Increased from 100px */
+  --orbit-radius: 55px; /* Increased from 50px */
+}
+.orbit:nth-child(3) {
+  --orbit-size: 180px; /* Increased from 150px */
+  --orbit-radius: 90px; /* Increased from 75px */
+}
+.orbit:nth-child(4) {
+  --orbit-size: 270px; /* Increased from 200px */
+  --orbit-radius: 135px; /* Increased from 100px */
+}
+.orbit:nth-child(5) {
+  --orbit-size: 390px; /* Increased from 250px */
+  --orbit-radius: 195px; /* Increased from 125px */
+}
+
+.planet {
+  /* Common styles for planets */
+  position: absolute;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.planet1 {
+  z-index: 4;
+  background-image: url('/img/solar/planet 1.png');
+  width: calc(15px * 1.5); height: calc(15px * 1.5); /* Adjust as needed */
+}
+
+.planet2 {
+  z-index: 3;
+  background-image: url('/img/solar/planet 2.png');
+  width: calc(20px * 1.5); height: calc(20px * 1.5); /* Adjust as needed */
+}
+
+.planet3 {
+  z-index: 2;
+  background-image: url('/img/solar/planet 3.png');
+  width: calc(25px * 1.5); height: calc(25px * 1.5); /* Adjust as needed */
+}
+
+.planet4 {
+  z-index: 1;
+  background-image: url('/img/solar/planet 4.png');
+  width: calc(30px * 1.5); height: calc(30px * 1.5); /* Adjust as needed */
+}
+
+
+@keyframes orbit-around-sun {
+  0% {
+      transform: rotate(0deg) translateX(var(--orbit-radius));
+  }
+  100% {
+      transform: rotate(360deg) translateX(var(--orbit-radius));
+  }
+}
+
+.orbit .planet {
+  animation: orbit-around-sun linear infinite;
+}
+
+/* Adjusting margins based on new orbit sizes */
+.orbit:nth-child(2) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
+.orbit:nth-child(3) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
+.orbit:nth-child(4) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
+.orbit:nth-child(5) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
+
+/* Customizing orbit duration for each planet */
+.orbit:nth-child(2) .planet { animation-duration: 5s; }
+.orbit:nth-child(3) .planet { animation-duration: 7s; }
+.orbit:nth-child(4) .planet { animation-duration: 10s; }
+.orbit:nth-child(5) .planet { animation-duration: 12s; }
+
+.tooltip-area {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust space between the tooltip and the solar system */
+  color: white; /* Text color */
+  padding: 10px; /* Padding for the tooltip content */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional background for visibility */
+  border-radius: 5px; /* Optional rounded corners */
+  min-height: 50px; 
+  font-family: "Source Code Pro", monospace;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.center{
+  text-align: center;
+}
+.planet-link {
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Prevents color changes */
+}
+
+
