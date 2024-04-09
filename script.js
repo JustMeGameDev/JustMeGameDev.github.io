@@ -21,9 +21,19 @@ document.querySelectorAll('.planet, .sun').forEach(element => {
 
 function showTooltip(element) {
     const tooltipArea = document.getElementById('tooltip-area');
-    const name = element.getAttribute('data-name'); // This should correctly extract the attribute
-    tooltipArea.innerHTML = 'TRAVEL TO: '+ name || 'Unknown'; // Fallback to 'Unknown' if attribute is missing
-    tooltipArea.style.opacity = '1';
+    const name = element.getAttribute('data-name'); 
+    const name2 = element.getAttribute('class');// This should correctly extract the attribute
+    if (name2 == "sun")
+    {
+        tooltipArea.innerHTML = 'TRAVEL TO STAR: ' + name || 'Unknown'; // Fallback to 'Unknown' if attribute is missing
+        tooltipArea.style.opacity = '1';
+    }
+    else
+    {
+        tooltipArea.innerHTML = 'TRAVEL TO PLANET: ' + name || 'Unknown'; // Fallback to 'Unknown' if attribute is missing
+        tooltipArea.style.opacity = '1';
+
+    }
 }
 
 function hideTooltip() {
