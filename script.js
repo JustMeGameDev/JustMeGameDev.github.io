@@ -42,7 +42,14 @@ function hideTooltip() {
 }
 function showPage(element) {
    const name = element.getAttribute('data-page') + ".html"
-    document.open(name)
+   fetch(name) // Path to your about.html file
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('content').innerHTML = html;
+        })
+        .catch(err => {
+            console.error('Failed to load page: ', err);
+        });
 }
 
 

@@ -144,5 +144,53 @@ body, html {
   align-items: center;
   justify-content: start;
 }
+/* Header Styles */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensures the header spans the full width */
+  z-index: 1000; /* High z-index to ensure it stays on top */
+  background-color: #333; /* Example background color */
+}
+
+
+
+
+.header-content {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between title and navigation */
+  align-items: center; /* Center items vertically */
+}
+
+.site-title a {
+  color: #fff; /* Logo or site name color */
+  text-decoration: none; /* Removes underline from the link */
+  font-size: 24px; /* Larger font size for the site title */
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.site-nav ul {
+  list-style: none; /* Removes bullet points from the list */
+  display: flex; /* Display navigation items inline */
+  margin: 0; /* Removes default margin */
+  padding-right: 20px; /* Removes default padding */
+}
+
+.site-nav ul li {
+  margin-left: 20px; /* Space between navigation items */
+}
+
+.site-nav ul li a {
+  color: #fff; /* Navigation links color */
+  text-decoration: none; /* Removes underline */
+  font-size: 18px; /* Font size for navigation links */
+}
+
+.site-nav ul li a:hover {
+  text-decoration: underline; /* Underline on hover for visual feedback */
+}
+
 
 

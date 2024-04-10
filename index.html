@@ -10,27 +10,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     
 </head>
+
 <body>
-<div class="content-wrapper">
-    <div class="center"><h1>WELCOME TO SOLARSYSTEM : PORTFOLIO-KORNEE</h1></div>
-    <div class="center"><h2>STILL EXPLORING THE SOLARSYSTEM</h2><h4>(under consturction)</h4></div>
-    <div id="tooltip-area" class="tooltip-area"></div> <!-- Tooltip area above the solar system -->
-    <div class="solar-system">
-        <div class="sun" data-name="About me" data-page="Aboutme" onclick="showPage(this)"></div>
-        <div class="orbit">
-            <div class="planet planet1" data-name="Portfolio" data-page="Portfolio" onclick="showPage(this)"></div>
+    <div id="content">
+        <div class="content-wrapper">
+            <div class="center"><h1>WELCOME TO SOLARSYSTEM : PORTFOLIO-KORNEE</h1></div>
+            <div class="center"><h2>STILL EXPLORING THE SOLARSYSTEM</h2><h4>(under consturction)</h4></div>
+            <div id="tooltip-area" class="tooltip-area"></div> <!-- Tooltip area above the solar system -->
+            <div class="solar-system">
+                <div class="sun" data-name="About me" data-page="Aboutme" onclick="showPage(this)"></div>
+                <div class="orbit">
+                    <div class="planet planet1" data-name="Portfolio" data-page="Portfolio" onclick="showPage(this)"></div>
+                </div>
+                <div class="orbit">
+                    <div class="planet planet2" data-name="Skills and Technologies" data-page="Skills" onclick="showPage(this)"></div>
+                </div>
+                <div class="orbit">
+                    <div class="planet planet3" data-name="Contact, Resume and References" data-page="Contact" onclick="showPage(this)"></div>
+                </div>
+                <div class="orbit">
+                    <div class="planet planet4" data-name="Dev log" data-page="DevLog" onclick="showPage(this)"></div>
+                </div>
+            </div>
         </div>
-        <div class="orbit">
-            <div class="planet planet2" data-name="Skills and Technologies" data-page="Skills" onclick="showPage(this)"></div>
-        </div>
-        <div class="orbit">
-            <div class="planet planet3" data-name="Contact, Resume and References" data-page="Contact" onclick="showPage(this)"></div>
-        </div>
-        <div class="orbit">
-            <div class="planet planet4" data-name="Dev log" data-page="DevLog" onclick="showPage(this)"></div>
-        </div>
+        <script src="script.js"></script>
     </div>
- </div>
-    <script src="script.js"></script>
 </body>
-</html>
+    </html>
