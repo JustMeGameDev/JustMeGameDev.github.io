@@ -41,8 +41,8 @@ function hideTooltip() {
     tooltipArea.style.opacity = '0';
 }
 function showPage(element) {
-    const name = element.getAttribute('data-page') + ".html";
-    window.open(name)
+   const name = element.getAttribute('data-page') + ".html"
+    document.open(name)
 }
 
 
