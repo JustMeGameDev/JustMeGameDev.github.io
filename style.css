@@ -198,6 +198,15 @@ body, html {
 .site-nav ul li a:hover {
   text-decoration: underline; /* Underline on hover for visual feedback */
 }
+.celestial {
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Prevents color changes */
+  display: inline-block; /* Allows applying padding and margin as needed */
+}
+
+.celestial:hover {
+  text-decoration: none; /* Optional: Ensures no underline on hover */
+}
 
 
 
