@@ -80,8 +80,17 @@ function showPage(element) {
     const page = element.getAttribute('data-page');
     window.location.href = page + '.html';
 }
+document.querySelectorAll('.header-img').forEach(img => {
+    img.addEventListener('mouseenter', function() {
+        this.setAttribute('data-tooltip', this.title);
+        this.title = ''; // Prevent default browser tooltip
+    });
+    img.addEventListener('mouseleave', function() {
+        this.title = this.getAttribute('data-tooltip');
+    });
+});
+
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
-setInterval(checkPlanetHover, 100); // Continuously check for planet hover

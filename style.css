@@ -150,6 +150,110 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  margin-top: 70px;
+}
+/* Header Styles */
+.site-header {
+  background-color: #333; /* Dark background for the header */
+  color: #fff; /* Light text color */
+  padding: 10px 20px; /* Padding around the content */
+}
+
+.header-content {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between title and navigation */
+  align-items: center; /* Center items vertically */
+}
+
+.site-title a {
+  color: #fff; /* Logo or site name color */
+  text-decoration: none; /* Removes underline from the link */
+  font-size: 24px; /* Larger font size for the site title */
+}
+
+.site-nav ul {
+  list-style: none; /* Removes bullet points from the list */
+  display: flex; /* Display navigation items inline */
+  margin: 0; /* Removes default margin */
+  padding-right: 55px; /* Removes default padding */
+}
+
+.site-nav ul li {
+  margin-left: 45px; /* Space between navigation items */
+}
+
+.site-nav ul li a {
+  color: #fff; /* Navigation links color */
+  text-decoration: none; /* Removes underline */
+  font-size: 18px; /* Font size for navigation links */
+}
+
+.site-nav ul li a:hover {
+  text-decoration: underline; /* Underline on hover for visual feedback */
+}
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensures the header spans the full width */
+  z-index: 1000; /* High z-index to ensure it stays on top */
+  background-color: #333; /* Example background color */
+}
+.header-img{
+  height: 70px;
+  width: auto;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  cursor: pointer;
+}
+.header-img:hover::after {
+  content: attr(title); /* Display title content as tooltip */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  white-space: nowrap;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.header-img:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.site-header .header-img {
+  position: relative; /* Context for absolute positioning */
+  display: inline-block; /* To ensure proper alignment */
+  cursor: pointer;
+}
+
+.site-header .header-img::after {
+  content: attr(title);
+  position: absolute;
+  left: 50%; /* Center the tooltip */
+  transform: translateX(-50%); /* Ensure it's centered irrespective of the width */
+  bottom: -30px; /* Adjust this value based on your specific layout */
+  white-space: nowrap;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  z-index: 1000; /* Ensures the tooltip is above other elements */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.site-header .header-img:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 
