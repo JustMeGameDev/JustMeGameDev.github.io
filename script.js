@@ -41,50 +41,17 @@ function hideTooltip() {
     tooltipArea.style.opacity = '0';
 }
 function showPage(element) {
-   const name = element.getAttribute('data-page') + ".html";
+   const name = element.getAttribute('data-page') + ".html"
    fetch(name) // Path to your about.html file
-   .then(response => response.text())
-   .then(html => {
-       document.getElementById('content').innerHTML = html;
-    })
-    .catch(err => {
-        console.error('Failed to load page: ', err);
-    });
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('content').innerHTML = html;
+        })
+        .catch(err => {
+            console.error('Failed to load page: ', err);
+        });
 }
 
-function generateStars(numberOfStars) {
-    const sky = document.getElementById('starry-sky');
-
-    for (let i = 0; i < numberOfStars; i++) {
-        let star = document.createElement('div');
-        star.style.position = 'absolute';
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.width = `${Math.random() * 3}px`; // Stars size between 1px and 3px
-        star.style.height = star.style.width; // Keep the star size consistent
-        star.style.borderRadius = '50%';
-        star.style.backgroundColor = getRandomColor();
-        sky.appendChild(star);
-    }
-}
-function resetStarrySky() {
-    const sky = document.getElementById('starry-sky');
-
-    // Remove all star elements
-    while (sky.firstChild) {
-        sky.removeChild(sky.firstChild);
-    }
-
-    // Ensure the background is set to black
-    sky.style.backgroundColor = 'black';
-}
-
-function getRandomColor() {
-    const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF']; // Example star colors
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-
-generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
 setInterval(checkPlanetHover, 100); // Continuously check for planet hover
