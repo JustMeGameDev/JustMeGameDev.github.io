@@ -154,32 +154,33 @@ body, html {
 }
 /* Header Styles */
 .site-header {
-  background-color: #333; /* Dark background for the header */
-  color: #fff; /* Light text color */
-  padding: 10px 20px; /* Padding around the content */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center; /* Align items vertically within the header */
+  padding: 10px 20px; /* Optional padding for better spacing */
 }
 
-.header-content {
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-between; /* Space between title and navigation */
-  align-items: center; /* Center items vertically */
+.site-title {
+  grid-row:  1; /* Title in the first row */
+  margin: 0; /* Removes default margin */
 }
 
-.site-title a {
-  color: #fff; /* Logo or site name color */
-  text-decoration: none; /* Removes underline from the link */
-  font-size: 24px; /* Larger font size for the site title */
+.site-nav {
+  grid-row: 2;
+  display: flex;
+  justify-content: center; /* Center the navigation within its grid area */
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Ensure nav doesn't take extra space */
 }
 
 .site-nav ul {
-  list-style: none; /* Removes bullet points from the list */
-  display: flex; /* Display navigation items inline */
-  margin: 0; /* Removes default margin */
-  padding-right: 55px; /* Removes default padding */
+  display: flex;
+  justify-content: center; /* Ensures buttons are centered */
 }
 
-.site-nav ul li {
-  margin-left: 45px; /* Space between navigation items */
+.site-nav li {
+  padding: 0 10px; /* Space between buttons */
 }
 
 .site-nav ul li a {
