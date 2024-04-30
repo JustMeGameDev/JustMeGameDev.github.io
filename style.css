@@ -151,37 +151,58 @@ body, html {
   align-items: center;
   justify-content: start;
   margin-top: 70px;
-}
-/* Header Styles */
-.site-header {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  align-items: center; /* Align items vertically within the header */
-  padding: 10px 20px; /* Optional padding for better spacing */
-}
 
-.site-title {
-  grid-row:  1; /* Title in the first row */
-  margin: 0; /* Removes default margin */
 }
-
-.site-nav {
-  grid-row: 2;
+/* Ensuring the header content is flex and spaced between elements */
+.header-content {
   display: flex;
-  justify-content: center; /* Center the navigation within its grid area */
-  list-style: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Ensure nav doesn't take extra space */
+  justify-content: space-between; /* Space between the main elements */
+  align-items: center; /* Align items vertically */
+  width: 99%;
+  padding: 0px 10px;
 }
 
+/* Title alignment */
+.site-title {
+  text-align: left;
+   /* Allows the title to take up necessary space pushing nav to the right */
+}
+
+.header-tooltip{
+  flex: 1;
+  text-align: right;
+}
+
+/* Navigation centering */
 .site-nav ul {
   display: flex;
-  justify-content: center; /* Ensures buttons are centered */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
+/* Image list item styling */
 .site-nav li {
-  padding: 0 10px; /* Space between buttons */
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
 }
+
+/* Ensures images are vertically aligned and responsive */
+.header-img {
+  height: 50px; /* Adjust height as needed */
+  width: auto;
+}
+.site-nav {
+  flex: 2; /* Allocates twice the space compared to title and tooltip, centering the nav */
+  display: flex;
+  justify-content: center;
+  align-items: center;}
 
 .site-nav ul li a {
   color: #fff; /* Navigation links color */
@@ -200,14 +221,7 @@ body, html {
   z-index: 1000; /* High z-index to ensure it stays on top */
   background-color: #333; /* Example background color */
 }
-.header-img{
-  height: 70px;
-  width: auto;
-  padding: 0px;
-  margin: 0px;
-  position: relative;
-  cursor: pointer;
-}
+
 .header-img:hover::after {
   content: attr(title); /* Display title content as tooltip */
   position: absolute;
