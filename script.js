@@ -80,16 +80,25 @@ function showPage(element) {
     const page = element.getAttribute('data-page');
     window.location.href = page + '.html';
 }
+
 document.querySelectorAll('.header-img').forEach(img => {
     img.addEventListener('mouseenter', function() {
-        this.setAttribute('data-tooltip', this.title);
-        this.title = ''; // Prevent default browser tooltip
+        // Get the tooltip element
+        const tooltip = document.querySelector('.header-tooltip');
+        // Set the tooltip text to the title of the image
+        tooltip.textContent = this.title;
+        // Optional: make the tooltip visible if it's hidden by default
+        tooltip.style.opacity = 1;
     });
+
     img.addEventListener('mouseleave', function() {
-        this.title = this.getAttribute('data-tooltip');
+        // Clear the tooltip text when not hovering
+        const tooltip = document.querySelector('.header-tooltip');
+        tooltip.style.opacity = 0;
+
+        // Optional: hide the tooltip when not hovering
     });
 });
-
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
