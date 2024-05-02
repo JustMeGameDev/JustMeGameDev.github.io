@@ -1,12 +1,13 @@
-import React from 'react/react';
+import React from 'react';
 import ProjectCard from './ProjectCard';
+import { projects } from './projects';  // Ensure this is correctly imported
 
-function ProjectGrid({ projects }) {
+const ProjectGrid = () => {
     return (
-        <div className="project-grid">
+        <div>
             {projects.map(project => <ProjectCard key={project.id} project={project} />)}
         </div>
     );
-}
+};
 
 export default ProjectGrid;
