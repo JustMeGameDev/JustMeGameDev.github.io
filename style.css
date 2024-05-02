@@ -276,28 +276,57 @@ body, html {
   text-decoration: none;
   color: white;
 }
-.project-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.project-card {
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px;
-}
+
 .project-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
+.project-logo{
+  width: auto;
+  height: auto;
+}
 .tech-stack {
-  list-style-type: none;
+  list-style-type: square;
   padding: 0;
 }
-.links a {
+.links{
   margin-right: 10px;
+  text-decoration: none;
+  color: white;
+}
+.links:hover{
+  color: deepskyblue;
+  text-decoration: underline;
+}
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.show {display:block;}
 

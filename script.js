@@ -1,4 +1,4 @@
-// Example functionality: Console log when a planet completes an orbit
+
 document.querySelectorAll('.orbit').forEach(orbit => {
     orbit.addEventListener('animationiteration', () => {
         console.log('A planet has completed an orbit!');
@@ -99,7 +99,25 @@ document.querySelectorAll('.header-img').forEach(img => {
         // Optional: hide the tooltip when not hovering
     });
 });
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function ClickDrop() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
