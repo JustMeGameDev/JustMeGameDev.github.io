@@ -11,15 +11,11 @@ function App() {
 function ProjectCard({ project }) {
     return (
         <div style={{margin: '20px', padding: '10px', border: '2px dotted #ccc'}}>
+            <img src={project.logo} alt={project.title} className={"project-logo"}/>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <img src={project.logo} alt={project.title} className={"project-logo"}/>
-            <div className={"dropdown"}>
-                <button className="dropbtn"  onClick={ClickDrop} >More Images</button>
-                <div className="dropdown-content" id={"myDropdown"}>
-                    {project.image.map((image) => <img src={image} className={"project-img"}/>)}
-                </div>
-            </div>
+            <button id="more-images-btn">More Images</button>
+            <div id="slideshow-container"></div>
             <ul>
                 {project.techStack.map(tech => <li key={tech} className={"tech-stack"}>{tech}</li>)}
             </ul>

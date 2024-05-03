@@ -118,6 +118,39 @@ window.onclick = function(event) {
         }
     }
 }
+
+document.getElementById('more-images-btn').addEventListener('click', function() {
+    const images = [
+        'url-to-first-image.jpg', // Replace with actual image URLs
+        'url-to-second-image.jpg',
+        'url-to-third-image.jpg'
+    ];
+    let currentImageIndex = 0;
+
+    function showNextImage() {
+        const container = document.getElementById('slideshow-container');
+        container.innerHTML = ''; // Clear the container
+
+        // Create a new image element
+        const img = document.createElement('img');
+        img.src = images[currentImageIndex];
+        img.classList.add('slide');
+
+        // Append the new image to the container
+        container.appendChild(img);
+
+        // Use setTimeout to go to the next image after some time
+        setTimeout(() => {
+            img.classList.add('active-slide');
+            currentImageIndex = (currentImageIndex + 1) % images.length; // Loop back to the first image
+            setTimeout(showNextImage, 3000); // Show each image for 3 seconds
+        }, 100); // Short delay before making image visible for transition effect
+    }
+
+    showNextImage(); // Start the slideshow
+});
+
+
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
