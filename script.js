@@ -21,7 +21,7 @@ document.querySelectorAll('.planet, .sun').forEach(element => {
 
 function showTooltip(element) {
     const tooltipArea = document.getElementById('tooltip-area');
-    const name = element.getAttribute('data-name'); 
+    const name = element.getAttribute('data-name');
     const name2 = element.getAttribute('class');// This should correctly extract the attribute
     if (name2 == "sun")
     {
@@ -149,6 +149,23 @@ document.getElementById('more-images-btn').addEventListener('click', function() 
 
     showNextImage(); // Start the slideshow
 });
+
+window.addEventListener('scroll', () => {
+    // Check if the user has scrolled to the bottom of the page
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        loadMoreContent();
+    }
+});
+
+function loadMoreContent() {
+    // Placeholder for where you might generate or fetch new content
+    const newContent = document.createElement('div');
+    newContent.textContent = 'More awesome content!';
+    newContent.style.padding = '20px';
+    newContent.style.borderTop = '1px solid #ccc';
+    document.querySelector('main').appendChild(newContent);
+}
+
 
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
