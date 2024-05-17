@@ -10,16 +10,11 @@ function App() {
 }
 function ProjectCard({ project }) {
     return (
-        <div style={{margin: '20px', padding: '10px', border: '2px dotted #ccc'}}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
+        <div style={{margin: '20px', padding: '10px', border: '2px dotted #ccc', display: 'flex'}}>
+            <h3 style={{}}>{project.title}</h3>
             <img src={project.logo} alt={project.title} className={"project-logo"}/>
-            <div className={"dropdown"}>
-                <button className="dropbtn"  onClick={ClickDrop} >More Images</button>
-                <div className="dropdown-content" id={"myDropdown"}>
-                    {project.image.map((image) => <img src={image} className={"project-img"}/>)}
-                </div>
-            </div>
+            <p>{project.description}</p>
+            <button className={"center-carusel"}></button>
             <ul>
                 {project.techStack.map(tech => <li key={tech} className={"tech-stack"}>{tech}</li>)}
             </ul>
@@ -45,11 +40,30 @@ function projectgrid() {
             id: 2,
             title: "Zombie Survivors",
             description: "Zombie Survivors is a game based on the idea of the Vampire Survivors Game. The controls of the game are a bit unconventional that is because it was developed for an arcade for my school.",
-            logo:"url-to-weather-app-image.jpg",
-            image: ["url-to-weather-app-image.jpg", "./img/Other/logo.png"],
+            logo:"./img/Other/Zombie_Survivors.png",
+            image: ["./img/Other/Zombie_Survivors.png"],
             techStack: ['Unity', 'C#', 'PixelArt',"Arcade"],
             github: "https://github.com/Dakkaoui050/zombieSurviors",
             liveDemo: "https://kornee-hartlief.itch.io/zombie-survivors"
+        },
+        {
+          id: 2,
+          title: "Before NightFall",
+          description: "About the game Before Nightfall (BNF for short). This game is a prototype game made for my study. BNF is a Towerdefance game in a fantesy setting, you play as an carpenter for hire to deffend someonce vilage or a castle. but where do you defend against? well there are multiple creaturs like a oger, giant, demon and a boss creature like the slime or dragon. For each contract you complete you get gems wich you can spend to upgrade the standard towers and abilety's. there are 3 modes to the game\n" +
+              "\n\n" +
+              "#1 is carreer mode where you complete contracts to earn gems to get more difficult contracts etc.\n" +
+              "\n\n" +
+              "#2\" is a endless mode where you get a random generated map and you need to clear as many waves you can.\n" +
+              "\n\n" +
+              "#3' is a custom mode where you set the parameters of the map generator your self, like how big the map is, the seed, the amount of waves and the difficulty.\n" +
+              "\n\n" +
+              "\n\n" +
+              "so that is the game in short.",
+            logo: "./img/Other/Before Nightfall.png",
+            image: ["./img/Other/BNF_SS1.png", "./img/Other/BNF_SS2.png"],
+            techStack: ['Unity', 'C#', 'PixelArt', '3D modeling'],
+            github: "https://github.com/JustMeGameDev/Tower-defance",
+            liveDemo: "not avalible"
         },
     ];
 
