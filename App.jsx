@@ -1,30 +1,52 @@
-// Assuming ProjectGrid is another component that needs to be included in the same file
-function ProjectGrid() {
-    return (
-        projectgrid()
-    );
-}
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
-function App() {
-    return <ProjectGrid />;
-}
+// ProjectCard component definition
 function ProjectCard({ project }) {
     return (
-        <div style={{margin: '20px', padding: '10px', border: '2px dotted #ccc', display: 'flex'}}>
-            <h3 style={{}}>{project.title}</h3>
-            <img src={project.logo} alt={project.title} className={"project-logo"}/>
+        <div style={{ margin: '20px', padding: '10px', border: '2px dotted #ccc', display: 'flex', flexDirection: 'column' }}>
+            <h3>{project.title}</h3>
+            <img src={project.logo} alt={project.title} className="project-logo" style={{ width: '100px', height: '100px' }} />
             <p>{project.description}</p>
-            <button className={"center-carusel"}></button>
+            <CustomCarousel images={project.images} />
             <ul>
-                {project.techStack.map(tech => <li key={tech} className={"tech-stack"}>{tech}</li>)}
+                {project.techStack.map(tech => <li key={tech} className="tech-stack">{tech}</li>)}
             </ul>
-            <a href={project.github} target={"_blank"} className={"links"}>GitHub Repo</a><br/>
-            <a href={project.liveDemo} target={"_blank"} className={"links"}>Online Demo/file Download</a>
+            <a href={project.github} target="_blank" className="links">GitHub Repo</a><br />
+            <a href={project.liveDemo} target="_blank" className="links">Online Demo/file Download</a>
         </div>
     );
 }
 
-function projectgrid() {
+// CustomCarousel component definition
+const CustomCarousel = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? images.length - 1 : prevIndex - 1
+        );
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    return (
+        <div className="carousel-container" style={{ display: 'flex', alignItems: 'center' }}>
+            <button className="carousel-button prev" onClick={prevSlide}>&#10094;</button>
+            <div className="carousel-slide" style={{ flex: '1', textAlign: 'center' }}>
+                <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} style={{ width: '200px', height: '200px' }} />
+            </div>
+            <button className="carousel-button next" onClick={nextSlide}>&#10095;</button>
+        </div>
+    );
+};
+
+// ProjectGrid component definition
+function ProjectGrid() {
     const projects = [
         {
             id: 1,
@@ -47,18 +69,18 @@ function projectgrid() {
             liveDemo: "https://kornee-hartlief.itch.io/zombie-survivors"
         },
         {
-          id: 2,
-          title: "Before NightFall",
-          description: "About the game Before Nightfall (BNF for short). This game is a prototype game made for my study. BNF is a Towerdefance game in a fantesy setting, you play as an carpenter for hire to deffend someonce vilage or a castle. but where do you defend against? well there are multiple creaturs like a oger, giant, demon and a boss creature like the slime or dragon. For each contract you complete you get gems wich you can spend to upgrade the standard towers and abilety's. there are 3 modes to the game\n" +
-              "\n\n" +
-              "#1 is carreer mode where you complete contracts to earn gems to get more difficult contracts etc.\n" +
-              "\n\n" +
-              "#2\" is a endless mode where you get a random generated map and you need to clear as many waves you can.\n" +
-              "\n\n" +
-              "#3' is a custom mode where you set the parameters of the map generator your self, like how big the map is, the seed, the amount of waves and the difficulty.\n" +
-              "\n\n" +
-              "\n\n" +
-              "so that is the game in short.",
+            id: 2,
+            title: "Before NightFall",
+            description: "About the game Before Nightfall (BNF for short). This game is a prototype game made for my study. BNF is a Towerdefance game in a fantesy setting, you play as an carpenter for hire to deffend someonce vilage or a castle. but where do you defend against? well there are multiple creaturs like a oger, giant, demon and a boss creature like the slime or dragon. For each contract you complete you get gems wich you can spend to upgrade the standard towers and abilety's. there are 3 modes to the game\n" +
+                "\n\n" +
+                "#1 is carreer mode where you complete contracts to earn gems to get more difficult contracts etc.\n" +
+                "\n\n" +
+                "#2\" is a endless mode where you get a random generated map and you need to clear as many waves you can.\n" +
+                "\n\n" +
+                "#3' is a custom mode where you set the parameters of the map generator your self, like how big the map is, the seed, the amount of waves and the difficulty.\n" +
+                "\n\n" +
+                "\n\n" +
+                "so that is the game in short.",
             logo: "./img/Other/Before Nightfall.png",
             image: ["./img/Other/BNF_SS1.png", "./img/Other/BNF_SS2.png"],
             techStack: ['Unity', 'C#', 'PixelArt', '3D modeling'],
@@ -74,5 +96,10 @@ function projectgrid() {
     );
 }
 
+// App component definition
+function App() {
+    return <ProjectGrid />;
+}
 
+// Render the App component
 ReactDOM.render(<App />, document.getElementById('react-root'));

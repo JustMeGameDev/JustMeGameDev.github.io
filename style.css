@@ -38,7 +38,7 @@ body, html {
   transform: translate(-50%, -50%); /* Adjust positioning to truly center */
   cursor: pointer;
 }
-.react-root{
+.scroll{
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
@@ -312,5 +312,18 @@ body, html {
   color: deepskyblue;
   text-decoration: underline;
 }
+.container {
+  padding-top: 50px;
+}
 
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
 
