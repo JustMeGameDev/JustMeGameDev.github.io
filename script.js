@@ -107,6 +107,15 @@ function ClickDrop() {
 
 // Close the dropdown menu if the user clicks outside of it
 
+
+document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.elements.name.value = '';
+    e.target.elements.email.value = '';
+    e.target.elements.message.value = '';
+});
+
+
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
