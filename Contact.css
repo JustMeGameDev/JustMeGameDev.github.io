@@ -42,3 +42,41 @@ textarea {
     font-weight:700;
 }
 [type="submit"]:hover { background:rebeccapurple; }
+
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links h2 {
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.social-links ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.social-links li {
+    margin: 0 15px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: mediumpurple;
+}
+
+.social-links i {
+    margin-right: 8px;
+}

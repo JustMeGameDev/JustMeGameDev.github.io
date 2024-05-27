@@ -10,8 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="icon" href="img/solar/planet%203.png">
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-</head>
+    <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script></head>
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
@@ -19,7 +18,7 @@
         <nav class="site-nav">
             <ul>
                 <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                <li><a href=about.html><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
                 <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
                 <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
                 <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact, Resume & References"></a></li>
@@ -29,23 +28,58 @@
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
-<form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
-    <h1 class="center">Make Contact</h1>
-    <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
-    <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
-    <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
-    <input type="submit" value="SUBMIT"/>
-    <div style="padding-top: 15px" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
-</form>
+<div class="content-wrapper">
+    <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
+        <h1 class="center">Make Contact</h1>
+        <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
+        <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
+        <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
+        <div style="padding-top: 15px;" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
+        <input type="submit" value="SUBMIT"/>
+    </form>
+    <div class="social-links">
+        <h2>Find me on</h2>
+        <ul>
+            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
+            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i> itch.io</a></li>
+            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter (X)</a></li>
+        </ul>
+    </div>
+</div>
 
 <script>
     document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
         var hCaptchaResponse = document.querySelector('[name="h-captcha-response"]').value;
         if (!hCaptchaResponse) {
             alert('Please complete the hCaptcha');
-            event.preventDefault();
+            return;
         }
+
+        var form = event.target;
+        var formData = new FormData(form);
+
+        fetch('https://formspree.io/f/xqkronlo', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            if (response.ok) {
+                alert('Thanks for the message');
+                form.reset();  // Clear the form fields
+            } else {
+                alert('There was an error sending your message. Please try again later.');
+            }
+        }).catch(function(error) {
+            alert('There was an error sending your message. Please try again later.');
+        });
     });
 </script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<script src="script.js"></script>
 </body>
 </html>
