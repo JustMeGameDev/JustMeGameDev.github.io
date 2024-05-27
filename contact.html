@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet: Contact</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="icon" href="img/solar/planet%203.png">
-
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body id="starry-sky">
 <header class="site-header">
@@ -28,6 +29,13 @@
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
+<form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
+    <h1 class="center">Make Contact</h1>
+    <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
+    <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
+    <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
+    <div class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
+    <input type="submit" value="SUBMIT"/>
+</form>
 </body>
 </html>
-<script src="script.js"></script>

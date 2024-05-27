@@ -21,7 +21,7 @@ document.querySelectorAll('.planet, .sun').forEach(element => {
 
 function showTooltip(element) {
     const tooltipArea = document.getElementById('tooltip-area');
-    const name = element.getAttribute('data-name');
+    const name = element.getAttribute('data-name'); 
     const name2 = element.getAttribute('class');// This should correctly extract the attribute
     if (name2 == "sun")
     {
@@ -101,72 +101,6 @@ document.querySelectorAll('.header-img').forEach(img => {
 });
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function ClickDrop() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
-document.getElementById('more-images-btn').addEventListener('click', function() {
-    const images = [
-        'url-to-first-image.jpg', // Replace with actual image URLs
-        'url-to-second-image.jpg',
-        'url-to-third-image.jpg'
-    ];
-    let currentImageIndex = 0;
-
-    function showNextImage() {
-        const container = document.getElementById('slideshow-container');
-        container.innerHTML = ''; // Clear the container
-
-        // Create a new image element
-        const img = document.createElement('img');
-        img.src = images[currentImageIndex];
-        img.classList.add('slide');
-
-        // Append the new image to the container
-        container.appendChild(img);
-
-        // Use setTimeout to go to the next image after some time
-        setTimeout(() => {
-            img.classList.add('active-slide');
-            currentImageIndex = (currentImageIndex + 1) % images.length; // Loop back to the first image
-            setTimeout(showNextImage, 3000); // Show each image for 3 seconds
-        }, 100); // Short delay before making image visible for transition effect
-    }
-
-    showNextImage(); // Start the slideshow
-});
-
-window.addEventListener('scroll', () => {
-    // Check if the user has scrolled to the bottom of the page
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        loadMoreContent();
-    }
-});
-
-function loadMoreContent() {
-    // Placeholder for where you might generate or fetch new content
-    const newContent = document.createElement('div');
-    newContent.textContent = 'More awesome content!';
-    newContent.style.padding = '20px';
-    newContent.style.borderTop = '1px solid #ccc';
-    document.querySelector('main').appendChild(newContent);
-}
-
-
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
