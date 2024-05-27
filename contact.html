@@ -34,8 +34,18 @@
     <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
     <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
     <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
-    <div class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
     <input type="submit" value="SUBMIT"/>
 </form>
+<div class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
+
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        var hCaptchaResponse = document.querySelector('[name="h-captcha-response"]').value;
+        if (!hCaptchaResponse) {
+            alert('Please complete the hCaptcha');
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
