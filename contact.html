@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet: Contact</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="icon" href="img/solar/planet%203.png">
-    <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script></head>
+    <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
+</head>
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
@@ -20,33 +20,56 @@
                 <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
                 <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
                 <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
                 <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact, Resume & References"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a> </li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a></li>
             </ul>
         </nav>
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
 <div class="content-wrapper">
-    <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
-        <h1 class="center">Make Contact</h1>
-        <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
-        <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
-        <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
-        <div style="padding-bottom: 15px;" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
-        <input type="submit" value="SUBMIT"/>
-    </form>
-    <div class="social-links">
-        <h2>Find me on</h2>
+    <div class="resume-section">
+        <h2 class="center">My Resume</h2>
+        <div class="resume-widget">
+            <iframe src="./PDF/cv_Kornee_Hartlief_ENG.pdf" type="application/pdf" width="100%" height="250px"></iframe>
+        </div>
+        <div class="resume-widget">
+            <iframe src="./PDF/cv_Kornee_Hartlief_NL.pdf" type="application/pdf" width="100%" height="250px"></iframe>
+        </div>
+    </div>
+    <div class="form-section">
+        <div class="center">
+        <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
+            <h1 class="center">Make Contact</h1>
+            <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
+            <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
+            <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
+            <div style="padding-bottom: 15px;" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
+            <input type="submit" value="SUBMIT"/>
+        </form>
+        </div>
+        <div class="social-links">
+            <h2>Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fab fa-twitter"></i> X</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="references-section">
+        <h2 class="center">References</h2>
         <ul>
-            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
-            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i> itch.io</a></li>
-            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter (X)</a></li>
+            <li class="center">Reference 1: Description or contact details</li>
+            <li class="center">Reference 2: Description or contact details</li>
+            <li class="center">Reference 3: Description or contact details</li>
+            <!-- Add more references as needed -->
         </ul>
     </div>
 </div>
+
 
 <script>
     document.getElementById('contact-form').addEventListener('submit', function(event) {
