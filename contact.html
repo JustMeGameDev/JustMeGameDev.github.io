@@ -21,7 +21,7 @@
                 <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
                 <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
                 <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact, Resume & References"></a></li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
                 <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a></li>
             </ul>
         </nav>
@@ -29,37 +29,26 @@
     </div>
 </header>
 <div class="content-wrapper">
-    <div class="resume-section">
+    <div class="column resume-column">
         <h2 class="center">My Resume</h2>
-        <div class="resume-widget">
-            <iframe src="./PDF/cv_Kornee_Hartlief_ENG.pdf" type="application/pdf" width="100%" height="250px"></iframe>
+        <div class="resume-widget" id="resume-widget-eng">
+            <embed src="./PDF/cv_Kornee_Hartlief_ENG.pdf" type="application/pdf"></embed>
         </div>
-        <div class="resume-widget">
-            <iframe src="./PDF/cv_Kornee_Hartlief_NL.pdf" type="application/pdf" width="100%" height="250px"></iframe>
+        <h2 class="center">Mijn CV</h2>
+        <div class="resume-widget" id="resume-widget-nl">
+            <embed src="./PDF/cv_Kornee_Hartlief_NL.pdf" type="application/pdf"></embed>
         </div>
     </div>
-    <div class="form-section">
-        <div class="center">
-        <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
-            <h1 class="center">Make Contact</h1>
-            <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
-            <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
-            <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
-            <div style="padding-bottom: 15px;" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
-            <input type="submit" value="SUBMIT"/>
-        </form>
-        </div>
-
-    </div>
-    <div class="references-section">
-        <h2 class="center">References</h2>
-        <div class="container-list">
-        <ul>
-            <li>Reference 1: Description or contact details</li>
-            <li>Reference 2: Description or contact details</li>
-            <li>Reference 3: Description or contact details</li>
-            <!-- Add more references as needed -->
-        </ul>
+    <div class="column form-column">
+        <div class="form-section">
+            <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
+                <h1 class="center">Make Contact</h1>
+                <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
+                <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
+                <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
+                <div style="padding-bottom: 15px;" class="h-captcha" data-sitekey="7aeac84f-be75-4d65-aca3-8720b086d804"></div>
+                <input type="submit" value="SUBMIT"/>
+            </form>
         </div>
     </div>
 </div>
