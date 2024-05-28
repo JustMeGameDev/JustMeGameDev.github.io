@@ -1,48 +1,46 @@
 body, html {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     background-color: black;
     color: white;
     font-family: "Source Code Pro", monospace;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 #starry-sky {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: black;
-    overflow: hidden; /* Prevents scrolling if stars go out of bounds */
-    position: relative; /* Needed for absolute positioning of stars */
-    z-index: -10;
+    overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
+    position: page; /* Fix to ensure it covers the entire background */
+    top: 0;
+    left: 0;
+    z-index: -10; /* Low z-index to ensure it stays behind other elements */
 }
 
 .content-wrapper {
+    margin: 200px;
     display: flex;
-    align-items: center;
-    align-content: space-between;
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    width: 100%;
+    position: relative; /* Ensure content stays above the background */
+    z-index: 1; /* Higher z-index than the background */
 }
-.center{
+
+.column {
+    flex: 1;
+    margin: 0 10px; /* Adjust margin as needed for spacing between columns */
+}
+
+.center {
     display: flex;
     justify-content: center;
-}
-
-.centerList{
-    display: flex;
-    align-items: center;
-}
-.resume-section, .form-section, .references-section {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.resume-section {
-    padding-right: 20px;
 }
 
 .resume-section h2, .form-section h1, .references-section h2 {
@@ -56,23 +54,18 @@ body, html {
     margin-bottom: 20px;
 }
 
-.resume-widget iframe {
+.resume-widget embed {
     border: none;
     width: 100%;
-    height: 500px;
+    height: 80vh; /* Adjust the height to make the PDF more readable */
 }
 
-.resume-link {
-    display: block;
-    margin-top: 5px;
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.resume-link:hover {
-    color: mediumpurple;
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    margin-left: 12.5%;
 }
 
 form {
@@ -96,6 +89,7 @@ form {
     width: 100%;
     box-sizing: border-box;
     outline: 0;
+    z-index: 1; /* Ensure inputs stay above the background */
 }
 
 .feedback-input:focus {
@@ -122,28 +116,17 @@ textarea {
     transition: all 0.3s;
     margin-top: -4px;
     font-weight: 700;
+    z-index: 1; /* Ensure button stays above the background */
 }
 
 [type="submit"]:hover {
     background: rebeccapurple;
 }
 
-.container-list{
+.container-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.references-section ul {
-    padding: 0;
-    list-style-type: square;
-    color: white;
-    font-size: 18px;
-}
-
-.references-section li {
-    margin-bottom: 36px;
-
 }
 
 .social-links {
@@ -193,19 +176,16 @@ textarea {
     padding: 0px 10px;
 }
 
-/* Title alignment */
 .site-title {
-    text-align: left;
-    /* Allows the title to take up necessary space pushing nav to the right */
+    text-align: left; /* Allows the title to take up necessary space pushing nav to the right */
 }
 
-.header-tooltip{
+.header-tooltip {
     flex: 1;
     text-align: right;
     transition: opacity 0.3s ease;
 }
 
-/* Navigation centering */
 .site-nav ul {
     display: flex;
     justify-content: center;
@@ -216,20 +196,18 @@ textarea {
     list-style: none;
 }
 
-/* Image list item styling */
 .site-nav li {
     margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
 }
 
-/* Ensures images are vertically aligned and responsive */
 .header-img {
     height: 50px; /* Adjust height as needed */
     width: auto;
 }
+
 .site-nav {
     flex: 2; /* Allocates twice the space compared to title and tooltip, centering the nav */
     display: flex;
@@ -246,6 +224,7 @@ textarea {
 .site-nav ul li a:hover {
     text-decoration: underline; /* Underline on hover for visual feedback */
 }
+
 .site-header {
     position: fixed;
     top: 0;
@@ -275,6 +254,7 @@ textarea {
     opacity: 1;
     visibility: visible;
 }
+
 .site-header .header-img {
     position: relative; /* Context for absolute positioning */
     display: inline-block; /* To ensure proper alignment */
@@ -303,10 +283,10 @@ textarea {
     opacity: 1;
     visibility: visible;
 }
+
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
     text-align: center;
+    padding: 10px 0;
+    position: relative; /* Changed from fixed */
 }
