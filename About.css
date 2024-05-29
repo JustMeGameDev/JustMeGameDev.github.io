@@ -17,16 +17,12 @@ body, html {
     height: 100%;
     background-color: black;
     overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
-    position: page; /* Fix to ensure it covers the entire background */
+    position: fixed; /* Fix to ensure it covers the entire background */
     top: 0;
     left: 0;
     z-index: -10; /* Low z-index to ensure it stays behind other elements */
 }
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
+
 .social-links {
     text-align: center;
     margin-top: 20px;
@@ -191,19 +187,52 @@ body, html {
 
 .main {
     padding: 20px;
-    background: #fff;
-    margin-bottom: 20px;
+    margin-top: 80px; /* Adjusted for fixed header */
 }
+
 .main h2 {
+    color: whitesmoke;
     text-align: center;
-    color: #333;
 }
+
 .section {
     margin-bottom: 40px;
+    border-bottom: mediumpurple 3px dotted;
 }
+
+.section ul li a{
+    text-decoration: none;
+    color: white;
+}
+.section ul li a:hover{
+    text-decoration: none;
+    color: rebeccapurple;
+}
+
+
 .section h3 {
-    border-bottom: #77aaff 2px solid;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    color: #333;
+    color: whitesmoke;
+}
+
+.section img {
+    border-radius: 10px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.centered {
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
 }

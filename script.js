@@ -56,7 +56,17 @@ function generateStars(numberOfStars) {
         sky.appendChild(star);
     }
 }
+// JavaScript code to update the year dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current year
+    var currentYear = new Date().getFullYear();
 
+    // Get the HTML element by its ID
+    var yearElement = document.getElementById('currentYear');
+
+    // Update the text content of the element
+    yearElement.textContent = currentYear;
+});
 function getRandomColor() {
     const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF']; // Example star colors
     return colors[Math.floor(Math.random() * colors.length)];
