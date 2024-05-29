@@ -40,22 +40,7 @@ function hideTooltip() {
     const tooltipArea = document.getElementById('tooltip-area');
     tooltipArea.style.opacity = '0';
 }
-function showPage(element) {
-   const name = element.getAttribute('data-page') + ".html"
-    document.open(name)
-}
 
-function resetStarrySky() {
-    const sky = document.getElementById('starry-sky');
-
-    // Remove all star elements
-    while (sky.firstChild) {
-        sky.removeChild(sky.firstChild);
-    }
-
-    // Ensure the background is set to black
-    sky.style.backgroundColor = 'black';
-}
 function generateStars(numberOfStars) {
     const sky = document.getElementById('starry-sky');
 

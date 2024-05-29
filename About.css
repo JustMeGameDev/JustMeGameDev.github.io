@@ -22,114 +22,11 @@ body, html {
     left: 0;
     z-index: -10; /* Low z-index to ensure it stays behind other elements */
 }
-
-.content-wrapper {
-    margin: 200px;
-    display: flex;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative; /* Ensure content stays above the background */
-    z-index: 1; /* Higher z-index than the background */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
 }
-
-.column {
-    flex: 1;
-    margin: 0 10px; /* Adjust margin as needed for spacing between columns */
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-}
-
-.resume-section h2, .form-section h1, .references-section h2 {
-    color: white;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.resume-widget {
-    margin-bottom: 20px;
-}
-
-.resume-widget embed {
-    border: none;
-    width: 100%;
-    height: 80vh; /* Adjust the height to make the PDF more readable */
-}
-
-.form-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    margin-top: 6.25vw;
-    margin-left: 12.5vw;
-}
-
-form {
-    width: 100%;
-    max-width: 420px;
-    margin: 0;
-}
-
-.feedback-input {
-    color: white;
-    font-family: source-code-pro, 'Courier New', monospace;
-    font-weight: 500;
-    font-size: 18px;
-    border-radius: 5px;
-    line-height: 22px;
-    background-color: transparent;
-    border: 2px solid #CC6666;
-    transition: all 0.3s;
-    padding: 13px;
-    margin-bottom: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    outline: 0;
-    z-index: 1; /* Ensure inputs stay above the background */
-}
-
-.feedback-input:focus {
-    border: 2px solid mediumpurple;
-}
-
-textarea {
-    height: 150px;
-    line-height: 150%;
-    resize: vertical;
-}
-
-[type="submit"] {
-    font-family: source-code-pro, 'Courier New', monospace;
-    width: 100%;
-    background: #CC6666;
-    border-radius: 5px;
-    border: 0;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    transition: all 0.3s;
-    margin-top: -4px;
-    font-weight: 700;
-    z-index: 1; /* Ensure button stays above the background */
-}
-
-[type="submit"]:hover {
-    background: rebeccapurple;
-}
-
-.container-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 .social-links {
     text-align: center;
     margin-top: 20px;
@@ -290,4 +187,23 @@ textarea {
     text-align: center;
     padding: 10px 0;
     position: relative; /* Changed from fixed */
+}
+
+.main {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+.main h2 {
+    text-align: center;
+    color: #333;
+}
+.section {
+    margin-bottom: 40px;
+}
+.section h3 {
+    border-bottom: #77aaff 2px solid;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #333;
 }

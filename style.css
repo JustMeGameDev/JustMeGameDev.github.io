@@ -51,10 +51,7 @@ body, html {
   overflow-y: scroll;
   padding-top: 200px;
 }
-.center-carusel {
-  justify-content: center;
-  align-items: center;
-}
+
 .orbit {
   position: absolute;
   border: 1px dashed white;
@@ -294,46 +291,6 @@ body, html {
 }
 .API{
   z-index: 1000;
-}
-
-.project-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.project-logo{
-  max-width: 128px;
-  max-height: 128px;
-  border-radius: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-}
-.tech-stack {
-  list-style-type: square;
-  padding: 0;
-}
-.links{
-  margin-right: 10px;
-  text-decoration: none;
-  color: white;
-}
-.links:hover{
-  color: deepskyblue;
-  text-decoration: underline;
-}
-.container {
-  padding-top: 50px;
-}
-
-.carousel-item img {
-  height: 400px;
-  object-fit: cover;
-}
-
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 5px;
 }
 
 .social-links {
