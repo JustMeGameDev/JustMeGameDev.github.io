@@ -17,7 +17,7 @@ body, html {
     height: 100%;
     background-color: black;
     overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
-    position: fixed; /* Fix to ensure it covers the entire background */
+    position: page; /* Fix to ensure it covers the entire background */
     top: 0;
     left: 0;
     z-index: -10; /* Low z-index to ensure it stays behind other elements */
@@ -198,6 +198,7 @@ body, html {
 .section {
     margin-bottom: 40px;
     border-bottom: mediumpurple 3px dotted;
+    z-index: 1;
 }
 
 .section ul li a{
@@ -217,7 +218,8 @@ body, html {
 }
 
 .section img {
-    border-radius: 10px;
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .align-left {
