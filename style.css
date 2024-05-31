@@ -14,7 +14,7 @@ body, html {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
+  overflow-x: unset; /* Prevents scrolling if stars go out of bounds */
   position: page; /* Needed for absolute positioning of stars */
   z-index: -10;
 }
@@ -30,6 +30,7 @@ body, html {
   position: relative;
   width: calc(330px * 1.5); /* Increased from 300px */
   height: calc(330px * 1.5); /* Increased from 300px */
+  margin-bottom: 120px; /* Updated to 120px */
 }
 
 .sun {
@@ -45,12 +46,6 @@ body, html {
   left: 50%; /* Center the div horizontally */
   transform: translate(-50%, -50%); /* Adjust positioning to truly center */
   cursor: pointer;
-}
-.scroll{
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
-  padding-top: 200px;
 }
 
 .orbit {
@@ -115,13 +110,12 @@ body, html {
   width: calc(30px * 1.5); height: calc(30px * 1.5); /* Adjust as needed */
 }
 
-
 @keyframes orbit-around-sun {
   0% {
-      transform: rotate(0deg) translateX(var(--orbit-radius));
+    transform: rotate(0deg) translateX(var(--orbit-radius));
   }
   100% {
-      transform: rotate(360deg) translateX(var(--orbit-radius));
+    transform: rotate(360deg) translateX(var(--orbit-radius));
   }
 }
 
@@ -164,9 +158,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-
 }
-/* Ensuring the header content is flex and spaced between elements */
 .header-content {
   display: flex;
   justify-content: space-between; /* Space between the main elements */
@@ -175,10 +167,8 @@ body, html {
   padding: 0px 10px;
 }
 
-/* Title alignment */
 .site-title {
   text-align: left;
-   /* Allows the title to take up necessary space pushing nav to the right */
 }
 
 .header-tooltip{
@@ -187,7 +177,6 @@ body, html {
   transition: opacity 0.3s ease;
 }
 
-/* Navigation centering */
 .site-nav ul {
   display: flex;
   justify-content: center;
@@ -198,16 +187,13 @@ body, html {
   list-style: none;
 }
 
-/* Image list item styling */
 .site-nav li {
   margin: 0 10px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
 }
 
-/* Ensures images are vertically aligned and responsive */
 .header-img {
   height: 50px; /* Adjust height as needed */
   width: auto;
@@ -216,7 +202,8 @@ body, html {
   flex: 2; /* Allocates twice the space compared to title and tooltip, centering the nav */
   display: flex;
   justify-content: center;
-  align-items: center;}
+  align-items: center;
+}
 
 .site-nav ul li a {
   color: #fff; /* Navigation links color */
@@ -332,4 +319,55 @@ body, html {
 }
 .home-page{
   overflow-y: auto;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-content p a{
+  text-decoration: none;
+  color: rebeccapurple;
+  font-weight: bold;
+}
+.modal-content p a:hover{
+  text-decoration: none;
+  color: purple;
+  font-weight: bold;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: yellow;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 15px;
+  border: 5px dotted indianred;
+  width: 80%; /* Could be more or less, depending on screen size */
+  color: black;
+  text-align: center;
+}
+
+/* The Close Button */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
