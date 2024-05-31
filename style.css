@@ -371,3 +371,34 @@ body, html {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Mobile Warning Page Styles */
+.mobile-warning {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: "Source Code Pro", monospace;
+}
+
+.mobile-warning h1 {
+  font-size: 3em;
+}
+
+.mobile-warning p {
+  font-size: 1.5em;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Detect Portrait Mode on Mobile Devices */
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  body {
+    display: none;
+  }
+}
+
