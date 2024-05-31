@@ -8,6 +8,7 @@ body, html {
   background-color: black;
   color: white;
   font-family: "Source Code Pro", monospace;
+  overflow-y: auto;
 }
 #starry-sky {
   width: 100vw;
@@ -163,7 +164,6 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  margin-top: 70px;
 
 }
 /* Ensuring the header content is flex and spaced between elements */
