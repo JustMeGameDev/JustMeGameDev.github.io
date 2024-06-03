@@ -29,9 +29,9 @@
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
-<main>
-    <h2 class="center">Select a category to view the items</h2>
+<div class="container">
     <section class="portfolio-categories">
+        <h2 class="center">Select a category to view the items</h2>
         <button onclick="filterProjects('games')">Games/Demos</button>
         <button onclick="filterProjects('documents')">Game Design Documents</button>
         <button onclick="filterProjects('art')">Art Work</button>
@@ -40,27 +40,30 @@
     <section class="portfolio-projects" id="project-container">
         <!-- Project cards will be dynamically inserted here -->
     </section>
-</main>
-<div id="slideshowModal" class="slideshow-modal">
-    <span class="slideshow-close" onclick="closeSlideshow()">&times;</span>
-    <div class="slideshow-modal-content" id="slideshowContent">
-        <!-- Slideshow images will be dynamically inserted here -->
+
+    <div id="slideshowModal" class="slideshow-modal">
+        <span class="slideshow-close" onclick="closeSlideshow()">&times;</span>
+        <div class="slideshow-modal-content" id="slideshowContent">
+            <!-- Slideshow images will be dynamically inserted here -->
+        </div>
+        <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<div class="footer">
-    <div class="social-links">
-        <h2>Find me on</h2>
-        <ul>
-            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
-            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
-        </ul>
+    <div class="portfolio-categories-border"></div>
+    <div class="footer">
+        <div class="social-links">
+            <h2>Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2023-<span id="currentYear"></span> Kornee Hartlief. All Rights Reserved.</p>
     </div>
-    <p>&copy; 2023-<span id="currentYear"></span> Kornee Hartlief. All Rights Reserved.</p>
 </div>
+
 <script src="script.js"></script>
 <script src="Portfolio.js"></script>
 </body>

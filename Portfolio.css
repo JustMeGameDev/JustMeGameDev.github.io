@@ -1,18 +1,21 @@
 .portfolio-categories {
     text-align: center;
-    margin: 2rem 0 1rem 0;
+    margin-top: 5rem; /* Adjust this value to increase space below the header */
+    margin-bottom: 0.5rem; /* Space before the border */
     padding: 1rem;
-    top: -20px;
-    background: rgba(0, 0, 0, 0.7);
-    position: relative;
-    z-index: 9;
+    background: rgba(0, 0, 0, 0.7); /* Optional styling */
+    position: sticky; /* Sticky to stay under the header */
+    top: 0;
+    z-index: 1000;
 }
-.portfolio-categories-border{
+
+.portfolio-categories-border {
     width: 80vw;
     border-top: mediumpurple 2px dotted;
-    padding: 20px;
-
+    margin: 0.5rem auto; /* Centering and adding vertical margin */
+    padding: 0.2rem; /* Optional padding */
 }
+
 .portfolio-categories button {
     background: rgba(51, 51, 51, 0.5);
     border: mediumpurple 3px solid;
@@ -36,6 +39,7 @@
     gap: 2rem;
     padding: 1rem;
 }
+
 .badge {
     display: inline-block;
     padding: 0.25em 0.5em;
@@ -47,7 +51,22 @@
     margin: 0.25em;
 
 }
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative; /* Ensures the footer stays at the bottom of the viewport */
+    bottom: 0;
+    left: 0; /* Ensures it spans from the left to the right edge */
+}
 
+
+.container {
+    width: 100%; /* Ensure it uses full width */
+    margin: auto; /* Center the container */
+    display: block; /* Override any flex or grid properties */
+    height: auto;
+}
 
 .project-card h3 {
     margin-bottom: 0.5rem; /* To ensure spacing between title and badges */
@@ -56,7 +75,7 @@
     background: rgba(255, 255, 255, 0.1);
     border: mediumpurple 3px solid;
     padding: 1rem;
-    width: 300px;
+    width: 600px;
     text-align: center;
     border-radius: 0.5rem;
     z-index: 10;

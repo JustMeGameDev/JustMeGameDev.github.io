@@ -15,6 +15,59 @@ const projects = [
             "./img/Other/award_02.jpg",
         ]
     },
+    {
+        title: "Before Nightfall",
+        category: "games",
+        description: "About the game Before Nightfall (BNF for short). This game is a prototype game made for my study. BNF is a Tower defence game in a fantasy setting, you play as an carpenter for hire to defend someone's village or a castle. but where do you defend against? well there are multiple creatures like a oger, giant, demon and a boss creature like the slime or dragon. For each contract you complete you get gems which you can spend to upgrade the standard towers and ability's. there are 3 modes to the game" +
+            "\n" +
+            "#1\" is career mode where you complete contracts to earn gems to get more difficult contracts etc.\n" +
+            "\n" +
+            "#2\" is a endless mode where you get a random generated map and you need to clear as many waves you can.\n" +
+            "\n" +
+            "#3' is a custom mode where you set the parameters of the map generator your self, like how big the map is, the seed, the amount of waves and the difficulty.\n" +
+            "\n" +
+            "\n" +
+            "so that is the game in short.",
+        cover: "./img/Other/Before Nightfall.png",
+        badges: null,// Array of badges
+        github: "https://github.com/JustMeGameDev/Tower-defance",
+        itch: null,
+        pdf: null,
+        images: [
+            "./img/Other/BNF_SS1.png",
+            "./img/Other/BNF_SS2.png",
+        ]
+    },
+    {
+        title: "Big Cheese Donte",
+        category: "games",
+        description:"This is a RPG prototype game based around a 1920 chicago mafia setting. You play as the son of a low ranking mafia boss. He has asked you to proof your capable of taking over his empire.\n" +
+            "\n" +
+            "therefore you need to collect grunts and battle other crime bosses in the city to take over their territory. The ultimate goal is to take over the biggest rival of your dad's empire (Big Faluci).\n" +
+            "\n" +
+            "when you won that battle you get the name Big Cheese Donte and you are the new kingpin of the city!",
+        cover: "./img/Other/logo_big_cheese.png",
+        badges: null,// Array of badges
+        github: "https://github.com/JustMeGameDev/pokeclone",
+        itch: null,
+        pdf: null,
+        images: [
+            "./img/Other/bigcheese_code_snipit.png"
+        ]
+    },
+    {
+        title: "Zombie Survivors",
+        category: "games",
+        description:"Zombie Survivors is a game based on the idea of the Vampire Survivors Game. The controls of the game are a bit unconventional that is because it was developed for an arcade for my school.",
+        cover: "./img/Other/Zs.png",
+        badges: null,// Array of badges
+        github: "https://github.com/JustMeGameDev/pokeclone",
+        itch: "https://kornee-hartlief.itch.io/zombie-survivors",
+        pdf: null,
+        images: [
+            "./img/Other/bigcheese_code_snipit.png"
+        ]
+    },
     
     // Add more projects here...
 ];
