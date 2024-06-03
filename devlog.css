@@ -1,0 +1,16 @@
+.footer{
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+#starry-sky{
+    z-index: -10;
+    position: page;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+
+}

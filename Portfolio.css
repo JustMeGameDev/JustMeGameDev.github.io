@@ -51,15 +51,6 @@
     margin: 0.25em;
 
 }
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    position: relative; /* Ensures the footer stays at the bottom of the viewport */
-    bottom: 0;
-    left: 0; /* Ensures it spans from the left to the right edge */
-}
-
 
 .container {
     width: 100%; /* Ensure it uses full width */
