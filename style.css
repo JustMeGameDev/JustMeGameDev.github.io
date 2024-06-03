@@ -14,7 +14,7 @@ body, html {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  overflow-x: unset; /* Prevents scrolling if stars go out of bounds */
+  overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
   position: page; /* Needed for absolute positioning of stars */
   z-index: -10;
 }
@@ -341,7 +341,7 @@ body, html {
 }
 .modal-content p a:hover{
   text-decoration: none;
-  color: purple;
+  color: mediumpurple;
   font-weight: bold;
 }
 
@@ -396,7 +396,7 @@ body, html {
 }
 
 /* Detect Portrait Mode on Mobile Devices */
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 200px) and (orientation: portrait) {
   body {
     display: none;
   }

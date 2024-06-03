@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet: Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Portfolio.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
@@ -14,21 +15,40 @@
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
-    <h1 class="site-title"><a>Star-system: Portfolio-kornee</a></h1>
-    <nav class="site-nav">
-        <ul>
-            <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-            <li><a href=about.html><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
-            <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-            <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
-            <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
-            <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a> </li>
-        </ul>
-    </nav>
-    <h1 class="header-tooltip"></h1>
-</div>
+        <h1 class="site-title"><a>Star-system: Portfolio-kornee</a></h1>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
+                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a> </li>
+            </ul>
+        </nav>
+        <h1 class="header-tooltip"></h1>
+    </div>
 </header>
-
+<main>
+    <h2 class="center">Select a category to view the items</h2>
+    <section class="portfolio-categories">
+        <button onclick="filterProjects('games')">Games/Demos</button>
+        <button onclick="filterProjects('documents')">Game Design Documents</button>
+        <button onclick="filterProjects('art')">Art Work</button>
+    </section>
+    <div class="portfolio-categories-border"></div>
+    <section class="portfolio-projects" id="project-container">
+        <!-- Project cards will be dynamically inserted here -->
+    </section>
+</main>
+<div id="slideshowModal" class="slideshow-modal">
+    <span class="slideshow-close" onclick="closeSlideshow()">&times;</span>
+    <div class="slideshow-modal-content" id="slideshowContent">
+        <!-- Slideshow images will be dynamically inserted here -->
+    </div>
+    <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 <div class="footer">
     <div class="social-links">
         <h2>Find me on</h2>
@@ -41,6 +61,7 @@
     </div>
     <p>&copy; 2023-<span id="currentYear"></span> Kornee Hartlief. All Rights Reserved.</p>
 </div>
-    <script src="script.js"></script>
+<script src="script.js"></script>
+<script src="Portfolio.js"></script>
 </body>
 </html>
