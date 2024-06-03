@@ -10,7 +10,7 @@
 }
 
 .portfolio-categories-border {
-    width: 80vw;
+    width: 90vw;
     border-top: mediumpurple 2px dotted;
     margin: 0.5rem auto; /* Centering and adding vertical margin */
     padding: 0.2rem; /* Optional padding */
@@ -120,7 +120,7 @@
 .slideshow-modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1002;
     left: 0;
     top: 0;
     width: 100%;
@@ -140,7 +140,7 @@
 
 .slideshow-close {
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 40px;
     color: red;
     font-size: 70px;
