@@ -9,7 +9,6 @@ body, html {
     background-color: black;
     color: white;
     font-family: "Source Code Pro", monospace;
-    overflow-y: auto; /* Allow vertical scrolling */
 }
 #starry-sky {
     width: 100%;

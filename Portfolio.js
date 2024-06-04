@@ -6,7 +6,11 @@ const projects = [
         category: "games",
         description: "This game is a prototype game made in a weekend by 4 students game development of the Secondary vocational education level 4.  we are proud of the workings of the game but visually it could be improved. It did win an award for the unique mechanics. (Global Game-jam Groningen Award \"Great interaction\" most unique game mechanics/controls)",
         cover: "./img/Other/logo.png",
-        badges: ["Award Winning"], // Array of badges
+        badges: [
+            { text: "Award Winning", color: "#f39c12" },
+            { text: "Game-Jam", color: "#12f3bf" },
+            { text: "Dropped", color: "#d60000" }
+        ],
         github: "https://github.com/Klaas18/Global_Game_Jam_2023",
         itch: "https://kornee-hartlief.itch.io/long-live-picho",
         pdf: null,
@@ -29,7 +33,11 @@ const projects = [
             "\n" +
             "so that is the game in short.",
         cover: "./img/Other/Before Nightfall.png",
-        badges: null,// Array of badges
+        badges: [
+            {text: "School", color: "#970093" },
+            {text: "Beta Stage", color: "#fff500" },
+            { text: "Dropped", color: "#d60000" }
+        ],
         github: "https://github.com/JustMeGameDev/Tower-defance",
         itch: null,
         pdf: null,
@@ -47,7 +55,11 @@ const projects = [
             "\n" +
             "when you won that battle you get the name Big Cheese Donte and you are the new kingpin of the city!",
         cover: "./img/Other/logo_big_cheese.png",
-        badges: null,// Array of badges
+        badges: [
+            {text: "School", color: "#970093" },
+            {text: "Beta Stage", color: "#fff500" },
+            { text: "Dropped", color: "#d60000" }
+        ],
         github: "https://github.com/JustMeGameDev/pokeclone",
         itch: null,
         pdf: null,
@@ -60,15 +72,78 @@ const projects = [
         category: "games",
         description:"Zombie Survivors is a game based on the idea of the Vampire Survivors Game. The controls of the game are a bit unconventional that is because it was developed for an arcade for my school.",
         cover: "./img/Other/Zs.png",
-        badges: null,// Array of badges
+        badges: [
+            {text: "School", color: "#970093" },
+            {text: "Beta Stage", color: "#fff500" },
+            { text: "Dropped", color: "#d60000" }
+        ],
         github: "https://github.com/JustMeGameDev/pokeclone",
         itch: "https://kornee-hartlief.itch.io/zombie-survivors",
         pdf: null,
         images: [
-            "./img/Other/bigcheese_code_snipit.png"
+            "./img/Other/bigcheese_code_snipit.png",
+            "./img/Other/blackplaceholder.png",
         ]
     },
-    
+    {
+        title: "Time Puzzler",
+        category: "games",
+        description:"For the Noorderpoort Game-jam 2024 i made this vr game in 4 days with 3 of my friends and fellow students, this was our first real try at a vr game and we have won 2 awards with this Game-jam: overall winner (first place/most votes) and most complete game (self explanatory) . We do want to work on it further but we need to find the time for it.",
+        cover: "./img/Other/Time Puzz.webp",
+        badges: [
+            { text: "Award Winning", color: "#f39c12" },
+            { text: "Game-Jam", color: "#12f3bf" },
+            {text: "Beta Stage", color: "#fff500" },
+            { text: "On Hold", color: "#ff5106" }
+        ],
+        github: "https://github.com/itsfinn2004/VrJam/tree/main",
+        itch: null,
+        pdf: null,
+        images: [
+          null
+        ]
+    },
+
+
+//documents
+    {
+        title: "test",
+        category: "documents",
+        description:"test",
+        cover: "./img/Other/blackplaceholder.png",
+        badges: [
+            {text: "School", color: "#970093" },
+            {text: "W.I.P.", color: "#0dc808"}
+    ],
+        github: null,
+        itch: null,
+        pdf: null,
+        images: [
+            null
+        ]
+    },
+    //art work
+    {
+        title: "test",
+        category: "art",
+        description:"test",
+        cover: "./img/Other/blackplaceholder.png",
+        badges: [
+            {text: "School", color: "#970093" },
+            {text: "3D.", color: "#0dc808"},
+            {text: "2D.", color: "#fff500"},
+            {text: "Pixel Art.", color: "#002aff"},
+            {text: "Low Polly", color: "#ff0000"},
+
+        ],
+        github: null,
+        itch: null,
+        pdf: null,
+        images: [
+            null
+        ]
+    },
+
     // Add more projects here...
 ];
 
@@ -79,7 +154,7 @@ function filterProjects(category) {
     filteredProjects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.classList.add('project-card');
-        let badgesHTML = project.badges ? project.badges.map(badge => `<span class="badge">${badge}</span>`).join(' ') : '';
+        let badgesHTML = project.badges ? project.badges.map(badge => `<span class="badge" style="background-color: ${badge.color}">${badge.text}</span>`).join(' ') : '';
         projectCard.innerHTML = `
         ${badgesHTML}
         <h3>${project.title}</h3>
@@ -91,11 +166,12 @@ function filterProjects(category) {
             ${project.itch ? `<a href="${project.itch}" target="_blank"><i class="fab fa-itch-io"></i></a>` : ''}
             ${project.pdf ? `<a href="${project.pdf}" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>` : ''}
         </div>
-        <button class="show-more" onclick="openSlideshow(${projects.indexOf(project)})">Show More Images</button>
+        ${project.images && project.images.length > 0 && project.images[0] ? `<button class="show-more" onclick="openSlideshow(${projects.indexOf(project)})">Show More Images</button>` : ''}
         `;
         container.appendChild(projectCard);
     });
 }
+
 
 function openSlideshow(index) {
     const modal = document.getElementById('slideshowModal');

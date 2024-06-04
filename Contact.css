@@ -9,14 +9,12 @@ body, html {
     background-color: black;
     color: white;
     font-family: "Source Code Pro", monospace;
-    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 #starry-sky {
     width: 100%;
     height: 100%;
     background-color: black;
-    overflow-x: hidden; /* Prevents scrolling if stars go out of bounds */
     position: page; /* Fix to ensure it covers the entire background */
     top: 0;
     left: 0;
