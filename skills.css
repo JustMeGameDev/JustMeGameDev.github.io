@@ -1,0 +1,48 @@
+.skill-button img {
+    width: 100px; /* Adjust size as necessary */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.skill-button:hover img {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+#skill-details {
+    margin-top: 20px;
+}
+
+
+#skill-pie-chart, #skill-media {
+    margin-top: 10px;
+}
+.skills-container{
+    padding-top: 150px;
+    
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: white;
+    font-family: "Source Code Pro", monospace;
+}
+.container {
+    width: 100%; /* Ensure it uses full width */
+    margin: auto; /* Center the container */
+    display: block; /* Override any flex or grid properties */
+    height: auto;
+}
+.border-line {
+    width: 90vw;
+    border-top: mediumpurple 2px dotted;
+    margin: 0.5rem auto; /* Centering and adding vertical margin */
+    padding: 0.2rem; /* Optional padding */
+}

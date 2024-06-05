@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet: Skills & Technologies</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="skills.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/solar/planet%202.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body id="starry-sky">
@@ -29,18 +31,36 @@
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
-<div class="footer">
-    <div class="social-links">
-        <h2>Find me on</h2>
-        <ul>
-            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
-            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
-        </ul>
-    </div>
-    <p>&copy; 2023-<span id="currentYear"></span> Kornee Hartlief. All Rights Reserved.</p>
+<div class="container">
+<h1 class="center">Press an icon/logo to view my skills and proof of that language, skill or software</h1>
+<div class="border-line"></div>
+<div class="skills-container">
+    <button class="skill-button" onclick="showSkillDetails('Unity')"><img src="img/unity_icon.png" alt="Unity"/></button>
+    <button class="skill-button" onclick="showSkillDetails('Unreal Engine')"><img src="img/unreal_icon.png" alt="Unreal Engine"/></button>
+    <!-- Add more buttons for other skills -->
 </div>
+<div id="skill-details" style="display: none;">
+    <div id="skill-pie-chart"><canvas id="skillPieChartCanvas"></canvas></div>
+    <div id="skill-media">
+        <!-- Media and information about the skill will be injected here -->
+    </div>
+</div>
+    <div class="footer">
+        <div class="social-links">
+            <h2>Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2023-<span id="currentYear"></span> Kornee Hartlief. All Rights Reserved.</p>
+    </div>
+</div>
+
+
 </body>
 </html>
 <script src="script.js"></script>
+<script src="skills.js"></script>

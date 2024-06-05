@@ -7,6 +7,8 @@ body, html {
     justify-content: flex-start;
     align-items: center;
     background-color: black;
+    overflow-y: auto;
+    overflow-x: hidden;
     color: white;
     font-family: "Source Code Pro", monospace;
 }
