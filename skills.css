@@ -1,7 +1,12 @@
 .skill-button img {
-    width: 100px; /* Adjust size as necessary */
-    height: auto;
+    width: auto; /* Adjust size as necessary */
+    height: 100px;
     transition: transform 0.3s ease;
+}
+.skill-button{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .skill-button:hover img {

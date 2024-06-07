@@ -24,6 +24,16 @@ body, html {
   padding: 10px 0;
   position: relative; /* Changed from fixed */
 }
+.footer a{
+  text-decoration: none;
+  color: mediumpurple;
+  font-weight: bold;
+}
+.footer a:hover{
+  text-decoration: none;
+  color: purple;
+  font-weight: bold;
+}
 .solar-system {
   position: relative;
   width: calc(330px * 1.5); /* Increased from 300px */
@@ -273,9 +283,7 @@ body, html {
   text-decoration: none;
   color: white;
 }
-.API{
-  z-index: 1000;
-}
+
 
 .social-links {
   text-align: center;
