@@ -35,15 +35,36 @@
 <h1 class="center">Press an icon/logo to view my skills and proof of that language, skill or software</h1>
 <div class="border-line"></div>
 <div class="skills-container center">
-    <button class="skill-button" onclick="showSkillDetails('Unity')"><img src="./img/Other/U_Cube_1C_Black.svg" alt="Unity"/></button>
-    <button class="skill-button" onclick="showSkillDetails('Unreal Engine')"><img src="./img/Other/UE-Icon-2023-Black.svg" alt="Unreal Engine"/></button>
+    <button class="skill-button" onclick="showSkillDetails('Unity')"><img src="./img/Other/U_Cube_1C_Black.svg" alt="Unity"/>
+        <span class="tooltip">Unity</span>
+    </button>
+    <button class="skill-button" onclick="showSkillDetails('Unreal Engine')"><img src="./img/Other/UE-Icon-2023-Black.svg" alt="Unreal Engine"/>
+        <span class="tooltip">Unreal Engine</span>
+    </button>
+    <button class="skill-button" onclick="showSkillDetails('Blender')"><img src="./img/Other/blender_icon_1024x1024.png" alt="Blender"/>
+        <span class="tooltip">Blender</span>
+    </button>
+    <button class="skill-button" onclick="showSkillDetails('C#')"><img src="./img/Other/Csharp_Logo.png" alt="C sharp"/>
+        <span class="tooltip">C#</span>
+    </button>
+    <button class="skill-button" onclick="showSkillDetails('HTML,CSS,JS')"><img src="./img/Other/3920366-middle-2697995137.png" alt="HTML, CSS, JS"/>
+        <span class="tooltip">HTML, CSS, JS</span>
+    </button>
+    <button class="skill-button" onclick="showSkillDetails('Arduino')"><img src="./img/Other/arduino-logo-png-arduino-logo-pluspng-600x315%20(1).png" alt="Arduino"/>
+        <span class="tooltip">Arduino</span>
+    </button>
+
+    <div class="border-line"></div>
     <!-- Add more buttons for other skills -->
 </div>
-<div id="skill-details" style="display: none;">
-    <div id="skill-pie-chart"><canvas id="skillPieChartCanvas"></canvas></div>
-    <div id="skill-media">
-        <!-- Media and information about the skill will be injected here -->
-    </div>
+    <div id="skill-details">
+        <div id="skill-pie-chart">
+            <canvas id="skillPieChartCanvas"></canvas>
+        </div>
+        <div id="skill-media">
+        </div>
+
+    <div class="border-line"></div>
 </div>
     <div class="footer">
         <div class="social-links">
@@ -66,6 +87,6 @@
 
 
 </body>
-</html>
 <script src="script.js"></script>
 <script src="skills.js"></script>
+</html>

@@ -7,15 +7,16 @@
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
 }
+.skill-button:hover{
+    cursor: pointer;
 
+}
 .skill-button:hover img {
     transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
-#skill-details {
-    margin-top: 20px;
-}
 
 
 #skill-pie-chart, #skill-media {
@@ -39,6 +40,24 @@ body, html {
     color: white;
     font-family: "Source Code Pro", monospace;
 }
+#starry-sky{
+    position: page;
+}
+#skillPieChartCanvas {
+    width: 100% !important;
+    max-width: 300px; /* Limits the size of the canvas */
+    height: auto !important; /* Maintain aspect ratio */
+}
+#skill-pie-chart {
+    text-align: center; /* Center align text elements like the title */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align flex children (title and canvas) */
+    width: 100%;
+    margin-top: 20px;
+}
+
+
 .container {
     width: 100%; /* Ensure it uses full width */
     margin: auto; /* Center the container */
@@ -50,4 +69,90 @@ body, html {
     border-top: mediumpurple 2px dotted;
     margin: 0.5rem auto; /* Centering and adding vertical margin */
     padding: 0.2rem; /* Optional padding */
+}
+.skill-button {
+    position: relative;
+    /* existing styles */
+}
+
+.skill-button .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 120px;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Adjust this if needed to change tooltip position */
+    left: 50%;
+    margin-left: -60px;
+    font-size: 24px;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.skill-button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Position right at the bottom of the tooltip */
+    left: 50%;
+    margin-left: -15px; /* Center the arrow */
+    border-width: 15px;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent; /* Only the top border is black */
+    display: block;
+}
+
+.skill-button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+#skill-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.media-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.centered-title {
+    width: 100%;
+    margin-bottom: 20px; /* Space between title and pie chart */
+    font-size: 24px; /* Adjust font size as necessary */
+    color: white; /* Adjust text color as necessary */
+}
+
+.media-row .media {
+    flex: 1 1 50%; /* Take up half the width */
+    padding: 15px;
+}
+
+.media-row .description {
+    flex: 1 1 50%; /* Take up half the width */
+    padding: 15px;
+}
+
+.media-row.reverse .media {
+    order: 2; /* Media goes to the right */
+}
+
+
+.media-row.reverse .description {
+    order: 1; /* Description goes to the left */
+}
+
+@media (max-width: 768px) { /* For smaller screens, stack them vertically */
+    .media-row, .media-row.reverse {
+        flex-direction: column;
+    }
+
+    .media-row .media, .media-row .description {
+        flex: 1 1 50%; /* Each takes half width */
+    }
 }
