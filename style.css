@@ -137,10 +137,10 @@ body, html {
 .orbit:nth-child(5) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
 
 /* Customizing orbit duration for each planet */
-.orbit:nth-child(2) .planet { animation-duration: 5s; }
-.orbit:nth-child(3) .planet { animation-duration: 7s; }
-.orbit:nth-child(4) .planet { animation-duration: 10s; }
-.orbit:nth-child(5) .planet { animation-duration: 12s; }
+.orbit:nth-child(2) .planet { animation-duration: 9s; }
+.orbit:nth-child(3) .planet { animation-duration: 10s; }
+.orbit:nth-child(4) .planet { animation-duration: 13s; }
+.orbit:nth-child(5) .planet { animation-duration: 15s; }
 
 .tooltip-area {
   text-align: center;
