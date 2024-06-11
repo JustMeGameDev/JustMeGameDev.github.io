@@ -40,17 +40,38 @@
     padding: 1rem;
 }
 
+.engine-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background-color: slategray;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badges-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create three columns */
+    gap: 10px; /* Spacing between badges */
+    margin-left: 60px; /* Left margin to avoid overlap with the engine badge */
+    margin-top: 5px; /* Optional: top margin for better alignment */
+}
+
 .badge {
-    display: inline-block;
     padding: 0.25em 0.5em;
     font-size: 1em;
     font-weight: bold;
     color: black;
-    background-color: goldenrod; /* Bootstrap primary blue */
+    background-color: goldenrod; /* Example color */
     border-radius: 0.5rem;
-    margin: 0.25em;
-
+    text-align: center; /* Ensures text is centered within each badge */
 }
+
 
 .container {
     width: 100%; /* Ensure it uses full width */
