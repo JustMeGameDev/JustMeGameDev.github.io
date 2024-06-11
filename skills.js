@@ -7,16 +7,23 @@ const skillsData = {
         media: [
             {
                 type: 'image',
-                src: 'img/unity_examples.png',
-                description: 'Unity Engine Image Example',
-                skillname:''
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
 
             },
             {
                 type: 'video',
-                src: 'videos/unity_demo.mp4',
-                description: 'Unity Engine Video Demo',
-                skillname:''
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
 
             }
         ]
@@ -29,15 +36,139 @@ const skillsData = {
         media: [
             {
                 type: 'image',
-                src: 'img/unreal_examples.png',
-                description: 'Unreal Engine Image Example',
-                skillname:''
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
+
             },
             {
                 type: 'video',
-                src: 'videos/unreal_demo.mp4',
-                description: 'Unreal Engine Video Demo',
-                skillname:''
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
+
+            }
+        ]
+    },
+    "Blender": {
+        pieChart: {
+            labels: ['Basic', 'Intermediate', 'Advanced'],
+            data: [20, 3, 77]
+        },
+        media: [
+            {
+                type: 'image',
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'video',
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
+
+            }
+        ]
+    },
+    "C#": {
+        pieChart: {
+            labels: ['Basic', 'Intermediate', 'Advanced'],
+            data: [50, 30, 20]
+        },
+        media: [
+            {
+                type: 'image',
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'video',
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
+
+            }
+        ]
+    },
+    "HTML,CSS,JS": {
+        pieChart: {
+            labels: ['Basic', 'Intermediate', 'Advanced'],
+            data: [60, 35, 5]
+        },
+        media: [
+            {
+                type: 'image',
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'video',
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
+
+            }
+        ]
+    },
+    "Arduino": {
+        pieChart: {
+            labels: ['Basic', 'Intermediate', 'Advanced'],
+            data: [80, 15, 5]
+        },
+        media: [
+            {
+                type: 'image',
+                src: './img/Other/award_01.jpg',
+                description: 'test pic',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'image',
+                src: './img/Other/SampleGIFImage_350kbmb.gif',
+                description: 'test gif',
+                skillname:'Skill 1'
+
+            },
+            {
+                type: 'video',
+                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
+                description: 'test video',
+                skillname:'Skill 2'
 
             }
         ]
@@ -48,6 +179,7 @@ const skillsData = {
 function showSkillDetails(skillName) {
     const pieChartDiv = document.getElementById('skill-pie-chart');
     const mediaDiv = document.getElementById('skill-media');
+    const detailsDiv = document.getElementById('skill-details');  // Make sure this ID matches your HTML
 
     // Clear previous content
     pieChartDiv.innerHTML = '';
@@ -65,8 +197,9 @@ function showSkillDetails(skillName) {
     pieChartDiv.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
-    if (window.myPieChart) { // Check if a chart instance exists
-        window.myPieChart.destroy(); // Destroy existing chart instance if any
+    if (window.myPieChart) {
+        console.log("Destroying old chart instance");
+        window.myPieChart.destroy();
     }
     window.myPieChart = new Chart(ctx, {
         type: 'pie',
@@ -93,27 +226,26 @@ function showSkillDetails(skillName) {
         }
     });
 
-
-    // Dynamically create media and description sections, alternating their layout
-    skill.media.forEach((item, index) => {
+    // Create media and description sections
+    skillsData[skillName].media.forEach((item) => {
         const row = document.createElement('div');
-        row.className = 'media-row' + (index % 2 === 1 ? ' reverse' : '');
+        row.className = 'media-row';
 
         const mediaHtml = item.type === 'image' ?
-            `<img src="${item.src}" alt="${item.skillName} example" style="width: 100%;">` :
-            `<video controls style="width: 100%;"><source src="${item.src}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            `<img src="${item.src}" alt="${item.skillname}" style="width: 100%;">` :
+            `<video autoplay muted style="width: 100%;"><source src="${item.src}" type="video/mp4">Your browser does not support the video tag.</video>`;
 
-        const descriptionHtml = `<p>${item.description}</p>`; // Use the description from the data
+        const descriptionHtml = `<div class="description">${item.description}</div>`;
 
         row.innerHTML = `
             <div class="media">${mediaHtml}</div>
-            <div class="description">${descriptionHtml}</div>
+            ${descriptionHtml}
         `;
         mediaDiv.appendChild(row);
     });
 
     // Display the details section
-    detailsDiv.style.display = 'block';
+    detailsDiv.style.display = 'block'; // Now this should work without errors
 }
 
 

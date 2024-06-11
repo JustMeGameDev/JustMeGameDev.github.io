@@ -16,16 +16,27 @@
 .skill-button:hover img {
     transform: scale(1.1); /* Slight zoom effect on hover */
 }
-
-
-
-#skill-pie-chart, #skill-media {
-    margin-top: 10px;
-}
 .skills-container{
     padding-top: 150px;
     
 }
+.media-row {
+    display: flex;
+    margin: 20px 5%;
+    border-bottom: 2px dotted mediumpurple; /* Dotted line between entries */
+}
+
+.media {
+    flex: 1;
+    padding: 10px;
+}
+
+.description {
+    flex: 2;
+    padding: 10px;
+    text-align: left; /* Description text aligned to the left */
+}
+
 body, html {
     height: 100%;
     width: 100%;
@@ -41,17 +52,18 @@ body, html {
     font-family: "Source Code Pro", monospace;
 }
 #starry-sky{
-    position: page;
+    position: sticky;
 }
 #skillPieChartCanvas {
-    width: 100% !important;
-    max-width: 300px; /* Limits the size of the canvas */
-    height: auto !important; /* Maintain aspect ratio */
+    width: 100%;
+    height: 300px; /* Fixed height */
 }
 #skill-pie-chart {
+    max-height: 350px;
     text-align: center; /* Center align text elements like the title */
     display: flex;
     flex-direction: column;
+    position: relative;
     align-items: center; /* Center-align flex children (title and canvas) */
     width: 100%;
     margin-top: 20px;
@@ -59,6 +71,7 @@ body, html {
 
 
 .container {
+    padding-top: 150px;
     width: 100%; /* Ensure it uses full width */
     margin: auto; /* Center the container */
     display: block; /* Override any flex or grid properties */
@@ -117,9 +130,8 @@ body, html {
 
 .media-row {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 20px;
+    margin: 20px 5%;
+    border-bottom: 2px dotted mediumpurple; /* Dotted line between entries */
 }
 .centered-title {
     width: 100%;
@@ -131,11 +143,14 @@ body, html {
 .media-row .media {
     flex: 1 1 50%; /* Take up half the width */
     padding: 15px;
+    border-radius: 10px;
+    border: mediumpurple 2px dotted;
+    margin-bottom: 25px;
 }
-
 .media-row .description {
     flex: 1 1 50%; /* Take up half the width */
     padding: 15px;
+    text-align: center;
 }
 
 .media-row.reverse .media {
