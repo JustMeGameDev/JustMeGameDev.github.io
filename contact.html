@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet: Contact</title>
+    <title id="contactTitle">Planet: Contact</title>
     <link rel="stylesheet" href="Contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,35 +14,41 @@
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
-        <h1 class="site-title"><a>Star-system: Portfolio-kornee</a></h1>
+        <h1 class="site-title"><a href="index.html" id="headerTitle" style="text-decoration: none; color: white">Star-system: Portfolio-kornee</a></h1>
         <nav class="site-nav">
             <ul>
-                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
-                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a></li>
+                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
+                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
             </ul>
         </nav>
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
+
+<div class="language-switcher" style="top: 90px; right: 30px">
+    <button id="switchToEnglish" class="lang-btn">
+        <img src="./img/Other/gb.svg" alt="English">
+    </button>
+    <button id="switchToDutch" class="lang-btn">
+        <img src="./img/Other/nl.svg" alt="Nederlands">
+    </button>
+</div>
+
 <div class="content-wrapper">
     <div class="column resume-column">
-        <h2 class="center">My Resume</h2>
-        <div class="resume-widget" id="resume-widget-eng">
-            <embed src="./PDF/cv_Kornee_Hartlief_ENG.pdf" type="application/pdf"></embed>
-        </div>
-        <h2 class="center">Mijn CV</h2>
-        <div class="resume-widget" id="resume-widget-nl">
-            <embed src="./PDF/cv_Kornee_Hartlief_NL.pdf" type="application/pdf"></embed>
+        <h2 class="center" id="resumeTitle">My Resume</h2>
+        <div class="resume-widget">
+            <embed id="resumeEmbed" type="application/pdf" width="100%" height="600px"></embed>
         </div>
     </div>
     <div class="column form-column" id="ContactForm">
         <div class="form-section">
             <form id="contact-form" action="https://formspree.io/f/xqkronlo" method="POST">
-                <h1 class="center">Make Contact</h1>
+                <h1 class="center" id="contactHeader">Make Contact</h1>
                 <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
                 <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
                 <textarea name="text" class="feedback-input" placeholder="Comment" required></textarea>
@@ -54,7 +60,7 @@
 </div>
 <div class="footer">
     <div class="social-links">
-        <h2>Find me on</h2>
+        <h2 id="socialLinks">Find me on</h2>
         <ul>
             <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
             <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
@@ -62,15 +68,28 @@
             <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
         </ul>
     </div>
-    <p><h6 style="margin-left: 15px; margin-right: 15px">  Disclaimer<br>
-    This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.
-
-    If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a> Upon verification of your claim, I will promptly remove the asset in question.
-
-    All rights reserved for my original assets and content. <br></br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;</h6></p>
+    <p>
+    <h6 style="margin-left: 15px; margin-right: 15px" id="footerDisclaimer">
+        Disclaimer<br>
+        This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.<br>
+        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a>. Upon verification of your claim, I will promptly remove the asset in question.<br>
+        All rights reserved for my original assets and content.<br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;
+    </h6>
+    </p>
 </div>
 
 <script>
+    function toggleResumeVisibility(lang) {
+        const resumeEng = document.getElementById('resume-widget-eng');
+        const resumeNl = document.getElementById('resume-widget-nl');
+        if (lang === 'en') {
+            resumeEng.style.display = 'block';
+            resumeNl.style.display = 'none';
+        } else if (lang === 'nl') {
+            resumeEng.style.display = 'none';
+            resumeNl.style.display = 'block';
+        }
+    }
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
 

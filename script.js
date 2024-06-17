@@ -49,7 +49,7 @@ function generateStars(numberOfStars) {
         star.style.position = 'absolute';
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
-        star.style.width = `${Math.random() * 4 }px`; // Stars size between 1px and 3px
+        star.style.width = `${Math.random() * 7 }px`; // Stars size between 1px and 3px
         star.style.height = star.style.width; // Keep the star size consistent
         star.style.borderRadius = '50%';
         star.style.backgroundColor = getRandomColor();
@@ -57,16 +57,44 @@ function generateStars(numberOfStars) {
     }
 }
 // JavaScript code to update the year dynamically
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the current year
+function applyTranslations(xmlDoc) {
     var currentYear = new Date().getFullYear();
+    var previousYear = currentYear - 1;
+    var yearText = `${previousYear}-${currentYear}`; // Generates "2023-2024"
 
-    // Get the HTML element by its ID
-    var yearElement = document.getElementById('currentYear');
+    var translations = xmlDoc.getElementsByTagName("translation");
+    document.querySelectorAll("[id]").forEach(element => {
+        const key = element.getAttribute("id");
+        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
+        if (node) {
+            var text = node.textContent;
+            text = text.replace('{year}', yearText); // Replace the placeholder with the current year range
+            element.innerHTML = text;
+        }
+    });
 
-    // Update the text content of the element
-    yearElement.textContent = currentYear;
+    // Update tooltips
+    // Update tooltips
+    document.querySelectorAll("[data-translation-id]").forEach(element => {
+        const key = element.getAttribute("data-translation-id");
+        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
+        if (node) {
+            element.setAttribute('title', node.textContent);
+        }
+    });
+    var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]');
+    if (resumeNode) {
+        document.getElementById('resumeEmbed').src = resumeNode.textContent;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const defaultLang = localStorage.getItem('userLang') || 'en';
+    loadLanguage(defaultLang);
 });
+
+
+
 function getRandomColor() {
     const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF']; // Example star colors
     return colors[Math.floor(Math.random() * colors.length)];
@@ -132,5 +160,41 @@ function detectMobileAndRedirect() {
 window.onload = mobileCheck;
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
+
+
+function loadLanguage(lang) {
+    // Get the current HTML file name without extension
+    const pageName = window.location.pathname.split('/').pop().split('.')[0];
+
+    // Construct the filename based on the current page and language selection
+    const filename = `${pageName}_${lang}.xml`;
+
+    // Define the path using the lang directory
+    const filepath = `${lang}/${filename}`; // Use the language directory for filepath
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            applyTranslations(this.responseXML);
+        } else if (this.readyState == 4 && this.status != 200) {
+            console.error("Failed to load language file:", filepath); // Log an error if the file can't be loaded
+        }
+    };
+    xhttp.open("GET", filepath, true);
+    xhttp.send();
+}
+
+
+document.getElementById('switchToEnglish').addEventListener('click', function() {
+    loadLanguage('en');
+});
+document.getElementById('switchToDutch').addEventListener('click', function() {
+    loadLanguage('nl');
+});
+
+// Load default language on initial load
+document.addEventListener('DOMContentLoaded', function() {
+    loadLanguage('en'); // Load English by default or check user preference if stored
+});
 
 

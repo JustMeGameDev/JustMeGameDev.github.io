@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start System: Portfolio</title>
+    <title id="pageTitle">Start System: Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="./img/solar/spaceship.png">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </head>
 <body id="starry-sky" class="home-page">
+<div class="language-switcher">
+    <button id="switchToEnglish" class="lang-btn">
+        <img src="./img/Other/gb.svg" alt="English">
+    </button>
+    <button id="switchToDutch" class="lang-btn">
+        <img src="./img/Other/nl.svg" alt="Nederlands">
+    </button>
+</div>
+
 <div class="content-wrapper">
-    <div class="center"><h1>WELCOME TO THE STAR SYSTEM : PORTFOLIO-KORNEE</h1></div>
-    <div class="center"><h2>Please select the sun or one of the planets to travel to the page</h2></div>
-    <div id="tooltip-area" class="tooltip-area"></div> <!-- Tooltip area above the solar system -->
+    <div class="center"><h1 id="welcomeText"></h1></div>
+    <div class="center"><h2 id="selectText"></h2></div>
     <div class="solar-system">
         <div class="sun" data-name="About me" data-page="about" onclick="showPage(this)"></div>
         <div class="orbit">
@@ -31,9 +37,20 @@
             <div class="planet planet4" data-name="Dev log" data-page="devlog" onclick="showPage(this)"></div>
         </div>
     </div>
+    <div class="legend">
+        <h3 id="legendTitle">Navigation Legend</h3>
+        <ul>
+            <li><img src="/img/solar/sun.png" alt="Sun"> <span id="sunDescription"></span></li>
+            <li><img src="/img/solar/planet 1.png" alt="Planet 1"> <span id="planet1Description"></span></li>
+            <li><img src="/img/solar/planet 2.png" alt="Planet 1"> <span id="planet2Description"></span></li>
+            <li><img src="/img/solar/planet 3.png" alt="Planet 1"> <span id="planet3Description"></span></li>
+            <li><img src="/img/solar/planet 4.png" alt="Planet 1"> <span id="planet4Description"></span></li>
+        </ul>
+    </div>
+
     <div class="footer">
         <div class="social-links">
-            <h2>Find me on</h2>
+            <h2 id="socialLinks"></h2>
             <ul>
                 <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
                 <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
@@ -41,24 +58,11 @@
                 <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
             </ul>
         </div>
-        <p><h6 style="margin-left: 15px; margin-right: 15px">  Disclaimer<br>
-        This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.
-
-        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a> Upon verification of your claim, I will promptly remove the asset in question.
-
-        All rights reserved for my original assets and content. <br></br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;</h6></p><!-- activate in case of maintenance -->
-<div id="constructionModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Site Under Construction</h2>
-        <p>This site is under construction. There may be some bugs or empty pages. If you encounter any issues, please use the contact form on the <a href="#contact" onclick="showPage({dataset: {page: 'contact'}})">Contact Page</a>.</p>
+        <p id="footerText" data-translate="footerDisclaimer" style="font-size: 12px; padding-left: 20px; padding-right: 20px"></p>
     </div>
 </div>
-    </div>
 </div>
-
-
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Star: About me</title>
+    <title id="aboutTitle">Star: About me</title> <!-- Updated for dynamic translation -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="About.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,76 +11,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/solar/sun.png">
-
 </head>
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
-        <h1 class="site-title"><a>Star-system: Portfolio-kornee</a></h1>
+        <h1 class="site-title"><a href="index.html" id="headerTitle"style="text-decoration: none ; color: white">Star-system: Portfolio-kornee</a></h1>
         <nav class="site-nav">
             <ul>
-                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                <li><a href=about.html><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
-                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a> </li>
+                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
+                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
             </ul>
         </nav>
-       <h1 class="header-tooltip"></h1>
+        <h1 class="header-tooltip"></h1>
     </div>
 </header>
+<div class="language-switcher" style="top: 90px; right: 30px">
+    <button id="switchToEnglish" class="lang-btn">
+        <img src="./img/Other/gb.svg" alt="English">
+    </button>
+    <button id="switchToDutch" class="lang-btn">
+        <img src="./img/Other/nl.svg" alt="Nederlands">
+    </button>
+</div>
 <div class="container">
     <section class="main">
-        <h2>Welcome to My World of Game Development and Design</h2>
-        <p class="centered">Hello World! My name is Kornee Hartlief, and I am a dedicated student at Noorderpoort, currently pursuing a vocational college study in Software Development Games Level 4. With three years of student experience and currently an intern, I am passionate about creating engaging and interactive gaming experiences. While I am not highly skilled in art, my strengths lie in game development and design, and I aspire to further my education with a bachelor's degree in game design in the near future.</p>
+        <h2 id="welcomeToMyWorld"></h2>
+        <p class="centered" id="helloWorldIntro"></p>
     </section>
 
     <section class="section center">
-        <h3>My Journey</h3>
-        <img src="./img/Other/pf.png" alt="pf" style="height: 300px; width: auto ">
-        <p>My journey into the world of game development began at Noorderpoort, where I am studying Software Development Games Level 4. This program has provided me with a solid foundation in game development principles, programming, and design. As part of my curriculum, I have gained hands-on experience through various projects and my current internship, which are instrumental in shaping my skills and career goals.</p>
+        <h3 id="myJourney"></h3>
+        <img src="./img/Other/pf.png" alt="pf" style="height: 300px; width: auto">
+        <p id="journeyDetails"></p>
     </section>
 
     <section class="section align-left">
-        <h3>More Specific Pages</h3>
+        <h3 id="moreSpecificPages"></h3>
         <ul>
-            <li><a href="portfolio.html"><strong>Portfolio:</strong></a> Here you can check out my projects.</li>
-            <li><a href="skills.html"><strong>Skills:</strong></a> Here I go in depth on the skills and technologies I learned and mastered.</li>
-            <li><a href="contact.html"><strong>Contact:</strong></a> Here you can find my resume and a contact form to reach out.</li>
-            <li><a href="devlog.html"><strong>Dev Log:</strong></a> Here you can follow a Twitter (now called "X") feed where I will share updates about my game-development journey.</li>
+            <li><a href="portfolio.html" id="portfolioLink"></a></li>
+            <li><a href="skills.html" id="skillsLink"></a></li>
+            <li><a href="contact.html" id="contactLink"></a></li>
+            <li><a href="devlog.html" id="devLogLink"></a></li>
         </ul>
     </section>
 
     <section class="section center">
-        <h3>My Philosophy</h3>
-        <img src="./img/Other/Phil.webp" alt="Philosophy Image" style="height: 350px ; width: auto;">
-        <p>I believe that games are more than just a form of entertainment; they are a medium for storytelling, connection, training, and/or education. My goal is to create games that not only captivate players but also inspire, challenge, and/or educate them. As I continue my education and career, I am dedicated to pushing the boundaries of what is possible in game development and design.</p>
+        <h3 id="myPhilosophy"></h3>
+        <img src="./img/Other/Phil.webp" alt="Philosophy Image" style="height: 350px; width: auto;">
+        <p id="philosophyDetails"></p>
     </section>
 
     <section class="section align-left">
-        <h3>My Hobbies</h3>
-        <img src="./img/Other/hobbies.webp" alt="Hobbies Image"  style="height: 250px; width: auto ">
-        <p>When I am not immersed in game development, I enjoy spending my time on various hobbies that help me stay creative and inspired. Some of my favorite hobbies include:</p>
+        <h3 id="myHobbies"></h3>
+        <img src="./img/Other/hobbies.webp" alt="Hobbies Image" style="height: 350px; width: auto;">
+        <h4 id="hobbiesDetails"></h4>
         <ul>
-            <li><strong>Gaming:</strong> I like playing a variety of games, from high pace shooters to 4x games, to understand different game mechanics and narratives and mostly for fun.</li>
-            <br>
-            <li><strong>Dungeons and Dragons:</strong> I am part of a party made up from my friends we try to play it at least once a month and here i play as a player. I also attend 2 online parties where in one of them I am the DM and the other I play as a player.</li>
-            <br>
-            <li><strong>Magic the gathering:</strong> I am part of a local community that organises small game-nights at a local pub for MTG and i also play this with friends at home.</li>
-            <br>
-            <li><strong>Airsoft:</strong> I try to play this as often as my schedule allows and I'm making plans to participate in a big mil-sim</li>
-            <br>
-            <li><strong>Board and card games:</strong> I enjoy to play these with my friends and/or family </li>
-            <br>
-            <li><strong>Basketball:</strong> This is a sport I love, I have played it for a while (and want to start again). I also try to attend at least 2 or 3 games of the dutch club Donar a year </li>
-            <br>
+            <li id="hobbyGaming"></li>
+            <li id="hobbyDnD"></li>
+            <li id="hobbyMTG"></li>
+            <li id="hobbyAirsoft"></li>
+            <li id="hobbyBoardGames"></li>
+            <li id="hobbyBasketball"></li>
         </ul>
     </section>
 </div>
 <div class="footer">
     <div class="social-links">
-        <h2>Find me on</h2>
+        <h2 id="socialLinks">Find me on</h2>
         <ul>
             <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
             <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
@@ -88,13 +89,8 @@
             <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
         </ul>
     </div>
-    <p><h6 style="margin-left: 15px; margin-right: 15px">  Disclaimer<br>
-    This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.
-
-    If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a> Upon verification of your claim, I will promptly remove the asset in question.
-
-    All rights reserved for my original assets and content. <br></br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;</h6></p>
+    <p><h6 style="margin-left: 15px; margin-right: 15px" id="footerDisclaimer"></h6></p>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
-<script src="script.js"></script>

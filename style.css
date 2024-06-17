@@ -24,16 +24,7 @@ body, html {
   padding: 10px 0;
   position: relative; /* Changed from fixed */
 }
-.footer a{
-  text-decoration: none;
-  color: mediumpurple;
-  font-weight: bold;
-}
-.footer a:hover{
-  text-decoration: underline;
-  color: purple;
-  font-weight: bold;
-}
+
 .solar-system {
   position: relative;
   width: calc(330px * 1.5); /* Increased from 300px */
@@ -53,6 +44,13 @@ body, html {
   left: 50%; /* Center the div horizontally */
   transform: translate(-50%, -50%); /* Adjust positioning to truly center */
   cursor: pointer;
+}
+.li-img {
+  background-image: url('/img/solar/sun.png');
+  background-size: cover;
+  width: 20px; /* Set your desired width */
+  height: 20px; /* Set your desired height */
+  display: inline-block;
 }
 
 .orbit {
@@ -137,10 +135,10 @@ body, html {
 .orbit:nth-child(5) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
 
 /* Customizing orbit duration for each planet */
-.orbit:nth-child(2) .planet { animation-duration: 9s; }
-.orbit:nth-child(3) .planet { animation-duration: 10s; }
-.orbit:nth-child(4) .planet { animation-duration: 13s; }
-.orbit:nth-child(5) .planet { animation-duration: 15s; }
+.orbit:nth-child(2) .planet { animation-duration: 10s; }
+.orbit:nth-child(3) .planet { animation-duration: 12s; }
+.orbit:nth-child(4) .planet { animation-duration: 15s; }
+.orbit:nth-child(5) .planet { animation-duration: 17s; }
 
 .tooltip-area {
   text-align: center;
@@ -406,4 +404,79 @@ body, html {
     display: none;
   }
 }
+@media (max-width: 200px) {
+  .legend {
+    width: 100%; /* Full width on smaller screens */
+    position: static; /* Normal flow, if overlapping is an issue */
+    margin-top: 10px; /* Space from top content */
+  }
+}
+
+.legend {
+  position: absolute;
+  top: 40%; /* Adjust based on your header */
+  left: 5vw; /* Safe distance from the edge */
+  width: 355px; /* Fixed width */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: white;
+  padding: 10px;
+  z-index: 10; /* Make sure it's above other elements */
+  border: 2px dotted mediumpurple;
+  border-radius: 15px;
+}
+
+.legend h3 {
+  margin-top: 0;
+  text-align: center;
+  color: #CC6666; /* Golden color for heading to match solar theme */
+}
+
+.legend img {
+  width: 20px; /* Adjust the size as needed */
+  height: 20px; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align with the text */
+  margin-right: 5px; /* Space between the image and text */
+}
+
+.legend ul {
+  list-style-type: none; /* Removes bullets */
+  padding: 0;
+}
+
+.legend li {
+  font-size: 14px; /* Smaller font size for compact look */
+  line-height: 1.5; /* Good line spacing for readability */
+  margin-bottom: 4px; /* Space between items */
+}
+
+.language-switcher {
+  position: fixed;   /* Fixed position relative to the viewport */
+  top: 10px;         /* 10px from the top */
+  right: 10px;       /* 10px from the right */
+  z-index: 1000;     /* Make sure it appears above other content */
+}
+
+.language-switcher a {
+  color: white;      /* Choose a color that fits your design */
+  text-decoration: none; /* No underlines to keep it clean */
+  padding: 5px;      /* Padding for better clickability */
+  font-size: 16px;   /* Adjust size as needed */
+}
+
+.language-switcher a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+
+.lang-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.lang-btn img {
+  width: 50px;  /* Set the size of the flag images */
+  height: auto;
+  border-radius: 5px;
+}
+
 

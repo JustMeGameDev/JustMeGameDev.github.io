@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="pageTitle">Start System: Portfolio</translation>
+    <translation id="welcomeText">WELCOME TO THE STAR SYSTEM : PORTFOLIO-KORNEE</translation>
+    <translation id="selectText">Please select the sun or one of the planets to travel to the page</translation>
+    <translation id="footerDisclaimer">
+    This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form. Upon verification of your claim, I will promptly remove the asset in question. All rights reserved for my original assets and content. Kornee Hartlief © {year}
+    </translation>
+    <translation id="legendTitle">Navigation Legend</translation>
+    <translation id="socialLinks">Find me on</translation>
+    <translation id="sunDescription">Sun: About Me</translation>
+    <translation id="planet1Description">Planet 1: Portfolio</translation>
+    <translation id="planet2Description">Planet 2: Skills &amp; Technologies</translation>
+    <translation id="planet3Description">Planet 3: Contact &amp; Resume</translation>
+    <translation id="planet4Description">Planet 4: Dev-log</translation>
+</translations>

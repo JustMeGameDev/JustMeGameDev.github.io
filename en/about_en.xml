@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="aboutTitle">Star: About me</translation>
+    <translation id="welcomeToMyWorld">Welcome to My World of Game Development and Design</translation>
+    <translation id="helloWorldIntro">Hello World! My name is Kornee Hartlief, and I am a dedicated student at Noorderpoort, currently pursuing a vocational college study in Software Development Games Level 4. With three years of student experience and currently an intern, I am passionate about creating engaging and interactive gaming experiences. While I am not highly skilled in art, my strengths lie in game development and design, and I aspire to further my education with a bachelor's degree in game design in the near future.</translation>
+    <translation id="myJourney">My Journey</translation>
+    <translation id="journeyDetails">My journey into the world of game development began at Noorderpoort, where I am studying Software Development Games Level 4. This program has provided me with a solid foundation in game development principles, programming, and design. As part of my curriculum, I have gained hands-on experience through various projects and my current internship, which are instrumental in shaping my skills and career goals.</translation>
+    <translation id="moreSpecificPages">More Specific Pages</translation>
+    <translation id="portfolioLink">Portfolio: Here you can check out my projects.</translation>
+    <translation id="skillsLink">Skills: Here I go in depth on the skills and technologies I learned and mastered.</translation>
+    <translation id="contactLink">Contact: Here you can find my resume and a contact form to reach out.</translation>
+    <translation id="devLogLink">Dev Log: Here you can follow a Twitter (now called "X") feed where I will share updates about my game-development journey.</translation>
+    <translation id="myPhilosophy">My Philosophy</translation>
+    <translation id="philosophyDetails">I believe that games are more than just a form of entertainment; they are a medium for storytelling, connection, training, and/or education. My goal is to create games that not only captivate players but also inspire, challenge, and/or educate them. As I continue my education and career, I am dedicated to pushing the boundaries of what is possible in game development and design.</translation>
+    <translation id="myHobbies">My Hobbies</translation>
+    <translation id="hobbiesDetails">When I am not immersed in game development, I enjoy spending my time on various hobbies that help me stay creative and inspired. Some of my favorite hobbies are:</translation>
+    <translation id="hobbyGaming">Gaming: I like playing a variety of games, from high pace shooters to 4x games, to understand different game mechanics and narratives and mostly for fun.</translation>
+    <translation id="hobbyDnD">Dungeons and Dragons: I am part of a party made up of my friends; we try to play at least once a month, where I play as a player. I also participate in two online parties where in one of them I am the DM and in the other, I play as a player.</translation>
+    <translation id="hobbyMTG">Magic the Gathering: I am part of a local community that organizes small game-nights at a local pub for MTG, and I also play this with friends at home.</translation>
+    <translation id="hobbyAirsoft">Airsoft: I try to play this as often as my schedule allows and I'm making plans to participate in a big mil-sim.</translation>
+    <translation id="hobbyBoardGames">Board and Card Games: I enjoy playing these with my friends and/or family.</translation>
+    <translation id="hobbyBasketball">Basketball: This is a sport I love; I have played it for a while (and want to start again). I also try to attend at least 2 or 3 games of the Dutch club Donar a year.</translation>
+
+    <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form. Upon verification of your claim, I will promptly remove the asset in question. All rights reserved for my original assets and content. Kornee Hartlief © {year}</translation>
+    <translation id="socialLinks">Find me on</translation>
+    <translation id="headerTitle">Star-system: Portfolio-kornee</translation>
+    <translation id="tooltipSystemOverview">System Overview</translation>
+    <translation id="tooltipAboutMe">About me</translation>
+    <translation id="tooltipPortfolio">Portfolio</translation>
+    <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
+    <translation id="tooltipContactResume">Contact &amp; Resume</translation>
+    <translation id="tooltipDevLog">Dev log</translation>
+</translations>

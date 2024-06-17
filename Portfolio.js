@@ -113,6 +113,7 @@ const projects = [
 //documents
     {
         title: "test",
+        engine: null,
         category: "documents",
         description:"test",
         cover: "./img/Other/blackplaceholder.png",
@@ -130,6 +131,7 @@ const projects = [
     //art work
     {
         title: "test",
+        engine: null,
         category: "art",
         description:"test",
         cover: "./img/Other/blackplaceholder.png",
@@ -162,7 +164,7 @@ function filterProjects(category) {
         let badgesHTML = `<div class="badges-container">`;
         badgesHTML += project.badges ? project.badges.map(badge => `<span class="badge" style="background-color: ${badge.color}">${badge.text}</span>`).join(' ') : '';
         badgesHTML += `</div>`; // Close the badges container
-        let engineBadge = `<img src="${project.engine}" class="engine-badge" alt="Engine Logo">`;  // Use an <img> tag for the logo
+        let engineBadge = project.engine ? `<img src="${project.engine}" class="engine-badge" alt="Engine Logo">` : '';
         projectCard.innerHTML = `
         ${engineBadge}
         ${badgesHTML}

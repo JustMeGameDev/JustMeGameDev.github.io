@@ -128,6 +128,35 @@ textarea {
     flex-direction: row;
     justify-content: center;
 }
+.language-switcher {
+    position: fixed;   /* Fixed position relative to the viewport */
+    top: 10px;         /* 10px from the top */
+    right: 10px;       /* 10px from the right */
+    z-index: 1000;     /* Make sure it appears above other content */
+}
+
+.language-switcher a {
+    color: white;      /* Choose a color that fits your design */
+    text-decoration: none; /* No underlines to keep it clean */
+    padding: 5px;      /* Padding for better clickability */
+    font-size: 16px;   /* Adjust size as needed */
+}
+
+.language-switcher a:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+.lang-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.lang-btn img {
+    width: 50px;  /* Set the size of the flag images */
+    height: auto;
+    border-radius: 5px;
+}
 
 .social-links {
     text-align: center;

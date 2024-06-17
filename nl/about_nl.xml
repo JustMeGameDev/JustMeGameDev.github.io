@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="aboutTitle">Ster: Over mij</translation>
+    <translation id="welcomeToMyWorld">Welkom in Mijn Wereld van Gameontwikkeling en Ontwerp</translation>
+    <translation id="helloWorldIntro">Hallo wereld! Mijn naam is Kornee Hartlief, en ik ben een toegewijde student aan Noorderpoort, waar ik momenteel een MBO4 Softwareontwikkeling Games volg. Met drie jaar studentenervaring en momenteel als stagiair, ben ik gepassioneerd door het creëren van boeiende en interactieve game-ervaringen. Hoewel ik niet zeer vaardig ben in kunst, liggen mijn sterke punten in gameontwikkeling en -ontwerp, en ik streef ernaar om in de nabije toekomst een bacheloropleiding in game design te volgen.</translation>
+    <translation id="myJourney">Mijn Reis</translation>
+    <translation id="journeyDetails">Mijn reis in de wereld van gameontwikkeling begon aan Noorderpoort, waar ik Softwareontwikkeling Games Niveau 4 studeer. Dit programma heeft mij een solide basis gegeven in gameontwikkelingsprincipes, programmering, en ontwerp. Als onderdeel van mijn curriculum heb ik praktische ervaring opgedaan door verschillende projecten en mijn huidige stage, die instrumenteel zijn in het vormgeven van mijn vaardigheden en carrièredoelen.</translation>
+    <translation id="moreSpecificPages">Meer Specifieke Pagina's</translation>
+    <translation id="portfolioLink">Portfolio: Hier kun je mijn projecten bekijken.</translation>
+    <translation id="skillsLink">Vaardigheden: Hier ga ik dieper in op de vaardigheden en technologieën die ik heb geleerd en beheerst.</translation>
+    <translation id="contactLink">Contact: Hier kun je mijn cv vinden en een contactformulier om contact op te nemen.</translation>
+    <translation id="devLogLink">Dev Log: Hier kun je een Twitter (nu "X" genoemd) feed volgen waar ik updates zal delen over mijn reis in game-ontwikkeling.</translation>
+    <translation id="myPhilosophy">Mijn Filosofie</translation>
+    <translation id="philosophyDetails">Ik geloof dat games meer zijn dan slechts een vorm van vermaak; ze zijn een medium voor storytelling, verbinding, training en/of educatie. Mijn doel is om games te creëren die niet alleen spelers boeien maar hen ook inspireren, uitdagen en/of opvoeden. Terwijl ik mijn opleiding en carrière voortzet, ben ik toegewijd om de grenzen te verleggen van wat mogelijk is in gameontwikkeling en -ontwerp.</translation>
+    <translation id="myHobbies">Mijn Hobby's</translation>
+    <translation id="hobbiesDetails">Wanneer ik niet verdiept ben in gameontwikkeling, besteed ik mijn tijd aan verschillende hobby's die me helpen creatief en geïnspireerd te blijven. Enkele van mijn favoriete hobby's zijn:</translation>
+    <translation id="hobbyGaming">Gamen: Ik speel graag een verscheidenheid aan spellen, van snelle shooters tot 4x spellen, om verschillende game-mechanica en verhalen te begrijpen en vooral voor de lol.</translation>
+    <translation id="hobbyDnD">Dungeons and Dragons: Ik maak deel uit van een groep die bestaat uit mijn vrienden; we proberen het minstens eenmaal per maand te spelen. Hier speel ik als een speler. Ik neem ook deel aan 2 online groepen, waarvan ik in één de DM ben en in de andere ook als speler speel.</translation>
+    <translation id="hobbyMTG">Magic the Gathering: Ik maak deel uit van een lokale gemeenschap die kleine spelavonden organiseert in een lokale kroeg voor MTG, en ik speel dit ook met vrienden thuis.</translation>
+    <translation id="hobbyAirsoft">Airsoft: Ik probeer dit zo vaak mogelijk te spelen als mijn schema het toelaat en ik maak plannen om deel te nemen aan een grote mil-sim.</translation>
+    <translation id="hobbyBoardGames">Bord- en kaartspellen: Deze speel ik graag met mijn vrienden en/of familie.</translation>
+    <translation id="hobbyBasketball">Basketbal: Dit is een sport waar ik van hou, ik heb het een tijdje gespeeld (en wil weer beginnen). Ik probeer ook minstens 2 of 3 wedstrijden per jaar van de Nederlandse club Donar bij te wonen.</translation>
+
+    <translation id="footerDisclaimer">Deze portfoliowebsite toont mijn persoonlijke projecten en werk. Hoewel ik ernaar streef alleen mijn eigen middelen of die vrij beschikbaar zijn voor gebruik te gebruiken, claim ik geen eigendom van alle middelen die op deze site worden getoond. Als u de rechtmatige eigenaar bent van enig materiaal dat op deze website is weergegeven en u gelooft dat het zonder uw toestemming is gebruikt, neem dan contact met mij op via het contactformulier. Na verificatie van uw claim zal ik het betreffende materiaal onmiddellijk verwijderen. Alle rechten voorbehouden voor mijn originele materialen en inhoud. Kornee Hartlief © {jaar}</translation>
+    <translation id="socialLinks">Vind mij ook op</translation>
+    <translation id="headerTitle">Zonnestelsel: Portfolio-kornee</translation>
+    <translation id="tooltipSystemOverview">Zonnestelsel overzicht</translation>
+    <translation id="tooltipAboutMe">Over mij</translation>
+    <translation id="tooltipPortfolio">Portfolio</translation>
+    <translation id="tooltipSkillsTechnologies">Vaardigheden &amp; Technologieën</translation>
+    <translation id="tooltipContactResume">Contact &amp; CV</translation>
+    <translation id="tooltipDevLog">Dev log</translation>
+
+</translations>
