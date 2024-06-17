@@ -49,7 +49,7 @@ function generateStars(numberOfStars) {
         star.style.position = 'absolute';
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
-        star.style.width = `${Math.random() * 3}px`; // Stars size between 1px and 3px
+        star.style.width = `${Math.random() * 4 }px`; // Stars size between 1px and 3px
         star.style.height = star.style.width; // Keep the star size consistent
         star.style.borderRadius = '50%';
         star.style.backgroundColor = getRandomColor();

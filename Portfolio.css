@@ -44,10 +44,9 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 40px;
-    height: 40px;
+    width: auto;
+    height: 30px;
     padding: 5px;
-    background-color: slategray;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -58,8 +57,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Create three columns */
     gap: 10px; /* Spacing between badges */
-    margin-left: 60px; /* Left margin to avoid overlap with the engine badge */
-    margin-top: 5px; /* Optional: top margin for better alignment */
+    margin-left: 150px; /* Left margin to avoid overlap with the engine badge */
+
 }
 
 .badge {

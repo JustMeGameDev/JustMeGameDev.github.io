@@ -1,5 +1,6 @@
 const skillsData = {
     "Unity": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
             data: [10, 20, 70]
@@ -29,6 +30,7 @@ const skillsData = {
         ]
     },
     "Unreal Engine": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
             data: [5, 15, 80]
@@ -58,6 +60,7 @@ const skillsData = {
         ]
     },
     "Blender": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
             data: [20, 3, 77]
@@ -87,9 +90,10 @@ const skillsData = {
         ]
     },
     "C#": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [50, 30, 20]
+            data: [50, 30, 20],
         },
         media: [
             {
@@ -116,6 +120,7 @@ const skillsData = {
         ]
     },
     "HTML,CSS,JS": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
             data: [60, 35, 5]
@@ -145,6 +150,7 @@ const skillsData = {
         ]
     },
     "Arduino": {
+        Explanation: "",
         pieChart: {
             labels: ['Basic', 'Intermediate', 'Advanced'],
             data: [80, 15, 5]
@@ -188,7 +194,7 @@ function showSkillDetails(skillName) {
     // Create and append the title
     const titleDiv = document.createElement('h2');
     titleDiv.textContent = skillName;
-    titleDiv.className = 'centered-title';
+    titleDiv.className = 'centered-title'; 
     pieChartDiv.appendChild(titleDiv);
 
     // Create and append the canvas for the chart
