@@ -2,16 +2,19 @@
 
 const projects = [
     {
+        titleId: "longLivePichoTitle",
+        descriptionId: "longLivePichoDescription",
+        pdfId: "gameDesignDocPath",
+        badges: [
+            { textId: "badgeAwardWinning", color: "#f39c12" },
+            { textId: "badgeGameJam", color: "#12f3bf" },
+            { textId: "badgeDropped", color: "#d60000" }
+        ],
         title: "Long Live Picho",
+        description: "This game is a prototype game made in a weekend...",
         engine: "./img/Other/Logo_T1_MadeWith_White_RGB.png",
         category: "games",
-        description: "This game is a prototype game made in a weekend by 4 students game development of the Secondary vocational education level 4.  we are proud of the workings of the game but visually it could be improved. It did win an award for the unique mechanics. (Global Game-jam Groningen Award \"Great interaction\" most unique game mechanics/controls)",
         cover: "./img/Other/logo.png",
-        badges: [
-            { text: "Award Winning", color: "#f39c12" },
-            { text: "Game-Jam", color: "#12f3bf" },
-            { text: "Dropped", color: "#d60000" }
-        ],
         github: "https://github.com/Klaas18/Global_Game_Jam_2023",
         itch: "https://kornee-hartlief.itch.io/long-live-picho",
         pdf: null,
@@ -155,28 +158,42 @@ const projects = [
 ];
 
 function filterProjects(category) {
+    const lang = localStorage.getItem('userLang') || 'en';  // Ensure we're using the current language setting
+    const filename = `portfolio_${lang}.xml`;
+    const filepath = `${lang}/${filename}`;
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            applyTranslationsAndDisplay(this.responseXML, category);
+        }
+    };
+    xhttp.open("GET", filepath, true);
+    xhttp.send();
+}
+function applyTranslationsAndDisplay(xmlDoc, category) {
     const container = document.getElementById('project-container');
     container.innerHTML = '';
+
     const filteredProjects = projects.filter(project => project.category === category);
     filteredProjects.forEach(project => {
+        project.translatedTitle = xmlDoc.querySelector(`translation[id="${project.titleId}"]`)?.textContent || project.title;
+        project.translatedDescription = xmlDoc.querySelector(`translation[id="${project.descriptionId}"]`)?.textContent || project.description;
+        project.translatedPdf = xmlDoc.querySelector(`translation[id="${project.pdfId}"]`)?.textContent || project.pdf;
+
+        let badgesHTML = project.badges.map(badge => {
+            const badgeText = xmlDoc.querySelector(`translation[id="${badge.textId}"]`)?.textContent || badge.text;
+            return `<span class="badge" style="background-color: ${badge.color}">${badgeText}</span>`;
+        }).join(' ');
+
         const projectCard = document.createElement('div');
         projectCard.classList.add('project-card');
-        let badgesHTML = `<div class="badges-container">`;
-        badgesHTML += project.badges ? project.badges.map(badge => `<span class="badge" style="background-color: ${badge.color}">${badge.text}</span>`).join(' ') : '';
-        badgesHTML += `</div>`; // Close the badges container
-        let engineBadge = project.engine ? `<img src="${project.engine}" class="engine-badge" alt="Engine Logo">` : '';
         projectCard.innerHTML = `
-        ${engineBadge}
-        ${badgesHTML}
-        <h3>${project.title}</h3>
-        <img src="${project.cover}" alt="${project.title}">
-        <p>${project.description}</p>
-        <div class="project-links" style="font-size: xx-large">
-            ${project.github ? `<a href="${project.github}" target="_blank"><i class="fab fa-github"></i></a>` : ''}
-            ${project.itch ? `<a href="${project.itch}" target="_blank"><i class="fab fa-itch-io"></i></a>` : ''}
-            ${project.pdf ? `<a href="${project.pdf}" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>` : ''}
-        </div>
-        ${project.images && project.images.length > 0 && project.images[0] ? `<button class="show-more" onclick="openSlideshow(${projects.indexOf(project)})">Show More Images</button>` : ''}
+            <h3>${project.translatedTitle}</h3>
+            <p>${project.translatedDescription}</p>
+            <div class="badges-container">${badgesHTML}</div>
+            ${project.translatedPdf ? `<a href="${project.translatedPdf}" target="_blank">Download Document</a>` : ''}
+            <!-- Other dynamic elements like images, links, etc. -->
         `;
         container.appendChild(projectCard);
     });

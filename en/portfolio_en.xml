@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="portfolioTitle">Planet: Portfolio</translation>
+    <translation id="categories">Select a category to view related projects</translation>
+
+    <!-- Long Live Picho -->
+    <translation id="longLivePichoTitle">Long Live Picho</translation>
+    <translation id="longLivePichoDescription">This game is a prototype made in a weekend by 4 students of the game development program at Secondary vocational education level 4. We are proud of the game's mechanics, but visually it could be improved. It won an award for unique mechanics. (Global Game-jam Groningen Award "Great Interaction" most unique game mechanics/controls)</translation>
+
+    <!-- Badges -->
+    <translation id="badgeAwardWinning">Award Winning</translation>
+    <translation id="badgeGameJam">Game-Jam</translation>
+    <translation id="badgeDropped">Dropped</translation>
+
+    <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. Although I strive to use only my own resources or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any material featured on this website and believe it has been used without your permission, please contact me through the contact form. Upon verification of your claim, I will promptly remove the respective material. All rights reserved for my original materials and content. Kornee Hartlief © {year}</translation>
+    <translation id="socialLinks">Find me also on</translation>
+    <translation id="headerTitle">Solar System: Portfolio-kornee</translation>
+    <translation id="tooltipSystemOverview">Solar System Overview</translation>
+    <translation id="tooltipAboutMe">About Me</translation>
+    <translation id="tooltipPortfolio">Portfolio</translation>
+    <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
+    <translation id="tooltipContactResume">Contact &amp; Resume</translation>
+    <translation id="tooltipDevLog">Dev Log</translation>
+</translations>

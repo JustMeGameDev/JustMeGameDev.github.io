@@ -163,6 +163,9 @@ generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
 
 function loadLanguage(lang) {
+    // Store language selection in localStorage
+    localStorage.setItem('userLang', lang);
+
     // Get the current HTML file name without extension
     const pageName = window.location.pathname.split('/').pop().split('.')[0];
 
@@ -170,7 +173,7 @@ function loadLanguage(lang) {
     const filename = `${pageName}_${lang}.xml`;
 
     // Define the path using the lang directory
-    const filepath = `${lang}/${filename}`; // Use the language directory for filepath
+    const filepath = `${lang}/${filename}`;
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -184,17 +187,18 @@ function loadLanguage(lang) {
     xhttp.send();
 }
 
-
+// Event listener for language switch
 document.getElementById('switchToEnglish').addEventListener('click', function() {
     loadLanguage('en');
 });
+
 document.getElementById('switchToDutch').addEventListener('click', function() {
     loadLanguage('nl');
 });
 
-// Load default language on initial load
+// Load language on initial load based on stored preference or default to English
 document.addEventListener('DOMContentLoaded', function() {
-    loadLanguage('en'); // Load English by default or check user preference if stored
+    const defaultLang = localStorage.getItem('userLang') || 'en';
+    loadLanguage(defaultLang);
 });
-
 

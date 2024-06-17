@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="portfolioTitle">Planeet: Portfolio</translation>
+    <translation id="catagories">Selecteer een categorie om gerelateerde projecten te zien</translation>
+
+    <!--long live picho-->
+    <translation id="longLivePichoTitle">Long Live Picho</translation>
+    <translation id="longLivePichoDescription">Dit spel is een prototype gemaakt in een weekend door 4 studenten van de opleiding gameontwikkeling op MBO niveau 4. We zijn trots op de werking van het spel, maar visueel kan het verbeterd worden. Het heeft een prijs gewonnen voor de unieke mechanica. (Global Game-jam Groningen Award "Geweldige interactie" meest unieke spelmechanica/bediening)</translation>
+
+
+
+    <!--badges-->
+    <translation id="badgeAwardWinning">Prijswinner</translation>
+    <translation id="badgeGameJam">Game-Jam</translation>
+    <translation id="badgeDropped">Gestopt</translation>
+
+
+
+    <translation id="footerDisclaimer">Deze portfoliowebsite toont mijn persoonlijke projecten en werk. Hoewel ik ernaar streef alleen mijn eigen middelen of die vrij beschikbaar zijn voor gebruik te gebruiken, claim ik geen eigendom van alle middelen die op deze site worden getoond. Als u de rechtmatige eigenaar bent van enig materiaal dat op deze website is weergegeven en u gelooft dat het zonder uw toestemming is gebruikt, neem dan contact met mij op via het contactformulier. Na verificatie van uw claim zal ik het betreffende materiaal onmiddellijk verwijderen. Alle rechten voorbehouden voor mijn originele materialen en inhoud. Kornee Hartlief © {jaar}</translation>
+    <translation id="socialLinks">Vind mij ook op</translation>
+    <translation id="headerTitle">Zonnestelsel: Portfolio-kornee</translation>
+    <translation id="tooltipSystemOverview">Zonnestelsel overzicht</translation>
+    <translation id="tooltipAboutMe">Over mij</translation>
+    <translation id="tooltipPortfolio">Portfolio</translation>
+    <translation id="tooltipSkillsTechnologies">Vaardigheden &amp; Technologieën</translation>
+    <translation id="tooltipContactResume">Contact &amp; CV</translation>
+    <translation id="tooltipDevLog">Dev log</translation>
+</translations>
