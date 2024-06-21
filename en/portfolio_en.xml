@@ -2,16 +2,6 @@
 <translations>
     <translation id="portfolioTitle">Planet: Portfolio</translation>
     <translation id="categories">Select a category to view related projects</translation>
-
-    <!-- Long Live Picho -->
-    <translation id="longLivePichoTitle">Long Live Picho</translation>
-    <translation id="longLivePichoDescription">This game is a prototype made in a weekend by 4 students of the game development program at Secondary vocational education level 4. We are proud of the game's mechanics, but visually it could be improved. It won an award for unique mechanics. (Global Game-jam Groningen Award "Great Interaction" most unique game mechanics/controls)</translation>
-
-    <!-- Badges -->
-    <translation id="badgeAwardWinning">Award Winning</translation>
-    <translation id="badgeGameJam">Game-Jam</translation>
-    <translation id="badgeDropped">Dropped</translation>
-
     <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. Although I strive to use only my own resources or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any material featured on this website and believe it has been used without your permission, please contact me through the contact form. Upon verification of your claim, I will promptly remove the respective material. All rights reserved for my original materials and content. Kornee Hartlief © {year}</translation>
     <translation id="socialLinks">Find me also on</translation>
     <translation id="headerTitle">Solar System: Portfolio-kornee</translation>
@@ -21,4 +11,27 @@
     <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
     <translation id="tooltipContactResume">Contact &amp; Resume</translation>
     <translation id="tooltipDevLog">Dev Log</translation>
+
+    <projects>
+    <project>
+        <title>Long Live Picho</title>
+        <description>This game is a prototype made in a weekend by 4 students of the game development program at Secondary vocational education level 4. We are proud of the game's mechanics, but visually it could be improved. It won an award for unique mechanics. (Global Game-jam Groningen Award "Great Interaction" most unique game mechanics/controls)</description>
+        <badges>
+            <badge color="#f39c12">Award Winning</badge>
+            <badge color="#12f3bf">Game-Jam</badge>
+            <badge color="#d60000">Dropped</badge>
+        </badges>
+        <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+        <cover>./img/Other/logo.png</cover>
+        <images>
+            <image>./img/Other/award_01.jpg</image>
+            <image>./img/Other/award_02.jpg</image>
+        </images>
+        <links>
+            <github>https://github.com/Klaas18/Global_Game_Jam_2023</github>
+            <itch>https://kornee-hartlief.itch.io/long-live-picho</itch>
+        </links>
+    </project>
+    <!-- Additional projects can be added here -->
+    </projects>
 </translations>
