@@ -59,7 +59,7 @@ function generateStars(numberOfStars) {
 // JavaScript code to update the year dynamically
 function applyTranslations(xmlDoc) {
     var currentYear = new Date().getFullYear();
-    var previousYear = currentYear - 1;
+    var previousYear = 2023
     var yearText = `${previousYear}-${currentYear}`; // Generates "2023-2024"
 
     var translations = xmlDoc.getElementsByTagName("translation");

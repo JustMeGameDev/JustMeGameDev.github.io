@@ -1,29 +1,48 @@
 .portfolio-categories {
     text-align: center;
-    margin-top: 5rem; /* Adjust this value to increase space below the header */
     margin-bottom: 0.5rem; /* Space before the border */
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.7); /* Optional styling */
     position: sticky; /* Sticky to stay under the header */
     top: 0;
     z-index: 1000;
 }
 
-.portfolio-categories-border {
-    width: 90vw;
-    border-top: mediumpurple 2px dotted;
-    margin: 0.5rem auto; /* Centering and adding vertical margin */
-    padding: 0.2rem; /* Optional padding */
+
+.container {
+    margin-top : 100px;
+    display: block;
+    width: 100%; /* Ensure it uses full width */
+    position: relative; /* Adding position relative for contextual stacking */
+    overflow-y: auto;
 }
 
+.page{
+    min-height: 100vh;
+}
+.portfolio-categories-border {
+    justify-content: center;
+    width: 90vw;
+    border-top: mediumpurple 2px dotted;
+    padding: 0.2rem; /* Optional padding */
+}
+#project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center cards horizontally */
+    gap: 2rem; /* Space between cards */
+    margin: 2rem 0; /* Vertical space before and after container */
+}
 .portfolio-categories button {
     background: rgba(51, 51, 51, 0.5);
     border: mediumpurple 3px solid;
     color: #fff;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
+    padding: 1rem;
     cursor: pointer;
     border-radius: 0.5rem;
+}
+.border-line{
+    width: 90vw;
+    border-top: mediumpurple 2px dotted;
 }
 
 .portfolio-categories button:hover {
@@ -32,26 +51,6 @@
     border: 2px solid rebeccapurple;
 }
 
-.portfolio-projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.engine-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: auto;
-    height: 30px;
-    padding: 5px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .badges-container {
     display: grid;
@@ -72,25 +71,72 @@
 }
 
 
-.container {
-    width: 100%; /* Ensure it uses full width */
-    margin: auto; /* Center the container */
-    display: block; /* Override any flex or grid properties */
-    height: auto;
+
+
+.download-pdf {
+    background-color: #4CAF50; /* Green background for visibility */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.download-pdf:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
 
 .project-card h3 {
     margin-bottom: 0.5rem; /* To ensure spacing between title and badges */
 }
 .project-card {
+    position: relative; /* This is necessary for absolute positioning of children */
     background: rgba(255, 255, 255, 0.1);
     border: mediumpurple 3px solid;
     padding: 1rem;
-    width: 600px;
+    margin: 1rem; /* Adjust margins for space between cards */
+    width: calc(33.33% - 2rem); /* Adjust the width for three cards per row, accounting for margin */
     text-align: center;
     border-radius: 0.5rem;
-    z-index: 10;
-    position: relative;
+}
+
+.engine-badge {
+    position: absolute; /* Position absolute relative to the nearest positioned ancestor (here, the project-card) */
+    top: 10px; /* Adjust top and left as necessary to align the badge as you want */
+    left: 10px;
+    width: auto;
+    height: 30px; /* You might adjust the size */
+    padding: 5px;
+    border-radius: 15px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Updated CSS for .portfolio-projects to ensure max 3 per row */
+.portfolio-projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* This controls spacing between cards */
+    padding: 1rem;
+    margin: 0 auto; /* Centering the projects container */
+    max-width: 1920px; /* Maximum width can be adjusted */
+}
+
+@media (max-width: 1200px) {
+    .project-card {
+        width: calc(50% - 2rem); /* two cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        width: calc(100% - 2rem); /* one card per row on small screens */
+    }
 }
 .project-card img {
     max-width: 128px;
@@ -107,6 +153,7 @@
 
 .project-links a {
     color: #fff;
+    font-size: xx-large;
     text-decoration: none;
 }
 

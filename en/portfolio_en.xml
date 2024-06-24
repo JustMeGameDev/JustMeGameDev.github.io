@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
     <translation id="portfolioTitle">Planet: Portfolio</translation>
-    <translation id="categories">Select a category to view related projects</translation>
+    <translation id="catagories">Select a category to view related projects</translation>
     <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. Although I strive to use only my own resources or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any material featured on this website and believe it has been used without your permission, please contact me through the contact form. Upon verification of your claim, I will promptly remove the respective material. All rights reserved for my original materials and content. Kornee Hartlief © {year}</translation>
-    <translation id="socialLinks">Find me also on</translation>
+    <translation id="socialLinks">Find me on</translation>
     <translation id="headerTitle">Solar System: Portfolio-kornee</translation>
     <translation id="tooltipSystemOverview">Solar System Overview</translation>
     <translation id="tooltipAboutMe">About Me</translation>
@@ -15,6 +15,8 @@
     <projects>
     <project>
         <title>Long Live Picho</title>
+        <category>games</category> <!-- Games/Demos, Documents, or Art Work -->
+
         <description>This game is a prototype made in a weekend by 4 students of the game development program at Secondary vocational education level 4. We are proud of the game's mechanics, but visually it could be improved. It won an award for unique mechanics. (Global Game-jam Groningen Award "Great Interaction" most unique game mechanics/controls)</description>
         <badges>
             <badge color="#f39c12">Award Winning</badge>
@@ -30,8 +32,130 @@
         <links>
             <github>https://github.com/Klaas18/Global_Game_Jam_2023</github>
             <itch>https://kornee-hartlief.itch.io/long-live-picho</itch>
+
         </links>
     </project>
-    <!-- Additional projects can be added here -->
+        <project>
+            <title>Before Nightfall</title>
+            <description>About the game Before Nightfall (BNF for short). This game is a prototype game made for my study. BNF is a Tower defence game in a fantasy setting, you play as a carpenter for hire to defend someone's village or a castle. There are multiple creatures like an ogre, giant, demon, and a boss creature like the slime or dragon. For each contract you complete, you get gems which you can spend to upgrade the standard towers and abilities. The game has three modes:
+                #1 Career mode where you complete contracts to earn gems to get more difficult contracts etc.
+                #2 Endless mode where you get a randomly generated map and you need to clear as many waves as you can.
+                #3 Custom mode where you set the parameters of the map generator yourself, like how big the map is, the seed, the number of waves, and the difficulty.
+            </description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Before Nightfall.png</cover>
+            <images>
+                <image>./img/Other/BNF_SS1.png</image>
+                <image>./img/Other/BNF_SS2.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/Tower-defance</github>
+            </links>
+        </project>
+        <project>
+            <title>Big Cheese Donte</title>
+            <description>This is an RPG prototype game based around a 1920 Chicago mafia setting. You play as the son of a low-ranking mafia boss. He has asked you to prove you're capable of taking over his empire.
+
+                Therefore, you need to collect grunts and battle other crime bosses in the city to take over their territory. The ultimate goal is to take over the biggest rival of your dad's empire (Big Faluci).
+
+                When you win that battle, you get the name "Big Cheese Donte" and you are the new kingpin of the city!</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/logo_big_cheese.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+            </links>
+        </project>
+        <project>
+            <title>Zombie Survivors</title>
+            <description>Zombie Survivors is a game based on the idea of the Vampire Survivors Game. The controls of the game are a bit unconventional because it was developed for an arcade at my school.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Zs.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+                <image>./img/Other/blackplaceholder.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+                <itch>https://kornee-hartlief.itch.io/zombie-survivors</itch>
+            </links>
+        </project>
+        <project>
+            <title>Time Puzzler</title>
+            <description>For the Noorderpoort Game-jam 2024, I made this VR game in 4 days with three of my friends and fellow students. This was our first real attempt at a VR game, and we won two awards at this Game-jam: Overall Winner (first place/most votes) and Most Complete Game (self-explanatory). We do want to work on it further but we need to find the time for it.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Time Puzz.webp</cover>
+            <images>
+                <!-- Assuming there are no specific images provided except for the cover, if images were available, they would be listed here -->
+            </images>
+            <badges>
+                <badge color="#f39c12">Award Winning</badge>
+                <badge color="#12f3bf">Game-Jam</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#ff5106">On Hold</badge>
+            </badges>
+            <links>
+                <github>https://github.com/itsfinn2004/VrJam/tree/main</github>
+            </links>
+        </project>
+        <!--docs-->
+        <project>
+            <title>test</title>
+            <description>test</description>
+            <engine>./img/Other/empty.png</engine>
+            <category>documents</category>
+            <cover>./img/Other/blackplaceholder.png</cover>
+            <images>
+                <!-- Assuming no specific images are provided as they are listed null -->
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#0dc808">W.I.P.</badge>
+            </badges>
+            <links>
+            </links>
+        </project>
+        <project>
+            <title>test</title>
+            <description>test</description>
+            <category>art</category>
+            <engine>./img/Other/empty.png</engine>
+            <cover>./img/Other/blackplaceholder.png</cover>
+            <images>
+                <!-- Assuming no specific images are provided as they are listed null -->
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#0dc808">W.I.P.</badge>
+            </badges>
+            <links>
+
+
+            </links>
+        </project>
+
+
+
     </projects>
 </translations>

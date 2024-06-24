@@ -12,7 +12,7 @@
     <link rel="icon" href="img/solar/planet%201.png">
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="starry-sky" class="page">
 <header class="site-header">
     <div class="header-content">
         <h1 class="site-title">
@@ -28,14 +28,17 @@
                 <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
             </ul>
         </nav>
+        <h1 class="header-tooltip"></h1>
     </div>
 </header>
 <div class="language-switcher" style="top: 90px; right: 30px; z-index: 100">
-    <button onclick="loadLanguage_portfolio('en')" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
-    <button onclick="loadLanguage_portfolio('nl')" class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
+    <button id="switchToEnglish" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
+    <button id="switchToDutch" class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
 </div>
 <div class="container">
-    <div class="filter-buttons">
+    <h2 data-translation-id="catagories" style="text-align: center;"></h2>
+    <div class="portfolio-categories-border"></div>
+    <div class="portfolio-categories">
         <button onclick="filterProjects('games')">Games/Demos</button>
         <button onclick="filterProjects('documents')">Game Design Documents</button>
         <button onclick="filterProjects('art')">Art Work</button>
@@ -43,19 +46,21 @@
     <div id="project-container">
         <!-- Project cards will be dynamically inserted here -->
     </div>
-</div>
-<div class="footer">
-    <div class="social-links">
-        <h2 data-translation-id="socialLinks">Find me on</h2>
-        <ul>
-            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
-            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
-        </ul>
+    <div class="border-line" style="margin-top: 15px"></div>
+    <div class="footer">
+        <div class="social-links">
+            <h2 data-translation-id="socialLinks">Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+            </ul>
+        </div>
+        <p><h6 style="margin-left: 15px; margin-right: 15px" data-translation-id="footerDisclaimer"></h6></p>
     </div>
-    <p><h6 style="margin-left: 15px; margin-right: 15px" data-translation-id="footerDisclaimer"></h6></p>
 </div>
+
 <script src="Portfolio.js"></script>
 </body>
 </html>

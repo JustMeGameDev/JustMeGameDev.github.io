@@ -2,7 +2,7 @@
 <translations>
     <translation id="portfolioTitle">Planeet: Portfolio</translation>
     <translation id="catagories">Selecteer een categorie om gerelateerde projecten te zien</translation>
-    <translation id="footerDisclaimer">Deze portfoliowebsite toont mijn persoonlijke projecten en werk. Hoewel ik ernaar streef alleen mijn eigen middelen of die vrij beschikbaar zijn voor gebruik te gebruiken, claim ik geen eigendom van alle middelen die op deze site worden getoond. Als u de rechtmatige eigenaar bent van enig materiaal dat op deze website is weergegeven en u gelooft dat het zonder uw toestemming is gebruikt, neem dan contact met mij op via het contactformulier. Na verificatie van uw claim zal ik het betreffende materiaal onmiddellijk verwijderen. Alle rechten voorbehouden voor mijn originele materialen en inhoud. Kornee Hartlief © {jaar}</translation>
+    <translation id="footerDisclaimer">Deze portfoliowebsite toont mijn persoonlijke projecten en werk. Hoewel ik ernaar streef alleen mijn eigen middelen of die vrij beschikbaar zijn voor gebruik te gebruiken, claim ik geen eigendom van alle middelen die op deze site worden getoond. Als u de rechtmatige eigenaar bent van enig materiaal dat op deze website is weergegeven en u gelooft dat het zonder uw toestemming is gebruikt, neem dan contact met mij op via het contactformulier. Na verificatie van uw claim zal ik het betreffende materiaal onmiddellijk verwijderen. Alle rechten voorbehouden voor mijn originele materialen en inhoud. Kornee Hartlief © {year}</translation>
     <translation id="socialLinks">Vind mij ook op</translation>
     <translation id="headerTitle">Zonnestelsel: Portfolio-kornee</translation>
     <translation id="tooltipSystemOverview">Zonnestelsel overzicht</translation>
@@ -14,7 +14,8 @@
 
     <projects>
         <project>
-            <title>Lang Leve Picho</title>
+            <title>Long Live Picho</title>
+            <category>games</category> <!-- Games/Demos, Documents, or Art Work -->
             <description>Dit spel is een prototype gemaakt in een weekend door 4 studenten van de opleiding gameontwikkeling op MBO niveau 4. We zijn trots op de werking van het spel, maar visueel kan het verbeterd worden. Het heeft een prijs gewonnen voor de unieke mechanica. (Global Game-jam Groningen Award "Geweldige interactie" meest unieke spelmechanica/bediening)</description>
             <badges>
                 <badge color="#f39c12">Prijswinner</badge>
@@ -32,6 +33,128 @@
                 <itch>https://kornee-hartlief.itch.io/long-live-picho</itch>
             </links>
         </project>
+        <project>
+            <title>Before Nightfall</title>
+            <description>Over het spel Before Nightfall (BNF voor kort). Dit spel is een prototype gemaakt voor mijn studie. BNF is een Tower Defense spel in een fantasy setting, waar je speelt als een timmerman ingehuurd om iemands dorp of kasteel te verdedigen. Er zijn meerdere wezens zoals een oger, reus, demon, en een baaswezen zoals de slime of draak. Voor elk voltooid contract krijg je edelstenen die je kunt besteden om de standaardtorens en vaardigheden te upgraden. Er zijn drie modi in het spel:
+                #1 Carrièremodus, waarin je contracten voltooit om edelstenen te verdienen en moeilijkere contracten krijgt etc.
+                #2 Eindeloze modus, waarin je een willekeurig gegenereerde map krijgt en je zoveel mogelijk golven moet overleven.
+                #3 custom modus, waarin je de parameters van de mapgenerator zelf instelt, zoals hoe groot de kaart is, de seed, het aantal golven, en de moeilijkheid.
+            </description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Before Nightfall.png</cover>
+            <images>
+                <image>./img/Other/BNF_SS1.png</image>
+                <image>./img/Other/BNF_SS2.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stadium</badge>
+                <badge color="#d60000">Gestopt</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/Tower-defance</github>
+            </links>
+        </project>
+        <project>
+            <title>Big Cheese Donte</title>
+            <description>Dit is een RPG-prototype spel dat zich afspeelt rond een maffia-setting in Chicago in de jaren 1920. Je speelt als de zoon van een lagergeplaatste maffiabaas. Hij heeft je gevraagd te bewijzen dat je in staat bent zijn imperium over te nemen.
+
+                Daarom moet je handlangers verzamelen en strijden tegen andere misdaadbazen in de stad om hun gebieden over te nemen. Het uiteindelijke doel is om de grootste rivaal van het imperium van je vader (Big Faluci) over te nemen.
+
+                Wanneer je die strijd wint, krijg je de naam "Big Cheese Donte" en word je de nieuwe onderwereldkoning van de stad!</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/logo_big_cheese.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Bètafase</badge>
+                <badge color="#d60000">Gestopt</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+            </links>
+        </project>
+        <project>
+            <title>Zombie Survivors</title>
+            <description>Zombie Survivors is een spel gebaseerd op het idee van het spel Vampire Survivors. De besturing van het spel is enigszins onconventioneel omdat het ontwikkeld is voor een arcade op mijn school.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Zs.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+                <image>./img/Other/blackplaceholder.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+                <itch>https://kornee-hartlief.itch.io/zombie-survivors</itch>
+            </links>
+        </project>
+        <project>
+            <title>Time Puzzler</title>
+            <description>Voor de Noorderpoort Game-jam 2024 heb ik samen met drie vrienden en medestudenten deze VR-game in 4 dagen gemaakt. Dit was onze eerste serieuze poging tot een VR-game, en we hebben twee prijzen gewonnen bij deze Game-jam: Algehele Winnaar (eerste plaats/meeste stemmen) en Meest Complete Game (spreekt voor zich). We willen hier graag verder aan werken, maar we moeten de tijd ervoor vinden.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Time Puzz.webp</cover>
+            <images>
+                <!-- Assuming there are no specific images provided except for the cover, if images were available, they would be listed here -->
+            </images>
+            <badges>
+                <badge color="#f39c12">Award Winning</badge>
+                <badge color="#12f3bf">Game-Jam</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#ff5106">On Hold</badge>
+            </badges>
+            <links>
+                <github>https://github.com/itsfinn2004/VrJam/tree/main</github>
+            </links>
+        </project>
+        <!--docs-->
+        <project>
+            <title>test</title>
+            <description>test</description>
+            <category>documents</category>
+            <engine>./img/Other/empty.png</engine>
+            <cover>./img/Other/blackplaceholder.png</cover>
+            <images>
+                <!-- Assuming no specific images are provided as they are listed null -->
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#0dc808">W.I.P.</badge>
+            </badges>
+            <links>
+
+
+            </links>
+        </project>
+        <project>
+            <title>test</title>
+            <description>test</description>
+            <category>art</category>
+            <engine>./img/Other/empty.png</engine>
+            <cover>./img/Other/blackplaceholder.png</cover>
+            <images>
+                <!-- Assuming no specific images are provided as they are listed null -->
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#0dc808">W.I.P.</badge>
+            </badges>
+            <links>
+
+
+            </links>
+        </project>
+
         <!-- Additional projects can be added here -->
     </projects>
 </translations>
