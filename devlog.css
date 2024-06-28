@@ -23,7 +23,7 @@ body, html {
 
 .api-wrapper {
     display: flex;
-    justify-content: space-between; /* Centers children horizontally */
+    justify-content: space-evenly; /* Centers children horizontally */
     align-items: center; /* Centers children vertically */
     width: 100%; /* Full width of the container */
     padding: 20px;
@@ -43,6 +43,7 @@ body, html {
 
 
 .column {
+    margin: 0px 15px;
     flex: 1; /* Grow each column equally */
     padding: 10px; /* Space inside the column */
     box-sizing: border-box; /* Include padding in width calculation */
