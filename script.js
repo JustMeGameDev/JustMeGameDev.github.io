@@ -178,7 +178,12 @@ document.getElementById('switchToDutch').addEventListener('click', function() {
 
 // Load language on initial load based on stored preference or default to English
 document.addEventListener('DOMContentLoaded', function() {
-    const defaultLang = localStorage.getItem('userLang') || 'en';
-    loadLanguage(defaultLang);
+    let userLang = localStorage.getItem('userLang');
+    if (!userLang) {
+        userLang = 'en';
+        localStorage.setItem('userLang', userLang);
+    }
+    loadLanguage(userLang);
 });
+
 
