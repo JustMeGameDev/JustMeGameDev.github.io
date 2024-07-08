@@ -34,18 +34,23 @@ body, html {
 }
 
 .footer {
-    z-index: 10;
-    position: relative;
     width: 100%;
     text-align: center;
+    padding: 10px 0;
+    position: relative; /* Changed from fixed */
 }
 
 
+.Youtube-Video{
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
 
 .column {
     margin: 0px 15px;
     flex: 1; /* Grow each column equally */
     padding: 10px; /* Space inside the column */
     box-sizing: border-box; /* Include padding in width calculation */
+    overflow-y: auto;
     /* Optional: add background color here if needed */
 }
