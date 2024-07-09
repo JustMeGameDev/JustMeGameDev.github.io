@@ -3,8 +3,14 @@ document.addEventListener('DOMContentLoaded', {
 });
 
 // Immediately set the language to English when the script is loaded for the first time
-localStorage.setItem('userLang', 'en');
-loadLanguage('en');
+function firstload(){
+    let userLang = localStorage.getItem('userLang');
+    if (userLang != 'en' || userLang != 'nl') {
+        userLang = 'en';
+        localStorage.setItem('userLang', userLang);
+    }
+    loadLanguage(userLang);
+}
 
 // Event listener for language switch
 document.getElementById('switchToEnglish').addEventListener('click', function() {
