@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', {
 
 function firstload(){
     let userLang = localStorage.getItem('userLang');
+    console.log(userLang)
     if (userLang != 'en' || userLang != 'nl') {
         userLang = 'en';
         localStorage.setItem('userLang', userLang);
