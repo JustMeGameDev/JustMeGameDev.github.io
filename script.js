@@ -15,13 +15,7 @@ localStorage.setItem('userLang', 'en');
 loadLanguage('en');
 
 // Event listener for language switch
-document.getElementById('switchToEnglish').addEventListener('click', function() {
-    loadLanguage('en');
-});
 
-document.getElementById('switchToDutch').addEventListener('click', function() {
-    loadLanguage('nl');
-});
 
 function loadLanguage(lang) {
     // Store language selection in localStorage
