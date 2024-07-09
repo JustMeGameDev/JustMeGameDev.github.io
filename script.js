@@ -1,3 +1,80 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Always default to English on first load
+    let userLang = localStorage.getItem('userLang');
+    if (!userLang) {
+        userLang = 'en';
+        localStorage.setItem('userLang', userLang);
+    }
+    loadLanguage(userLang);
+});
+
+// Immediately set the language to English when the script is loaded for the first time
+localStorage.setItem('userLang', 'en');
+loadLanguage('en');
+
+// Event listener for language switch
+document.getElementById('switchToEnglish').addEventListener('click', function() {
+    loadLanguage('en');
+});
+
+document.getElementById('switchToDutch').addEventListener('click', function() {
+    loadLanguage('nl');
+});
+
+function loadLanguage(lang) {
+    // Store language selection in localStorage
+    localStorage.setItem('userLang', lang);
+
+    // Get the current HTML file name without extension
+    const pageName = window.location.pathname.split('/').pop().split('.')[0];
+
+    // Construct the filename based on the current page and language selection
+    const filename = `${pageName}_${lang}.xml`;
+
+    // Define the path using the lang directory
+    const filepath = `/${lang}/${filename}`;
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            applyTranslations(this.responseXML);
+        } else if (this.readyState == 4 && this.status != 200) {
+            console.error("Failed to load language file:", filepath); // Log an error if the file can't be loaded
+        }
+    };
+    xhttp.open("GET", filepath, true);
+    xhttp.send();
+}
+
+function applyTranslations(xmlDoc) {
+    var currentYear = new Date().getFullYear();
+    var previousYear = 2023;
+    var yearText = `${previousYear}-${currentYear}`; // Generates "2023-2024"
+
+    var translations = xmlDoc.getElementsByTagName("translation");
+    document.querySelectorAll("[id]").forEach(element => {
+        const key = element.getAttribute("id");
+        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
+        if (node) {
+            var text = node.textContent;
+            text = text.replace('{year}', yearText); // Replace the placeholder with the current year range
+            element.innerHTML = text;
+        }
+    });
+
+    // Update tooltips
+    document.querySelectorAll("[data-translation-id]").forEach(element => {
+        const key = element.getAttribute("data-translation-id");
+        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
+        if (node) {
+            element.setAttribute('title', node.textContent);
+        }
+    });
+    var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]');
+    if (resumeNode) {
+        document.getElementById('resumeEmbed').src = resumeNode.textContent;
+    }
+}
 
 document.querySelectorAll('.orbit').forEach(orbit => {
     orbit.addEventListener('animationiteration', () => {
@@ -21,7 +98,7 @@ document.querySelectorAll('.planet, .sun').forEach(element => {
 
 function showTooltip(element) {
     const tooltipArea = document.getElementById('tooltip-area');
-    const name = element.getAttribute('data-name'); 
+    const name = element.getAttribute('data-name');
     const name2 = element.getAttribute('class');// This should correctly extract the attribute
     if (name2 == "sun")
     {
@@ -56,49 +133,12 @@ function generateStars(numberOfStars) {
         sky.appendChild(star);
     }
 }
-// JavaScript code to update the year dynamically
-function applyTranslations(xmlDoc) {
-    var currentYear = new Date().getFullYear();
-    var previousYear = 2023
-    var yearText = `${previousYear}-${currentYear}`; // Generates "2023-2024"
-
-    var translations = xmlDoc.getElementsByTagName("translation");
-    document.querySelectorAll("[id]").forEach(element => {
-        const key = element.getAttribute("id");
-        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
-        if (node) {
-            var text = node.textContent;
-            text = text.replace('{year}', yearText); // Replace the placeholder with the current year range
-            element.innerHTML = text;
-        }
-    });
-
-    // Update tooltips
-    // Update tooltips
-    document.querySelectorAll("[data-translation-id]").forEach(element => {
-        const key = element.getAttribute("data-translation-id");
-        var node = xmlDoc.querySelector(`translation[id="${key}"]`);
-        if (node) {
-            element.setAttribute('title', node.textContent);
-        }
-    });
-    var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]');
-    if (resumeNode) {
-        document.getElementById('resumeEmbed').src = resumeNode.textContent;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const defaultLang = localStorage.getItem('userLang') || 'en';
-    loadLanguage(defaultLang);
-});
-
-
 
 function getRandomColor() {
     const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF']; // Example star colors
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
 function showPage(element) {
     const page = element.getAttribute('data-page');
     window.location.href = page + '.html';
@@ -122,6 +162,7 @@ document.querySelectorAll('.header-img').forEach(img => {
         // Optional: hide the tooltip when not hovering
     });
 });
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 window.mobileCheck = function() {
@@ -140,50 +181,3 @@ function detectMobileAndRedirect() {
 window.onload = mobileCheck;
 
 generateStars(200); // Generate 200 stars. Adjust the number as needed.
-
-
-function loadLanguage(lang) {
-    // Store language selection in localStorage
-    localStorage.setItem('userLang', lang);
-
-    // Get the current HTML file name without extension
-    const pageName = window.location.pathname.split('/').pop().split('.')[0];
-
-    // Construct the filename based on the current page and language selection
-    const filename = `${pageName}_${lang}.xml`;
-
-    // Define the path using the lang directory
-    const filepath = `${lang}/${filename}`;
-
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            applyTranslations(this.responseXML);
-        } else if (this.readyState == 4 && this.status != 200) {
-            console.error("Failed to load language file:", filepath); // Log an error if the file can't be loaded
-        }
-    };
-    xhttp.open("GET", filepath, true);
-    xhttp.send();
-}
-
-// Event listener for language switch
-document.getElementById('switchToEnglish').addEventListener('click', function() {
-    loadLanguage('en');
-});
-
-document.getElementById('switchToDutch').addEventListener('click', function() {
-    loadLanguage('nl');
-});
-
-// Load language on initial load based on stored preference or default to English
-document.addEventListener('DOMContentLoaded', function() {
-    let userLang = localStorage.getItem('userLang');
-    if (!userLang) {
-        userLang = 'en';
-        localStorage.setItem('userLang', userLang);
-    }
-    loadLanguage(userLang);
-});
-
-
