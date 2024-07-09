@@ -1,8 +1,7 @@
-require('dotenv').config();
 
 async function loadYouTubeVideos() {
-    const API_KEY = process.env.API_KEY;
-    const CHANNEL_ID = process.env.API_KEY;
+    const API_KEY = secrets.API_KEY;
+    const CHANNEL_ID = secrets.CHANNEL_ID;
     const URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=5&type=video`;
 
     try {
