@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Always default to English on first load
     let userLang = localStorage.getItem('userLang');
+    console.log({userLang});
     if (!userLang) {
         userLang = 'en';
         localStorage.setItem('userLang', userLang);
@@ -9,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Immediately set the language to English when the script is loaded for the first time
-localStorage.setItem('userLang', 'en');
-loadLanguage('en');
+loadLanguage(localStorage.getItem('userLang'));
 
 // Event listener for language switch
 document.getElementById('switchToEnglish').addEventListener('click', function() {
@@ -25,7 +25,6 @@ function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
     let pageName = window.location.pathname
-    console.log(`${pageName} loaded`);
     // Get the current HTML file name without extension
     if (pageName == "/") 
     {
@@ -35,7 +34,6 @@ function loadLanguage(lang) {
     {
         pageName = window.location.pathname.split('/').pop().split('.')[0]
     }
-    console.log({pageName})
     // Construct the filename based on the current page and language selection
     const filename = `${pageName}_${lang}.xml`;
 
