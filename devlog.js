@@ -1,7 +1,7 @@
 
 async function loadYouTubeVideos() {
-    const API_KEY = 'AIzaSyCmVuVnA6fluo5UPlFKvPSMAcZP_VtpZ4E';
-    const CHANNEL_ID = 'UC24ZbB7jvP1yJmUjcj6V1ug';
+    const API_KEY = '';
+    const CHANNEL_ID = '';
     const URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=5&type=video`;
 
     try {
