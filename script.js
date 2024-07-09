@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', {
 
 function firstload(){
     let userLang = localStorage.getItem('userLang');
-    console.log(userLang)
     if (userLang != 'en' || userLang != 'nl') {
         userLang = 'en';
         localStorage.setItem('userLang', userLang);
@@ -28,6 +27,7 @@ function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
     let pageName = window.location.pathname.split('/').pop().split('.')[0]
+    console.log(pageName);
     // Get the current HTML file name without extension
     if (pageName == ' ') 
     {
