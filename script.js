@@ -29,7 +29,7 @@ function loadLanguage(lang) {
     let pageName = window.location.pathname.split('/').pop().split('.')[0]
     console.log(`${pageName} loaded`);
     // Get the current HTML file name without extension
-    if (pageName == ' ') 
+    if (!pageName) 
     {
         pageName = 'index';
     }
