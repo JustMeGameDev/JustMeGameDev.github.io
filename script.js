@@ -2,14 +2,6 @@ document.addEventListener('DOMContentLoaded', {
     // Always default to English on first load
 });
 
-function firstload(){
-    let userLang = localStorage.getItem('userLang');
-    if (userLang != 'en' || userLang != 'nl') {
-        userLang = 'en';
-        localStorage.setItem('userLang', userLang);
-    }
-    loadLanguage(userLang);
-}
 // Immediately set the language to English when the script is loaded for the first time
 localStorage.setItem('userLang', 'en');
 loadLanguage('en');
@@ -29,10 +21,15 @@ function loadLanguage(lang) {
     let pageName = window.location.pathname
     console.log(`${pageName} loaded`);
     // Get the current HTML file name without extension
-    if (pageName == '/') 
+    if (pageName == "/") 
     {
         pageName = 'index';
     }
+    else
+    {
+        pageName = window.location.pathname.split('/').pop().split('.')[0]
+    }
+    console.log({pageName})
     // Construct the filename based on the current page and language selection
     const filename = `${pageName}_${lang}.xml`;
 
