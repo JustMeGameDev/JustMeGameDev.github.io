@@ -27,12 +27,11 @@ document.getElementById('switchToDutch').addEventListener('click', function() {
 function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
-
+    let pageName = window.location.pathname.split('/').pop().split('.')[0]
     // Get the current HTML file name without extension
-    const pageName = window.location.pathname.split('/').pop().split('.')[0];
-    if (pageName == null)
+    if (pageName == null) 
     {
-    const pageName = 'index';
+        pageName = 'index';
     }
     // Construct the filename based on the current page and language selection
     const filename = `${pageName}_${lang}.xml`;
