@@ -15,13 +15,19 @@ localStorage.setItem('userLang', 'en');
 loadLanguage('en');
 
 // Event listener for language switch
+document.getElementById('switchToEnglish').addEventListener('click', function() {
+    loadLanguage('en');
+});
 
+document.getElementById('switchToDutch').addEventListener('click', function() {
+    loadLanguage('nl');
+});
 
 function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
     let pageName = window.location.pathname.split('/').pop().split('.')[0]
-    console.log(`${pageName}`);
+    console.log(`${pageName} loaded`);
     // Get the current HTML file name without extension
     if (pageName == ' ') 
     {
