@@ -30,7 +30,10 @@ function loadLanguage(lang) {
 
     // Get the current HTML file name without extension
     const pageName = window.location.pathname.split('/').pop().split('.')[0];
-
+    if (pageName == null)
+    {
+    const pageName = 'index';
+    }
     // Construct the filename based on the current page and language selection
     const filename = `${pageName}_${lang}.xml`;
 
