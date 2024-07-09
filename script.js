@@ -27,7 +27,7 @@ function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
     let pageName = window.location.pathname.split('/').pop().split('.')[0]
-    console.log(pageName);
+    console.log(`${pageName}`);
     // Get the current HTML file name without extension
     if (pageName == ' ') 
     {
