@@ -26,7 +26,7 @@ document.getElementById('switchToDutch').addEventListener('click', function() {
 function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem('userLang', lang);
-    let pageName = window.location.pathname.split('/').pop().split('.')[0]
+    let pageName = window.location.pathname
     console.log(`${pageName} loaded`);
     // Get the current HTML file name without extension
     if (!pageName) 
