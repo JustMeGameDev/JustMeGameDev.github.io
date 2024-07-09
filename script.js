@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', {
+document.addEventListener('DOMContentLoaded', function() {
     // Always default to English on first load
-});
-
-// Immediately set the language to English when the script is loaded for the first time
-function firstload(){
     let userLang = localStorage.getItem('userLang');
-    if (userLang != 'en' || userLang != 'nl') {
+    if (!userLang) {
         userLang = 'en';
         localStorage.setItem('userLang', userLang);
     }
     loadLanguage(userLang);
-}
+});
+
+// Immediately set the language to English when the script is loaded for the first time
+localStorage.setItem('userLang', 'en');
+loadLanguage('en');
 
 // Event listener for language switch
 document.getElementById('switchToEnglish').addEventListener('click', function() {
