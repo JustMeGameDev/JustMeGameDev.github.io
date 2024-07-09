@@ -29,7 +29,7 @@ function loadLanguage(lang) {
     localStorage.setItem('userLang', lang);
     let pageName = window.location.pathname.split('/').pop().split('.')[0]
     // Get the current HTML file name without extension
-    if (pageName == null) 
+    if (pageName == ' ') 
     {
         pageName = 'index';
     }
