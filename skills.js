@@ -1,257 +1,189 @@
-const skillsData = {
-    "Unity": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [10, 20, 70]
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
+document.addEventListener('DOMContentLoaded', function() {
+    const defaultLang = localStorage.getItem('userLang') || 'en';
+    loadSkills(defaultLang);
 
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
+    document.getElementById('switchToEnglish').addEventListener('click', function() {
+        switchLanguage('en');
+    });
 
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
+    document.getElementById('switchToDutch').addEventListener('click', function() {
+        switchLanguage('nl');
+    });
+});
 
+function switchLanguage(lang) {
+    localStorage.setItem('userLang', lang); // Save the language preference
+    loadSkills(lang); // Load and render skills for the selected language
+}
+
+function loadSkills(lang) {
+    const filepath = `./${lang}/skills_${lang}.xml`; // Adjust the path as needed
+
+    fetch(filepath)
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            const skillSets = data.getElementsByTagName('skill-set');
+            const translations = data.getElementsByTagName('translation');
+            renderSkillButtons(skillSets); // Render skillset buttons
+            updateTextContent(translations); // Update static text according to the selected language
+        })
+        .catch(err => console.error('Error loading the XML file:', err));
+}
+
+function renderSkillButtons(skillSets) {
+    const skillsContainer = document.querySelector('.skills-container');
+    skillsContainer.innerHTML = ''; // Clear previous content
+
+    Array.from(skillSets).forEach(skillSet => {
+        const skillSetName = skillSet.querySelector('name').textContent;
+        const skillSetLogo = skillSet.querySelector('logo').textContent;
+
+        const button = document.createElement('button');
+        button.className = 'skill-button';
+        button.onclick = () => renderSkillSetDetails(skillSet);
+        button.innerHTML = `<img src="${skillSetLogo}" alt="${skillSetName}" title="${skillSetName}" />`;
+
+        skillsContainer.appendChild(button);
+    });
+}
+
+function renderSkillSetDetails(skillSet) {
+    const detailsContainer = document.getElementById('skill-details');
+    detailsContainer.innerHTML = ''; // Clear previous content
+
+    const skillSetName = skillSet.querySelector('name').textContent;
+
+    // Create skill set title
+    const skillSetTitle = document.createElement('h2');
+    skillSetTitle.textContent = skillSetName;
+    detailsContainer.appendChild(skillSetTitle);
+
+    // Create separator
+    const separator = document.createElement('div');
+    separator.className = 'border-line';
+    detailsContainer.appendChild(separator);
+
+    const skillsList = skillSet.querySelectorAll('skills skill');
+
+    skillsList.forEach(subSkill => {
+        // Create skill title
+        const subSkillName = subSkill.querySelector('name').textContent;
+        const skillTitle = document.createElement('h3');
+        skillTitle.textContent = subSkillName;
+        detailsContainer.appendChild(skillTitle);
+
+        // Create smaller separator
+        const smallSeparator = document.createElement('div');
+        smallSeparator.className = 'small-border-line';
+        detailsContainer.appendChild(smallSeparator);
+
+        // Create progress bar
+        const level = subSkill.querySelector('level').textContent;
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressBar.innerHTML = `
+            <div class="progress" style="width: ${level}%;"></div>
+        `;
+        detailsContainer.appendChild(progressBar);
+
+        // Create description
+        const description = subSkill.querySelector('description').textContent;
+        const desc = document.createElement('p');
+        desc.textContent = description;
+        detailsContainer.appendChild(desc);
+
+        const smallSeparator2 = document.createElement('div');
+        smallSeparator2.className = 'small-border-line';
+        detailsContainer.appendChild(smallSeparator2);
+
+        // Create media items
+        const media = subSkill.querySelectorAll('media item');
+        media.forEach(item => {
+            const mediaType = item.querySelector('type').textContent;
+            const src = item.querySelector('src').textContent;
+            const mediaDesc = item.querySelector('description').textContent;
+
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'media-item';
+
+            if (mediaType === 'image') {
+                mediaDiv.innerHTML = `<img src="${src}" alt="${mediaDesc}" />`;
+            } else if (mediaType === 'video') {
+                mediaDiv.innerHTML = `
+                    <video controls>
+                        <source src="${src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
             }
-        ]
-    },
-    "Unreal Engine": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [5, 15, 80]
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
 
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
+            detailsContainer.appendChild(mediaDiv);
+        });
 
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
+        // Create smaller separator after each skill
+        const endSeparator = document.createElement('div');
+        endSeparator.className = 'small-border-line';
+        detailsContainer.appendChild(endSeparator);
+    });
+}
 
-            }
-        ]
-    },
-    "Blender": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [20, 3, 77]
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
+function updateTextContent(translations) {
+    var currentYear = new Date().getFullYear();
+    var previousYear = 2023;
+    var yearText = `${previousYear}-${currentYear}`; // Generates "2023-2024"
 
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
-
-            }
-        ]
-    },
-    "C#": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [50, 30, 20],
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
-
-            }
-        ]
-    },
-    "HTML,CSS,JS": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [60, 35, 5]
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
-
-            }
-        ]
-    },
-    "Arduino": {
-        Explanation: "",
-        pieChart: {
-            labels: ['Basic', 'Intermediate', 'Advanced'],
-            data: [80, 15, 5]
-        },
-        media: [
-            {
-                type: 'image',
-                src: './img/Other/award_01.jpg',
-                description: 'test pic',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'image',
-                src: './img/Other/SampleGIFImage_350kbmb.gif',
-                description: 'test gif',
-                skillname:'Skill 1'
-
-            },
-            {
-                type: 'video',
-                src: './img/Other/Free_Test_Data_15MB_MP4.mp4',
-                description: 'test video',
-                skillname:'Skill 2'
-
-            }
-        ]
-    },
-    // Add other skills similarly
-};
-
-function showSkillDetails(skillName) {
-    const pieChartDiv = document.getElementById('skill-pie-chart');
-    const mediaDiv = document.getElementById('skill-media');
-    const detailsDiv = document.getElementById('skill-details');  // Make sure this ID matches your HTML
-
-    // Clear previous content
-    pieChartDiv.innerHTML = '';
-    mediaDiv.innerHTML = '';
-
-    // Create and append the title
-    const titleDiv = document.createElement('h2');
-    titleDiv.textContent = skillName;
-    titleDiv.className = 'centered-title'; 
-    pieChartDiv.appendChild(titleDiv);
-
-    // Create and append the canvas for the chart
-    const canvas = document.createElement('canvas');
-    canvas.id = 'skillPieChartCanvas';
-    pieChartDiv.appendChild(canvas);
-
-    const ctx = canvas.getContext('2d');
-    if (window.myPieChart) {
-        console.log("Destroying old chart instance");
-        window.myPieChart.destroy();
-    }
-    window.myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: skillsData[skillName].pieChart.labels,
-            datasets: [{
-                data: skillsData[skillName].pieChart.data,
-                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    enabled: true
-                }
-            }
+    document.querySelectorAll("[data-translation-id]").forEach(element => {
+        const key = element.getAttribute('data-translation-id');
+        const translationNode = Array.from(translations).find(tr => tr.getAttribute('id') === key);
+        if (translationNode) {
+            var text = translationNode.textContent.replace('{year}', yearText);
+            element.textContent = text;
         }
     });
 
-    // Create media and description sections
-    skillsData[skillName].media.forEach((item) => {
-        const row = document.createElement('div');
-        row.className = 'media-row';
-
-        const mediaHtml = item.type === 'image' ?
-            `<img src="${item.src}" alt="${item.skillname}" style="width: 100%;">` :
-            `<video autoplay muted style="width: 100%;"><source src="${item.src}" type="video/mp4">Your browser does not support the video tag.</video>`;
-
-        const descriptionHtml = `<div class="description">${item.description}</div>`;
-
-        row.innerHTML = `
-            <div class="media">${mediaHtml}</div>
-            ${descriptionHtml}
-        `;
-        mediaDiv.appendChild(row);
-    });
-
-    // Display the details section
-    detailsDiv.style.display = 'block'; // Now this should work without errors
+    // Update the current year in the footer
+    document.getElementById('currentYear').textContent = currentYear;
 }
 
+generateStars(200); // Generate 200 stars. Adjust the number as needed.
 
+document.querySelectorAll('.header-img').forEach(img => {
+    img.addEventListener('mouseenter', function () {
+        // Get the tooltip element
+        const tooltip = document.querySelector('.header-tooltip');
+        // Set the tooltip text to the title of the image
+        tooltip.textContent = this.title;
+        // Optional: make the tooltip visible if it's hidden by default
+        tooltip.style.opacity = 1;
+    });
+
+    img.addEventListener('mouseleave', function () {
+        // Clear the tooltip text when not hovering
+        const tooltip = document.querySelector('.header-tooltip');
+        tooltip.style.opacity = 0;
+
+        // Optional: hide the tooltip when not hovering
+    });
+});
+
+function getRandomColor() {
+    const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF']; // Example star colors
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function generateStars(numberOfStars) {
+    const sky = document.getElementById('starry-sky');
+
+    for (let i = 0; i < numberOfStars; i++) {
+        let star = document.createElement('div');
+        star.style.position = 'absolute';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.width = `${Math.random() * 7}px`; // Stars size between 1px and 3px
+        star.style.height = star.style.width; // Keep the star size consistent
+        star.style.borderRadius = '50%';
+        star.style.backgroundColor = getRandomColor();
+        sky.appendChild(star);
+    }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet: Skills & Technologies</title>
+    <title id="contactTitle">Planet: Skills & Technologies</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="skills.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,77 +17,55 @@
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
-        <h1 class="site-title"><a>Star-system: Portfolio-kornee</a></h1>
+        <h1 class="site-title"><a href="index.html" id="headerTitle" style="text-decoration: none; color: white">Star-system: Portfolio-kornee</a></h1>
         <nav class="site-nav">
             <ul>
-                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                <li><a href=about.html><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
-                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a> </li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a> </li>
+                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
+                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
             </ul>
         </nav>
         <h1 class="header-tooltip"></h1>
     </div>
 </header>
+<div class="language-switcher" style="top: 90px; right: 30px; z-index: 100">
+    <button id="switchToEnglish" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
+    <button id="switchToDutch" class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
+</div>
+
 <div class="container">
-<h1 class="center">Press an icon/logo to view my skills and proof of that language, skill or software</h1>
-<div class="border-line"></div>
-<div class="skills-container center">
-    <button class="skill-button" onclick="showSkillDetails('Unity')"><img src="./img/Other/U_Cube_1C_Black.svg" alt="Unity"/>
-        <span class="tooltip">Unity</span>
-    </button>
-    <button class="skill-button" onclick="showSkillDetails('Unreal Engine')"><img src="./img/Other/UE-Icon-2023-Black.svg" alt="Unreal Engine"/>
-        <span class="tooltip">Unreal Engine</span>
-    </button>
-    <button class="skill-button" onclick="showSkillDetails('Blender')"><img src="./img/Other/blender_icon_1024x1024.png" alt="Blender"/>
-        <span class="tooltip">Blender</span>
-    </button>
-    <button class="skill-button" onclick="showSkillDetails('C#')"><img src="./img/Other/Csharp_Logo.png" alt="C sharp"/>
-        <span class="tooltip">C#</span>
-    </button>
-    <button class="skill-button" onclick="showSkillDetails('HTML,CSS,JS')"><img src="./img/Other/3920366-middle-2697995137.png" alt="HTML, CSS, JS"/>
-        <span class="tooltip">HTML, CSS, JS</span>
-    </button>
-    <button class="skill-button" onclick="showSkillDetails('Arduino')"><img src="./img/Other/arduino-logo-png-arduino-logo-pluspng-600x315%20(1).png" alt="Arduino"/>
-        <span class="tooltip">Arduino</span>
-    </button>
-
-    <div class="border-line"></div>
-    <!-- Add more buttons for other skills -->
-</div>
+    <div class="skills-container center">
+        <!-- Skillset buttons will be dynamically inserted here -->
+    </div>
     <div id="skill-details">
-        <div id="skill-pie-chart">
-            <canvas id="skillPieChartCanvas" style="margin-bottom: 500px;"></canvas>
-        </div>
-        <div id="skill-media" style="margin-top: 100px; border-top: mediumpurple 2px dotted;"></div>
+        <!-- Skillset details will be dynamically inserted here -->
     </div>
-
 </div>
-    <div class="footer">
-        <div class="social-links">
-            <h2>Find me on</h2>
-            <ul>
-                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
-                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
-                <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+<div class="footer">
+    <div class="social-links">
+        <h2 id="socialLinks">Find me on</h2>
+        <ul>
+            <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+            <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+            <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+            <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
 
-            </ul>
-        </div>
-        <p><h6 style="margin-left: 15px; margin-right: 15px">  Disclaimer<br>
-        This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.
-
-        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a> Upon verification of your claim, I will promptly remove the asset in question.
-
-        All rights reserved for my original assets and content. <br></br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;</h6></p>
+        </ul>
     </div>
+    <p>
+    <h6 style="margin-left: 15px; margin-right: 15px" id="footerDisclaimer">
+        Disclaimer<br>
+        This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.<br>
+        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a>. Upon verification of your claim, I will promptly remove the asset in question.<br>
+        All rights reserved for my original assets and content.<br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;
+    </h6>
 </div>
 
 
 </body>
-<script src="script.js"></script>
 <script src="skills.js"></script>
 </html>
