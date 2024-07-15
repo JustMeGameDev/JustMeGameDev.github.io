@@ -12,6 +12,7 @@
     <translation id="tooltipSkillsTechnologies">Vaardigheden &amp; Technologieën</translation>
     <translation id="tooltipContactResume">Contact &amp; CV</translation>
     <translation id="tooltipDevLog">Dev log</translation>
+    <translation id="selectSkillsetPrompt">Selecteer een programma of skillset om de details te zien.</translation>
 
     <skill-set>
         <name>Unity</name>

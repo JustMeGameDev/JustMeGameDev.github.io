@@ -1,20 +1,3 @@
-.media-row {
-    display: flex;
-    margin: 20px 5%;
-    border-bottom: 2px dotted mediumpurple; /* Dotted line between entries */
-}
-
-.media {
-    flex: 1;
-    padding: 10px;
-}
-
-.description {
-    flex: 2;
-    padding: 10px;
-    text-align: left; /* Description text aligned to the left */
-}
-
 body, html {
     height: 100%;
     width: 100%;
@@ -29,41 +12,100 @@ body, html {
     color: white;
     font-family: "Source Code Pro", monospace;
 }
-#starry-sky{
-    position: sticky;
+#starry-sky {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
-
 
 .container {
-    width: 100%; /* Full width to ensure it can center correctly */
-    display: flex; /* Using Flexbox for easier centering */
-    justify-content: center; /* Center children horizontally */
-}
-
-.text-left-align {
-    text-align: left; /* Align text to the left */
-    max-width: 800px; /* Maximum width of the text block */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
 }
 
 .skills-container {
-    padding-top: 150px; /* Adjust padding as needed */
-    width: 100%; /* Ensures container is full width */
-    display: flex; /* Flex to use justify content */
-    justify-content: center; /* Center the inner content */
-}
-#skill-details {
     width: 100%;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.toc-container ul {
+    list-style-type: disc; /* Verzekert dat de bullet points zichtbaar zijn */
+    padding-left: 40px; /* Verhoog indien nodig om de bullet points binnen de container te plaatsen */
+    columns: 3; /* Verdeelt de lijst in drie kolommen */
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    column-gap: 20px; /* Stel in op gewenste kolomgrootte */
+}
+
+.toc-container li {
+    break-inside: avoid-column; /* Voorkomt dat items tussen kolommen worden gebroken */
+    margin-bottom: 5px; /* Afstand tussen items */
+}
+#selectSkillsetPrompt {
+    color: white; /* Voor contrast met de achtergrond */
+    text-align: center;
+    margin-top: 100px;
+    font-weight: bold;
+    font-size: 26px; /* Of een grootte die past bij je ontwerp */
+}
+.toc-container{
+    border-radius: 10px;
+    text-align: center;
+    border: 2px dashed mediumpurple;
+}
+.toc-container li a {
+    text-decoration: none;
+    color: white;
+}
+
+.toc-container li a:hover {
+    text-decoration: underline;
+}
+
+#skill-details {
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.skill-button {
+    background-color: whitesmoke;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-button img {
+    width: 50px;
+    height: auto;
+}
+
+.skill-button:hover {
+    background-color: rebeccapurple;
+    transform: scale(1.05);
 }
 
 .border-line, .small-border-line {
-    width: 90vw;
-    border-top: mediumpurple 2px dotted;
-    margin: 0.5rem auto;
+    width: 100%;
+    border-top: 2px dotted mediumpurple;
+    margin: 10px 0;
 }
 
 .small-border-line {
-    border-top: mediumpurple 1px dotted;
+    border-top: 1px dotted mediumpurple;
 }
 
 .progress-bar {
@@ -83,94 +125,27 @@ body, html {
     margin-bottom: 20px;
 }
 
+.separator {
+    border-top: 3px dotted mediumpurple;
+    width: 110%; /* Aanpassen aan de container breedte */
+    margin: 10px auto; /* Centreert de separator en voegt verticale ruimte toe */
+}
+
 .media-item {
-    margin-top: 10px;
+    max-width: 80%; /* Aangepast naar een kleiner percentage */
+    margin: 10px auto; /* Centreert het media-item en voegt verticale ruimte toe */
 }
 
 .media-item img, .media-item video {
-    max-width: 100%;
+    max-width: 100%; /* Zorgt ervoor dat media niet breder is dan hun container */
     height: auto;
-    border-radius: 5px;
-}
-.skill-index {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.skill-index li {
-    margin: 10px;
-}
-
-.skill-index a {
-    text-decoration: none;
-    color: white;
-    background-color: mediumpurple;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.skill-index a:hover {
-    background-color: rebeccapurple;
-}
-.skill-section {
-    margin-bottom: 40px;
-    width: 80%;
-}
-
-
-
-.skill-button {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.skill-button img {
-    width: 100px;
-    height: auto;
-}
-
-.skill-button:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-.skill-button:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-.centered-title {
-    width: 100%;
-    margin-bottom: 20px; /* Space between title and pie chart */
-    font-size: 24px; /* Adjust font size as necessary */
-    color: white; /* Adjust text color as necessary */
-}
-.media-item {
-    margin-top: 10px;
-}
-
-.media-item img, .media-item video {
-    max-width: 800px;
-    border: mediumpurple 3px dotted;
-    padding: 5px;
-    height: auto;
+    display: block; /* Zorgt dat de media item correct uitgelijnd is in de container */
     border-radius: 5px;
 }
 
 
-@media (max-width: 768px) { /* For smaller screens, stack them vertically */
-    .media-row, .media-row.reverse {
-        flex-direction: column;
-    }
-
-    .media-row .media, .media-row .description {
-        flex: 1 1 50%; /* Each takes half width */
+@media (max-width: 768px) {
+    .skills-container, #skill-details {
+        width: 95%;
     }
 }

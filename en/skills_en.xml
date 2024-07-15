@@ -12,6 +12,7 @@
     <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
     <translation id="tooltipContactResume">Contact &amp; Resume</translation>
     <translation id="tooltipDevLog">Dev log</translation>
+    <translation id="selectSkillsetPrompt">Select a program or skillset to see the details.</translation>
 
     <skill-set>
         <name>Unity</name>
