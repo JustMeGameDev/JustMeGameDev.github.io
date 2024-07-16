@@ -64,6 +64,7 @@ body, html {
 .toc-container li a {
     text-decoration: none;
     color: white;
+    padding-right: 15px;
 }
 
 .toc-container li a:hover {
@@ -122,8 +123,23 @@ body, html {
 }
 
 .skill-detail {
-    margin-bottom: 20px;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animatie voor vervaging en beweging */
+    opacity: 1; /* Start met zichtbaar */
+    transform: translateY(0); /* Start op de oorspronkelijke positie */
 }
+
+.skill-detail.fade-in {
+    opacity: 1; /* Wordt zichtbaar bij het toevoegen van de class 'fade-in' */
+    transform: translateY(0); /* Terug naar de oorspronkelijke positie */
+}
+
+.skill-detail.fade-out {
+    opacity: 0; /* Verdwijnt bij het toevoegen van de class 'fade-out' */
+    transform: translateY(20px); /* Verschuift terug naar beneden */
+}
+
+
+
 
 .separator {
     border-top: 3px dotted mediumpurple;

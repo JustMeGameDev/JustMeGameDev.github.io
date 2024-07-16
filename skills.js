@@ -60,22 +60,17 @@ function renderTOC(skillSet) {
     tocContainer.innerHTML = '<h3>Inhoudsopgave:</h3><ul style="list-style-type: disc;">';
 
     const skills = skillSet.querySelectorAll('skills > skill');
-    Array.from(skills).forEach((skill, idx) => {
+    Array.from(skills).forEach(skill => {
+        const skillId = skill.getAttribute('id');
         const skillName = skill.querySelector('name').textContent;
         const listItem = document.createElement('li');
         const link = document.createElement('a');
-        link.href = `#skill-title-${idx}`;
+        link.href = `#${skillId}`;
         link.textContent = skillName;
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Voorkomt de standaard hyperlink actie
-            const targetId = e.target.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50, // Verandert de offset naar wens
-                    behavior: 'smooth'
-                });
-            }
+            e.preventDefault(); // Prevent default hyperlink action
+            const targetId = e.target.getAttribute('href').substring(1);
+            showSkillDetail(targetId);
         });
         listItem.appendChild(link);
         tocContainer.querySelector('ul').appendChild(listItem);
@@ -87,12 +82,12 @@ function renderSkillSetDetails(skillSet) {
     detailsContainer.innerHTML = ''; // Clear previous content
 
     const skills = skillSet.querySelectorAll('skills > skill');
-    Array.from(skills).forEach((skill, idx) => {
+    Array.from(skills).forEach(skill => {
         const skillDetailDiv = document.createElement('div');
-        skillDetailDiv.id = `skill-detail-${idx}`;
+        skillDetailDiv.id = skill.getAttribute('id');
+        skillDetailDiv.className = 'skill-detail fade-in'; // Add class for CSS animations
 
         const title = document.createElement('h3');
-        title.id = `skill-title-${idx}`;
         title.textContent = skill.querySelector('name').textContent;
         skillDetailDiv.appendChild(title);
         skillDetailDiv.appendChild(createSeparator());
@@ -100,6 +95,12 @@ function renderSkillSetDetails(skillSet) {
         const description = document.createElement('p');
         description.textContent = skill.querySelector('description').textContent;
         skillDetailDiv.appendChild(description);
+
+        // Voeg de progress bar toe
+        const level = skill.querySelector('level').textContent;
+        const progressBar = createProgressBar(level);
+        skillDetailDiv.appendChild(progressBar);
+
         skillDetailDiv.appendChild(createSeparator());
 
         const mediaItems = skill.querySelectorAll('media > item');
@@ -113,6 +114,45 @@ function renderSkillSetDetails(skillSet) {
         skillDetailDiv.appendChild(mediaList);
         detailsContainer.appendChild(skillDetailDiv);
     });
+
+    // Show all skill details initially
+    document.querySelectorAll('.skill-detail').forEach(detail => {
+        detail.style.display = 'block';
+        detail.classList.add('fade-in');
+    });
+}
+
+function showSkillDetail(skillId) {
+    // Fade out all skill details
+    document.querySelectorAll('.skill-detail').forEach(detail => {
+        if (detail.id !== skillId) {
+            detail.classList.remove('fade-in');
+            detail.classList.add('fade-out');
+        }
+    });
+
+    // Scroll to the selected skill detail
+    const targetElement = document.getElementById(skillId);
+    if (targetElement) {
+        targetElement.classList.remove('fade-out');
+        targetElement.classList.add('fade-in');
+        window.scrollTo({
+            top: targetElement.offsetTop - 50, // Adjust the offset as needed
+            behavior: 'smooth'
+        });
+    }
+}
+
+function createProgressBar(level) {
+    const progressBarContainer = document.createElement('div');
+    progressBarContainer.className = 'progress-bar';
+
+    const progress = document.createElement('div');
+    progress.className = 'progress';
+    progress.style.width = `${level}%`;
+
+    progressBarContainer.appendChild(progress);
+    return progressBarContainer;
 }
 
 function createMediaItem(item) {
@@ -171,7 +211,6 @@ function applyTranslations(lang, xmlDoc) {
     const skillSets = xmlDoc.getElementsByTagName('skill-set');
     renderSkillButtons(skillSets); // Herlaad de knoppen zodat deze ook vertaald worden
 }
-
 
 function generateStars(numberOfStars) {
     const sky = document.getElementById('starry-sky');
