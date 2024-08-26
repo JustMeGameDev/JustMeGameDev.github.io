@@ -16,97 +16,32 @@
 
     <skill-set>
         <name>Unity</name>
-        <logo>./img/Other/U_Cube_1C_Black.svg</logo>
+        <logo>./img/Other/U_Cube_1C_Black.svg/</logo>
         <skills>
-            <skill id="shaders">
-                <name>Shaders</name>
-                <level>80</level>
-                <description>Experience with Unity Shaders</description>
-                <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test foto</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
-                </media>
-            </skill>
-            <skill id="Editor">
-                <name>Editor</name>
-                <level>80</level>
-                <description>Experience with Unity Shaders</description>
-                <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test foto</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
-                </media>
-            </skill>
-            <skill id="C# intergration">
-                <name>C# intergration</name>
-                <level>80</level>
-                <description>Experience with Unity Shaders</description>
-                <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test foto</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
-                </media>
-            </skill>
-            <skill id="Animations">
-                <name>Animations</name>
-                <level>80</level>
-                <description>Experience with Unity Shaders</description>
-                <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test foto</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
-                </media>
-            </skill>
-            <!-- Add more skills with unique IDs -->
-        </skills>
-    </skill-set>
+                <skill>
+                    <name>Shaders</name>
+                    <level>80</level>
+                    <description>Experience with Unity Shaders</description>
+                    <media>
+                        <item>
+                            <type>image</type>
+                            <src>./img/Other/award_01.jpg</src>
+                            <description>Test pic</description>
+                        </item>
+                        <item>
+                            <type>image</type>
+                            <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                            <description>Test gif</description>
+                        </item>
+                        <item>
+                            <type>video</type>
+                            <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                            <description>Test video</description>
+                        </item>
+                    </media>
+                </skill>
+                <!-- Add more individual skills similarly -->
+            </skills>
+        </skill-set>
+        <!-- Add more skill elements as needed -->
 </translations>

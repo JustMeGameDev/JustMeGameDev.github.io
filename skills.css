@@ -13,12 +13,9 @@ body, html {
     font-family: "Source Code Pro", monospace;
 }
 #starry-sky {
-    position: static;
+    position: relative;
     width: 100%;
     height: 100%;
-}
-.hidden {
-    display: none;
 }
 
 .container {
@@ -67,7 +64,6 @@ body, html {
 .toc-container li a {
     text-decoration: none;
     color: white;
-    padding-right: 15px;
 }
 
 .toc-container li a:hover {
@@ -111,21 +107,23 @@ body, html {
 .small-border-line {
     border-top: 1px dotted mediumpurple;
 }
+
+.progress-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 20px;
+    background-color: mediumpurple;
+    border-radius: 5px;
+}
+
 .skill-detail {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; // Snellere en vloeiendere transitie
-display: block;
+    margin-bottom: 20px;
 }
-
-.skill-detail.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-
 
 .separator {
     border-top: 3px dotted mediumpurple;
