@@ -19,9 +19,9 @@
         <logo>./img/Other/U_Cube_1C_Black.svg/</logo>
         <skills>
                 <skill>
-                    <name>Shaders</name>
+                    <name>Game Development</name>
                     <level>80</level>
-                    <description>Experience with Unity Shaders</description>
+                    <description>Experience with developing games with the unity software</description>
                     <media>
                         <item>
                             <type>image</type>
@@ -40,6 +40,161 @@
                         </item>
                     </media>
                 </skill>
+            <skill>
+                <name>Scripting/Programming</name>
+                <level>20</level>
+                <description>Experience with C# integration within unity</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>3D/2D Art Integration</name>
+                <level>45</level>
+                <description>Experience with using 2D and 3D assets and art in the unity software</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Level Design</name>
+                <level>80</level>
+                <description>Experience with level design using the provided tools of unity and/or plugins from the unity store</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Performance Optimization</name>
+                <level>15</level>
+                <description>Experience with optimizing the game/code using provided diagnostic tool by the unity software</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+            <name>VR/AR Development</name>
+            <level>15</level>
+            <description>Experience with building a project/game with VR/AR in mind as platform</description>
+            <media>
+                <item>
+                    <type>image</type>
+                    <src>./img/Other/award_01.jpg</src>
+                    <description>Test pic</description>
+                </item>
+                <item>
+                    <type>image</type>
+                    <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                    <description>Test gif</description>
+                </item>
+                <item>
+                    <type>video</type>
+                    <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                    <description>Test video</description>
+                </item>
+            </media>
+        </skill>
+            <skill>
+                <name>Multiplayer/Networking</name>
+                <level>15</level>
+                <description>Experience with making a local or online multiplayer game using the unity software or plug-ins provided for unity</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Project Management</name>
+                <level>15</level>
+                <description>Experience with version control in combination with a unity project like github/gitlab or build in unity version control</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Test pic</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+
                 <!-- Add more individual skills similarly -->
             </skills>
         </skill-set>

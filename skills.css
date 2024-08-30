@@ -13,7 +13,7 @@ body, html {
     font-family: "Source Code Pro", monospace;
 }
 #starry-sky {
-    position: relative;
+    position: static;
     width: 100%;
     height: 100%;
 }
@@ -129,14 +129,15 @@ body, html {
 }
 
 .skill-detail.fade-in {
-    opacity: 1; /* Wordt zichtbaar bij het toevoegen van de class 'fade-in' */
-    transform: translateY(0); /* Terug naar de oorspronkelijke positie */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .skill-detail.fade-out {
-    opacity: 0; /* Verdwijnt bij het toevoegen van de class 'fade-out' */
-    transform: translateY(20px); /* Verschuift terug naar beneden */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
+
 
 
 

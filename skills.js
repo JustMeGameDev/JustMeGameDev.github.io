@@ -57,7 +57,7 @@ function renderSkillButtons(skillSets) {
 
 function renderTOC(skillSet) {
     const tocContainer = document.querySelector('.toc-container');
-    tocContainer.innerHTML = '<h3>Inhoudsopgave:</h3><ul style="list-style-type: disc;">';
+    tocContainer.innerHTML = '<h3>Index:</h3><ul style="list-style-type: disc;">';
 
     const skills = skillSet.querySelectorAll('skills > skill');
     Array.from(skills).forEach(skill => {
@@ -68,24 +68,25 @@ function renderTOC(skillSet) {
         link.href = `#${skillId}`;
         link.textContent = skillName;
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default hyperlink action
-            const targetId = e.target.getAttribute('href').substring(1);
-            showSkillDetail(targetId);
+            e.preventDefault(); // Voorkom de standaard hyperlinkactie
+            showSkillDetail(skillId); // Pas deze functie aan om de view te beheren
         });
         listItem.appendChild(link);
         tocContainer.querySelector('ul').appendChild(listItem);
     });
 }
 
+
 function renderSkillSetDetails(skillSet) {
     const detailsContainer = document.getElementById('skill-details');
-    detailsContainer.innerHTML = ''; // Clear previous content
+    detailsContainer.innerHTML = ''; // Wis eerder content
 
     const skills = skillSet.querySelectorAll('skills > skill');
     Array.from(skills).forEach(skill => {
         const skillDetailDiv = document.createElement('div');
         skillDetailDiv.id = skill.getAttribute('id');
-        skillDetailDiv.className = 'skill-detail fade-in'; // Add class for CSS animations
+        skillDetailDiv.className = 'skill-detail fade-out'; // Standaard verborgen
+        skillDetailDiv.style.display = 'none'; // Verberg de div initieel
 
         const title = document.createElement('h3');
         title.textContent = skill.querySelector('name').textContent;
@@ -115,33 +116,45 @@ function renderSkillSetDetails(skillSet) {
         detailsContainer.appendChild(skillDetailDiv);
     });
 
-    // Show all skill details initially
-    document.querySelectorAll('.skill-detail').forEach(detail => {
-        detail.style.display = 'block';
-        detail.classList.add('fade-in');
-    });
+    window.addEventListener('scroll', fadeSkillsOnScroll);
+
 }
 
 function showSkillDetail(skillId) {
-    // Fade out all skill details
-    document.querySelectorAll('.skill-detail').forEach(detail => {
-        if (detail.id !== skillId) {
+    const skillDetails = document.querySelectorAll('.skill-detail');
+    skillDetails.forEach(detail => {
+        if (detail.id === skillId) {
+            detail.style.display = 'block';
+            detail.classList.add('fade-in');
+            window.scrollTo({
+                top: detail.offsetTop,
+                behavior: 'smooth'
+            });
+        } else {
+            detail.style.display = 'none';
+            detail.classList.remove('fade-in');
+        }
+    });
+}
+
+function fadeSkillsOnScroll() {
+    const skillDetails = document.querySelectorAll('.skill-detail');
+    const windowHeight = window.innerHeight;
+
+    skillDetails.forEach(detail => {
+        const elementTop = detail.getBoundingClientRect().top;
+        if (elementTop < windowHeight && elementTop > 0) {
+            detail.classList.remove('fade-out');
+            detail.classList.add('fade-in');
+            detail.style.display = 'block';
+        } else {
             detail.classList.remove('fade-in');
             detail.classList.add('fade-out');
         }
     });
-
-    // Scroll to the selected skill detail
-    const targetElement = document.getElementById(skillId);
-    if (targetElement) {
-        targetElement.classList.remove('fade-out');
-        targetElement.classList.add('fade-in');
-        window.scrollTo({
-            top: targetElement.offsetTop - 50, // Adjust the offset as needed
-            behavior: 'smooth'
-        });
-    }
 }
+
+
 
 function createProgressBar(level) {
     const progressBarContainer = document.createElement('div');
