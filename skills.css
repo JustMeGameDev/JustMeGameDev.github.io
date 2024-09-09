@@ -19,22 +19,22 @@ body, html {
 }
 
 .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+    padding: 20px 40px; /* Voegt padding toe aan alle kanten van de container */
+    max-width: 1600px; /* Beperkt de maximale breedte van de container */
+    margin: auto; /* Centreert de container op de pagina */
 }
 
+
 .skills-container {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    justify-content: center; /* Centreert de inhoud horizontaal */
+    flex-wrap: wrap; /* Zorgt ervoor dat items kunnen omvouwen naar de volgende regel */
+    gap: 20px; /* Stelt een ruimte in tussen de items */
+    padding: 20px; /* Voegt padding toe voor ruimte rond de items */
+    margin-bottom: 40px; /* Extra ruimte onder deze sectie */
 }
+
+
 
 .toc-container ul {
     list-style-type: disc; /* Verzekert dat de bullet points zichtbaar zijn */
@@ -72,11 +72,9 @@ body, html {
 }
 
 #skill-details {
-    width: 90%;
-    max-width: 1000px;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .skill-button {
@@ -110,23 +108,54 @@ body, html {
 }
 
 .progress-bar {
-    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 20px;
+    background-color: #FFFFFF33;
     border-radius: 5px;
-    overflow: hidden;
-    margin: 10px 0;
+    margin-bottom: 20px;
 }
 
 .progress {
-    height: 20px;
+    height: 100%;
     background-color: mediumpurple;
     border-radius: 5px;
+    width: 50%; /* Aanpassen aan het percentage van de vaardigheid */
+
 }
 
 .skill-detail {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animatie voor vervaging en beweging */
-    opacity: 1; /* Start met zichtbaar */
-    transform: translateY(0); /* Start op de oorspronkelijke positie */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Zorgt voor gelijke ruimte tussen de elementen */
 }
+
+
+.skill-detail > div {
+    flex-basis: 48%; /* Elke subskill neemt bijna de helft van de breedte */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Een subtiele schaduw voor betere separatie */
+    padding: 20px;
+    margin-bottom: 20px; /* Ruimte tussen de rijen */
+    background-color: rgba(50, 50, 50, 0.8); /* Doorzichtige, donkergrijze achtergrond */
+    color: white; /* Tekstkleur wit voor betere zichtbaarheid */
+    border-radius: 10px; /* Afgeronde hoeken */
+}
+
+.media-item img,
+.media-item video {
+    width: 100%; /* Zorgt dat de media de container vult */
+    height: auto; /* Behoudt aspect ratio */
+}
+
+.skill-detail > div:hover {
+    transform: translateY(-5px); /* Licht verhoogd effect bij hover */
+}
+
+/* Scroll animatie */
+html {
+    scroll-behavior: smooth; /* Zorgt voor een soepele scroll-animatie */
+}
+
+
 
 .skill-detail.fade-in {
     opacity: 1;
@@ -148,21 +177,66 @@ body, html {
     margin: 10px auto; /* Centreert de separator en voegt verticale ruimte toe */
 }
 
+.skill-detail-box {
+    flex-basis: calc(50% - 20px); /* Neemt 50% van de containerbreedte, minus 20px voor de ruimte */
+    margin: 10px; /* Afstand rond elk item */
+    background-color: rgba(50, 50, 50, 0.8); /* Achtergrondkleur */
+    color: white; /* Tekstkleur */
+    padding: 20px; /* Binnenruimte */
+    border-radius: 5px; /* Afgeronde hoeken */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Schaduw voor diepte */
+}
+
+.index-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+.index-item {
+    color: white; /* Kleur van de tekst */
+    text-decoration: none; /* Verwijdert onderstreping van links, indien van toepassing */
+    padding: 5px 10px; /* Padding rondom de tekst voor betere klikbaarheid */
+}
+
+.skill-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .media-item {
-    max-width: 80%; /* Aangepast naar een kleiner percentage */
-    margin: 10px auto; /* Centreert het media-item en voegt verticale ruimte toe */
+    flex-basis: 49%; /* Twee media-items per rij */
+}
+.media-box {
+    display: flex;
+    flex-direction: column; /* Media boven de subtekst */
 }
 
-.media-item img, .media-item video {
-    max-width: 100%; /* Zorgt ervoor dat media niet breder is dan hun container */
-    height: auto;
-    display: block; /* Zorgt dat de media item correct uitgelijnd is in de container */
-    border-radius: 5px;
+.media-box, .text-box {
+    flex-basis: 49%; /* Bijna helft van de container voor elk */
+}
+.subtext {
+    font-size: 16px;
+    color: #333;
+}
+.media-text-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Ruimte tussen media blokken */
 }
 
-
-@media (max-width: 768px) {
-    .skills-container, #skill-details {
-        width: 95%;
+@media (max-width: 800px) {
+    .skill-detail-box {
+        flex-basis: 100%; /* Op kleine schermen neemt elk item de volledige breedte */
+    }
+    .index-container {
+        flex-direction: column; /* Stapelt de items verticaal op kleinere schermen */
+        align-items: center; /* Centreert items verticaal */
     }
 }

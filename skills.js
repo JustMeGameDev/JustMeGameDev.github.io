@@ -37,7 +37,7 @@ function loadLanguageSkills(lang) {
 
 function renderSkillButtons(skillSets) {
     const skillsContainer = document.querySelector('.skills-container');
-    skillsContainer.innerHTML = ''; // Clear previous content
+    skillsContainer.innerHTML = ''; // Verwijder bestaande inhoud
 
     Array.from(skillSets).forEach(skillSet => {
         const skillSetName = skillSet.querySelector('name').textContent;
@@ -53,88 +53,90 @@ function renderSkillButtons(skillSets) {
 
         skillsContainer.appendChild(button);
     });
+
+    // Stijlen voor centreren van de knoppen
+    skillsContainer.style.display = 'flex';
+    skillsContainer.style.justifyContent = 'center';
+    skillsContainer.style.flexWrap = 'wrap';
+    skillsContainer.style.gap = '20px';
 }
 
-function renderTOC(skillSet) {
-    const tocContainer = document.querySelector('.toc-container');
-    tocContainer.innerHTML = '<h3>Index:</h3><ul style="list-style-type: disc;">';
-
-    const skills = skillSet.querySelectorAll('skills > skill');
-    Array.from(skills).forEach(skill => {
-        const skillId = skill.getAttribute('id');
-        const skillName = skill.querySelector('name').textContent;
-        const listItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.href = `#${skillId}`;
-        link.textContent = skillName;
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); // Voorkom de standaard hyperlinkactie
-            showSkillDetail(skillId); // Pas deze functie aan om de view te beheren
-        });
-        listItem.appendChild(link);
-        tocContainer.querySelector('ul').appendChild(listItem);
-    });
-}
 
 
 function renderSkillSetDetails(skillSet) {
-    const detailsContainer = document.getElementById('skill-details');
-    detailsContainer.innerHTML = ''; // Wis eerder content
+    const detailsContainer = document.querySelector('#skill-details');
+    detailsContainer.innerHTML = ''; // Clear previous content
 
-    const skills = skillSet.querySelectorAll('skills > skill');
-    Array.from(skills).forEach(skill => {
+    Array.from(skillSet.querySelectorAll('skills > skill')).forEach(skill => {
         const skillDetailDiv = document.createElement('div');
-        skillDetailDiv.id = skill.getAttribute('id');
-        skillDetailDiv.className = 'skill-detail fade-out'; // Standaard verborgen
-        skillDetailDiv.style.display = 'none'; // Verberg de div initieel
+        skillDetailDiv.className = 'skill-detail-box';
 
         const title = document.createElement('h3');
         title.textContent = skill.querySelector('name').textContent;
         skillDetailDiv.appendChild(title);
-        skillDetailDiv.appendChild(createSeparator());
+
+        const progressBar = createProgressBar(skill.querySelector('level').textContent);
+        skillDetailDiv.appendChild(progressBar);
 
         const description = document.createElement('p');
         description.textContent = skill.querySelector('description').textContent;
         skillDetailDiv.appendChild(description);
 
-        // Voeg de progress bar toe
-        const level = skill.querySelector('level').textContent;
-        const progressBar = createProgressBar(level);
-        skillDetailDiv.appendChild(progressBar);
-
-        skillDetailDiv.appendChild(createSeparator());
+        const mediaContainer = document.createElement('div');
+        mediaContainer.className = 'media-container';
 
         const mediaItems = skill.querySelectorAll('media > item');
-        const mediaList = document.createElement('div');
-        mediaList.style.textAlign = "center"; // Center media items
         mediaItems.forEach(item => {
-            mediaList.appendChild(createMediaItem(item));
-            mediaList.appendChild(createSeparator());
+            mediaContainer.appendChild(createMediaItem(item));
         });
 
-        skillDetailDiv.appendChild(mediaList);
+        skillDetailDiv.appendChild(mediaContainer);
         detailsContainer.appendChild(skillDetailDiv);
     });
-
-    window.addEventListener('scroll', fadeSkillsOnScroll);
-
 }
 
-function showSkillDetail(skillId) {
-    const skillDetails = document.querySelectorAll('.skill-detail');
-    skillDetails.forEach(detail => {
-        if (detail.id === skillId) {
-            detail.style.display = 'block';
-            detail.classList.add('fade-in');
-            window.scrollTo({
-                top: detail.offsetTop,
-                behavior: 'smooth'
-            });
-        } else {
-            detail.style.display = 'none';
-            detail.classList.remove('fade-in');
-        }
+
+function renderTOC(skillSet) {
+    const tocContainer = document.querySelector('.toc-container');
+    tocContainer.innerHTML = ''; // Eerder geplaatste inhoud wissen
+
+    const tocTitle = document.createElement('h3');
+    tocTitle.textContent = 'Index:';
+    tocContainer.appendChild(tocTitle);
+
+    const list = document.createElement('ul');
+    tocContainer.appendChild(list);
+
+    const skills = skillSet.querySelectorAll('skills > skill');
+    Array.from(skills).forEach(skill => {
+        const skillName = skill.querySelector('name').textContent;
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#detail-' + skillName.replace(/\s+/g, '-').toLowerCase();
+        link.textContent = skillName;
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSkillDetail(link.getAttribute('href').substring(1));
+        });
+        listItem.appendChild(link);
+        list.appendChild(listItem);
     });
+
+    // Stijlen voor centreren
+    tocContainer.style.display = 'flex';
+    tocContainer.style.flexDirection = 'column';
+    tocContainer.style.alignItems = 'center';
+    list.style.listStyleType = 'none';
+    list.style.padding = 0;
+}
+
+
+
+function showSkillDetail(skillId) {
+    const skillDetail = document.getElementById(skillId);
+    if (skillDetail) {
+        skillDetail.scrollIntoView({ behavior: 'smooth' }); // Gebruikt de soepele scroll animatie
+    }
 }
 
 function fadeSkillsOnScroll() {
@@ -169,36 +171,40 @@ function createProgressBar(level) {
 }
 
 function createMediaItem(item) {
-    const itemType = item.querySelector('type').textContent;
-    const itemSrc = item.querySelector('src').textContent;
-    const itemDescription = item.querySelector('description').textContent;
+    const container = document.createElement('div');
+    container.className = 'media-text-container';
 
-    let mediaElement;
-    if (itemType === 'image') {
-        mediaElement = document.createElement('img');
-        mediaElement.src = itemSrc;
-        mediaElement.alt = itemDescription;
-        mediaElement.style.maxWidth = '100%';
-    } else if (itemType === 'video') {
-        mediaElement = document.createElement('video');
-        mediaElement.controls = true;
-        const source = document.createElement('source');
-        source.src = itemSrc;
-        source.type = 'video/mp4';
-        mediaElement.appendChild(source);
-        mediaElement.innerHTML += 'Your browser does not support the video tag.';
+    const mediaBox = document.createElement('div');
+    mediaBox.className = 'media-box';
+
+    const mediaItem = document.createElement('div');
+    mediaItem.className = 'media-item';
+    // Afhankelijk van het type (image/video), stel je de bron in
+    if (item.type === 'image' || item.type === 'video') {
+        const media = item.type === 'image' ? document.createElement('img') : document.createElement('video');
+        media.src = item.src;
+        media.style.width = '100%'; // Zorgt dat de media de container vult
+        mediaItem.appendChild(media);
     }
 
-    const mediaDiv = document.createElement('div');
-    mediaDiv.className = 'media-item';
-    mediaDiv.style.margin = "0 auto"; // Center media
-    mediaDiv.appendChild(mediaElement);
-    const caption = createTextElement('p', itemDescription);
-    caption.style.textAlign = "left"; // Left-align the text description
-    mediaDiv.appendChild(caption);
+    const subtext = document.createElement('div');
+    subtext.textContent = item.description;
+    subtext.className = 'subtext';
 
-    return mediaDiv;
+    mediaBox.appendChild(mediaItem);
+    mediaBox.appendChild(subtext);
+
+    const textBox = document.createElement('div');
+    textBox.className = 'text-box';
+    textBox.textContent = item.additionalText; // Aanvullende tekst voor het media-item
+
+    container.appendChild(mediaBox);
+    container.appendChild(textBox);
+
+    return container;
 }
+
+
 
 function createTextElement(tag, text) {
     const element = document.createElement(tag);
