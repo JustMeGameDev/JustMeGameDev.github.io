@@ -296,22 +296,6 @@ function createMediaItem(item) {
 
     return mediaElement;
 }
-
-
-
-
-function createTextElement(tag, text) {
-    const element = document.createElement(tag);
-    element.textContent = text;
-    return element;
-}
-
-function createSeparator() {
-    const separator = document.createElement('div');
-    separator.className = 'separator';
-    return separator;
-}
-
 function applyTranslations(lang, xmlDoc) {
     document.querySelectorAll("[data-translation-id]").forEach(element => {
         const key = element.getAttribute('data-translation-id');
@@ -344,3 +328,16 @@ function getRandomColor() {
     const colors = ['#FFFFFF', '#F0F8FF', '#E0FFFF', '#E6E6FA', '#F8F8FF'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+document.querySelectorAll('.header-img').forEach(img => {
+    img.addEventListener('mouseenter', function () {
+        const tooltip = document.querySelector('.header-tooltip');
+        tooltip.textContent = this.title;
+        tooltip.style.opacity = 1;
+    });
+
+    img.addEventListener('mouseleave', function () {
+        const tooltip = document.querySelector('.header-tooltip');
+        tooltip.style.opacity = 0;
+    });
+});
