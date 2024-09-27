@@ -16,7 +16,7 @@
 
     <skill-set>
         <name>Unity</name>
-        <logo>./img/Other/U_Cube_1C_Black.png/</logo>
+        <logo>./img/Other/U_Cube_1C_Black.png</logo>
         <skills>
                 <skill>
                     <name>Game Development</name>
