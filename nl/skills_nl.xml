@@ -17,32 +17,184 @@
     <skill-set>
         <name>Unity</name>
         <logo>./img/Other/U_Cube_1C_Black.svg/</logo>
-
         <skills>
-                <skill>
-                    <name>Shaders</name>
-                    <level>80</level>
-                    <description>Ervaring Met Unity Shaders</description>
-                    <media>
-                        <item>
-                            <type>image</type>
-                            <src>./img/Other/award_01.jpg</src>
-                            <description>Test foto</description>
-                        </item>
-                        <item>
-                            <type>image</type>
-                            <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                            <description>Test gif</description>
-                        </item>
-                        <item>
-                            <type>video</type>
-                            <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                            <description>Test video</description>
-                        </item>
-                    </media>
-                </skill>
-                <!-- Add more individual skills similarly -->
-            </skills>
-        </skill-set>
+            <skill>
+                <name>Game Development</name>
+                <level>80</level>
+                <description>Ervaring met het ontwikkelen van games met de Unity-software</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Scripting/Programmeren</name>
+                <level>20</level>
+                <description>Ervaring met C# integratie binnen Unity</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>3D/2D Kunst Integratie</name>
+                <level>45</level>
+                <description>Ervaring met het gebruiken van 2D en 3D assets en kunst in de Unity-software</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Level Design</name>
+                <level>80</level>
+                <description>Ervaring met level design door gebruik te maken van de beschikbare tools van Unity en/of plugins uit de Unity Store</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Prestaties Optimalisatie</name>
+                <level>15</level>
+                <description>Ervaring met het optimaliseren van de game/code door gebruik te maken van de diagnostische tools die door Unity worden geleverd</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>VR/AR Ontwikkeling</name>
+                <level>15</level>
+                <description>Ervaring met het bouwen van een project/game met VR/AR als platform</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Multiplayer/Netwerken</name>
+                <level>15</level>
+                <description>Ervaring met het maken van een lokale of online multiplayer game met behulp van de Unity-software of plugins die voor Unity beschikbaar zijn</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+            <skill>
+                <name>Project Management</name>
+                <level>15</level>
+                <description>Ervaring met versiebeheer in combinatie met een Unity-project zoals GitHub/GitLab of ingebouwd Unity versiebeheer</description>
+                <media>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/award_01.jpg</src>
+                        <description>Testafbeelding</description>
+                    </item>
+                    <item>
+                        <type>image</type>
+                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
+                        <description>Test gif</description>
+                    </item>
+                    <item>
+                        <type>video</type>
+                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
+                        <description>Test video</description>
+                    </item>
+                </media>
+            </skill>
+        </skills>
+    </skill-set>
         <!-- Add more skill elements as needed -->
 </translations>
