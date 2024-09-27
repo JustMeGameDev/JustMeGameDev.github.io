@@ -11,11 +11,13 @@ body, html {
     overflow-x: hidden;
     color: white;
     font-family: "Source Code Pro", monospace;
+    scroll-behavior: smooth;
 }
 #starry-sky {
     position: static;
     width: 100%;
     height: 100%;
+    z-index: -10;
 }
 
 .container {
@@ -24,20 +26,38 @@ body, html {
     margin: auto; /* Centreert de container op de pagina */
 }
 
-
-.skills-container {
+.skills-layout {
     display: flex;
-    justify-content: center; /* Centreert de inhoud horizontaal */
-    flex-wrap: wrap; /* Zorgt ervoor dat items kunnen omvouwen naar de volgende regel */
-    gap: 20px; /* Stelt een ruimte in tussen de items */
-    padding: 20px; /* Voegt padding toe voor ruimte rond de items */
-    margin-bottom: 40px; /* Extra ruimte onder deze sectie */
+    flex-direction: column; /* Stack everything vertically */
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.skills-container {
+    display: none; /* Ensure it's hidden by default */
+}
+
+.skills-container.show {
+    display: flex; /* Show the container when it has content */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none; /* Hide anything with this class */
+}
+.skill-button.active {
+    background-color: mediumpurple;
+    transform: scale(1.05); /* Make it stand out */
 }
 
 
 
 .toc-container ul {
-    list-style-type: disc; /* Verzekert dat de bullet points zichtbaar zijn */
+    list-style-type: circle; /* Verzekert dat de bullet points zichtbaar zijn */
     padding-left: 40px; /* Verhoog indien nodig om de bullet points binnen de container te plaatsen */
     columns: 3; /* Verdeelt de lijst in drie kolommen */
     -webkit-columns: 3;
@@ -56,10 +76,13 @@ body, html {
     font-weight: bold;
     font-size: 26px; /* Of een grootte die past bij je ontwerp */
 }
-.toc-container{
-    border-radius: 10px;
+/* TOC in the middle */
+.toc-container {
     text-align: center;
-    border: 2px dashed mediumpurple;
+    border: 2px dotted mediumpurple;
+    padding: 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
 }
 .toc-container li a {
     text-decoration: none;
@@ -85,8 +108,40 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
 }
-
+#subskills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 10;
+}
+.subskill {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.subskill-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    grid-template-rows: auto auto; /* Multiple rows, one for the progress bar */
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(50, 50, 50, 0.8); /* Optional: keep the background */
+    border-radius: 10px; /* Optional: rounded corners */
+    border: 1px solid #5A5A5A; /* Add a border between subskills */
+    margin-bottom: 20px; /* Add space between each subskill */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+.subskill-title {
+    grid-column: 1 / -1; /* Title spans across both columns */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
 .skill-button img {
     width: 50px;
     height: auto;
@@ -107,20 +162,90 @@ body, html {
     border-top: 1px dotted mediumpurple;
 }
 
+
+/* Progress bar container */
 .progress-bar {
-    width: 100%;
-    height: 20px;
+    grid-column: 1 / -1; /* This makes the progress bar span both columns */
+    width: calc(100% - 20px); /* Full width minus padding */
+    margin: 0 10px; /* Padding on each side */
+    height: 30px;
     background-color: #FFFFFF33;
     border-radius: 5px;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
+/* Purple fill bar */
 .progress {
     height: 100%;
-    background-color: mediumpurple;
+    background-color: mediumpurple; /* The main progress color */
     border-radius: 5px;
-    width: 50%; /* Aanpassen aan het percentage van de vaardigheid */
+    position: relative;
+}
 
+/* Section markers inside the progress bar */
+
+
+/* Intermediate marker at 25% */
+.section-marker-intermediate {
+    left: 25%;
+}
+
+/* Advanced marker at 50% */
+.section-marker-advanced {
+    left: 50%;
+}
+
+/* Master marker at 75% */
+.section-marker-master {
+    left: 75%;
+}
+
+/* Text for each section (placed above the bar) */
+.section-label {
+    position: absolute;
+    top: -25px; /* Adjust depending on where you want the text */
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    width: 25%; /* Each section takes up 25% of the bar */
+}
+
+.section-label-beginner {
+    left: 0;
+}
+
+.section-label-intermediate {
+    left: 25%;
+}
+
+.section-label-advanced {
+    left: 50%;
+}
+
+.section-label-master {
+    left: 75%;
+}
+
+/* Text inside the progress bar */
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 3;
+}
+.subskill-grid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr; /* Middle column for the divider */
+}
+
+.divider {
+    grid-column: 2 / 3;
+    background-color: white;
+    width: 2px;
 }
 
 .skill-detail {
@@ -173,7 +298,7 @@ html {
 
 .separator {
     border-top: 3px dotted mediumpurple;
-    width: 110%; /* Aanpassen aan de container breedte */
+    width: 100%; /* Aanpassen aan de container breedte */
     margin: 10px auto; /* Centreert de separator en voegt verticale ruimte toe */
 }
 
@@ -207,11 +332,29 @@ html {
 }
 .media-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start; /* Ensure subtext stays close to the media */
+}
+
+.media-container-left1 {
+    grid-column: 1 / 1; /* Move the media to the right */
+}
+.media-container-left2 {
+    grid-column: 1 / 2; /* Move the media to the right */
+}
+.media-container-right {
+    grid-column: 2 / 3; /* Move the media to the right */
+}
+.subskill-description {
+    grid-column: 2 / 3; /* Move the description to the second column (right side) */
+    grid-row: 3 / 4; /* Place it below the progress bar */
+    font-size: 16px;
+    color: white;
 }
 .media-item {
-    flex-basis: 49%; /* Twee media-items per rij */
+    width: auto;
+    height: 100%;
+    z-index: 10;
 }
 .media-box {
     display: flex;
@@ -221,14 +364,10 @@ html {
 .media-box, .text-box {
     flex-basis: 49%; /* Bijna helft van de container voor elk */
 }
-.subtext {
-    font-size: 16px;
-    color: #333;
-}
-.media-text-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Ruimte tussen media blokken */
+.media-subtext {
+    margin-top: 1px; /* Reduce the space between the media and subtext */
+    font-size: 12px; /* Adjust font size if needed */
+    color: #CCCCCC; /* Lighter color for subtext */
 }
 
 @media (max-width: 800px) {
@@ -239,4 +378,20 @@ html {
         flex-direction: column; /* Stapelt de items verticaal op kleinere schermen */
         align-items: center; /* Centreert items verticaal */
     }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rebeccapurple;
+    }
+    50% {
+        box-shadow: 0 0 30px rebeccapurple;
+    }
+    100% {
+        box-shadow: 0 0 10px rebeccapurple;
+    }
+}
+
+.pulse-highlight {
+    animation: pulse 1s ease-in-out infinite alternate;
 }

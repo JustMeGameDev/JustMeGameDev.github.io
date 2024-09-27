@@ -24,7 +24,7 @@ body, html {
 
 .main h2 {
     color: whitesmoke;
-    text-align: center;
+    text-align: left;
 }
 
 .section {
@@ -63,7 +63,7 @@ body, html {
 }
 
 .centered {
-    text-align: center;
+    text-align: left;
 }
 
 .container {

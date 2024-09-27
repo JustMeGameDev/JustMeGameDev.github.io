@@ -36,19 +36,28 @@
 </div>
 
 <div class="container">
-    <p id="selectSkillsetPrompt" data-translation-id="selectSkillsetPrompt">
-        Select a program or skillset to see the details.
-    </p>
-    <div   class="separator"></div>
-    <div class="skills-container">
-        <!-- Skillset buttons will be dynamically inserted here -->
-    </div>
-    <div class="toc-container">
-        <!-- Inhoudsopgave links worden hier dynamisch ingevoegd -->
-    </div>
+    <p id="selectSkillsetPrompt" data-translation-id="selectSkillsetPrompt">Select a program or skillset to see the details.</p>
+    <div class="separator"></div>
 
-    <div id="skill-details">
-        <!-- Skillset details will be dynamically inserted here -->
+    <div class="skills-layout">
+        <!-- Skillset buttons here -->
+        <div class="skills-container">
+            <!-- Dynamically injected skill buttons will appear here -->
+        </div>
+
+        <!-- Move the index below the skillset buttons -->
+        <div class="toc-container">
+            <!-- Dynamically generated index (TOC) will appear here -->
+        </div>
+
+        <div id="subskills-container">
+            <div class="subskill" id="subskill1">
+                <!-- Dynamically injected sub-skill content will appear here -->
+            </div>
+            <div class="subskill" id="subskill2">
+                <!-- Dynamically injected sub-skill content will appear here -->
+            </div>
+        </div>
     </div>
 </div>
 <div class="footer">

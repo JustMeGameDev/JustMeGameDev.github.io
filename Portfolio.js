@@ -142,15 +142,13 @@ function renderProjects(projects) {
     container.innerHTML = '';  // Clear previous content
     Array.from(projects).forEach(project => {
         const title = project.querySelector('title')?.textContent;
-        const category = project.querySelector('category')?.textContent; // This pulls the category from your XML
+        const category = project.querySelector('category')?.textContent;
         const description = project.querySelector('description')?.textContent;
         const engineImg = project.querySelector('engine')?.textContent;
         const coverImg = project.querySelector('cover')?.textContent;
         const images = Array.from(project.querySelectorAll('images image')).map(img => img.textContent);
-        const badges = project.querySelectorAll('badges badge');
         const github = project.querySelector('links github')?.textContent;
         const itch = project.querySelector('links itch')?.textContent;
-        const pdf = project.querySelector('links pdf')?.textContent;
 
         // Skip if essential fields are missing
         if (!title || !description || !engineImg || !coverImg) return;
@@ -158,6 +156,7 @@ function renderProjects(projects) {
         let cardHtml = `<div class="project-card" data-category="${category}">
                             ${engineImg ? `<img src="${engineImg}" class="engine-badge" alt="Engine Badge">` : ''}
                             <div class="badges-container">`;
+        const badges = project.querySelectorAll('badges badge');
         badges.forEach(badge => {
             cardHtml += `<span class="badge" style="background-color:${badge.getAttribute('color')}">${badge.textContent}</span>`;
         });
@@ -165,7 +164,6 @@ function renderProjects(projects) {
                         <h3>${title}</h3>
                         <img src="${coverImg}" class="cover-image">
                         <p>${description}</p>
-                        ${pdf ? `<a href="${pdf}" target="_blank"><i class="fa-regular fa-file-pdf"></i></a>` : ''}
                         <div class="project-links">
                         ${github ? `<a href="${github}" target="_blank"><i class="fa-brands fa-github"></i></a>` : ''}
                         ${itch ? `<a href="${itch}" target="_blank"><i class="fa-brands fa-itch-io"></i></a>` : ''}
@@ -174,52 +172,115 @@ function renderProjects(projects) {
                         </div>`; // Close project-card div
 
         container.innerHTML += cardHtml;
-    })
-    }
+    });
+}
 
-function showSlideshow(images) {
-    // Check if images is a string and convert it to an array
-    if (typeof images === 'string') {
-        images = [images]; // Convert single image URL to an array
-    }
+let currentSlideIndex = 0; // Start with the first slide
 
-    // Proceed only if images is an array
-    if (!Array.isArray(images)) {
-        console.error('Expected an array of images, received:', images);
-        return; // Exit the function if not an array
-    }
+function showSlideshow(...mediaUrls) {
+    // Remove any existing slideshow container
+    const existingSlideshow = document.querySelector('.slideshow-modal');
+    if (existingSlideshow) existingSlideshow.remove();
 
+    // Create slideshow container
     const slideshowContainer = document.createElement('div');
     slideshowContainer.className = 'slideshow-modal';
 
-    // Close Button for Slideshow
+    // Close button
     const closeBtn = document.createElement('span');
-    closeBtn.textContent = '×';
-    closeBtn.className = 'close';
-    closeBtn.onclick = function() {
-        slideshowContainer.style.display = 'none';
-        document.body.removeChild(slideshowContainer);
+    closeBtn.textContent = '×'; // Close symbol
+    closeBtn.className = 'slideshow-close';
+    closeBtn.onclick = function () {
+        slideshowContainer.style.display = 'none'; // Hide the modal
+        slideshowContainer.remove(); // Remove it from the DOM
     };
+    slideshowContainer.appendChild(closeBtn);
 
-    // Adding images to slideshow
-    images.forEach((imgSrc, index) => {
+    // Media items (slides)
+    const slides = mediaUrls.map((url, index) => {
         const slide = document.createElement('div');
         slide.className = 'slide';
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        slide.appendChild(img);
+
+        // Detect media type (image/video)
+        if (url.endsWith('.mp4') || url.endsWith('.webm')) {
+            const video = document.createElement('video');
+            video.src = url;
+            video.controls = true;
+            slide.appendChild(video);
+        } else {
+            const img = document.createElement('img');
+            img.src = url;
+            slide.appendChild(img);
+        }
+
         slideshowContainer.appendChild(slide);
+        return slide;
     });
 
+    // Previous button
+    const prevBtn = document.createElement('a');
+    prevBtn.className = 'slideshow-prev';
+    prevBtn.innerHTML = '&#10094;'; // Left arrow symbol
+    prevBtn.onclick = function () {
+        showSlide(currentSlideIndex - 1); // Move to previous slide
+    };
+
+    // Next button
+    const nextBtn = document.createElement('a');
+    nextBtn.className = 'slideshow-next';
+    nextBtn.innerHTML = '&#10095;'; // Right arrow symbol
+    nextBtn.onclick = function () {
+        showSlide(currentSlideIndex + 1); // Move to next slide
+    };
+
+    slideshowContainer.appendChild(prevBtn);
+    slideshowContainer.appendChild(nextBtn);
+
+    // Navigation Dots
+    const dotsContainer = document.createElement('div');
+    dotsContainer.className = 'slideshow-dots';
+    const dots = mediaUrls.map((url, index) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.onclick = function () {
+            showSlide(index); // Jump to the clicked dot's corresponding slide
+        };
+        dotsContainer.appendChild(dot);
+        return dot;
+    });
+
+    slideshowContainer.appendChild(dotsContainer);
     document.body.appendChild(slideshowContainer);
-    slideshowContainer.style.display = 'block';
+    slideshowContainer.style.display = 'flex';
+
+    function showSlide(index) {
+        // Wrap around when reaching the end or beginning
+        if (index >= mediaUrls.length) index = 0; // Go to first slide if at the end
+        if (index < 0) index = mediaUrls.length - 1; // Go to last slide if at the beginning
+        currentSlideIndex = index;
+
+        // Update slides' visibility
+        slides.forEach((slide, i) => {
+            if (i === currentSlideIndex) {
+                slide.classList.add('active-slide');
+                slide.classList.remove('inactive-slide');
+            } else {
+                slide.classList.remove('active-slide');
+                slide.classList.add('inactive-slide');
+            }
+        });
+
+        // Update dot indicators to reflect the current slide
+        dots.forEach((dot, i) => {
+            dot.className = i === currentSlideIndex ? 'dot active' : 'dot';
+        });
+    }
+
+    // Show the first slide
+    showSlide(0);
 }
 
 
-
-function closeSlideshow() {
-        document.querySelector('.slideshow-modal').remove();
-    }
 
 
     generateStars(200); // Generate 200 stars. Adjust the number as needed.

@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Always default to English on first load
-    let userLang = localStorage.getItem('userLang');
-    console.log({userLang});
-    if (!userLang) {
-        userLang = 'en';
-        localStorage.setItem('userLang', userLang);
+    // Check if the page is being accessed on GitHub Pages
+    const isLivePage = window.location.hostname.includes('github.io');
+
+    // If on GitHub Pages, force English language
+    if (isLivePage) {
+        loadLanguage('en');
+    } else {
+        // Check user's language preference in local storage or default to English
+        let userLang = localStorage.getItem('userLang');
+        if (!userLang) {
+            userLang = 'en';
+            localStorage.setItem('userLang', userLang);
+        }
+        loadLanguage(userLang);
     }
-    loadLanguage(userLang);
 });
+
 
 // Immediately set the language to English when the script is loaded for the first time
 loadLanguage(localStorage.getItem('userLang'));

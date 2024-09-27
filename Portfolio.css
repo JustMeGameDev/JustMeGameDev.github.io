@@ -88,9 +88,7 @@
     background-color: #45a049; /* Darker green on hover */
 }
 
-.project-card h3 {
-    margin-bottom: 0.5rem; /* To ensure spacing between title and badges */
-}
+
 .project-card {
     position: relative; /* This is necessary for absolute positioning of children */
     background: rgba(255, 255, 255, 0.1);
@@ -98,7 +96,6 @@
     padding: 1rem;
     margin: 1rem; /* Adjust margins for space between cards */
     width: calc(33.33% - 2rem); /* Adjust the width for three cards per row, accounting for margin */
-    text-align: center;
     border-radius: 0.5rem;
 }
 
@@ -138,10 +135,22 @@
         width: calc(100% - 2rem); /* one card per row on small screens */
     }
 }
+.project-card h3 {
+    text-align: center; /* Center align the title */
+}
+
 .project-card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 128px;
     height: auto;
     border-radius: 5px;
+}
+
+.project-card p {
+    text-align: left; /* Left-align the text of the description */
+    margin-top: 1rem; /* Add some spacing between the image and the description */
 }
 
 .project-links {
@@ -162,87 +171,139 @@
 }
 
 .show-more {
+    display: block; /* Make the button behave like a block element */
+    margin: 1rem auto; /* Center horizontally with margin auto */
     background: mediumpurple;
     border: none;
     color: #fff;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    margin: .5rem  .5rem ;
     border-radius: 0.3rem;
-
 }
 
 .show-more:hover {
-    background: #444;
+    background: #444; /* Change color on hover */
+}
+/* Animation for fading between slides */
+/* Animation for fading between slides */
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
+/* General styling for the slideshow modal */
 .slideshow-modal {
     display: none;
     position: fixed;
     z-index: 1002;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.slideshow-modal-content {
-    position: relative;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
+/* Slide styling */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden but still takes up space */
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1; /* Set a default z-index for slides */
 }
 
+.active-slide {
+    visibility: visible; /* Make visible */
+    opacity: 1; /* Fade in */
+    z-index: 2; /* Ensure the active slide is on top */
+}
+
+.inactive-slide {
+    visibility: hidden; /* Hide inactive slides */
+    opacity: 0;
+    z-index: 1; /* Set inactive slides below active ones */
+}
 .slideshow-close {
     position: absolute;
     top: 10px;
-    right: 40px;
-    color: red;
-    font-size: 70px;
-    font-weight: bold;
+    left: 50%; /* Position horizontally centered */
+    transform: translateX(-50%); /* Move the button back by 50% of its width */
+    font-size: 60px;
+    color: white;
     cursor: pointer;
+    z-index: 4; /* Ensure it's always on top */
 }
 
-.slideshow-close:hover,
-.slideshow-close:focus {
-    color: darkred;
-    text-decoration: none;
-    cursor: pointer;
+.slideshow-close:hover {
+    color: red; /* Change color on hover for emphasis */
 }
 
+/* Ensure media scales properly */
+.slide img, .slide video {
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* Previous and next buttons styling */
 .slideshow-prev, .slideshow-next {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
     padding: 16px;
-    margin-top: -50px;
     color: white;
     font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    font-size: 30px;
     user-select: none;
+    z-index: 3; /* Ensure the arrows are always on top of slides */
+}
+
+.slideshow-prev {
+    left: 20px;
 }
 
 .slideshow-next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+    right: 20px;
 }
 
 .slideshow-prev:hover, .slideshow-next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.slide {
-    display: none;
-}
-
-.slide img {
-    padding-top: 20vh;
+/* Navigation dots styling */
+.slideshow-dots {
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 10px;
     width: 100%;
+    z-index: 3; /* Ensure dots are on top of slides */
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #717171; /* Highlight the active dot */
 }
