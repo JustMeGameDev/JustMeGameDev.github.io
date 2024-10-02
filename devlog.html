@@ -17,20 +17,38 @@
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
-        <h1 class="site-title"><a href="index.html" id="headerTitle" style="text-decoration: none; color: white">Star-system: Portfolio-kornee</a></h1>
-        <nav class="site-nav">
+        <h1 class="site-title">
+            <a href="index.html" id="headerTitle" style="text-decoration: none; color: white">
+                Star-system: Portfolio-kornee
+            </a>
+        </h1>
+        <!-- Hamburger Menu Button for Mobile Devices -->
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <!-- Image-based Navigation for Widescreen -->
+        <nav class="site-nav" id="nav-images">
             <ul>
-                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
-                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
-                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
+                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
+                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
+                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
+                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
+                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
+                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a></li>
             </ul>
         </nav>
-        <h1 class="header-tooltip"></h1>
+        <!-- Text-based Navigation for Mobile -->
+        <nav class="site-nav" id="nav-text">
+            <ul>
+                <li><a href="index.html" class="nav-link">• System Overview</a></li>
+                <li><a href="about.html" class="nav-link">• About Me</a></li>
+                <li><a href="portfolio.html" class="nav-link">• Portfolio</a></li>
+                <li><a href="skills.html" class="nav-link">• Skills & Technologies</a></li>
+                <li><a href="contact.html" class="nav-link">• Contact & Resume</a></li>
+                <li><a href="devlog.html" class="nav-link">• Dev Log</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
+
 <div class="language-switcher" style="top: 90px; right: 30px">
     <button id="switchToEnglish" class="lang-btn">
         <img src="./img/Other/gb.svg" alt="English">

@@ -136,12 +136,7 @@ body, html {
     margin-bottom: 20px; /* Add space between each subskill */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
-.subskill-title {
-    grid-column: 1 / -1; /* Title spans across both columns */
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 10px;
-}
+
 .skill-button img {
     width: 50px;
     height: auto;
@@ -369,16 +364,38 @@ html {
     font-size: 12px; /* Adjust font size if needed */
     color: #CCCCCC; /* Lighter color for subtext */
 }
+.subskill-title {
+    grid-column: 1 / -1; /* Spans across all columns */
+    font-size: 1.5vw; /* Adjusts the size of the title based on viewport width */
+    text-align: center;
+    margin-top: 20px; /* Add space above */
+    margin-bottom: 15px; /* Add space below for consistency */
+    word-wrap: break-word; /* Wrap long words to prevent overflow */
+    overflow: hidden; /* Prevent text overflow */
+    white-space: normal; /* Allow line breaks */
+}
 
-@media (max-width: 800px) {
-    .skill-detail-box {
-        flex-basis: 100%; /* Op kleine schermen neemt elk item de volledige breedte */
-    }
-    .index-container {
-        flex-direction: column; /* Stapelt de items verticaal op kleinere schermen */
-        align-items: center; /* Centreert items verticaal */
+/* Fallback for smaller screens to prevent text being too small */
+@media (max-width: 768px) {
+    .subskill-title {
+        font-size: 18px; /* Set a minimum size for mobile devices */
     }
 }
+@media (max-width: 768px) {
+    .skills-layout {
+        flex-direction: column; /* Stack skillset items vertically */
+        gap: 15px;
+    }
+    .skill-button {
+        width: 100%;
+        padding: 15px; /* Increase padding for better touch target */
+    }
+    .subskill {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
 
 @keyframes pulse {
     0% {
@@ -395,3 +412,207 @@ html {
 .pulse-highlight {
     animation: pulse 1s ease-in-out infinite alternate;
 }
+/* Default Styles for Widescreen Navigation and Tooltip */
+/* Existing styles from skills.css */
+
+/* Updated spacing for subskill titles */
+
+/* Slideshow Modal Styles */
+.slideshow-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.slideshow-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #6200ea;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 5;
+}
+
+.slideshow-button:hover {
+    background: #7e33e8;
+}
+
+.slide {
+    display: none;
+    width: 90%;
+    max-height: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideshow-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.slideshow-prev,
+.slideshow-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    user-select: none;
+    z-index: 1001;
+}
+
+.slideshow-prev {
+    left: 20px;
+}
+
+.slideshow-next {
+    right: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* Default Styles for Widescreen Navigation and Tooltip */
+.menu-toggle {
+    display: none; /* Hide the hamburger menu button on widescreen */
+}
+
+#nav-text {
+    display: none; /* Hide text-based navigation on widescreen */
+}
+
+#nav-images ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-img {
+    height: 50px; /* Size for header images on widescreen */
+    width: auto;
+}
+
+/* Tooltip Styles */
+.header-tooltip {
+    position: absolute;
+    top: 70px; /* Adjust to position the tooltip below the header */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+/* Show Tooltip when Hovering over Header Image */
+.header-img:hover + #header-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Highlight Current Page Link */
+.nav-link.current-page {
+    color: lightslategray;
+    font-weight: bold;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the hamburger menu button */
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        padding-right: 55px;
+    }
+
+    #nav-images {
+        display: none; /* Hide image-based navigation on mobile */
+    }
+
+    #nav-text {
+        display: none; /* Initially hide text navigation; show only when toggled */
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-start;
+        background-color: #202020; /* Background to differentiate */
+        width: 100%;
+        padding: 15px;
+        position: absolute;
+        top: 50px; /* Adjust for header height */
+        left: 0;
+        z-index: 1000;
+    }
+
+    #nav-text.open {
+        display: block; /* Show text navigation when the menu is open */
+    }
+
+    .header-tooltip {
+        display: none; /* Hide tooltip on mobile */
+    }
+
+    .header-img {
+        height: 20px; /* Smaller header images for mobile */
+    }
+
+    body, html {
+        font-size: 90%; /* Smaller text size for mobile */
+    }
+
+    /* Add Bullet Points for Mobile Links */
+    #nav-text ul li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #nav-text.current-page {
+        color: lightslategray; /* Highlight current page link in mobile menu */
+        font-weight: bold;
+    }
+
+    #nav-text ul li a:hover {
+        text-decoration: none;
+        color: mediumpurple;
+    }
+}
+

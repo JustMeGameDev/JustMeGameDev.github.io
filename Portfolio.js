@@ -1,5 +1,58 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadProjects();
+    const headerTooltip = document.getElementById('header-tooltip');
+    const headerImages = document.querySelectorAll('.header-img');
+    const spaceshipImg = document.querySelector('.header-img[title="System Overview"]');
+
+    headerImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            headerTooltip.textContent = this.title; // Set the tooltip text based on the image title attribute
+            headerTooltip.style.opacity = 1;
+            headerTooltip.style.visibility = 'visible';
+        });
+
+        img.addEventListener('mousemove', function(event) {
+            // Update tooltip position as user moves over the header image
+            headerTooltip.style.top = `${event.pageY + 10}px`;
+            headerTooltip.style.left = `${event.pageX}px`;
+        });
+
+        img.addEventListener('mouseleave', function() {
+            headerTooltip.style.opacity = 0;
+            headerTooltip.style.visibility = 'hidden';
+        });
+    });
+
+    // Hamburger Menu Toggle for Mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const navText = document.getElementById('nav-text');
+
+    menuToggle.addEventListener('click', function() {
+        navText.classList.toggle('open');
+    });
+
+    // Highlight the Current Page in Both Navigation Menus
+    const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('data-page') === currentPage) {
+            link.classList.add('current-page');
+        }
+    });
+
+    // Update Title for Spaceship Image when in Portrait Mode
+    function updateSpaceshipTitle() {
+        if (window.innerWidth < window.innerHeight) {
+            spaceshipImg.setAttribute('title', 'Home');
+        } else {
+            spaceshipImg.setAttribute('title', 'System Overview');
+        }
+    }
+
+    // Run the function on load and on resize
+    updateSpaceshipTitle();
+    window.addEventListener('resize', updateSpaceshipTitle);
 });
 function switchLanguage(lang) {
     localStorage.setItem('userLang', lang); // Save the language preference

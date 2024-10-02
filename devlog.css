@@ -54,3 +54,74 @@ body, html {
     overflow-y: auto;
     /* Optional: add background color here if needed */
 }
+@media (max-width: 768px) {
+    .devlog-entry {
+        padding: 10px; /* Reduce padding for better fit */
+        font-size: 16px;
+    }
+    iframe {
+        width: 100%;
+        height: auto; /* Ensure YouTube videos resize properly */
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the hamburger menu button */
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        padding-right: 55px;
+    }
+
+    #nav-images {
+        display: none; /* Hide image-based navigation on mobile */
+    }
+
+    #nav-text {
+        display: none; /* Initially hide text navigation; show only when toggled */
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-start;
+        background-color: #202020; /* Background to differentiate */
+        width: 100%;
+        padding: 15px;
+        position: absolute;
+        top: 50px; /* Adjust for header height */
+        left: 0;
+        z-index: 1000;
+    }
+
+    #nav-text.open {
+        display: block; /* Show text navigation when the menu is open */
+    }
+
+    .header-tooltip {
+        display: none; /* Hide tooltip on mobile */
+    }
+
+    .header-img {
+        height: 20px; /* Smaller header images for mobile */
+    }
+
+    body, html {
+        font-size: 90%; /* Smaller text size for mobile */
+    }
+
+    /* Add Bullet Points for Mobile Links */
+    #nav-text ul li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #nav-text.current-page {
+        color: lightslategray; /* Highlight current page link in mobile menu */
+        font-weight: bold;
+    }
+
+    #nav-text ul li a:hover {
+        text-decoration: none;
+        color: mediumpurple;
+    }
+}

@@ -398,18 +398,19 @@ body, html {
 }
 
 /* Detect Portrait Mode on Mobile Devices */
-@media only screen and (max-width: 200px) and (orientation: portrait) {
-  body {
-    display: none;
+@media (max-width: 768px) {
+  .site-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-img {
+    height: 30px; /* Smaller header image for mobile */
+  }
+  .content-wrapper {
+    padding: 15px;
   }
 }
-@media (max-width: 200px) {
-  .legend {
-    width: 100%; /* Full width on smaller screens */
-    position: static; /* Normal flow, if overlapping is an issue */
-    margin-top: 10px; /* Space from top content */
-  }
-}
+
 
 .legend {
   position: absolute;
@@ -478,4 +479,17 @@ body, html {
   border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+  .lang-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .lang-btn img {
+    width: 25px;  /* Set the size of the flag images */
+    height: auto;
+    border-radius: 5px;
+  }
+}
 

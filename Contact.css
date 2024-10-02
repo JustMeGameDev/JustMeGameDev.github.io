@@ -319,3 +319,165 @@ textarea {
     padding: 10px 0;
     position: relative; /* Changed from fixed */
 }
+
+@media (max-width: 768px) {
+    .contact-form {
+        width: 100%; /* Ensure contact form takes full width */
+        padding: 10px;
+    }
+    .contact-header {
+        text-align: center; /* Center the contact header */
+        font-size: 24px;
+    }
+}
+/* Default Styles for Widescreen Navigation and Tooltip */
+.menu-toggle {
+    display: none; /* Hide the hamburger menu button on widescreen */
+}
+
+#nav-text {
+    display: none; /* Hide text-based navigation on widescreen */
+}
+
+#nav-images ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-img {
+    height: 50px; /* Size for header images on widescreen */
+    width: auto;
+}
+
+/* Tooltip Styles */
+.header-tooltip {
+    position: absolute;
+    top: 70px; /* Adjust to position the tooltip below the header */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+/* Show Tooltip when Hovering over Header Image */
+.header-img:hover + #header-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Highlight Current Page Link */
+.nav-link.current-page {
+    color: lightslategray;
+    font-weight: bold;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the hamburger menu button */
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        padding-right: 55px;
+    }
+
+    #nav-images {
+        display: none; /* Hide image-based navigation on mobile */
+    }
+
+    #nav-text {
+        display: none; /* Initially hide text navigation; show only when toggled */
+        flex-direction: column; /* Stack links vertically */
+        align-items: flex-start;
+        background-color: #202020; /* Background to differentiate */
+        width: 100%;
+        padding: 15px;
+        position: absolute;
+        top: 50px; /* Adjust for header height */
+        left: 0;
+        z-index: 1000;
+    }
+
+    #nav-text.open {
+        display: block; /* Show text navigation when the menu is open */
+    }
+
+    .header-tooltip {
+        display: none; /* Hide tooltip on mobile */
+    }
+
+    .header-img {
+        height: 20px; /* Smaller header images for mobile */
+    }
+
+    body, html {
+        font-size: 90%; /* Smaller text size for mobile */
+    }
+
+    /* Add Bullet Points for Mobile Links */
+    #nav-text ul li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #nav-text.current-page {
+        color: lightslategray; /* Highlight current page link in mobile menu */
+        font-weight: bold;
+    }
+
+    #nav-text ul li a:hover {
+        text-decoration: none;
+        color: mediumpurple;
+    }
+}
+@media (max-width: 768px) {
+    .lang-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .lang-btn img {
+        width: 25px;  /* Set the size of the flag images */
+        height: auto;
+        border-radius: 5px;
+    }
+}
+@media (max-width: 768px) {
+    .form-section {
+        max-width: 90%; /* Behoudt de breedte van de contact form */
+        padding: 15px;
+        margin: 0 auto; /* Centreert horizontaal */
+        transform: translateY(-50%); /* Verticaal centreren */
+        position: relative;
+        top: 50%;
+        margin-bottom: 100px; /* Voegt meer ruimte aan de onderkant toe om overlap te voorkomen */
+    }
+
+    #contact-form {
+        width: 100%;
+    }
+    .footer {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        position: relative; /* Changed from fixed */
+        margin-top: 175px;
+    }
+    .feedback-input, [type="submit"] {
+        font-size: 16px; /* Adjust the size for better readability on smaller screens */
+        padding: 10px;
+    }
+}
