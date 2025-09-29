@@ -119,41 +119,22 @@
         </project>
         <!--docs-->
         <project>
-            <title>test</title>
-            <description>test</description>
+            <title>Evolution of Ages </title>
+            <description>Dit is een gamedesigndocument gemaakt als een opdracht voor mijn MBO4-opleiding aan Noorderpoort</description>
+            <engine>./img/Other/empty.png</engine>
             <category>documents</category>
-            <engine>./img/Other/empty.png</engine>
-            <cover>./img/Other/blackplaceholder.png</cover>
+            <cover>./img/Other/evelutiuon of ages.webp</cover>
             <images>
                 <!-- Assuming no specific images are provided as they are listed null -->
             </images>
             <badges>
                 <badge color="#970093">School</badge>
-                <badge color="#0dc808">W.I.P.</badge>
             </badges>
             <links>
-
-
+                <pdf>./PDF/Game Concept Document v3.pdf</pdf>
             </links>
         </project>
-        <project>
-            <title>test</title>
-            <description>test</description>
-            <category>art</category>
-            <engine>./img/Other/empty.png</engine>
-            <cover>./img/Other/blackplaceholder.png</cover>
-            <images>
-                <!-- Assuming no specific images are provided as they are listed null -->
-            </images>
-            <badges>
-                <badge color="#970093">School</badge>
-                <badge color="#0dc808">W.I.P.</badge>
-            </badges>
-            <links>
-
-
-            </links>
-        </project>
+       <!--Art-->
 
         <!-- Additional projects can be added here -->
     </projects>

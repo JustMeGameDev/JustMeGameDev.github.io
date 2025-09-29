@@ -1,127 +1,104 @@
+/* ================================
+   DEVLOG PAGE
+   - Header looks like the other pages (uses style.css visuals)
+   - We DO NOT override #starry-sky here (stars stay working)
+   ================================ */
 
-#starry-sky{
-    z-index: -10;
-    position: page;
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
+/* Let content sit below the fixed header from style.css */
+body {
+    padding-top: 100px; /* adjust if your header height changes */
 }
-body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
+
+/* ---- Header alignment (same as style.css combo) ---- */
+/* Title LEFT, nav CENTER, language flags RIGHT */
+.site-header .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    background-color: black;
-    overflow-y: auto;
-    overflow-x: hidden;
-    color: white;
-    font-family: "Source Code Pro", monospace;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.site-title {
+    margin: 0;
+    text-align: left;
+    flex: 0 0 auto;
+}
+
+.site-nav {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.site-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
+
+.site-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+.site-nav ul li a:hover { text-decoration: underline; }
+
+/* Language flags on the right */
+.language-switcher {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.language-switcher .lang-btn img {
+    width: 40px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Optional: header tooltip behavior matches other pages; visuals come from style.css */
+.header-tooltip { pointer-events: none; }
+
+/* ---- Devlog-specific layout ---- */
 .api-wrapper {
     display: flex;
-    justify-content: space-evenly; /* Centers children horizontally */
-    align-items: center; /* Centers children vertically */
-    width: 100%; /* Full width of the container */
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    flex-grow: 1; /* Allow the wrapper to grow to use available space */
-    z-index: 1; /* Higher z-index than the background */
-    min-height: 100vh; /* Minimum height to take full viewport height if content is less */
+    min-height: 60vh;
 }
 
+.column {
+    margin: 0 15px;
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.bluesky-post {
+    border-bottom: 1px solid #4CAF50;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.Youtube-Video { margin-bottom: 20px; border-radius: 15px; }
+
+/* Footer follows normal flow under content */
 .footer {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    position: relative; /* Changed from fixed */
+    position: relative;
 }
 
-
-.Youtube-Video{
-    margin-bottom: 20px;
-    border-radius: 15px;
-}
-
-.column {
-    margin: 0px 15px;
-    flex: 1; /* Grow each column equally */
-    padding: 10px; /* Space inside the column */
-    box-sizing: border-box; /* Include padding in width calculation */
-    overflow-y: auto;
-    /* Optional: add background color here if needed */
-}
-@media (max-width: 768px) {
-    .devlog-entry {
-        padding: 10px; /* Reduce padding for better fit */
-        font-size: 16px;
-    }
-    iframe {
-        width: 100%;
-        height: auto; /* Ensure YouTube videos resize properly */
-    }
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Show the hamburger menu button */
-        background: none;
-        border: none;
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-        padding-right: 55px;
-    }
-
-    #nav-images {
-        display: none; /* Hide image-based navigation on mobile */
-    }
-
-    #nav-text {
-        display: none; /* Initially hide text navigation; show only when toggled */
-        flex-direction: column; /* Stack links vertically */
-        align-items: flex-start;
-        background-color: #202020; /* Background to differentiate */
-        width: 100%;
-        padding: 15px;
-        position: absolute;
-        top: 50px; /* Adjust for header height */
-        left: 0;
-        z-index: 1000;
-    }
-
-    #nav-text.open {
-        display: block; /* Show text navigation when the menu is open */
-    }
-
-    .header-tooltip {
-        display: none; /* Hide tooltip on mobile */
-    }
-
-    .header-img {
-        height: 20px; /* Smaller header images for mobile */
-    }
-
-    body, html {
-        font-size: 90%; /* Smaller text size for mobile */
-    }
-
-    /* Add Bullet Points for Mobile Links */
-    #nav-text ul li a {
-        text-decoration: none;
-        color: white;
-    }
-
-    #nav-text.current-page {
-        color: lightslategray; /* Highlight current page link in mobile menu */
-        font-weight: bold;
-    }
-
-    #nav-text ul li a:hover {
-        text-decoration: none;
-        color: mediumpurple;
-    }
-}
+/* ---- Remove old overrides that conflicted with global header/stars ---- */
+/* (Intentionally not redefining #starry-sky or .site-header background here)
+   so the gradient header + fixed starry background from style.css apply. */

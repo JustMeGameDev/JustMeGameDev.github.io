@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: auto;
   width: 100vw;
   margin: 0;
@@ -10,12 +11,18 @@ body, html {
   font-family: "Source Code Pro", monospace;
   overflow-x: hidden;
 }
+main {
+  margin-top: 80px; /* Adjust this value based on your header's height */
+}
 #starry-sky {
   width: 100%;
   height: 100%;
   background-color: black;
-  position: sticky; /* Needed for absolute positioning of stars */
+  position: fixed; /* Changed from sticky to fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
   z-index: -10;
+  overflow: hidden;
 }
 .footer {
   width: 100%;
@@ -35,7 +42,7 @@ body, html {
   width: calc(55px * 1.1); /* Adjust based on your preference */
   height: calc(55px * 1.1);
   border-radius: 50%;
-  background-image: url('/img/solar/sun.png');
+  background-image: url("/img/solar/sun.png");
   background-size: cover;
   background-position: center; /* Ensures the image is centered */
   z-index: 5;
@@ -45,7 +52,7 @@ body, html {
   cursor: pointer;
 }
 .li-img {
-  background-image: url('/img/solar/sun.png');
+  background-image: url("/img/solar/sun.png");
   background-size: cover;
   width: 20px; /* Set your desired width */
   height: 20px; /* Set your desired height */
@@ -92,26 +99,30 @@ body, html {
 
 .planet1 {
   z-index: 4;
-  background-image: url('/img/solar/planet 1.png');
-  width: calc(15px * 1.5); height: calc(15px * 1.5); /* Adjust as needed */
+  background-image: url("/img/solar/planet 1.png");
+  width: calc(15px * 1.5);
+  height: calc(15px * 1.5); /* Adjust as needed */
 }
 
 .planet2 {
   z-index: 3;
-  background-image: url('/img/solar/planet 2.png');
-  width: calc(20px * 1.5); height: calc(20px * 1.5); /* Adjust as needed */
+  background-image: url("/img/solar/planet 2.png");
+  width: calc(20px * 1.5);
+  height: calc(20px * 1.5); /* Adjust as needed */
 }
 
 .planet3 {
   z-index: 2;
-  background-image: url('/img/solar/planet 3.png');
-  width: calc(25px * 1.5); height: calc(25px * 1.5); /* Adjust as needed */
+  background-image: url("/img/solar/planet 3.png");
+  width: calc(25px * 1.5);
+  height: calc(25px * 1.5); /* Adjust as needed */
 }
 
 .planet4 {
   z-index: 1;
-  background-image: url('/img/solar/planet 4.png');
-  width: calc(30px * 1.5); height: calc(30px * 1.5); /* Adjust as needed */
+  background-image: url("/img/solar/planet 4.png");
+  width: calc(30px * 1.5);
+  height: calc(30px * 1.5); /* Adjust as needed */
 }
 
 @keyframes orbit-around-sun {
@@ -128,29 +139,61 @@ body, html {
 }
 
 /* Adjusting margins based on new orbit sizes */
-.orbit:nth-child(2) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
-.orbit:nth-child(3) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
-.orbit:nth-child(4) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
-.orbit:nth-child(5) { width: var(--orbit-size); height: var(--orbit-size); margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1); }
+.orbit:nth-child(2) {
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1);
+}
+.orbit:nth-child(3) {
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1);
+}
+.orbit:nth-child(4) {
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1);
+}
+.orbit:nth-child(5) {
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin: calc(var(--orbit-radius) * -1) 0 0 calc(var(--orbit-radius) * -1);
+}
 
 /* Customizing orbit duration for each planet */
-.orbit:nth-child(2) .planet { animation-duration: 10s; }
-.orbit:nth-child(3) .planet { animation-duration: 12s; }
-.orbit:nth-child(4) .planet { animation-duration: 15s; }
-.orbit:nth-child(5) .planet { animation-duration: 17s; }
-
-.tooltip-area {
-  text-align: center;
-  color: white; /* Text color */
-  padding: 10px; /* Padding for the tooltip content */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional background for visibility */
-  border-radius: 5px; /* Optional rounded corners */
-  min-height: 20px;
-  font-family: "Source Code Pro", monospace;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.orbit:nth-child(2) .planet {
+  animation-duration: 10s;
 }
-.center{
+.orbit:nth-child(3) .planet {
+  animation-duration: 12s;
+}
+.orbit:nth-child(4) .planet {
+  animation-duration: 15s;
+}
+.orbit:nth-child(5) .planet {
+  animation-duration: 17s;
+}
+
+/* Mouse tooltip styles */
+.mouse-tooltip {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid mediumpurple;
+  font-family: "Source Code Pro", monospace;
+  font-size: 14px;
+  pointer-events: none; /* Ensures the tooltip doesn't interfere with mouse events */
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); /* Subtle glow effect */
+  transform: translate(10px, 10px); /* Offset from cursor */
+}
+.center {
   text-align: center;
 }
 .planet-link {
@@ -166,48 +209,60 @@ body, html {
 }
 .header-content {
   display: flex;
-  justify-content: space-between; /* Space between the main elements */
-  align-items: center; /* Align items vertically */
-  width: 99%;
-  padding: 0px 10px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* or whatever max-width you prefer */
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
 
 .site-title {
+  margin: 0;
+  flex: 0 0 auto; /* Don't grow or shrink, use auto basis */
   text-align: left;
+  font-size: 1.5rem;
 }
-
-.header-tooltip{
-  flex: 1;
-  text-align: right;
-  transition: opacity 0.3s ease;
+.site-title a {
+  color: white;
+  text-decoration: none;
+}
+.header-tooltip {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid mediumpurple;
+  font-family: "Source Code Pro", monospace;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
 }
 
 .site-nav ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  list-style: none;
 }
-
 .site-nav li {
   margin: 0 10px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
-
 .header-img {
   height: 50px; /* Adjust height as needed */
   width: auto;
 }
+/* Center-aligned navigation */
 .site-nav {
-  flex: 2; /* Allocates twice the space compared to title and tooltip, centering the nav */
+  flex: 1; /* Allow it to grow and take available space */
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .site-nav ul li a {
@@ -219,15 +274,18 @@ body, html {
 .site-nav ul li a:hover {
   text-decoration: underline; /* Underline on hover for visual feedback */
 }
+/* Header styling with background gradient and transition */
 .site-header {
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0) 100%);
+  transition: background 0.3s ease;
+  padding: 10px 0;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); /* Subtle purple glow */
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Ensures the header spans the full width */
-  z-index: 1001; /* High z-index to ensure it stays on top */
-  background-color: #333; /* Example background color */
+  z-index: 1000;
 }
-
 .header-img:hover::after {
   content: attr(title); /* Display title content as tooltip */
   position: absolute;
@@ -265,7 +323,7 @@ body, html {
   color: white;
   padding: 5px 10px;
   border-radius: 6px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
   z-index: 1000; /* Ensures the tooltip is above other elements */
   opacity: 0;
   visibility: hidden;
@@ -276,12 +334,11 @@ body, html {
   opacity: 1;
   visibility: visible;
 }
-.twitter_api{
-  font-family: 'Source Code Pro', monospace;
+.twitter_api {
+  font-family: "Source Code Pro", monospace;
   text-decoration: none;
   color: white;
 }
-
 
 .social-links {
   text-align: center;
@@ -290,7 +347,7 @@ body, html {
 
 .social-links h2 {
   color: white;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -320,7 +377,7 @@ body, html {
 .social-links i {
   margin-right: 8px;
 }
-.home-page{
+.home-page {
   padding-top: 80px;
 }
 .modal {
@@ -331,17 +388,17 @@ body, html {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   padding-top: 60px;
 }
 
-.modal-content p a{
+.modal-content p a {
   text-decoration: none;
   color: rebeccapurple;
   font-weight: bold;
 }
-.modal-content p a:hover{
+.modal-content p a:hover {
   text-decoration: none;
   color: mediumpurple;
   font-weight: bold;
@@ -411,56 +468,28 @@ body, html {
   }
 }
 
-
-.legend {
-  position: absolute;
-  top: 40%; /* Adjust based on your header */
-  left: 5vw; /* Safe distance from the edge */
-  width: 355px; /* Fixed width */
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-  color: white;
-  padding: 10px;
-  z-index: 10; /* Make sure it's above other elements */
-  border: 2px dotted mediumpurple;
-  border-radius: 15px;
-}
-
-.legend h3 {
-  margin-top: 0;
-  text-align: center;
-  color: #CC6666; /* Golden color for heading to match solar theme */
-}
-
-.legend img {
-  width: 20px; /* Adjust the size as needed */
-  height: 20px; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align with the text */
-  margin-right: 5px; /* Space between the image and text */
-}
-
-.legend ul {
-  list-style-type: none; /* Removes bullets */
-  padding: 0;
-}
-
-.legend li {
-  font-size: 14px; /* Smaller font size for compact look */
-  line-height: 1.5; /* Good line spacing for readability */
-  margin-bottom: 4px; /* Space between items */
-}
-
+/* Update language switcher for header placement */
 .language-switcher {
-  position: fixed;   /* Fixed position relative to the viewport */
-  top: 10px;         /* 10px from the top */
-  right: 10px;       /* 10px from the right */
-  z-index: 1000;     /* Make sure it appears above other content */
+  flex: 0 0 auto; /* Don't grow or shrink, use auto basis */
+  display: flex;
+  align-items: center;
 }
-
+.language-switcher .lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 5px;
+  transition: transform 0.2s ease;
+}
+.language-switcher .lang-btn:hover {
+  transform: scale(1.1);
+}
 .language-switcher a {
-  color: white;      /* Choose a color that fits your design */
+  color: white; /* Choose a color that fits your design */
   text-decoration: none; /* No underlines to keep it clean */
-  padding: 5px;      /* Padding for better clickability */
-  font-size: 16px;   /* Adjust size as needed */
+  padding: 5px; /* Padding for better clickability */
+  font-size: 16px; /* Adjust size as needed */
 }
 
 .language-switcher a:hover {
@@ -472,9 +501,17 @@ body, html {
   background: none;
   cursor: pointer;
 }
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
 
-.lang-btn img {
-  width: 50px;  /* Set the size of the flag images */
+.language-switcher .lang-btn img {
+  width: 60px;
   height: auto;
   border-radius: 5px;
 }
@@ -487,9 +524,34 @@ body, html {
   }
 
   .lang-btn img {
-    width: 25px;  /* Set the size of the flag images */
+    width: 25px; /* Set the size of the flag images */
     height: auto;
     border-radius: 5px;
   }
+}
+
+/* Add this new keyframes animation at the end of your CSS file */
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+}
+
+/* Optional: Add a class for stars with different animation timing */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  z-index: -5;
+  animation: twinkle 2s linear infinite; /* Apply the twinkle animation */
 }
 

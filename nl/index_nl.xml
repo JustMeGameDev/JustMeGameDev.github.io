@@ -8,9 +8,11 @@
     </translation>
     <translation id="legendTitle">Navigatie Legende</translation>
     <translation id="socialLinks">Vind mij ook op</translation>
-    <translation id="sunDescription">Zon: Over Mij</translation>
-    <translation id="planet1Description">Planeet 1: Portfolio</translation>
-    <translation id="planet2Description">Planet 2: Vaardigheden &amp; Technologieën</translation>
-    <translation id="planet3Description">Planet 3: Contact &amp; CV</translation>
-    <translation id="planet4Description">Planet 4: Dev-log</translation>
+    <translation id="travelToStar">REIS NAAR DE STER</translation>
+    <translation id="travelToPlanet">REIS NAAR DE PLANEET</translation>
+    <translation id="About me">Over mij</translation>
+    <translation id="Portfolio">Portfolio</translation>
+    <translation id="Skills/Technologies">Vaardigheden &amp; Technologieën</translation>
+    <translation id="Contact/Resume">Contact &amp; CV</translation>
+    <translation id="Dev log">Ontwikkelingslogboek</translation>
 </translations>

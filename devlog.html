@@ -12,69 +12,67 @@
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
 
     <link rel="icon" href="img/solar/planet%204.png">
-
 </head>
 <body id="starry-sky">
 <header class="site-header">
     <div class="header-content">
         <h1 class="site-title">
-            <a href="index.html" id="headerTitle" style="text-decoration: none; color: white">
+            <a href="index.html" id="headerTitle" data-translation-id="headerTitle" style="text-decoration:none;color:white">
                 Star-system: Portfolio-kornee
             </a>
         </h1>
-        <!-- Hamburger Menu Button for Mobile Devices -->
+
+        <!-- Mobile menu button -->
         <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
-        <!-- Image-based Navigation for Widescreen -->
+
+        <!-- Image nav (desktop) -->
         <nav class="site-nav" id="nav-images">
             <ul>
-                <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
-                <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
-                <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
-                <li><a href="devlog.html"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log"></a></li>
+                <li><a href="index.html" class="nav-link" data-page="index"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
+                <li><a href="about.html" class="nav-link" data-page="about"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
+                <li><a href="portfolio.html" class="nav-link" data-page="portfolio"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
+                <li><a href="skills.html" class="nav-link" data-page="skills"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
+                <li><a href="contact.html" class="nav-link" data-page="contact"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
+                <li><a href="devlog.html" class="nav-link" data-page="devlog"><img src="./img/solar/planet%204.png" class="header-img" title="Dev log" data-translation-id="tooltipDevLog"></a></li>
             </ul>
         </nav>
-        <!-- Text-based Navigation for Mobile -->
-        <nav class="site-nav" id="nav-text">
-            <ul>
-                <li><a href="index.html" class="nav-link">• System Overview</a></li>
-                <li><a href="about.html" class="nav-link">• About Me</a></li>
-                <li><a href="portfolio.html" class="nav-link">• Portfolio</a></li>
-                <li><a href="skills.html" class="nav-link">• Skills & Technologies</a></li>
-                <li><a href="contact.html" class="nav-link">• Contact & Resume</a></li>
-                <li><a href="devlog.html" class="nav-link">• Dev Log</a></li>
-            </ul>
-        </nav>
+        <!-- Tooltip Element for Widescreen -->
+        <div class="header-tooltip" id="header-tooltip"></div>
+        <div class="language-switcher">
+            <button id="switchToEnglish" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
+            <button id="switchToDutch" class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
+        </div>
     </div>
+    <!-- Put the language switcher INSIDE the header -->
+
+
 </header>
-
-<div class="language-switcher" style="top: 90px; right: 30px">
-    <button id="switchToEnglish" class="lang-btn">
-        <img src="./img/Other/gb.svg" alt="English">
-    </button>
-    <button id="switchToDutch" class="lang-btn">
-        <img src="./img/Other/nl.svg" alt="Nederlands">
-    </button>
-</div>
-    <div class="api-wrapper">
-    <div class="column" style="border: #fd0000 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center"><h2 style="text-align: center; margin-bottom: 50px">N/A</h2>    <!-- Container for YouTube videos -->
-        <div id="youtube-videos"></div></div>
-        <div class="column" style="border: #1d9aee 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center"><h2 style="text-align: center; margin-bottom: 50px">Twitter / X</h2><a class="twitter-timeline" data-chrome="nofooter noheader transparent" data-width="1000" data-height="1100" data-dnt="true" data-theme="dark" href="https://twitter.com/KorneeHartlief?ref_src=twsrc%5Etfw">Loading plase wait</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-
-        <div class="column" style="border: mediumpurple 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center"><h2 style="text-align: center; margin-bottom: 50px">N/A</h2></div>
+<div class="api-wrapper">
+    <div class="column" style="border: #fd0000 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center">
+        <h2 style="text-align: center; margin-bottom: 50px">N/A</h2>
+        <!-- Container for YouTube videos -->
+        <div id="youtube-videos"></div>
     </div>
-
-
+    <div class="column" style="border: #1d9aee 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center">
+        <h2 style="text-align: center; margin-bottom: 50px">Twitter / X</h2>
+        <a class="twitter-timeline" data-chrome="nofooter noheader transparent" data-width="1000" data-height="1100" data-dnt="true" data-theme="dark" href="https://twitter.com/KorneeHartlief?ref_src=twsrc%5Etfw">Loading please wait</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="column" style="border: mediumpurple 2px dotted; border-radius: 15px; width: 150px; max-height: 800px; align-content: center">
+        <h2 style="text-align: center; margin-bottom: 50px">Bluesky</h2>
+        <div id="bluesky-feed">Loading Bluesky feed...</div>
+    </div>
+</div>
 <div class="footer">
     <div class="social-links">
-        <h2 id="socialLinks">Find me on</h2>
+        <h2 id="socialLinks"></h2>
         <ul>
             <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
             <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
             <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
             <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
             <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+            <li><a href="https://bsky.app/profile/korneehartlief.bsky.social" target="_blank"><i class="fa-brands fa-square-bluesky"></i>Bluesky</a></li>
 
         </ul>
     </div>
@@ -82,12 +80,12 @@
     <h6 style="margin-left: 15px; margin-right: 15px" id="footerDisclaimer">
         Disclaimer<br>
         This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site.<br>
-        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">Here</a>. Upon verification of your claim, I will promptly remove the asset in question.<br>
+        If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form <a href="contact.html#ContactForm">here</a>. Upon verification of your claim, I will promptly remove the asset in question.<br>
         All rights reserved for my original assets and content.<br>2023-<span id="currentYear"></span> Kornee Hartlief. &copy;
     </h6>
     </p>
 </div>
-</body>
-</html>
 <script src="script.js"></script>
 <script src="devlog.js"></script>
+</body>
+</html>

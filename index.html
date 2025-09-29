@@ -7,10 +7,46 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./img/solar/spaceship.png">
     <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <style>
+        .index-page-header {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Existing styles remain unchanged */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-switcher .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .language-switcher .lang-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .language-switcher .lang-btn img {
+            width: 60px;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body id="starry-sky" class="home-page">
-<div class="language-switcher">
+<div class="language-switcher index-page-header">
     <button id="switchToEnglish" class="lang-btn" onclick="loadLanguage('en')">
         <img src="./img/Other/gb.svg" alt="English">
     </button>
@@ -28,25 +64,19 @@
             <div class="planet planet1" data-name="Portfolio" data-page="portfolio" onclick="showPage(this)"></div>
         </div>
         <div class="orbit">
-            <div class="planet planet2" data-name="Skills & Technologies" data-page="skills" onclick="showPage(this)"></div>
+            <div class="planet planet2" data-name="Skills/Technologies" data-page="skills" onclick="showPage(this)"></div>
         </div>
         <div class="orbit">
-            <div class="planet planet3" data-name="Contact & Resume" data-page="contact" onclick="showPage(this)"></div>
+            <div class="planet planet3" data-name="Contact/Resume" data-page="contact" onclick="showPage(this)"></div>
         </div>
         <div class="orbit">
             <div class="planet planet4" data-name="Dev log" data-page="devlog" onclick="showPage(this)"></div>
         </div>
     </div>
-    <div class="legend">
-        <h3 id="legendTitle">Navigation Legend</h3>
-        <ul>
-            <li><img src="/img/solar/sun.png" alt="Sun"> <span id="sunDescription"></span></li>
-            <li><img src="/img/solar/planet 1.png" alt="Planet 1"> <span id="planet1Description"></span></li>
-            <li><img src="/img/solar/planet 2.png" alt="Planet 1"> <span id="planet2Description"></span></li>
-            <li><img src="/img/solar/planet 3.png" alt="Planet 1"> <span id="planet3Description"></span></li>
-            <li><img src="/img/solar/planet 4.png" alt="Planet 1"> <span id="planet4Description"></span></li>
-        </ul>
-    </div>
+    <!-- Legend removed -->
+
+    <!-- Add a tooltip div that will follow the mouse -->
+    <div id="mouse-tooltip" class="mouse-tooltip"></div>
 
     <div class="footer">
         <div class="social-links">
@@ -55,8 +85,9 @@
                 <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
                 <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
                 <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-twitter"></i> Twitter/"X"</a></li>
                 <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                <li><a href="https://bsky.app/profile/korneehartlief.bsky.social" target="_blank"><i class="fa-brands fa-square-bluesky"></i>Bluesky</a></li>
 
             </ul>
         </div>
@@ -69,7 +100,8 @@
         </h6>
     </div>
 </div>
-    <script src="/script.js"></script>
+<script src="/script.js"></script>
 
 </body>
 </html>
+
