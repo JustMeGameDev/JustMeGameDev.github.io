@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="portfolioTitle">Planet: Portfolio</translation>
+    <translation id="catagories">Select a category to see related projects</translation>
+    <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. While I strive to use only my own resources or those freely available for use, I do not claim ownership of all resources shown on this site. If you are the rightful owner of any material displayed on this website and believe it has been used without your permission, please contact me via the contact form. After verifying your claim, I will immediately remove the relevant material. All rights reserved for my original materials and content. Kornee Hartlief © {year}</translation>
+    <translation id="socialLinks">Find me on</translation>
+    <translation id="headerTitle">Solar System: Portfolio-kornee</translation>
+    <translation id="tooltipSystemOverview">Solar system overview</translation>
+    <translation id="tooltipAboutMe">About me</translation>
+    <translation id="tooltipPortfolio">Portfolio</translation>
+    <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
+    <translation id="tooltipContactResume">Contact &amp; Resume</translation>
+    <translation id="tooltipDevLog">Dev log</translation>
+
+    <projects>
+        <project>
+            <title>Long Live Picho</title>
+            <category>games</category>
+            <description>This game is a prototype made in a weekend by 4 students from the MBO level 4 game development course. We are proud of the gameplay, but visually it could be improved. It won an award for its unique mechanics (Global Game Jam Groningen Award "Great Interaction" for most unique game mechanic/control).</description>
+            <badges>
+                <badge color="#f39c12">Award Winning</badge>
+                <badge color="#12f3bf">Game Jam</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/logo.png</cover>
+            <images>
+                <image>./img/Other/award_01.jpg</image>
+                <image>./img/Other/award_02.jpg</image>
+            </images>
+            <links>
+                <github>https://github.com/Klaas18/Global_Game_Jam_2023</github>
+                <itch>https://kornee-hartlief.itch.io/long-live-picho</itch>
+            </links>
+        </project>
+
+        <project>
+            <title>Before Nightfall</title>
+            <description>About the game Before Nightfall (BNF for short). This game is a prototype made for my studies. BNF is a Tower Defense game in a fantasy setting where you play as a carpenter hired to defend someone’s village or castle. There are multiple creatures such as ogres, giants, demons, and bosses like slimes or dragons. For each completed contract, you earn gems that can be used to upgrade the basic towers and abilities. The game features three modes:
+                #1 Career Mode: complete contracts to earn gems and unlock harder contracts, etc.
+                #2 Endless Mode: play on a randomly generated map and survive as many waves as possible.
+                #3 Custom Mode: set the map generator parameters yourself (map size, seed, number of waves, difficulty).
+            </description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Before Nightfall.png</cover>
+            <images>
+                <image>./img/Other/BNF_SS1.png</image>
+                <image>./img/Other/BNF_SS2.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/Tower-defance</github>
+            </links>
+        </project>
+
+        <project>
+            <title>Big Cheese Donte</title>
+            <description>This is an RPG prototype set in a 1920s Chicago mafia setting. You play as the son of a lower-ranked mob boss who asks you to prove you’re capable of taking over his empire.
+
+                You must gather henchmen and battle rival crime bosses in the city to take over their territories. The ultimate goal is to overthrow your father’s greatest rival, Big Faluci.
+
+                Once you win that fight, you earn the name "Big Cheese Donte" and become the new underworld king of the city!</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/logo_big_cheese.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+            </links>
+        </project>
+
+        <project>
+            <title>Zombie Survivors</title>
+            <description>Zombie Survivors is a game inspired by Vampire Survivors. Its controls are somewhat unconventional, as it was developed for an arcade machine at my school.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Zs.png</cover>
+            <images>
+                <image>./img/Other/bigcheese_code_snipit.png</image>
+                <image>./img/Other/blackplaceholder.png</image>
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#d60000">Dropped</badge>
+            </badges>
+            <links>
+                <github>https://github.com/JustMeGameDev/pokeclone</github>
+                <itch>https://kornee-hartlief.itch.io/zombie-survivors</itch>
+            </links>
+        </project>
+
+        <project>
+            <title>Time Puzzler</title>
+            <description>For the Noorderpoort Game Jam 2024, I created this VR game together with three friends and fellow students in just 4 days. It was our first serious attempt at a VR game, and we won two prizes: Overall Winner (first place/most votes) and Most Complete Game. We would like to continue working on it, but we need to find the time.</description>
+            <category>games</category>
+            <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
+            <cover>./img/Other/Time Puzz.webp</cover>
+            <images>
+                <!-- No additional images listed -->
+            </images>
+            <badges>
+                <badge color="#f39c12">Award Winning</badge>
+                <badge color="#12f3bf">Game Jam</badge>
+                <badge color="#fff500">Beta Stage</badge>
+                <badge color="#ff5106">On Hold</badge>
+            </badges>
+            <links>
+                <github>https://github.com/itsfinn2004/VrJam/tree/main</github>
+            </links>
+        </project>
+
+        <project>
+            <title>Evolution of Ages</title>
+            <description>This is a game design document created as an assignment for my MBO4 study at Noorderpoort.</description>
+            <engine>./img/Other/empty.png</engine>
+            <category>documents</category>
+            <cover>./img/Other/evelutiuon of ages.webp</cover>
+            <images>
+                <!-- None -->
+            </images>
+            <badges>
+                <badge color="#970093">School</badge>
+            </badges>
+            <links>
+                <pdf>./PDF/Game Concept Document v3.pdf</pdf>
+            </links>
+        </project>
+    </projects>
+</translations>

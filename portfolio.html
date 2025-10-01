@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title id="portfolioTitle">Planet: Portfolio</title>
+
+    <!-- Use ONLY style.css (single CSS file for this page) -->
+    <link rel="stylesheet" href="style.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/solar/planet%201.png">
+    <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="starry-sky" class="portfolio-page" style="    overflow: hidden;
+">
+<div class="portfolio-scroll-wrapper">
+
+    <!-- ===== Header (copied from contact.html) ===== -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="index.html" id="headerTitle" data-translation-id="headerTitle" style="text-decoration:none;color:white">
+                    Star-system: Portfolio-kornee
+                </a>
+            </h1>
+
+            <!-- Mobile menu button -->
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+            <!-- Image nav (desktop) -->
+            <nav class="site-nav" id="nav-images">
+                <ul>
+                    <li><a href="index.html" class="nav-link" data-page="index"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview" data-translation-id="tooltipSystemOverview"></a></li>
+                    <li><a href="about.html" class="nav-link" data-page="about"><img src="./img/solar/sun.png" class="header-img" title="About me" data-translation-id="tooltipAboutMe"></a></li>
+                    <li><a href="portfolio.html" class="nav-link" data-page="portfolio"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio" data-translation-id="tooltipPortfolio"></a></li>
+                    <li><a href="skills.html" class="nav-link" data-page="skills"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies" data-translation-id="tooltipSkillsTechnologies"></a></li>
+                    <li><a href="contact.html" class="nav-link" data-page="contact"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume" data-translation-id="tooltipContactResume"></a></li>
+                </ul>
+            </nav>
+
+            <div class="header-tooltip" id="header-tooltip"></div>
+
+            <div class="language-switcher">
+                <button id="switchToEnglish" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
+                <button id="switchToDutch"  class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
+            </div>
+        </div>
+    </header>
+    <!-- ===== /Header ===== -->
+
+    <!-- ===== Content ===== -->
+    <main class="page-container" style="padding-top: 50px; ">
+        <section class="portfolio-intro">
+            <h2 id="catagories">Select a category to see related projects</h2>
+            <div class="portfolio-filters">
+                <button class="chip is-active" data-filter="all">All</button>
+                <button class="chip" data-filter="games">Games/Demos</button>
+                <button class="chip" data-filter="documents">Documents</button>
+                <button class="chip" data-filter="art">Art</button>
+            </div>
+        </section>
+
+        <!-- 2-column grid -->
+        <section id="projectsGrid" class="projects-grid" aria-live="polite">
+            <!-- cards will be injected here -->
+        </section>
+
+        <!-- Project Card Maker -->
+
+    </main>
+    <!-- ===== /Content ===== -->
+
+    <!-- ===== Footer (same pattern as Contact) ===== -->
+    <div class="footer">
+        <div class="social-links">
+            <h2 id="socialLinks">Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+                <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                <li><a href="https://bsky.app/profile/korneehartlief.bsky.social" target="_blank"><i class="fa-brands fa-square-bluesky"></i>Bluesky</a></li>
+            </ul>
+        </div>
+        <h6 style="margin-left: 15px; margin-right: 15px" id="footerDisclaimer">
+            Disclaimer… 2023-<span id="currentYear"></span> Kornee Hartlief. &copy;
+        </h6>
+    </div>
+</div>
+
+<!-- ===== Image Carousel Modal ===== -->
+<div id="carouselModal" class="carousel-modal" aria-hidden="true">
+    <button class="carousel-close" aria-label="Close">&times;</button>
+    <button class="carousel-prev"  aria-label="Previous">&#10094;</button>
+    <img id="carouselImage" alt="" />
+    <button class="carousel-next"  aria-label="Next">&#10095;</button>
+    <div id="carouselCounter" class="carousel-counter"></div>
+</div>
+
+<!-- Your existing site scripts -->
+<script src="script.js"></script>
+
+<!-- Portfolio-only script -->
+<script>
+    (() => {
+        // --- XML loading: try /nl/portfolio_nl.xml or root fallback ---
+        const NL_PATHS = ["/nl/portfolio_nl.xml", "portfolio_nl.xml"];
+        const EN_PATHS = ["/en/portfolio_en.xml", "portfolio_en.xml"];
+
+        const grid = document.getElementById("projectsGrid");
+        const chips = document.querySelectorAll(".chip");
+        let xmlDoc = null;          // active XML document (DOM)
+        let activeLang = (localStorage.getItem("userLang") || "en");
+        let projectsCache = [];     // normalized projects for filter
+        let pendingAdditions = [];  // new projects added via the maker (for XML download)
+
+        // helpers
+        const fetchFirstOK = async (urls) => {
+            for (const u of urls) {
+                try {
+                    const res = await fetch(u, { cache: "no-store" });
+                    if (res.ok) return res.text();
+                } catch(_) {}
+            }
+            throw new Error("XML not found");
+        };
+
+        const loadPortfolioXML = async () => {
+            const paths = activeLang === "nl" ? NL_PATHS : EN_PATHS;
+            const text = await fetchFirstOK(paths);
+            const parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text, "application/xml");
+            return xmlDoc;
+        };
+
+        const getText = (parent, tag) => {
+            const node = parent.querySelector(tag);
+            return node ? (node.textContent || "").trim() : "";
+        };
+
+        const getList = (parent, tag) => Array.from(parent.querySelectorAll(tag)).map(n => (n.textContent || "").trim()).filter(Boolean);
+
+        const normalizeProjects = () => {
+            const nodes = xmlDoc.querySelectorAll("projects > project");
+            const arr = [];
+            nodes.forEach(p => {
+                const title = getText(p, "title");
+                const category = getText(p, "category") || "games";
+                const description = getText(p, "description");
+                const engine = getText(p, "engine");
+                const cover  = getText(p, "cover");
+                const images = getList(p, "images > image");
+                const badges = Array.from(p.querySelectorAll("badges > badge")).map(b => ({
+                    text: b.textContent.trim(),
+                    color: b.getAttribute("color") || "#888"
+                }));
+                const links = {
+                    github: getText(p, "links > github"),
+                    itch:   getText(p, "links > itch"),
+                    pdf:    getText(p, "links > pdf"),
+                };
+                arr.push({ title, category, description, engine, cover, images, badges, links });
+            });
+            return arr;
+        };
+// badges
+        const badgeHTML = (b) =>
+            `<span class="badge" style="--badge-color:${b.color}">${b.text}</span>`;
+
+// links
+        const linkHTML = (links) => {
+            const parts = [];
+            if (links.github)
+                parts.push(
+                    `<a href="${links.github}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>`
+                );
+            if (links.itch)
+                parts.push(
+                    `<a href="${links.itch}" target="_blank" rel="noopener"><i class="fab fa-itch-io"></i> itch.io</a>`
+                );
+            if (links.pdf)
+                parts.push(
+                    `<a href="${links.pdf}" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> PDF</a>`
+                );
+            return parts.join("");
+        };
+
+// card
+        const cardHTML = (p, idx) => `
+  <article class="project-card" data-category="${p.category}">
+    <div class="project-media">
+      <button class="cover-btn" data-idx="${idx}" ${p.images.length ? "" : "disabled"} aria-label="Open images">
+        <img src="${p.cover}" alt="${p.title} cover">
+      </button>
+      ${p.engine ? `<img class="engine-icon" src="${p.engine}" alt="engine">` : ""}
+    </div>
+    <div class="project-body">
+      <h3 class="project-title">${p.title}</h3>
+      <div class="badges">${p.badges.map(badgeHTML).join("")}</div>
+      <p class="project-desc">${p.description}</p>
+      <div class="project-links">${linkHTML(p.links)}</div>
+    </div>
+  </article>
+`;
+
+
+  const render = (filter = "all") => {
+    const list = (filter === "all") ? projectsCache : projectsCache.filter(p => p.category === filter);
+    grid.innerHTML = list.map((p, i) => cardHTML(p, i)).join("");
+  };
+
+  // image carousel
+  const modal = document.getElementById("carouselModal");
+  const modalImg = document.getElementById("carouselImage");
+  const counter = document.getElementById("carouselCounter");
+  const btnClose = modal.querySelector(".carousel-close");
+  const btnPrev  = modal.querySelector(".carousel-prev");
+  const btnNext  = modal.querySelector(".carousel-next");
+  let currentImages = [];
+  let currentIdx = 0;
+
+  const openCarousel = (images) => {
+    if (!images || !images.length) return;
+    currentImages = images;
+    currentIdx = 0;
+    updateCarousel();
+    modal.setAttribute("aria-hidden","false");
+    modal.style.display = "flex";
+  };
+  const closeCarousel = () => {
+    modal.setAttribute("aria-hidden","true");
+    modal.style.display = "none";
+    currentImages = [];
+  };
+  const updateCarousel = () => {
+    modalImg.src = currentImages[currentIdx];
+    counter.textContent = (currentIdx+1) + " / " + currentImages.length;
+  };
+  btnClose.addEventListener("click", closeCarousel);
+  btnPrev.addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx-1+currentImages.length)%currentImages.length; updateCarousel(); });
+  btnNext.addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx+1)%currentImages.length; updateCarousel(); });
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeCarousel(); });
+  window.addEventListener("keydown", (e) => { if (modal.style.display==="flex" && e.key==="Escape") closeCarousel(); });
+
+  // filter chips
+  chips.forEach(ch => ch.addEventListener("click", () => {
+    chips.forEach(c => c.classList.remove("is-active"));
+    ch.classList.add("is-active");
+    render(ch.dataset.filter);
+  }));
+
+  // load on start
+  const init = async () => {
+    activeLang = (localStorage.getItem("userLang") || "en");
+    try {
+      await loadPortfolioXML();                              // load XML
+      projectsCache = normalizeProjects();                   // normalize
+      render("all");                                        // draw
+      // delegate cover clicks
+      grid.addEventListener("click", (e) => {
+        const btn = e.target.closest(".cover-btn");
+        if (!btn || btn.disabled) return;
+        const idx = Number(btn.dataset.idx);
+        openCarousel(projectsCache[idx].images);
+      });
+    } catch (err) {
+      grid.innerHTML = '<p style="opacity:.8">Failed to load portfolio data.</p>';
+      console.error(err);
+    }
+  };
+  init();
+
+  // --- Project Card Maker: adds to preview + prepares updated XML for download ---
+  const form = document.getElementById("cardMakerForm");
+  const downloadBtn = document.getElementById("downloadUpdatedXml");
+
+  // build <project> node from form
+  const buildProjectNode = (doc, data) => {
+    const el = doc.createElement("project");
+    const t = (name, text) => { const n = doc.createElement(name); n.textContent = text; return n; };
+
+    el.appendChild(t("title", data.title));
+    el.appendChild(t("description", data.description));
+    el.appendChild(t("category", data.category));
+    el.appendChild(t("engine", data.engine || ""));
+    el.appendChild(t("cover", data.cover));
+
+    const images = doc.createElement("images");
+    (data.images || []).forEach(src => { const i = doc.createElement("image"); i.textContent = src; images.appendChild(i); });
+    el.appendChild(images);
+
+    const badges = doc.createElement("badges");
+    (data.badges || []).forEach(b => { const bd = doc.createElement("badge"); bd.setAttribute("color", b.color); bd.textContent = b.text; badges.appendChild(bd); });
+    el.appendChild(badges);
+
+    const links = doc.createElement("links");
+    if (data.github) { const n = doc.createElement("github"); n.textContent = data.github; links.appendChild(n); }
+    if (data.itch)   { const n = doc.createElement("itch");   n.textContent = data.itch;   links.appendChild(n); }
+    if (data.pdf)    { const n = doc.createElement("pdf");    n.textContent = data.pdf;    links.appendChild(n); }
+    el.appendChild(links);
+
+    return el;
+  };
+
+  const parseBadges = (raw) =>
+    raw.split(/\n/).map(s => s.trim()).filter(Boolean).map(line => {
+      const [text, color] = line.split("|");
+      return { text: (text||"").trim(), color: (color||"#888").trim() };
+    });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const data = {
+      title: fd.get("title").trim(),
+      category: fd.get("category"),
+      description: fd.get("description").trim(),
+      engine: (fd.get("engine")||"").trim(),
+      cover: fd.get("cover").trim(),
+      images: (fd.get("images")||"").split(",").map(s => s.trim()).filter(Boolean),
+      badges: parseBadges(fd.get("badges")||""),
+      github: (fd.get("github")||"").trim(),
+      itch:   (fd.get("itch")||"").trim(),
+      pdf:    (fd.get("pdf")||"").trim(),
+      langFile: fd.get("langFile") || "nl"
+    };
+
+    // 1) add to in-memory list and re-render
+    const proj = {
+      title: data.title,
+      category: data.category,
+      description: data.description,
+      engine: data.engine,
+      cover: data.cover,
+      images: data.images,
+      badges: data.badges,
+      links: { github: data.github, itch: data.itch, pdf: data.pdf }
+    };
+    projectsCache.unshift(proj);
+    render(document.querySelector(".chip.is-active")?.dataset.filter || "all");
+
+    // 2) append to XML DOM (in memory) for later download
+    const projectsRoot = xmlDoc.querySelector("projects");
+    projectsRoot.insertBefore(buildProjectNode(xmlDoc, data), projectsRoot.firstChild);
+    pendingAdditions.push(data);
+
+    alert("Added to preview. Click “Download updated XML” to save the file.");
+  });
+
+  // download updated XML
+  downloadBtn.addEventListener("click", () => {
+    if (!xmlDoc) return;
+
+    // pretty print
+    const serializer = new XMLSerializer();
+    let xmlStr = serializer.serializeToString(xmlDoc);
+
+    // Add XML declaration if missing
+    if (!xmlStr.startsWith("<?xml")) {
+      xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\\n' + xmlStr;
+    }
+
+    // choose filename by radio
+    const lang = (new FormData(form).get("langFile")) || "nl";
+    const fname = lang === "nl" ? "portfolio_nl.xml" : "portfolio_en.xml";
+
+    const blob = new Blob([xmlStr], { type: "application/xml" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fname;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  // keep language in sync with your global switcher
+  document.getElementById("switchToEnglish").addEventListener("click", () => { activeLang="en"; init(); });
+  document.getElementById("switchToDutch").addEventListener("click",  () => { activeLang="nl"; init(); });
+})();
+</script>
+</body>
+</html>

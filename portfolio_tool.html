@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Portfolio XML – Local Card Maker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Optional: drop this <link> if you want totally offline; styles are inline below -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#0b0b10; --fg:#fff; --muted:#cfcfd6; --line:#2a2a36;
+            --accent:#CC6666; --chip:#ffffff1a; --card:#ffffff10; --card2:#ffffff18;
+        }
+        * { box-sizing:border-box }
+        html, body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:"Source Code Pro",monospace }
+        .wrap { max-width:1200px; margin:40px auto; padding:0 16px }
+        header { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:16px }
+        header h1 { font-size:1.4rem; margin:0 }
+        .bar { display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+        .btn, button, input[type="file"]::file-selector-button {
+            background:var(--chip); color:var(--fg); border:1px solid #ffffff40; padding:8px 12px; border-radius:10px; cursor:pointer
+        }
+        .btn.secondary { background:transparent }
+        .btn:disabled { opacity:.6; cursor:default }
+        .row { display:grid; grid-template-columns: 1fr 1fr; gap:16px }
+        @media (max-width: 900px){ .row { grid-template-columns: 1fr } }
+
+        .panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px }
+        .panel h2 { margin:0 0 10px; font-size:1.1rem }
+        label { display:block; font-size:.95rem; margin-bottom:8px }
+        input[type="text"], textarea, select {
+            width:100%; padding:10px; border-radius:10px; border:2px solid var(--accent);
+            background:transparent; color:var(--fg)
+        }
+        textarea { resize:vertical }
+
+        .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:12px }
+        .grid-span { grid-column: 1 / -1 }
+
+        .list { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; margin-top:12px }
+        @media (max-width: 900px){ .list { grid-template-columns:1fr } }
+        .card {
+            background:var(--card2); border:1px solid var(--line); border-radius:14px; padding:14px;
+            display:grid; grid-template-columns: 160px 1fr; gap:14px;
+        }
+        @media (max-width: 700px){ .card { grid-template-columns:1fr } }
+        .card img { width:100%; border-radius:12px; display:block }
+        .badges { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px }
+        .badge { border:1px solid currentColor; border-radius:10px; padding:2px 8px; font-size:.85rem }
+        .muted { color:var(--muted) }
+        .note { opacity:.85; font-size:.9rem }
+        .hr { height:1px; background:var(--line); margin:14px 0 }
+
+        /* drag & drop */
+        .dropzone { border:2px dashed #ffffff3a; border-radius:12px; padding:14px; text-align:center }
+        .dropzone.drag { background:#ffffff0a }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <h1>Portfolio Card Maker (Local)</h1>
+        <div class="bar">
+            <label class="btn secondary">
+                <input id="fileInput" type="file" accept=".xml" hidden />
+                Load XML…
+            </label>
+            <button id="startNew" class="btn secondary">Start empty XML</button>
+            <button id="downloadXML" class="btn" disabled>Download NL (portfolio_nl.xml)</button>
+            <button id="downloadXMLen" class="btn" disabled>Download EN (portfolio_en.xml)</button>
+        </div>
+    </header>
+
+    <div id="dropzone" class="dropzone">
+        Drag &amp; drop your existing <strong>portfolio_nl.xml</strong> or <strong>portfolio_en.xml</strong> here,
+        or use “Load XML…”.<br>
+        <span class="note">This tool never uploads anything; it runs entirely in your browser.</span>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="row">
+        <!-- Form -->
+        <section class="panel">
+            <h2>Create / Edit Project</h2>
+            <form id="maker" autocomplete="off">
+                <div class="grid-2">
+                    <label>Title
+                        <input name="title" type="text" required />
+                    </label>
+                    <label>Category
+                        <select name="category">
+                            <option value="games">games</option>
+                            <option value="documents">documents</option>
+                            <option value="art">art</option>
+                        </select>
+                    </label>
+
+                    <label class="grid-span">Description
+                        <textarea name="description" rows="4" required></textarea>
+                    </label>
+
+                    <label>Engine/Icon URL
+                        <input name="engine" type="text" placeholder="./img/Other/Logo_T1_MadeWith_White_RGB.png" />
+                    </label>
+                    <label>Cover URL
+                        <input name="cover" type="text" placeholder="./img/Other/logo.png" required />
+                    </label>
+
+                    <label class="grid-span">Extra image URLs (comma-separated)
+                        <input name="images" type="text" placeholder="./img/Other/shot1.webp, ./img/Other/shot2.webp" />
+                    </label>
+
+                    <label>GitHub URL
+                        <input name="github" type="text" placeholder="https://github.com/..." />
+                    </label>
+                    <label>itch.io URL
+                        <input name="itch" type="text" placeholder="https://kornee-hartlief.itch.io/..." />
+                    </label>
+                    <label>PDF URL
+                        <input name="pdf" type="text" placeholder="./PDF/file.pdf" />
+                    </label>
+
+                    <label class="grid-span">Badges (one per line, format: <code>Text|#color</code>)
+                        <textarea name="badges" rows="3" placeholder="Award Winning|#f39c12&#10;Game Jam|#12f3bf"></textarea>
+                    </label>
+                </div>
+
+                <div class="bar" style="margin-top:8px">
+                    <button class="btn" type="submit">Add to XML & Preview</button>
+                    <button class="btn secondary" type="reset">Clear form</button>
+                </div>
+
+                <p class="note" style="margin-top:8px">
+                    Tip: after adding several projects, click one of the Download buttons at the top to save the XML.
+                </p>
+            </form>
+        </section>
+
+        <!-- Preview / existing items -->
+        <section class="panel">
+            <h2>Preview <span id="count" class="muted">(0)</span></h2>
+            <div id="list" class="list"></div>
+        </section>
+    </div>
+</div>
+
+<script>
+    (function(){
+        let xmlDoc = null;                 // DOM of the loaded/created XML
+        let projects = [];                 // normalized list for preview
+        const listEl = document.getElementById('list');
+        const countEl = document.getElementById('count');
+        const dlNL = document.getElementById('downloadXML');
+        const dlEN = document.getElementById('downloadXMLen');
+
+        const byTag = (p,t) => (p.querySelector(t)?.textContent || '').trim();
+        const listTag = (p,t) => Array.from(p.querySelectorAll(t)).map(n => (n.textContent||'').trim()).filter(Boolean);
+
+        function normalizeFromXML(){
+            if(!xmlDoc) return [];
+            const nodes = xmlDoc.querySelectorAll('projects > project');
+            const out = [];
+            nodes.forEach(p=>{
+                const badges = Array.from(p.querySelectorAll('badges > badge')).map(b=>({
+                    text: (b.textContent||'').trim(),
+                    color: b.getAttribute('color') || '#888'
+                }));
+                out.push({
+                    title: byTag(p,'title'),
+                    category: byTag(p,'category') || 'games',
+                    description: byTag(p,'description'),
+                    engine: byTag(p,'engine'),
+                    cover: byTag(p,'cover'),
+                    images: listTag(p,'images > image'),
+                    badges,
+                    links: {
+                        github: byTag(p,'links > github'),
+                        itch: byTag(p,'links > itch'),
+                        pdf: byTag(p,'links > pdf'),
+                    }
+                });
+            });
+            return out;
+        }
+
+        function render(){
+            countEl.textContent = `(${projects.length})`;
+            listEl.innerHTML = projects.map(p => `
+        <article class="card">
+          <div><img src="${p.cover}" alt="${p.title} cover"></div>
+          <div>
+            <h3 style="margin:0 0 6px">${p.title}</h3>
+            <div class="badges">
+              ${p.badges.map(b=>`<span class="badge" style="color:${b.color}">${b.text}</span>`).join('')}
+            </div>
+            <p class="muted" style="margin:6px 0 10px">${p.description}</p>
+            <div class="muted" style="font-size:.9rem">
+              ${p.links.github ? `<a href="${p.links.github}" target="_blank" rel="noopener">GitHub</a>` : ''}
+              ${p.links.itch ? `&nbsp;•&nbsp;<a href="${p.links.itch}" target="_blank" rel="noopener">itch.io</a>` : ''}
+              ${p.links.pdf ? `&nbsp;•&nbsp;<a href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
+            </div>
+            ${p.images?.length ? `<div class="note" style="margin-top:6px">${p.images.length} extra image(s)</div>` : ''}
+          </div>
+        </article>
+      `).join('');
+        }
+
+        function ensureXMLRoot(){
+            if(xmlDoc?.querySelector('projects')) return;
+            const impl = document.implementation;
+            xmlDoc = impl.createDocument('', '', null);
+            const decl = xmlDoc.createProcessingInstruction('xml','version="1.0" encoding="UTF-8"');
+            xmlDoc.insertBefore(decl, xmlDoc.firstChild);
+            const root = xmlDoc.createElement('projects');
+            xmlDoc.appendChild(root);
+        }
+
+        function buildProjectNode(data){
+            const d = xmlDoc;
+            const el = d.createElement('project');
+            const t = (name, text) => { const n=d.createElement(name); n.textContent = text; return n; };
+
+            el.appendChild(t('title', data.title));
+            el.appendChild(t('description', data.description));
+            el.appendChild(t('category', data.category || 'games'));
+            el.appendChild(t('engine', data.engine || ''));
+            el.appendChild(t('cover', data.cover));
+
+            const images = d.createElement('images');
+            (data.images||[]).forEach(src => { const n=d.createElement('image'); n.textContent = src; images.appendChild(n); });
+            el.appendChild(images);
+
+            const badges = d.createElement('badges');
+            (data.badges||[]).forEach(b => { const n=d.createElement('badge'); n.setAttribute('color', b.color || '#888'); n.textContent = b.text || ''; badges.appendChild(n); });
+            el.appendChild(badges);
+
+            const links = d.createElement('links');
+            if(data.github){ const n=d.createElement('github'); n.textContent = data.github; links.appendChild(n); }
+            if(data.itch){   const n=d.createElement('itch');   n.textContent = data.itch;   links.appendChild(n); }
+            if(data.pdf){    const n=d.createElement('pdf');    n.textContent = data.pdf;    links.appendChild(n); }
+            el.appendChild(links);
+
+            return el;
+        }
+
+        function addFromForm(ev){
+            ev.preventDefault();
+            ensureXMLRoot();
+
+            const fd = new FormData(ev.currentTarget);
+            const badges = (fd.get('badges')||'').split(/\n/)
+                .map(s=>s.trim()).filter(Boolean)
+                .map(line => { const [text, color] = line.split('|'); return { text:(text||'').trim(), color:(color||'#888').trim() }; });
+
+            const data = {
+                title: (fd.get('title')||'').trim(),
+                category: fd.get('category') || 'games',
+                description: (fd.get('description')||'').trim(),
+                engine: (fd.get('engine')||'').trim(),
+                cover: (fd.get('cover')||'').trim(),
+                images: (fd.get('images')||'').split(',').map(s=>s.trim()).filter(Boolean),
+                badges,
+                github: (fd.get('github')||'').trim(),
+                itch: (fd.get('itch')||'').trim(),
+                pdf: (fd.get('pdf')||'').trim(),
+            };
+
+            // Update DOM
+            const root = xmlDoc.querySelector('projects');
+            root.insertBefore(buildProjectNode({
+                ...data,
+                links: undefined // we add links separately above
+            }), root.firstChild);
+
+            // Update preview model
+            projects.unshift({
+                title: data.title, category: data.category, description: data.description,
+                engine: data.engine, cover: data.cover, images: data.images, badges: badges,
+                links: { github: data.github, itch: data.itch, pdf: data.pdf }
+            });
+            render();
+            dlNL.disabled = dlEN.disabled = false;
+            alert('Added to XML (in memory) & preview.');
+            ev.currentTarget.reset();
+        }
+
+        function download(filename){
+            if(!xmlDoc) return;
+            const ser = new XMLSerializer();
+            let xml = ser.serializeToString(xmlDoc);
+            if(!xml.startsWith('<?xml')) xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + xml;
+
+            const blob = new Blob([xml], { type:'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        // UI hooks
+        document.getElementById('maker').addEventListener('submit', addFromForm);
+        dlNL.addEventListener('click', ()=>download('portfolio_nl.xml'));
+        dlEN.addEventListener('click', ()=>download('portfolio_en.xml'));
+
+        // File loader
+        const fileInput = document.getElementById('fileInput');
+        const dropzone = document.getElementById('dropzone');
+        const startNew = document.getElementById('startNew');
+
+        const handleFile = async (file) => {
+            const text = await file.text();
+            const parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text, 'application/xml');
+
+            // If parsing failed (parsererror), start clean
+            if(xmlDoc.querySelector('parsererror')){
+                alert('XML parse error, starting empty document.');
+                xmlDoc = null; ensureXMLRoot();
+            }
+
+            projects = normalizeFromXML();
+            render();
+            dlNL.disabled = dlEN.disabled = false;
+        };
+
+        fileInput.addEventListener('change', (e)=>{
+            const f = e.target.files?.[0]; if(f) handleFile(f);
+            e.target.value = '';
+        });
+
+        ['dragover','dragenter'].forEach(evt => dropzone.addEventListener(evt, (e)=>{e.preventDefault(); dropzone.classList.add('drag');}));
+        ['dragleave','drop'].forEach(evt => dropzone.addEventListener(evt, (e)=>{e.preventDefault(); dropzone.classList.remove('drag');}));
+        dropzone.addEventListener('drop', (e)=>{
+            const f = e.dataTransfer.files?.[0]; if(f) handleFile(f);
+        });
+
+        startNew.addEventListener('click', ()=>{
+            xmlDoc = null; ensureXMLRoot(); projects = []; render();
+            dlNL.disabled = dlEN.disabled = false;
+        });
+
+    })();
+</script>
+</body>
+</html>
