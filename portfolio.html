@@ -106,33 +106,56 @@
 <script src="script.js"></script>
 
 <!-- Portfolio-only script -->
+<!-- Portfolio-only script -->
 <script>
     (() => {
-        // --- XML loading: try /nl/portfolio_nl.xml or root fallback ---
-        const NL_PATHS = ["/nl/portfolio_nl.xml", "portfolio_nl.xml"];
-        const EN_PATHS = ["/en/portfolio_en.xml", "portfolio_en.xml"];
+        // ===== PATHS & LANGUAGE =====
+        // repo-relative (no leading slash, works on GitHub Pages)
+        const NL_PATHS = ["nl/portfolio_nl.xml", "portfolio_nl.xml"];
+        const EN_PATHS = ["en/portfolio_en.xml", "portfolio_en.xml"];
 
-        const grid = document.getElementById("projectsGrid");
+        // start from saved choice (default NL if none)
+        let activeLang = localStorage.getItem("userLang") || "nl";
+
+        // ===== DOM HOOKS =====
+        const grid  = document.getElementById("projectsGrid");
         const chips = document.querySelectorAll(".chip");
-        let xmlDoc = null;          // active XML document (DOM)
-        let activeLang = (localStorage.getItem("userLang") || "en");
-        let projectsCache = [];     // normalized projects for filter
-        let pendingAdditions = [];  // new projects added via the maker (for XML download)
 
-        // helpers
+        // ===== STATE =====
+        let xmlDoc = null;
+        let projectsCache = [];     // all projects (normalized)
+        let lastRenderedList = [];  // the list used for the current render (for correct carousel indexing)
+
+        // ===== HELPERS =====
         const fetchFirstOK = async (urls) => {
             for (const u of urls) {
                 try {
                     const res = await fetch(u, { cache: "no-store" });
                     if (res.ok) return res.text();
-                } catch(_) {}
+                } catch (_) {}
             }
-            throw new Error("XML not found");
+            throw new Error("XML not found for tried URLs: " + urls.join(", "));
         };
 
         const loadPortfolioXML = async () => {
-            const paths = activeLang === "nl" ? NL_PATHS : EN_PATHS;
-            const text = await fetchFirstOK(paths);
+            const primary   = activeLang === "nl" ? NL_PATHS : EN_PATHS;
+            const secondary = activeLang === "nl" ? EN_PATHS : NL_PATHS;
+
+            let text;
+            try {
+                text = await fetchFirstOK(primary);
+            } catch (e1) {
+                console.warn("[portfolio] Primary language missing:", activeLang);
+                try {
+                    text = await fetchFirstOK(secondary);
+                    // flip to language that actually exists
+                    activeLang = activeLang === "nl" ? "en" : "nl";
+                    localStorage.setItem("userLang", activeLang);
+                    console.info("[portfolio] Fell back to:", activeLang);
+                } catch (e2) {
+                    throw e2;
+                }
+            }
             const parser = new DOMParser();
             xmlDoc = parser.parseFromString(text, "application/xml");
             return xmlDoc;
@@ -142,8 +165,8 @@
             const node = parent.querySelector(tag);
             return node ? (node.textContent || "").trim() : "";
         };
-
-        const getList = (parent, tag) => Array.from(parent.querySelectorAll(tag)).map(n => (n.textContent || "").trim()).filter(Boolean);
+        const getList = (parent, tag) =>
+            Array.from(parent.querySelectorAll(tag)).map(n => (n.textContent || "").trim()).filter(Boolean);
 
         const normalizeProjects = () => {
             const nodes = xmlDoc.querySelectorAll("projects > project");
@@ -156,7 +179,7 @@
                 const cover  = getText(p, "cover");
                 const images = getList(p, "images > image");
                 const badges = Array.from(p.querySelectorAll("badges > badge")).map(b => ({
-                    text: b.textContent.trim(),
+                    text: (b.textContent || "").trim(),
                     color: b.getAttribute("color") || "#888"
                 }));
                 const links = {
@@ -168,222 +191,211 @@
             });
             return arr;
         };
-// badges
-        const badgeHTML = (b) =>
-            `<span class="badge" style="--badge-color:${b.color}">${b.text}</span>`;
 
-// links
+        // small HTML helpers
         const linkHTML = (links) => {
             const parts = [];
-            if (links.github)
-                parts.push(
-                    `<a href="${links.github}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>`
-                );
-            if (links.itch)
-                parts.push(
-                    `<a href="${links.itch}" target="_blank" rel="noopener"><i class="fab fa-itch-io"></i> itch.io</a>`
-                );
-            if (links.pdf)
-                parts.push(
-                    `<a href="${links.pdf}" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> PDF</a>`
-                );
+            if (links.github) parts.push(`<a href="${links.github}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>`);
+            if (links.itch)   parts.push(`<a href="${links.itch}"   target="_blank" rel="noopener"><i class="fab fa-itch-io"></i> itch.io</a>`);
+            if (links.pdf)    parts.push(`<a href="${links.pdf}"    target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> PDF</a>`);
             return parts.join("");
         };
 
-// card
-        const cardHTML = (p, idx) => `
-  <article class="project-card" data-category="${p.category}">
-    <div class="project-media">
-      <button class="cover-btn" data-idx="${idx}" ${p.images.length ? "" : "disabled"} aria-label="Open images">
-        <img src="${p.cover}" alt="${p.title} cover">
-      </button>
-      ${p.engine ? `<img class="engine-icon" src="${p.engine}" alt="engine">` : ""}
-    </div>
-    <div class="project-body">
-      <h3 class="project-title">${p.title}</h3>
-      <div class="badges">${p.badges.map(badgeHTML).join("")}</div>
-      <p class="project-desc">${p.description}</p>
-      <div class="project-links">${linkHTML(p.links)}</div>
-    </div>
-  </article>
-`;
+        // ===== RENDER =====
+        const render = (filter = "all") => {
+            lastRenderedList = (filter === "all")
+                ? projectsCache
+                : projectsCache.filter(p => p.category === filter);
 
+            grid.innerHTML = lastRenderedList.map((p, i) => `
+      <article class="project-card" data-category="${p.category}">
+        <div class="project-media">
+          <button class="cover-btn" data-idx="${i}" ${p.images.length ? "" : "disabled"} aria-label="Open images">
+            <img src="${p.cover}" alt="${p.title} cover">
+          </button>
+          ${p.engine ? `<img class="engine-icon" src="${p.engine}" alt="engine">` : ""}
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">${p.title}</h3>
+          <div class="badges">
+            ${p.badges.map(b => `<span class="badge" style="--badge-color:${b.color}">${b.text}</span>`).join("")}
+          </div>
+          <p class="project-desc">${p.description}</p>
+          <div class="project-links">${linkHTML(p.links)}</div>
+        </div>
+      </article>
+    `).join("");
+        };
 
-  const render = (filter = "all") => {
-    const list = (filter === "all") ? projectsCache : projectsCache.filter(p => p.category === filter);
-    grid.innerHTML = list.map((p, i) => cardHTML(p, i)).join("");
-  };
+        // ===== CAROUSEL =====
+        const modal    = document.getElementById("carouselModal");
+        const modalImg = document.getElementById("carouselImage");
+        const counter  = document.getElementById("carouselCounter");
+        const btnClose = modal.querySelector(".carousel-close");
+        const btnPrev  = modal.querySelector(".carousel-prev");
+        const btnNext  = modal.querySelector(".carousel-next");
+        let currentImages = [];
+        let currentIdx = 0;
 
-  // image carousel
-  const modal = document.getElementById("carouselModal");
-  const modalImg = document.getElementById("carouselImage");
-  const counter = document.getElementById("carouselCounter");
-  const btnClose = modal.querySelector(".carousel-close");
-  const btnPrev  = modal.querySelector(".carousel-prev");
-  const btnNext  = modal.querySelector(".carousel-next");
-  let currentImages = [];
-  let currentIdx = 0;
+        const openCarousel = (images) => {
+            if (!images || !images.length) return;
+            currentImages = images.slice();
+            currentIdx = 0;
+            updateCarousel();
+            modal.setAttribute("aria-hidden", "false");
+            modal.style.display = "flex";
+        };
+        const closeCarousel = () => {
+            modal.setAttribute("aria-hidden", "true");
+            modal.style.display = "none";
+            currentImages = [];
+        };
+        const updateCarousel = () => {
+            modalImg.src = currentImages[currentIdx];
+            counter.textContent = (currentIdx + 1) + " / " + currentImages.length;
+        };
 
-  const openCarousel = (images) => {
-    if (!images || !images.length) return;
-    currentImages = images;
-    currentIdx = 0;
-    updateCarousel();
-    modal.setAttribute("aria-hidden","false");
-    modal.style.display = "flex";
-  };
-  const closeCarousel = () => {
-    modal.setAttribute("aria-hidden","true");
-    modal.style.display = "none";
-    currentImages = [];
-  };
-  const updateCarousel = () => {
-    modalImg.src = currentImages[currentIdx];
-    counter.textContent = (currentIdx+1) + " / " + currentImages.length;
-  };
-  btnClose.addEventListener("click", closeCarousel);
-  btnPrev.addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx-1+currentImages.length)%currentImages.length; updateCarousel(); });
-  btnNext.addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx+1)%currentImages.length; updateCarousel(); });
-  modal.addEventListener("click", (e) => { if (e.target === modal) closeCarousel(); });
-  window.addEventListener("keydown", (e) => { if (modal.style.display==="flex" && e.key==="Escape") closeCarousel(); });
+        btnClose.addEventListener("click", closeCarousel);
+        btnPrev .addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx - 1 + currentImages.length) % currentImages.length; updateCarousel(); });
+        btnNext .addEventListener("click", () => { if (!currentImages.length) return; currentIdx = (currentIdx + 1) % currentImages.length; updateCarousel(); });
+        modal.addEventListener("click", (e) => { if (e.target === modal) closeCarousel(); });
+        window.addEventListener("keydown", (e) => { if (modal.style.display === "flex" && e.key === "Escape") closeCarousel(); });
 
-  // filter chips
-  chips.forEach(ch => ch.addEventListener("click", () => {
-    chips.forEach(c => c.classList.remove("is-active"));
-    ch.classList.add("is-active");
-    render(ch.dataset.filter);
-  }));
+        // Use the list we actually rendered for indexing
+        grid.addEventListener("click", (e) => {
+            const btn = e.target.closest(".cover-btn");
+            if (!btn || btn.disabled) return;
+            const i = Number(btn.dataset.idx);
+            const item = lastRenderedList[i];
+            if (!item) return;
+            openCarousel(item.images);
+        });
 
-  // load on start
-  const init = async () => {
-    activeLang = (localStorage.getItem("userLang") || "en");
-    try {
-      await loadPortfolioXML();                              // load XML
-      projectsCache = normalizeProjects();                   // normalize
-      render("all");                                        // draw
-      // delegate cover clicks
-      grid.addEventListener("click", (e) => {
-        const btn = e.target.closest(".cover-btn");
-        if (!btn || btn.disabled) return;
-        const idx = Number(btn.dataset.idx);
-        openCarousel(projectsCache[idx].images);
-      });
-    } catch (err) {
-      grid.innerHTML = '<p style="opacity:.8">Failed to load portfolio data.</p>';
-      console.error(err);
-    }
-  };
-  init();
+        // ===== REFRESH & INIT =====
+        async function refreshProjects() {
+            try {
+                await loadPortfolioXML();           // loads based on activeLang (with fallback)
+                projectsCache = normalizeProjects();
+                render(document.querySelector(".chip.is-active")?.dataset.filter || "all");
+            } catch (err) {
+                grid.innerHTML = '<p style="opacity:.8">Failed to load portfolio data.</p>';
+                console.error(err);
+            }
+        }
 
-  // --- Project Card Maker: adds to preview + prepares updated XML for download ---
-  const form = document.getElementById("cardMakerForm");
-  const downloadBtn = document.getElementById("downloadUpdatedXml");
+        const init = async () => {
+            // Filter chips
+            chips.forEach(ch => ch.addEventListener("click", () => {
+                chips.forEach(c => c.classList.remove("is-active"));
+                ch.classList.add("is-active");
+                render(ch.dataset.filter);
+            }));
 
-  // build <project> node from form
-  const buildProjectNode = (doc, data) => {
-    const el = doc.createElement("project");
-    const t = (name, text) => { const n = doc.createElement(name); n.textContent = text; return n; };
+            await refreshProjects();
+        };
+        init();
 
-    el.appendChild(t("title", data.title));
-    el.appendChild(t("description", data.description));
-    el.appendChild(t("category", data.category));
-    el.appendChild(t("engine", data.engine || ""));
-    el.appendChild(t("cover", data.cover));
+        // ===== LANGUAGE SWITCH =====
+        document.getElementById("switchToEnglish").addEventListener("click", async () => {
+            activeLang = "en";
+            localStorage.setItem("userLang", "en");
+            await refreshProjects();
+        });
+        document.getElementById("switchToDutch").addEventListener("click", async () => {
+            activeLang = "nl";
+            localStorage.setItem("userLang", "nl");
+            await refreshProjects();
+        });
 
-    const images = doc.createElement("images");
-    (data.images || []).forEach(src => { const i = doc.createElement("image"); i.textContent = src; images.appendChild(i); });
-    el.appendChild(images);
+        // ===== (SAFE GUARDS) CARD MAKER HOOKS — only if present on page =====
+        const form = document.getElementById("cardMakerForm");
+        const downloadBtn = document.getElementById("downloadUpdatedXml");
+        if (form && downloadBtn) {
+            const parseBadges = (raw) =>
+                raw.split(/\n/).map(s => s.trim()).filter(Boolean).map(line => {
+                    const [text, color] = line.split("|");
+                    return { text: (text||"").trim(), color: (color||"#888").trim() };
+                });
 
-    const badges = doc.createElement("badges");
-    (data.badges || []).forEach(b => { const bd = doc.createElement("badge"); bd.setAttribute("color", b.color); bd.textContent = b.text; badges.appendChild(bd); });
-    el.appendChild(badges);
+            const buildProjectNode = (doc, data) => {
+                const el = doc.createElement("project");
+                const t = (name, text) => { const n = doc.createElement(name); n.textContent = text; return n; };
+                el.appendChild(t("title", data.title));
+                el.appendChild(t("description", data.description));
+                el.appendChild(t("category", data.category));
+                el.appendChild(t("engine", data.engine || ""));
+                el.appendChild(t("cover", data.cover));
+                const images = doc.createElement("images");
+                (data.images || []).forEach(src => { const i = doc.createElement("image"); i.textContent = src; images.appendChild(i); });
+                el.appendChild(images);
+                const badges = doc.createElement("badges");
+                (data.badges || []).forEach(b => { const bd = doc.createElement("badge"); bd.setAttribute("color", b.color); bd.textContent = b.text; badges.appendChild(bd); });
+                el.appendChild(badges);
+                const links = doc.createElement("links");
+                if (data.github) { const n = doc.createElement("github"); n.textContent = data.github; links.appendChild(n); }
+                if (data.itch)   { const n = doc.createElement("itch");   n.textContent = data.itch;   links.appendChild(n); }
+                if (data.pdf)    { const n = doc.createElement("pdf");    n.textContent = data.pdf;    links.appendChild(n); }
+                el.appendChild(links);
+                return el;
+            };
 
-    const links = doc.createElement("links");
-    if (data.github) { const n = doc.createElement("github"); n.textContent = data.github; links.appendChild(n); }
-    if (data.itch)   { const n = doc.createElement("itch");   n.textContent = data.itch;   links.appendChild(n); }
-    if (data.pdf)    { const n = doc.createElement("pdf");    n.textContent = data.pdf;    links.appendChild(n); }
-    el.appendChild(links);
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const fd = new FormData(form);
+                const data = {
+                    title: fd.get("title").trim(),
+                    category: fd.get("category"),
+                    description: fd.get("description").trim(),
+                    engine: (fd.get("engine")||"").trim(),
+                    cover: fd.get("cover").trim(),
+                    images: (fd.get("images")||"").split(",").map(s => s.trim()).filter(Boolean),
+                    badges: parseBadges(fd.get("badges")||""),
+                    github: (fd.get("github")||"").trim(),
+                    itch:   (fd.get("itch")||"").trim(),
+                    pdf:    (fd.get("pdf")||"").trim(),
+                    langFile: fd.get("langFile") || "nl"
+                };
 
-    return el;
-  };
+                // add to UI
+                projectsCache.unshift({
+                    title: data.title,
+                    category: data.category,
+                    description: data.description,
+                    engine: data.engine,
+                    cover: data.cover,
+                    images: data.images,
+                    badges: data.badges,
+                    links: { github: data.github, itch: data.itch, pdf: data.pdf }
+                });
+                render(document.querySelector(".chip.is-active")?.dataset.filter || "all");
 
-  const parseBadges = (raw) =>
-    raw.split(/\n/).map(s => s.trim()).filter(Boolean).map(line => {
-      const [text, color] = line.split("|");
-      return { text: (text||"").trim(), color: (color||"#888").trim() };
-    });
+                // append to XML
+                const projectsRoot = xmlDoc.querySelector("projects");
+                projectsRoot.insertBefore(buildProjectNode(xmlDoc, data), projectsRoot.firstChild);
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const data = {
-      title: fd.get("title").trim(),
-      category: fd.get("category"),
-      description: fd.get("description").trim(),
-      engine: (fd.get("engine")||"").trim(),
-      cover: fd.get("cover").trim(),
-      images: (fd.get("images")||"").split(",").map(s => s.trim()).filter(Boolean),
-      badges: parseBadges(fd.get("badges")||""),
-      github: (fd.get("github")||"").trim(),
-      itch:   (fd.get("itch")||"").trim(),
-      pdf:    (fd.get("pdf")||"").trim(),
-      langFile: fd.get("langFile") || "nl"
-    };
+                alert("Added to preview. Click “Download updated XML” to save the file.");
+            });
 
-    // 1) add to in-memory list and re-render
-    const proj = {
-      title: data.title,
-      category: data.category,
-      description: data.description,
-      engine: data.engine,
-      cover: data.cover,
-      images: data.images,
-      badges: data.badges,
-      links: { github: data.github, itch: data.itch, pdf: data.pdf }
-    };
-    projectsCache.unshift(proj);
-    render(document.querySelector(".chip.is-active")?.dataset.filter || "all");
-
-    // 2) append to XML DOM (in memory) for later download
-    const projectsRoot = xmlDoc.querySelector("projects");
-    projectsRoot.insertBefore(buildProjectNode(xmlDoc, data), projectsRoot.firstChild);
-    pendingAdditions.push(data);
-
-    alert("Added to preview. Click “Download updated XML” to save the file.");
-  });
-
-  // download updated XML
-  downloadBtn.addEventListener("click", () => {
-    if (!xmlDoc) return;
-
-    // pretty print
-    const serializer = new XMLSerializer();
-    let xmlStr = serializer.serializeToString(xmlDoc);
-
-    // Add XML declaration if missing
-    if (!xmlStr.startsWith("<?xml")) {
-      xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\\n' + xmlStr;
-    }
-
-    // choose filename by radio
-    const lang = (new FormData(form).get("langFile")) || "nl";
-    const fname = lang === "nl" ? "portfolio_nl.xml" : "portfolio_en.xml";
-
-    const blob = new Blob([xmlStr], { type: "application/xml" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fname;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  });
-
-  // keep language in sync with your global switcher
-  document.getElementById("switchToEnglish").addEventListener("click", () => { activeLang="en"; init(); });
-  document.getElementById("switchToDutch").addEventListener("click",  () => { activeLang="nl"; init(); });
-})();
+            downloadBtn.addEventListener("click", () => {
+                if (!xmlDoc) return;
+                const serializer = new XMLSerializer();
+                let xmlStr = serializer.serializeToString(xmlDoc);
+                if (!xmlStr.startsWith("<?xml")) {
+                    xmlStr = '<?xml version="1.0" encoding="UTF-8"?>\n' + xmlStr;
+                }
+                const lang = (new FormData(form).get("langFile")) || "nl";
+                const fname = lang === "nl" ? "portfolio_nl.xml" : "portfolio_en.xml";
+                const blob = new Blob([xmlStr], { type: "application/xml" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url; a.download = fname;
+                document.body.appendChild(a);
+                a.click(); a.remove();
+                URL.revokeObjectURL(url);
+            });
+        }
+    })();
 </script>
+
 </body>
 </html>
