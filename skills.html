@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Planet: Skills</title>
+
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/solar/planet%202.png">
+    <script src="https://kit.fontawesome.com/1f4745d985.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="starry-sky" class="skills-page" style="overflow:hidden;">
+<div class="skills-scroll-wrapper">
+
+    <!-- Header (same as contact/portfolio) -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="index.html" style="text-decoration:none;color:white">Star-system: Skills</a>
+            </h1>
+
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+            <nav class="site-nav" id="nav-images">
+                <ul>
+                    <li><a href="index.html"><img src="./img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
+                    <li><a href="about.html"><img src="./img/solar/sun.png" class="header-img" title="About me"></a></li>
+                    <li><a href="portfolio.html"><img src="./img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
+                    <li><a href="skills.html"><img src="./img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
+                    <li><a href="contact.html"><img src="./img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
+                </ul>
+            </nav>
+
+            <div class="header-tooltip" id="header-tooltip"></div>
+
+            <div class="language-switcher">
+                <button id="switchToEnglish" class="lang-btn"><img src="./img/Other/gb.svg" alt="English"></button>
+                <button id="switchToDutch"  class="lang-btn"><img src="./img/Other/nl.svg" alt="Nederlands"></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="page-container" style="padding-top:50px;">
+        <section class="skills-intro">
+            <h2>My software & skill levels</h2>
+            <p class="skills-note">Levels indicate practical confidence—not 100% mastery.</p>
+
+            <div class="portfolio-filters">
+                <button class="chip is-active" data-filter="all">All</button>
+                <button class="chip" data-filter="engines">Engines</button>
+                <button class="chip" data-filter="programming">Programming</button>
+                <button class="chip" data-filter="tools">Tools</button>
+                <button class="chip" data-filter="art">Art</button>
+                <button class="chip" data-filter="softskills">Soft Skills</button>
+            </div>
+        </section>
+
+        <section id="skillsGrid" class="skills-grid" aria-live="polite"></section>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="social-links">
+            <h2>Find me on</h2>
+            <ul>
+                <li><a href="https://github.com/JustMeGameDev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://kornee-hartlief.itch.io/" target="_blank"><i class="fab fa-itch-io"></i> itch.io</a></li>
+                <li><a href="https://www.linkedin.com/in/kornee-hartlief-6b9519234/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://x.com/KorneeHartlief" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> Twitter/"X"</a></li>
+                <li><a href="https://www.youtube.com/channel/UC24ZbB7jvP1yJmUjcj6V1ug" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+                <li><a href="https://bsky.app/profile/korneehartlief.bsky.social" target="_blank"><i class="fa-brands fa-square-bluesky"></i> Bluesky</a></li>
+            </ul>
+        </div>
+        <h6 style="margin-left:15px;margin-right:15px">
+            Disclaimer… 2023-<span id="currentYear"></span> Kornee Hartlief. &copy;
+        </h6>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    (() => {
+        // repo-relative paths
+        const NL_PATHS = ["nl/skills_nl.xml", "skills_nl.xml"];
+        const EN_PATHS = ["en/skills_en.xml", "skills_en.xml"];
+
+        let activeLang = localStorage.getItem("userLang") || "nl";
+
+        const grid  = document.getElementById("skillsGrid");
+        const chips = document.querySelectorAll(".chip");
+
+        let xmlDoc = null;
+        let skillsCache = [];
+        let lastRendered = [];
+
+        const fetchFirstOK = async (urls) => {
+            for (const u of urls) {
+                try {
+                    const res = await fetch(u, { cache:"no-store" });
+                    if (res.ok) return res.text();
+                } catch(_) {}
+            }
+            throw new Error("XML not found: " + urls.join(", "));
+        };
+
+        const loadSkillsXML = async () => {
+            const primary   = activeLang === "nl" ? NL_PATHS : EN_PATHS;
+            const secondary = activeLang === "nl" ? EN_PATHS : NL_PATHS;
+
+            let text;
+            try {
+                text = await fetchFirstOK(primary);
+            } catch (e1) {
+                try {
+                    text = await fetchFirstOK(secondary);
+                    activeLang = activeLang === "nl" ? "en" : "nl";
+                    localStorage.setItem("userLang", activeLang);
+                } catch (e2) {
+                    throw e2;
+                }
+            }
+            const parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text, "application/xml");
+            return xmlDoc;
+        };
+
+        const q = (p, tag) => (p.querySelector(tag)?.textContent || "").trim();
+
+        const normalize = () => {
+            const nodes = xmlDoc.querySelectorAll("skills > skill");
+            const arr = [];
+            nodes.forEach(s => {
+                arr.push({
+                    title: q(s,"title"),
+                    category: q(s,"category") || "tools",
+                    description: q(s,"description"),
+                    image: q(s,"image"),
+                    levelName: q(s,"levelName"),      // e.g., “Comfortable”, “Proficient”
+                    levelValue: Math.max(0, Math.min(100, parseInt(q(s,"levelValue")||"0",10))) // 0-100
+                });
+            });
+            return arr;
+        };
+
+        const levelScaleHTML = (val, name) => `
+    <div class="skill-level">
+      <div class="level-labels">
+        <span>Novice</span>
+        <span>Beginner</span>
+        <span>Intermediate</span>
+        <span>Comfortable</span>
+        <span>Proficient</span>
+      </div>
+      <div class="level-bar">
+        <div class="level-fill" style="width:${val}%"></div>
+        <div class="level-pin" style="left:calc(${val}% - 10px)" title="${name||''}"></div>
+      </div>
+      <div class="level-current">${name || ""}</div>
+    </div>
+  `;
+
+        const cardHTML = (s) => `
+    <article class="skill-card" data-category="${s.category}">
+      <div class="skill-media">
+        ${s.image ? `<img src="${s.image}" alt="${s.title} logo">` : `<div class="skill-placeholder">?</div>`}
+      </div>
+      <div class="skill-body">
+        <h3 class="skill-title">${s.title}</h3>
+        ${levelScaleHTML(s.levelValue, s.levelName)}
+        <p class="skill-desc">${s.description}</p>
+      </div>
+    </article>
+  `;
+
+        const render = (filter="all") => {
+            lastRendered = (filter==="all") ? skillsCache : skillsCache.filter(s => s.category===filter);
+            grid.innerHTML = lastRendered.map(cardHTML).join("");
+        };
+
+        chips.forEach(ch => ch.addEventListener("click", () => {
+            chips.forEach(c => c.classList.remove("is-active"));
+            ch.classList.add("is-active");
+            render(ch.dataset.filter);
+        }));
+
+        async function refresh() {
+            try {
+                await loadSkillsXML();
+                skillsCache = normalize();
+                render(document.querySelector(".chip.is-active")?.dataset.filter || "all");
+            } catch (err) {
+                grid.innerHTML = '<p style="opacity:.8">Failed to load skills data.</p>';
+                console.error(err);
+            }
+        }
+
+        // language buttons
+        document.getElementById("switchToEnglish").addEventListener("click", async () => {
+            activeLang = "en"; localStorage.setItem("userLang","en"); await refresh();
+        });
+        document.getElementById("switchToDutch").addEventListener("click", async () => {
+            activeLang = "nl"; localStorage.setItem("userLang","nl"); await refresh();
+        });
+
+        refresh();
+    })();
+</script>
+</body>
+</html>

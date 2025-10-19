@@ -748,3 +748,60 @@ main {
 /* Footer follows normal flow (already defined) */
 
 
+/* ===== SKILLS PAGE (same scroll model) ===== */
+.skills-scroll-wrapper{
+    position:relative; z-index:1; width:100%; height:100vh;
+    overflow-y:auto; overflow-x:hidden; padding-bottom:280px; background:transparent;
+}
+.skills-intro{
+    max-width:1200px; width:100%; margin:220px auto 10px; padding:0 20px;
+}
+.skills-note{ opacity:.9; margin:.25rem 0 1rem; }
+
+/* 2-wide grid */
+.skills-grid{
+    max-width:1200px; width:100%; margin:20px auto 40px; padding:0 20px;
+    display:grid; grid-template-columns:1fr; gap:24px; align-items:start; box-sizing:border-box;
+}
+
+@media (max-width:900px){ .skills-grid{ grid-template-columns:1fr; } }
+
+/* Card */
+.skill-card{
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.06);
+    border-radius:16px; overflow:hidden;
+    display:grid; grid-template-columns:160px 1fr; gap:16px; padding:16px;
+}
+@media (max-width:2000px){ .skill-card{ grid-template-columns:1fr; } }
+
+
+.skill-media img{ width:100%; display:block; border-radius:12px; background:#111; }
+.skill-placeholder{
+    width:100%; height:120px; display:grid; place-items:center;
+    border-radius:12px; background:#111; color:#777; font-size:2rem;
+}
+
+.skill-title{ margin:0 0 8px; font-size:1.2rem; }
+.skill-desc{ margin:10px 0 0; opacity:.95; }
+
+/* Level scale */
+.skill-level{ margin:6px 0 8px; }
+.level-labels{
+    display:grid; grid-template-columns:repeat(5,1fr);
+    font-size:.78rem; opacity:.85; margin-bottom:6px;
+}
+.level-bar{
+    position:relative; height:10px; border-radius:999px;
+    background:linear-gradient(90deg,#444 0%, #555 100%);
+    outline:1px solid rgba(255,255,255,.18);
+}
+.level-fill{
+    height:100%; border-radius:999px; background:mediumpurple;
+}
+.level-pin{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:20px; height:20px; border-radius:50%; border:2px solid #fff; background:#000;
+    box-shadow:0 0 0 3px rgba(255,255,255,.15);
+}
+.level-current{ font-size:.9rem; margin-top:6px; opacity:.9; }
