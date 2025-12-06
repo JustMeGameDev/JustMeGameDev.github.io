@@ -49,13 +49,48 @@
 
             <nav class="site-nav" id="nav-images">
                 <ul>
-                    <li><a href="../index.html"><img src="../img/solar/spaceship.png" class="header-img" title="System Overview"></a></li>
-                    <li><a href="../about/index.html"><img src="../img/solar/sun.png" class="header-img" title="About me"></a></li>
-                    <li><a href="../portfolio/index.html"><img src="../img/solar/planet%201.png" class="header-img" title="Portfolio"></a></li>
-                    <li><a href="index.html"><img src="../img/solar/planet%202.png" class="header-img" title="Skills & Technologies"></a></li>
-                    <li><a href="../contact/contact.html"><img src="../img/solar/planet%203.png" class="header-img" title="Contact & Resume"></a></li>
+                    <li>
+                        <a href="/" class="nav-link">
+                            <img src="../img/solar/spaceship.png" class="header-img"
+                                 title="System Overview"
+                                 data-translation-id="tooltipSystemOverview">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/about/" class="nav-link">
+                            <img src="../img/solar/sun.png" class="header-img"
+                                 title="About me"
+                                 data-translation-id="tooltipAboutMe">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/portfolio/" class="nav-link">
+                            <img src="../img/solar/planet%201.png" class="header-img"
+                                 title="Portfolio"
+                                 data-translation-id="tooltipPortfolio">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/skills/" class="nav-link">
+                            <img src="../img/solar/planet%202.png" class="header-img"
+                                 title="Skills & Technologies"
+                                 data-translation-id="tooltipSkillsTechnologies">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/contact/" class="nav-link">
+                            <img src="../img/solar/planet%203.png" class="header-img"
+                                 title="Contact & Resume"
+                                 data-translation-id="tooltipContactResume">
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
 
             <div class="header-tooltip" id="header-tooltip"></div>
 
@@ -107,9 +142,25 @@
 <script src="../script.js"></script>
 <script>
     (() => {
-        // repo-relative paths
-        const NL_PATHS = ["nl/skills_nl.xml", "skills_nl.xml"];
-        const EN_PATHS = ["en/skills_en.xml", "skills_en.xml"];
+        const prefix = (typeof computePrefix === "function") ? computePrefix() : "../";
+
+        const NL_PATHS = [
+            `${prefix}nl/skills_nl.xml`,
+            `nl/skills_nl.xml`,
+            `/nl/skills_nl.xml`,
+            `${prefix}skills_nl.xml`,
+            `skills_nl.xml`,
+            `/skills_nl.xml`
+        ];
+
+        const EN_PATHS = [
+            `${prefix}en/skills_en.xml`,
+            `en/skills_en.xml`,
+            `/en/skills_en.xml`,
+            `${prefix}skills_en.xml`,
+            `skills_en.xml`,
+            `/skills_en.xml`
+        ];
 
         let activeLang = localStorage.getItem("userLang") || "nl";
 
@@ -130,26 +181,22 @@
             throw new Error("XML not found: " + urls.join(", "));
         };
 
-        const loadSkillsXML = async () => {
+        async function loadSkillsXML() {
             const primary   = activeLang === "nl" ? NL_PATHS : EN_PATHS;
             const secondary = activeLang === "nl" ? EN_PATHS : NL_PATHS;
 
-            let text;
             try {
-                text = await fetchFirstOK(primary);
-            } catch (e1) {
-                try {
-                    text = await fetchFirstOK(secondary);
-                    activeLang = activeLang === "nl" ? "en" : "nl";
-                    localStorage.setItem("userLang", activeLang);
-                } catch (e2) {
-                    throw e2;
-                }
+                const text = await fetchFirstOK(primary);
+                const parser = new DOMParser();
+                return parser.parseFromString(text, "application/xml");
+            } catch (_) {
+                const text = await fetchFirstOK(secondary);
+                const parser = new DOMParser();
+                activeLang = activeLang === "nl" ? "en" : "nl";
+                localStorage.setItem("userLang", activeLang);
+                return parser.parseFromString(text, "application/xml");
             }
-            const parser = new DOMParser();
-            xmlDoc = parser.parseFromString(text, "application/xml");
-            return xmlDoc;
-        };
+        }
 
         const q = (p, tag) => (p.querySelector(tag)?.textContent || "").trim();
 

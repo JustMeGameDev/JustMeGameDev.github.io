@@ -83,32 +83,40 @@ document.getElementById("switchToDutch").addEventListener("click", () => {
 
 let translations = {} // Global object to store translations
 
-function loadLanguage(lang) {
-    // Store language selection in localStorage
-    localStorage.setItem("userLang", lang)
-    let pageName = window.location.pathname
-    // Get the current HTML file name without extension
-    if (pageName == "/") {
-        pageName = "index"
-    } else {
-        pageName = window.location.pathname.split("/").pop().split(".")[0]
+// Bepaalt "slug" van de huidige pagina (index, about, portfolio, skills, contact)
+function getPageSlug() {
+    let path = location.pathname.replace(/\/+$/, "");
+    const parts = path.split("/").filter(Boolean);
+    if (parts.length === 0) return "index";
+    const last = parts[parts.length - 1];
+    if (last.endsWith(".html")) {
+        const name = last.slice(0, -5);
+        if (name !== "index") return name;
+        return parts.length > 1 ? parts[parts.length - 2] : "index";
     }
-    // Construct the filename based on the current page and language selection
-    const filename = `${pageName}_${lang}.xml`
+    return last; // mapnaam
+}
 
-    // Define the path using the lang directory
-    const filepath = `/${lang}/${filename}`
+async function loadLanguage(lang) {
+    localStorage.setItem("userLang", lang);
+    const page = getPageSlug(); // bv. "portfolio"
 
-    const xhttp = new XMLHttpRequest()
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            applyTranslations(this.responseXML)
-        } else if (this.readyState == 4 && this.status != 200) {
-            console.error("Failed to load language file:", filepath) // Log an error if the file can't be loaded
-        }
+    const prefix = computePrefix();  // bv. "../" of "../../" of ""
+    const file   = `${page}_${lang}.xml`;
+
+    // Probeer meerdere varianten: met prefix, zonder, absolute
+    const candidates = [
+        `${prefix}${lang}/${file}`,
+        `${lang}/${file}`,
+        `/${lang}/${file}`
+    ];
+
+    try {
+        const xmlDoc = await loadXML(candidates);
+        applyTranslations(xmlDoc);
+    } catch (e) {
+        console.error("Taalbestand niet gevonden:", candidates);
     }
-    xhttp.open("GET", filepath, true)
-    xhttp.send()
 }
 
 function applyTranslations(xmlDoc) {
@@ -267,10 +275,18 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
-function showPage(element) {
-    const page = element.getAttribute("data-page")
-    window.location.href = page + ".html"
+function showPage(el){
+    const page = el?.dataset?.page;
+    if (!page) return;
+
+    // base bepalen: "/" (user/custom domain) of "/reponaam/" (project pages)
+    const segs = location.pathname.split("/").filter(Boolean);
+    const base = (segs.length > 0 && !location.pathname.endsWith(".html")) ? `/${segs[0]}/` : `/`;
+
+    // altijd naar de map-URL navigeren
+    location.href = `${base}${page}/`;
 }
+
 
 document.querySelectorAll(".header-img").forEach((img) => {
     img.addEventListener("mouseenter", function () {
@@ -290,6 +306,41 @@ document.querySelectorAll(".header-img").forEach((img) => {
         // Optional: hide the tooltip when not hovering
     })
 })
+
+// === universele helpers voor paden + fetch ===
+
+// Bepaal hoeveel niveaus diep je nu zit en maak een prefix als "../../" etc.
+function computePrefix() {
+    // vb: "/" -> [], "/portfolio/" -> ["portfolio"], "/repo/skills/" -> ["repo","skills"]
+    const parts = location.pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+
+    // Als je user/ custom domain site in root draait: depth = 1 voor "/portfolio" (map)
+    // Als je een project page draait: depth = 2 voor "/reponaam/portfolio"
+    // In beide gevallen willen we 1 stap omhoog per extra niveau (behalve het laatste, dat de map zelf is).
+    // Concreet: we willen van "/portfolio/" naar root: "../"
+    //           van "/reponaam/portfolio/" naar root: "../../"
+    const depth = Math.max(0, parts.length); // veilige benadering
+    return "../".repeat(depth);
+}
+
+// Probeer een lijst mogelijke paden tot er één werkt
+async function fetchFirstOK(urls) {
+    for (const u of urls) {
+        try {
+            const res = await fetch(u, { cache: "no-store" });
+            if (res.ok) return res.text();
+        } catch (_) {}
+    }
+    throw new Error("Kon geen XML laden uit: " + urls.join(", "));
+}
+
+// Laad een XML-bestand door meerdere pad-varianten te proberen
+async function loadXML(variants) {
+    const text = await fetchFirstOK(variants);
+    const parser = new DOMParser();
+    return parser.parseFromString(text, "application/xml");
+}
+
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
