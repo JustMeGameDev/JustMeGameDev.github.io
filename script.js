@@ -150,9 +150,13 @@ function applyTranslations(xmlDoc) {
         }
     })
 
-    var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]')
+    var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]');
     if (resumeNode) {
-        document.getElementById("resumeEmbed").src = resumeNode.textContent
+        const resumeEl = document.getElementById("resumeEmbed");
+        if (resumeEl) {
+            const raw = (resumeNode.textContent || "").trim();
+            resumeEl.src = normalizeAssetPath(raw);
+        }
     }
 }
 
@@ -275,18 +279,34 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
-function showPage(el){
+async function showPage(el) {
     const page = el?.dataset?.page;
     if (!page) return;
 
-    // base bepalen: "/" (user/custom domain) of "/reponaam/" (project pages)
-    const segs = location.pathname.split("/").filter(Boolean);
-    const base = (segs.length > 0 && !location.pathname) ? `/${segs[0]}/` : `/`;
+    // bepaal de base path (bvb. "/" of "/reponaam/")
+    const path = location.pathname;
+    const segs = path.split('/').filter(Boolean);
+    const base =
+        // als je site op een subpad staat (project pages), is base "/reponaam/"
+        (segs.length > 0 && !path.endsWith('.html')) ? `/${segs[0]}/` : `/`;
 
-    // altijd naar de map-URL navigeren
-    location.href = `${base}${page}/`;
+    const candidates = [
+        `${base}${page}/`,       // mooie URL
+        `${base}${page}.html`    // fallback
+    ];
+
+    for (const url of candidates) {
+        try {
+            const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+            if (res.ok) {
+                location.href = url;
+                return;
+            }
+        } catch (_) { /* negeer */ }
+    }
+    // als HEAD faalt (bijv. lokaal via file://), probeer gewoon de mooie URL
+    location.href = candidates[0];
 }
-
 
 document.querySelectorAll(".header-img").forEach((img) => {
     img.addEventListener("mouseenter", function () {
@@ -322,6 +342,14 @@ function computePrefix() {
     const depth = Math.max(0, parts.length); // veilige benadering
     return "../".repeat(depth);
 }
+
+function normalizeAssetPath(src) {
+    if (!src) return src;
+    if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')) return src;
+    const prefix = (typeof computePrefix === 'function') ? computePrefix() : './';
+    return prefix + src.replace(/^\.\//, '');
+}
+
 
 // Probeer een lijst mogelijke paden tot er één werkt
 async function fetchFirstOK(urls) {
