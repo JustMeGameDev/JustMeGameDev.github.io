@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <skills>
+        <skill>
+            <title>Unity</title>
+            <category>engines</category>
+            <description>Comfortabel met URP, het Input System, editor tooling en profiling. Ervaring met het bouwen van gameplay, UI en tools voor projecten.</description>
+            <image>./img/Other/unity.png</image>
+            <levelName>Comfortabel</levelName>
+            <levelValue>70</levelValue>
+        </skill>
+
+        <skill>
+            <title>C#</title>
+            <category>programming</category>
+            <description>Sterke basis in OOP, async/await, LINQ en game-architectuurpatronen. Zelfverzekerd in debuggen en basis performance-optimalisatie.</description>
+            <image>./img/Other/csharp.png</image>
+            <levelName>Gevorderd</levelName>
+            <levelValue>80</levelValue>
+        </skill>
+
+        <skill>
+            <title>Photoshop</title>
+            <category>art</category>
+            <description>UI-texturen, export pipelines, lichte paint-overs, batch-acties en kleurcorrectie voor game-assets.</description>
+            <image>./img/Other/ps.png</image>
+            <levelName>Gemiddeld</levelName>
+            <levelValue>55</levelValue>
+        </skill>
+
+        <skill>
+            <title>Git &amp; GitHub</title>
+            <category>tools</category>
+            <description>Ervaring met branching, pull requests, code reviews, submodules en CI-basis. Comfortabel met het onderhouden van repositories voor kleine teams.</description>
+            <image>./img/Other/github.png</image>
+            <levelName>Comfortabel</levelName>
+            <levelValue>70</levelValue>
+        </skill>
+
+        <skill>
+            <title>Scrum</title>
+            <category>softskills</category>
+            <description>Ervaren met Scrum-ceremonies (stand-ups, sprint planning, retrospectives) en Agile werkwijzen binnen kleine en middelgrote teams.</description>
+            <image>./img/Other/scrum.png</image>
+            <levelName>Comfortabel</levelName>
+            <levelValue>70</levelValue>
+        </skill>
+
+        <skill>
+            <title>Communicatie &amp; Samenwerking</title>
+            <category>softskills</category>
+            <description>Duidelijke communicator met ervaring in samenwerkende ontwikkelomgevingen, code reviews en pair programming.</description>
+            <image>./img/Other/teamwork.png</image>
+            <levelName>Gevorderd</levelName>
+            <levelValue>75</levelValue>
+        </skill>
+
+    </skills>
+</translations>
