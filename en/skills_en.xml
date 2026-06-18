@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
-
     <translation id="aboutTitle">Planet: Skills &amp; Technologies</translation>
-
-    <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form. Upon verification of your claim, I will promptly remove the asset in question. All rights reserved for my original assets and content. Kornee Hartlief © {year}</translation>
+    <translation id="footerDisclaimer">This portfolio website showcases my personal projects and work. While I strive to use only my own assets or those that are freely available for use, I do not claim ownership of all the assets displayed on this site. If you are the rightful owner of any asset featured on this website and believe it has been used without your permission, please contact me using the contact form. Upon verification of your claim, I will promptly remove the asset in question. All rights reserved for my original assets and content. Kornee Hartlief (c) {year}</translation>
     <translation id="socialLinks">Find me on</translation>
     <translation id="headerTitle">Star-system: Portfolio-kornee</translation>
-    <translation id="tooltipSystemOverview">System Overview</translation>
+    <translation id="tooltipSystemOverview">System overview</translation>
     <translation id="tooltipAboutMe">About me</translation>
     <translation id="tooltipPortfolio">Portfolio</translation>
     <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
@@ -17,186 +15,147 @@
     <skill-set>
         <name>Unity</name>
         <logo>./img/Other/U_Cube_1C_Black.png</logo>
+        <tags>
+            <tag>software</tag>
+            <tag>game engine</tag>
+        </tags>
         <skills>
-                <skill>
-                    <name>Game Development</name>
-                    <level>80</level>
-                    <description>Experience with developing games with the unity software</description>
-                    <media>
-                        <item>
-                            <type>image</type>
-                            <src>./img/Other/award_01.jpg</src>
-                            <description>Test pic</description>
-                        </item>
-                        <item>
-                            <type>image</type>
-                            <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                            <description>Test gif</description>
-                        </item>
-                        <item>
-                            <type>video</type>
-                            <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                            <description>Test video</description>
-                        </item>
-                    </media>
-                </skill>
+            <skill>
+                <name>Game Development</name>
+                <level>80</level>
+                <description>Experience developing games with Unity.</description>
+                <media>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
+                </media>
+            </skill>
             <skill>
                 <name>Scripting/Programming</name>
                 <level>20</level>
-                <description>Experience with C# integration within unity</description>
+                <description>Experience with C# integration inside Unity.</description>
+                <tags>
+                    <tag>C#</tag>
+                    <tag>programming language</tag>
+                </tags>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
             <skill>
                 <name>3D/2D Art Integration</name>
                 <level>45</level>
-                <description>Experience with using 2D and 3D assets and art in the unity software</description>
+                <description>Experience using 2D and 3D assets and art in Unity projects.</description>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
             <skill>
                 <name>Level Design</name>
                 <level>80</level>
-                <description>Experience with level design using the provided tools of unity and/or plugins from the unity store</description>
+                <description>Experience with level design using Unity tools and Unity Store plugins.</description>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
             <skill>
                 <name>Performance Optimization</name>
                 <level>15</level>
-                <description>Experience with optimizing the game/code using provided diagnostic tool by the unity software</description>
+                <description>Experience optimizing games and code using Unity diagnostic tools.</description>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
             <skill>
-            <name>VR/AR Development</name>
-            <level>15</level>
-            <description>Experience with building a project/game with VR/AR in mind as platform</description>
-            <media>
-                <item>
-                    <type>image</type>
-                    <src>./img/Other/award_01.jpg</src>
-                    <description>Test pic</description>
-                </item>
-                <item>
-                    <type>image</type>
-                    <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                    <description>Test gif</description>
-                </item>
-                <item>
-                    <type>video</type>
-                    <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                    <description>Test video</description>
-                </item>
-            </media>
-        </skill>
+                <name>VR/AR Development</name>
+                <level>15</level>
+                <description>Experience building a project or game for VR/AR platforms.</description>
+                <media>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
+                </media>
+            </skill>
             <skill>
                 <name>Multiplayer/Networking</name>
                 <level>15</level>
-                <description>Experience with making a local or online multiplayer game using the unity software or plug-ins provided for unity</description>
+                <description>Experience creating local or online multiplayer games with Unity and Unity plugins.</description>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
             <skill>
                 <name>Project Management</name>
                 <level>15</level>
-                <description>Experience with version control in combination with a unity project like github/gitlab or build in unity version control</description>
+                <description>Experience with version control for Unity projects, including GitHub, GitLab, and Unity Version Control.</description>
                 <media>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/award_01.jpg</src>
-                        <description>Test pic</description>
-                    </item>
-                    <item>
-                        <type>image</type>
-                        <src>./img/Other/SampleGIFImage_350kbmb.gif</src>
-                        <description>Test gif</description>
-                    </item>
-                    <item>
-                        <type>video</type>
-                        <src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src>
-                        <description>Test video</description>
-                    </item>
+                    <item><type>image</type><src>./img/Other/award_01.jpg</src><description>Test image</description></item>
+                    <item><type>image</type><src>./img/Other/SampleGIFImage_350kbmb.gif</src><description>Test gif</description></item>
+                    <item><type>video</type><src>./img/Other/Free_Test_Data_15MB_MP4.mp4</src><description>Test video</description></item>
                 </media>
             </skill>
-
-                <!-- Add more individual skills similarly -->
-            </skills>
-        </skill-set>
-        <!-- Add more skill elements as needed -->
+        </skills>
+    </skill-set>
+    <skill-set>
+        <name>Social &amp; Professional Skills</name>
+        <logo>./img/Other/empty.png</logo>
+        <tags>
+            <tag>social</tag>
+            <tag>professional skills</tag>
+        </tags>
+        <skills>
+            <skill>
+                <name>Teamwork</name>
+                <level>75</level>
+                <description>Experience working in small student teams during prototypes, game jams, and school projects.</description>
+                <tags>
+                    <tag>teamwork</tag>
+                    <tag>team</tag>
+                    <tag>school</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Leadership</name>
+                <level>55</level>
+                <description>Experience keeping project direction clear, helping teammates make decisions, and organizing work during group projects.</description>
+                <tags>
+                    <tag>leadership</tag>
+                    <tag>teamwork</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Documentation</name>
+                <level>70</level>
+                <description>Experience writing game design notes, project documents, and clear explanations for school and portfolio work.</description>
+                <tags>
+                    <tag>documentation</tag>
+                    <tag>school</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Code Etiquette</name>
+                <level>60</level>
+                <description>Experience using readable naming, version control, and cleaner project structure so code is easier to continue later.</description>
+                <tags>
+                    <tag>code etiquette</tag>
+                    <tag>programming</tag>
+                    <tag>github</tag>
+                </tags>
+                <media></media>
+            </skill>
+        </skills>
+    </skill-set>
 </translations>

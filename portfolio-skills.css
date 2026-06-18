@@ -1,0 +1,360 @@
+.cards-page {
+  width: min(1320px, calc(100vw - 32px));
+  margin: 108px auto 56px;
+  flex: 1 0 auto;
+}
+
+body#starry-sky[data-card-page] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  z-index: auto;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body#starry-sky[data-card-page] .star {
+  z-index: -1;
+}
+
+body#starry-sky[data-card-page] .site-header {
+  position: sticky;
+}
+
+body#starry-sky[data-card-page] #nav-text {
+  display: none;
+}
+
+body#starry-sky[data-card-page] .header-content {
+  max-width: 1280px;
+}
+
+body#starry-sky[data-card-page] .site-nav {
+  flex: 0 1 auto;
+}
+
+body#starry-sky[data-card-page] .site-nav li {
+  margin: 0 8px;
+}
+
+body#starry-sky[data-card-page] .header-img {
+  height: 46px;
+}
+
+body#starry-sky[data-card-page] .footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding: 28px 12px 16px;
+}
+
+body#starry-sky[data-card-page] .social-links ul {
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+body#starry-sky[data-card-page] .social-links li {
+  margin: 0;
+}
+
+.cards-intro {
+  margin-bottom: 28px;
+}
+
+.cards-intro h2 {
+  font-size: 1.45rem;
+  line-height: 1.35;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.search-field {
+  display: grid;
+  gap: 6px;
+  max-width: 560px;
+}
+
+.search-field span {
+  font-size: 0.78rem;
+  color: #d7ceff;
+  text-transform: uppercase;
+}
+
+.search-field input {
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(0, 0, 0, 0.72);
+  color: white;
+  border-radius: 8px;
+  padding: 11px 13px;
+  font-family: "Source Code Pro", monospace;
+  width: 100%;
+}
+
+.filter-btn,
+.card-link {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-family: "Source Code Pro", monospace;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.filter-btn:hover,
+.filter-btn.active,
+.card-link:hover {
+  border-color: mediumpurple;
+  box-shadow: 0 0 12px rgba(147, 112, 219, 0.45);
+}
+
+.card-grid,
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.portfolio-card,
+.skill-set-card,
+.skill-card {
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 14px rgba(147, 112, 219, 0.18);
+}
+
+.portfolio-card.hidden,
+.skill-set-card.hidden,
+.skill-card.hidden {
+  display: none;
+}
+
+.card-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #111;
+  display: block;
+}
+
+.cover-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.cover-button:hover .card-cover {
+  transform: scale(1.035);
+  filter: brightness(1.12);
+}
+
+.cover-button .card-cover {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.card-body,
+.skill-set-body,
+.skill-card {
+  padding: 16px;
+}
+
+.card-body h3,
+.skill-set-body h3,
+.skill-card h4 {
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+
+.card-body p,
+.skill-card p {
+  line-height: 1.45;
+}
+
+.badge-row,
+.link-row,
+.media-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.badge {
+  color: black;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.engine-logo,
+.skill-logo {
+  max-height: 42px;
+  max-width: 160px;
+  object-fit: contain;
+  margin: 10px 0;
+}
+
+.skill-set-list {
+  display: grid;
+  gap: 22px;
+}
+
+.skill-set-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.level-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #12f3bf, mediumpurple);
+}
+
+.carousel-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 3000;
+}
+
+.carousel-modal.open {
+  display: grid;
+}
+
+.carousel-panel {
+  position: relative;
+  width: min(1040px, 96vw);
+  min-height: min(720px, 88vh);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.92);
+  box-shadow: 0 0 24px rgba(147, 112, 219, 0.35);
+  padding: 52px 64px 20px;
+}
+
+.carousel-stage {
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+}
+
+.carousel-media {
+  max-width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.carousel-caption {
+  min-height: 22px;
+  text-align: center;
+  color: #d7ceff;
+}
+
+.carousel-close,
+.carousel-nav {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Source Code Pro", monospace;
+}
+
+.carousel-close {
+  top: 14px;
+  right: 14px;
+  padding: 8px 12px;
+}
+
+.carousel-nav {
+  top: 50%;
+  width: 42px;
+  height: 58px;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.carousel-prev {
+  left: 14px;
+}
+
+.carousel-next {
+  right: 14px;
+}
+
+@media (max-width: 768px) {
+  .cards-page {
+    margin-top: 92px;
+  }
+
+  .card-grid,
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body#starry-sky[data-card-page] .header-content {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  body#starry-sky[data-card-page] #nav-images {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  body#starry-sky[data-card-page] .header-img {
+    height: 34px;
+  }
+
+  .carousel-panel {
+    padding: 54px 46px 18px;
+    min-height: 62vh;
+  }
+
+  .carousel-stage {
+    min-height: 260px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+  .card-grid,
+  .skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

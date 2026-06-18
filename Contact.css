@@ -1,87 +1,100 @@
-body, html {
-    height: 100%;
+/* ================================
+   CONTACT PAGE — SCROLLABLE
+   Layout: Header (fixed) → CV+Form → Footer → extra scroll space
+   ================================ */
+
+/* Force scrollable page and proper stacking */
+html, body {
+    height: auto !important;
     width: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: black;
-    overflow-y: auto;
-    overflow-x: hidden;
+    padding: 0;
+    background: black;
     color: white;
     font-family: "Source Code Pro", monospace;
+    display: block !important;
+    overflow-x: hidden;
+}
+/* Keep stars as fullscreen background */
+/* ================================
+   CONTACT PAGE — stars + scrolling
+   Header (fixed, from style.css) → CV+Form → Footer
+   Stars remain on #starry-sky (body) as a fixed background
+   ================================ */
+
+/* DO NOT override body#starry-sky here.
+   style.css keeps #starry-sky fixed and behind content for stars. */
+
+/* The whole page content scrolls inside this wrapper */
+.contact-scroll-wrapper {
+    position: relative;
+    z-index: 1;           /* above the star background */
+    width: 100%;
+    height: 100vh;        /* create an internal scrolling viewport */
+    overflow-x: hidden;
+    overflow-y: auto;     /* scroll here, not on <body> */
+    background: transparent;
+    padding-bottom: 280px;/* extra scroll space AFTER footer; adjust to taste */
 }
 
-#starry-sky {
+/* Two-column area, centered under the header */
+.contact-page .content-wrapper {
+    max-width: 1200px;
     width: 100%;
-    height: 100%;
-    background-color: black;
-    position: page; /* Fix to ensure it covers the entire background */
-    top: 0;
-    left: 0;
-    z-index: -10; /* Low z-index to ensure it stays behind other elements */
-}
-
-.content-wrapper {
-    margin: 200px;
-    display: flex;
-    width: 100%;
-    padding: 20px;
+    margin: 220px auto 60px; /* push CV/form a bit lower under fixed header */
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px; /* CV left, form ~400px right */
+    gap: 40px;
+    align-items: start;
+    height: auto;         /* allow natural height inside the scroller */
     box-sizing: border-box;
-    position: relative; /* Ensure content stays above the background */
-    z-index: 1; /* Higher z-index than the background */
 }
 
-.column {
-    flex: 1;
-    margin: 0 10px; /* Adjust margin as needed for spacing between columns */
-}
+/* Columns */
+.contact-page .resume-column { min-width: 0; }
+.contact-page .form-column   { width: 100%; }
 
-.center {
-    display: flex;
-    justify-content: center;
-}
-
-.resume-section h2, .form-section h1, .references-section h2 {
-    color: white;
-    font-family: 'Source Code Pro', monospace;
+/* Headings */
+.contact-page .resume-column h2,
+.contact-page .form-column h1 {
+    color: #fff;
+    font-family: "Source Code Pro", monospace;
     font-size: 24px;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    text-align: left;
 }
 
-.resume-widget {
-    margin-bottom: 20px;
-}
-
-.resume-widget embed {
-    border: none;
+/* CV viewer */
+.contact-page .resume-widget { margin-bottom: 20px; }
+.contact-page .resume-widget embed {
     width: 100%;
-    height: 80vh; /* Adjust the height to make the PDF more readable */
+    height: 600px;        /* fixed height so wrapper can scroll */
+    border: none;
 }
 
-.form-section {
+/* Contact form */
+.contact-page .form-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    margin-left: 12.5vw;
-}
-
-form {
     width: 100%;
-    max-width: 420px;
-    margin: 0;
 }
 
-.feedback-input {
-    color: white;
-    font-family: source-code-pro, 'Courier New', monospace;
+.contact-page form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-page .feedback-input {
+    color: #fff;
+    font-family: source-code-pro, "Courier New", monospace;
     font-weight: 500;
     font-size: 18px;
     border-radius: 5px;
     line-height: 22px;
-    background-color: transparent;
+    background: transparent;
     border: 2px solid #CC6666;
     transition: all 0.3s;
     padding: 13px;
@@ -89,395 +102,37 @@ form {
     width: 100%;
     box-sizing: border-box;
     outline: 0;
-    z-index: 1; /* Ensure inputs stay above the background */
 }
+.contact-page .feedback-input:focus { border: 2px solid mediumpurple; }
 
-.feedback-input:focus {
-    border: 2px solid mediumpurple;
-}
-
-textarea {
+.contact-page textarea {
     height: 150px;
     line-height: 150%;
     resize: vertical;
 }
 
-[type="submit"] {
-    font-family: source-code-pro, 'Courier New', monospace;
+.contact-page [type="submit"] {
+    font-family: source-code-pro, "Courier New", monospace;
     width: 100%;
     background: #CC6666;
     border-radius: 5px;
     border: 0;
     cursor: pointer;
-    color: white;
+    color: #fff;
     font-size: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0;
     transition: all 0.3s;
     margin-top: -4px;
     font-weight: 700;
-    z-index: 1; /* Ensure button stays above the background */
 }
+.contact-page [type="submit"]:hover { background: mediumpurple; }
 
-[type="submit"]:hover {
-    background: mediumpurple;
-}
-
-.container-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.language-switcher {
-    position: fixed;   /* Fixed position relative to the viewport */
-    top: 10px;         /* 10px from the top */
-    right: 10px;       /* 10px from the right */
-    z-index: 1000;     /* Make sure it appears above other content */
-}
-
-.language-switcher a {
-    color: white;      /* Choose a color that fits your design */
-    text-decoration: none; /* No underlines to keep it clean */
-    padding: 5px;      /* Padding for better clickability */
-    font-size: 16px;   /* Adjust size as needed */
-}
-
-.language-switcher a:hover {
-    text-decoration: underline; /* Underline on hover for better UX */
-}
-
-.lang-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.lang-btn img {
-    width: 50px;  /* Set the size of the flag images */
-    height: auto;
-    border-radius: 5px;
-}
-
-.social-links {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-links h2 {
-    color: white;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.social-links ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.social-links li {
-    margin: 0 15px;
-}
-
-.social-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: mediumpurple;
-}
-
-.social-links i {
-    margin-right: 8px;
-}
-
-/* Ensuring the header content is flex and spaced between elements */
-.header-content {
-    display: flex;
-    justify-content: space-between; /* Space between the main elements */
-    align-items: center; /* Align items vertically */
-    width: 99%;
-    padding: 0px 10px;
-}
-
-.site-title {
-    text-align: left; /* Allows the title to take up necessary space pushing nav to the right */
-}
-
-.header-tooltip {
-    flex: 1;
-    text-align: right;
-    transition: opacity 0.3s ease;
-}
-
-.site-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.site-nav li {
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.header-img {
-    height: 50px; /* Adjust height as needed */
-    width: auto;
-}
-
-.site-nav {
-    flex: 2; /* Allocates twice the space compared to title and tooltip, centering the nav */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.site-nav ul li a {
-    color: #fff; /* Navigation links color */
-    text-decoration: none; /* Removes underline */
-    font-size: 18px; /* Font size for navigation links */
-}
-
-.site-nav ul li a:hover {
-    text-decoration: underline; /* Underline on hover for visual feedback */
-}
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* Ensures the header spans the full width */
-    z-index: 1000; /* High z-index to ensure it stays on top */
-    background-color: #333; /* Example background color */
-}
-
-.header-img:hover::after {
-    content: attr(title); /* Display title content as tooltip */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 100%;
-    white-space: nowrap;
-    background-color: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s;
-}
-
-.header-img:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-.site-header .header-img {
-    position: relative; /* Context for absolute positioning */
-    display: inline-block; /* To ensure proper alignment */
-    cursor: pointer;
-}
-
-.site-header .header-img::after {
-    content: attr(title);
-    position: absolute;
-    left: 50%; /* Center the tooltip */
-    transform: translateX(-50%); /* Ensure it's centered irrespective of the width */
-    bottom: -30px; /* Adjust this value based on your specific layout */
-    white-space: nowrap;
-    background-color: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
-    z-index: 1000; /* Ensures the tooltip is above other elements */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s;
-}
-
-.site-header .header-img:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
-
+/* Footer in normal flow; wrapper provides extra scroll room */
 .footer {
     width: 100%;
     text-align: center;
-    padding: 10px 0;
-    position: relative; /* Changed from fixed */
+    padding: 20px 0;
+    margin-top: 60px;
+    position: relative;
 }
 
-@media (max-width: 768px) {
-    .contact-form {
-        width: 100%; /* Ensure contact form takes full width */
-        padding: 10px;
-    }
-    .contact-header {
-        text-align: center; /* Center the contact header */
-        font-size: 24px;
-    }
-}
-/* Default Styles for Widescreen Navigation and Tooltip */
-.menu-toggle {
-    display: none; /* Hide the hamburger menu button on widescreen */
-}
-
-#nav-text {
-    display: none; /* Hide text-based navigation on widescreen */
-}
-
-#nav-images ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.header-img {
-    height: 50px; /* Size for header images on widescreen */
-    width: auto;
-}
-
-/* Tooltip Styles */
-.header-tooltip {
-    position: absolute;
-    top: 70px; /* Adjust to position the tooltip below the header */
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 12px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
-}
-
-/* Show Tooltip when Hovering over Header Image */
-.header-img:hover + #header-tooltip {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Highlight Current Page Link */
-.nav-link.current-page {
-    color: lightslategray;
-    font-weight: bold;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Show the hamburger menu button */
-        background: none;
-        border: none;
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-        padding-right: 55px;
-    }
-
-    #nav-images {
-        display: none; /* Hide image-based navigation on mobile */
-    }
-
-    #nav-text {
-        display: none; /* Initially hide text navigation; show only when toggled */
-        flex-direction: column; /* Stack links vertically */
-        align-items: flex-start;
-        background-color: #202020; /* Background to differentiate */
-        width: 100%;
-        padding: 15px;
-        position: absolute;
-        top: 50px; /* Adjust for header height */
-        left: 0;
-        z-index: 1000;
-    }
-
-    #nav-text.open {
-        display: block; /* Show text navigation when the menu is open */
-    }
-
-    .header-tooltip {
-        display: none; /* Hide tooltip on mobile */
-    }
-
-    .header-img {
-        height: 20px; /* Smaller header images for mobile */
-    }
-
-    body, html {
-        font-size: 90%; /* Smaller text size for mobile */
-    }
-
-    /* Add Bullet Points for Mobile Links */
-    #nav-text ul li a {
-        text-decoration: none;
-        color: white;
-    }
-
-    #nav-text.current-page {
-        color: lightslategray; /* Highlight current page link in mobile menu */
-        font-weight: bold;
-    }
-
-    #nav-text ul li a:hover {
-        text-decoration: none;
-        color: mediumpurple;
-    }
-}
-@media (max-width: 768px) {
-    .lang-btn {
-        border: none;
-        background: none;
-        cursor: pointer;
-    }
-
-    .lang-btn img {
-        width: 25px;  /* Set the size of the flag images */
-        height: auto;
-        border-radius: 5px;
-    }
-}
-@media (max-width: 768px) {
-    .form-section {
-        max-width: 90%; /* Behoudt de breedte van de contact form */
-        padding: 15px;
-        margin: 0 auto; /* Centreert horizontaal */
-        transform: translateY(-50%); /* Verticaal centreren */
-        position: relative;
-        top: 50%;
-        margin-bottom: 100px; /* Voegt meer ruimte aan de onderkant toe om overlap te voorkomen */
-    }
-
-    #contact-form {
-        width: 100%;
-    }
-    .footer {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        position: relative; /* Changed from fixed */
-        margin-top: 175px;
-    }
-    .feedback-input, [type="submit"] {
-        font-size: 16px; /* Adjust the size for better readability on smaller screens */
-        padding: 10px;
-    }
-}

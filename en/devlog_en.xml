@@ -10,5 +10,7 @@
     <translation id="tooltipSkillsTechnologies">Skills &amp; Technologies</translation>
     <translation id="tooltipContactResume">Contact &amp; Resume</translation>
     <translation id="tooltipDevLog">Dev log</translation>
+    <translation id="devlogHeading">Dev log channels</translation>
+    <translation id="devlogIntro">Follow development updates, clips, posts, and releases through these channels.</translation>
 
 </translations>

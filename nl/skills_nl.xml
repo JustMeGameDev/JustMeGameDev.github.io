@@ -17,6 +17,10 @@
     <skill-set>
         <name>Unity</name>
         <logo>./img/Other/U_Cube_1C_Black.png</logo>
+        <tags>
+            <tag>software</tag>
+            <tag>game engine</tag>
+        </tags>
         <skills>
             <skill>
                 <name>Game Development</name>
@@ -44,6 +48,10 @@
                 <name>Scripting/Programmeren</name>
                 <level>20</level>
                 <description>Ervaring met C# integratie binnen Unity</description>
+                <tags>
+                    <tag>C#</tag>
+                    <tag>programming language</tag>
+                </tags>
                 <media>
                     <item>
                         <type>image</type>
@@ -196,5 +204,56 @@
             </skill>
         </skills>
     </skill-set>
-        <!-- Add more skill elements as needed -->
+    <skill-set>
+        <name>Sociale &amp; Professionele Skills</name>
+        <logo>./img/Other/empty.png</logo>
+        <tags>
+            <tag>social</tag>
+            <tag>professional skills</tag>
+        </tags>
+        <skills>
+            <skill>
+                <name>Teamwork</name>
+                <level>75</level>
+                <description>Ervaring met samenwerken in kleine studententeams tijdens prototypes, game-jams en schoolprojecten.</description>
+                <tags>
+                    <tag>teamwork</tag>
+                    <tag>team</tag>
+                    <tag>school</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Leadership</name>
+                <level>55</level>
+                <description>Ervaring met richting houden in projecten, teamgenoten helpen keuzes te maken en werk organiseren tijdens groepsprojecten.</description>
+                <tags>
+                    <tag>leadership</tag>
+                    <tag>teamwork</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Documentation</name>
+                <level>70</level>
+                <description>Ervaring met gamedesign-notities, projectdocumenten en duidelijke uitleg voor school- en portfoliowerk.</description>
+                <tags>
+                    <tag>documentation</tag>
+                    <tag>school</tag>
+                </tags>
+                <media></media>
+            </skill>
+            <skill>
+                <name>Code Etiquette</name>
+                <level>60</level>
+                <description>Ervaring met duidelijke naamgeving, versiebeheer en schonere projectstructuur zodat code later makkelijker door te ontwikkelen is.</description>
+                <tags>
+                    <tag>code etiquette</tag>
+                    <tag>programming</tag>
+                    <tag>github</tag>
+                </tags>
+                <media></media>
+            </skill>
+        </skills>
+    </skill-set>
 </translations>

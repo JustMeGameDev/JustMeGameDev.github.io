@@ -16,6 +16,11 @@
         <project>
             <title>Long Live Picho</title>
             <category>games</category> <!-- Games/Demos, Documents, or Art Work -->
+            <tags>
+                <tag>team</tag>
+                <tag>game jam</tag>
+                <tag>unity</tag>
+            </tags>
             <description>Dit spel is een prototype gemaakt in een weekend door 4 studenten van de opleiding gameontwikkeling op MBO niveau 4. We zijn trots op de werking van het spel, maar visueel kan het verbeterd worden. Het heeft een prijs gewonnen voor de unieke mechanica. (Global Game-jam Groningen Award "Geweldige interactie" meest unieke spelmechanica/bediening)</description>
             <badges>
                 <badge color="#f39c12">Prijswinner</badge>
@@ -41,6 +46,11 @@
                 #3 custom modus, waarin je de parameters van de mapgenerator zelf instelt, zoals hoe groot de kaart is, de seed, het aantal golven, en de moeilijkheid.
             </description>
             <category>games</category>
+            <tags>
+                <tag>school</tag>
+                <tag>unity</tag>
+                <tag>solo</tag>
+            </tags>
             <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
             <cover>./img/Other/Before Nightfall.png</cover>
             <images>
@@ -64,6 +74,11 @@
 
                 Wanneer je die strijd wint, krijg je de naam "Big Cheese Donte" en word je de nieuwe onderwereldkoning van de stad!</description>
             <category>games</category>
+            <tags>
+                <tag>school</tag>
+                <tag>unity</tag>
+                <tag>solo</tag>
+            </tags>
             <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
             <cover>./img/Other/logo_big_cheese.png</cover>
             <images>
@@ -82,6 +97,10 @@
             <title>Zombie Survivors</title>
             <description>Zombie Survivors is een spel gebaseerd op het idee van het spel Vampire Survivors. De besturing van het spel is enigszins onconventioneel omdat het ontwikkeld is voor een arcade op mijn school.</description>
             <category>games</category>
+            <tags>
+                <tag>school</tag>
+                <tag>unity</tag>
+            </tags>
             <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
             <cover>./img/Other/Zs.png</cover>
             <images>
@@ -102,6 +121,12 @@
             <title>Time Puzzler</title>
             <description>Voor de Noorderpoort Game-jam 2024 heb ik samen met drie vrienden en medestudenten deze VR-game in 4 dagen gemaakt. Dit was onze eerste serieuze poging tot een VR-game, en we hebben twee prijzen gewonnen bij deze Game-jam: Algehele Winnaar (eerste plaats/meeste stemmen) en Meest Complete Game (spreekt voor zich). We willen hier graag verder aan werken, maar we moeten de tijd ervoor vinden.</description>
             <category>games</category>
+            <tags>
+                <tag>team</tag>
+                <tag>game jam</tag>
+                <tag>vr</tag>
+                <tag>unity</tag>
+            </tags>
             <engine>./img/Other/Logo_T1_MadeWith_White_RGB.png</engine>
             <cover>./img/Other/Time Puzz.webp</cover>
             <images>
@@ -119,41 +144,26 @@
         </project>
         <!--docs-->
         <project>
-            <title>test</title>
-            <description>test</description>
+            <title>Evolution of Ages </title>
+            <description>Dit is een gamedesigndocument gemaakt als een opdracht voor mijn MBO4-opleiding aan Noorderpoort</description>
+            <engine>./img/Other/empty.png</engine>
             <category>documents</category>
-            <engine>./img/Other/empty.png</engine>
-            <cover>./img/Other/blackplaceholder.png</cover>
+            <tags>
+                <tag>school</tag>
+                <tag>documentation</tag>
+            </tags>
+            <cover>./img/Other/evelutiuon of ages.webp</cover>
             <images>
                 <!-- Assuming no specific images are provided as they are listed null -->
             </images>
             <badges>
                 <badge color="#970093">School</badge>
-                <badge color="#0dc808">W.I.P.</badge>
             </badges>
             <links>
-
-
+                <pdf>./PDF/Game Concept Document v3.pdf</pdf>
             </links>
         </project>
-        <project>
-            <title>test</title>
-            <description>test</description>
-            <category>art</category>
-            <engine>./img/Other/empty.png</engine>
-            <cover>./img/Other/blackplaceholder.png</cover>
-            <images>
-                <!-- Assuming no specific images are provided as they are listed null -->
-            </images>
-            <badges>
-                <badge color="#970093">School</badge>
-                <badge color="#0dc808">W.I.P.</badge>
-            </badges>
-            <links>
-
-
-            </links>
-        </project>
+       <!--Art-->
 
         <!-- Additional projects can be added here -->
     </projects>

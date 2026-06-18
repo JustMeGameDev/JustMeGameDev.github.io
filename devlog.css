@@ -1,127 +1,177 @@
-
-#starry-sky{
-    z-index: -10;
-    position: page;
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
-}
-body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    background-color: black;
-    overflow-y: auto;
-    overflow-x: hidden;
-    color: white;
-    font-family: "Source Code Pro", monospace;
+body#starry-sky[data-devlog-page] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  z-index: auto;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.api-wrapper {
-    display: flex;
-    justify-content: space-evenly; /* Centers children horizontally */
-    align-items: center; /* Centers children vertically */
-    width: 100%; /* Full width of the container */
-    padding: 20px;
-    box-sizing: border-box;
-    flex-grow: 1; /* Allow the wrapper to grow to use available space */
-    z-index: 1; /* Higher z-index than the background */
-    min-height: 100vh; /* Minimum height to take full viewport height if content is less */
+body#starry-sky[data-devlog-page] .star {
+  z-index: -1;
 }
 
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    position: relative; /* Changed from fixed */
+body#starry-sky[data-devlog-page] .site-header {
+  position: sticky;
 }
 
-
-.Youtube-Video{
-    margin-bottom: 20px;
-    border-radius: 15px;
+body#starry-sky[data-devlog-page] #nav-text {
+  display: none;
 }
 
-.column {
-    margin: 0px 15px;
-    flex: 1; /* Grow each column equally */
-    padding: 10px; /* Space inside the column */
-    box-sizing: border-box; /* Include padding in width calculation */
-    overflow-y: auto;
-    /* Optional: add background color here if needed */
+body#starry-sky[data-devlog-page] .header-content {
+  max-width: 1280px;
 }
+
+body#starry-sky[data-devlog-page] .site-nav {
+  flex: 0 1 auto;
+}
+
+body#starry-sky[data-devlog-page] .site-nav li {
+  margin: 0 8px;
+}
+
+body#starry-sky[data-devlog-page] .header-img {
+  height: 46px;
+}
+
+.devlog-page {
+  width: min(1320px, calc(100vw - 32px));
+  margin: 108px auto 56px;
+  flex: 1 0 auto;
+}
+
+.devlog-intro {
+  margin-bottom: 28px;
+}
+
+.devlog-intro h2 {
+  margin: 0 0 10px;
+  font-size: 1.6rem;
+}
+
+.devlog-intro p {
+  max-width: 760px;
+  line-height: 1.5;
+  color: #d7ceff;
+}
+
+.devlog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.devlog-card {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 14px rgba(147, 112, 219, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.devlog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(147, 112, 219, 0.38);
+}
+
+.devlog-card i {
+  font-size: 2.6rem;
+}
+
+.devlog-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.devlog-card p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.devlog-card.twitch {
+  border-color: #9146ff;
+}
+
+.devlog-card.youtube {
+  border-color: #ff0033;
+}
+
+.devlog-card.x {
+  border-color: #a8a8a8;
+}
+
+.devlog-card.bluesky {
+  border-color: #1185fe;
+}
+
+.devlog-card.itch {
+  border-color: #fa5c5c;
+}
+
+.devlog-card.steam {
+  border-color: #66c0f4;
+}
+
+.devlog-card.github {
+  border-color: #f0f0f0;
+}
+
+body#starry-sky[data-devlog-page] .footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding: 28px 12px 16px;
+}
+
+body#starry-sky[data-devlog-page] .social-links ul {
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+body#starry-sky[data-devlog-page] .social-links li {
+  margin: 0;
+}
+
 @media (max-width: 768px) {
-    .devlog-entry {
-        padding: 10px; /* Reduce padding for better fit */
-        font-size: 16px;
-    }
-    iframe {
-        width: 100%;
-        height: auto; /* Ensure YouTube videos resize properly */
-    }
+  .devlog-page {
+    margin-top: 92px;
+  }
+
+  .devlog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body#starry-sky[data-devlog-page] .header-content {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  body#starry-sky[data-devlog-page] #nav-images {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  body#starry-sky[data-devlog-page] .header-img {
+    height: 34px;
+  }
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Show the hamburger menu button */
-        background: none;
-        border: none;
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-        padding-right: 55px;
-    }
-
-    #nav-images {
-        display: none; /* Hide image-based navigation on mobile */
-    }
-
-    #nav-text {
-        display: none; /* Initially hide text navigation; show only when toggled */
-        flex-direction: column; /* Stack links vertically */
-        align-items: flex-start;
-        background-color: #202020; /* Background to differentiate */
-        width: 100%;
-        padding: 15px;
-        position: absolute;
-        top: 50px; /* Adjust for header height */
-        left: 0;
-        z-index: 1000;
-    }
-
-    #nav-text.open {
-        display: block; /* Show text navigation when the menu is open */
-    }
-
-    .header-tooltip {
-        display: none; /* Hide tooltip on mobile */
-    }
-
-    .header-img {
-        height: 20px; /* Smaller header images for mobile */
-    }
-
-    body, html {
-        font-size: 90%; /* Smaller text size for mobile */
-    }
-
-    /* Add Bullet Points for Mobile Links */
-    #nav-text ul li a {
-        text-decoration: none;
-        color: white;
-    }
-
-    #nav-text.current-page {
-        color: lightslategray; /* Highlight current page link in mobile menu */
-        font-weight: bold;
-    }
-
-    #nav-text ul li a:hover {
-        text-decoration: none;
-        color: mediumpurple;
-    }
+@media (min-width: 769px) and (max-width: 1050px) {
+  .devlog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
