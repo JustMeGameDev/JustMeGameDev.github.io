@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Highlight the Current Page in Both Navigation Menus
-    const currentPage = window.location.pathname.split("/").pop().split(".")[0]
+    const currentPage = getCurrentPageName()
     const navLinks = document.querySelectorAll(".nav-link")
 
     navLinks.forEach((link) => {
@@ -95,13 +95,7 @@ let translations = {} // Global object to store translations
 function loadLanguage(lang) {
     // Store language selection in localStorage
     localStorage.setItem("userLang", lang)
-    let pageName = window.location.pathname
-    // Get the current HTML file name without extension
-    if (pageName == "/") {
-        pageName = "index"
-    } else {
-        pageName = window.location.pathname.split("/").pop().split(".")[0]
-    }
+    const pageName = getCurrentPageName()
     // Construct the filename based on the current page and language selection
     const filename = `${pageName}_${lang}.xml`
 
@@ -118,6 +112,34 @@ function loadLanguage(lang) {
     }
     xhttp.open("GET", filepath, true)
     xhttp.send()
+}
+
+function getCurrentPageName() {
+    const knownPages = ["index", "home", "about", "portfolio", "skills", "contact", "devlog"]
+    const pathParts = window.location.pathname.split("/").filter(Boolean)
+    let pageName = pathParts[pathParts.length - 1] || "index"
+
+    if (pageName === "home") {
+        return "index"
+    }
+
+    if (pageName === "index.html" && pathParts.length > 1) {
+        pageName = pathParts[pathParts.length - 2]
+    }
+
+    if (pageName === "home") {
+        return "index"
+    }
+
+    if (pageName.endsWith(".html")) {
+        pageName = pageName.split(".")[0]
+    }
+
+    if (!knownPages.includes(pageName)) {
+        return "index"
+    }
+
+    return pageName || "index"
 }
 
 function applyTranslations(xmlDoc) {
