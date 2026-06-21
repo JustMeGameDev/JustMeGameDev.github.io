@@ -136,3 +136,179 @@ html, body {
     position: relative;
 }
 
+@media (max-width: 768px) {
+    .site-header .header-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+    }
+
+    .site-title {
+        flex: 1 1 190px;
+        min-width: 0;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    .site-title a {
+        display: block;
+        overflow-wrap: anywhere;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    #nav-images {
+        order: 3;
+        display: flex !important;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    #nav-images ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        min-width: max-content;
+    }
+
+    #nav-images li {
+        margin: 0;
+    }
+
+    .header-img {
+        height: 34px;
+        width: auto;
+    }
+
+    .language-switcher {
+        flex: 0 0 auto;
+        margin-left: auto;
+        gap: 6px;
+    }
+
+    .language-switcher .lang-btn img {
+        width: 42px;
+    }
+
+    .contact-scroll-wrapper {
+        height: 100vh;
+        padding-bottom: 120px;
+    }
+
+    .contact-page .content-wrapper {
+        width: min(calc(100% - 24px), 620px);
+        margin: 138px auto 34px;
+        padding: 0;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .contact-page .resume-widget embed {
+        height: 420px;
+    }
+
+    .contact-page .resume-column h2,
+    .contact-page .form-column h1 {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .contact-page form {
+        max-width: 100%;
+    }
+
+    .contact-page .feedback-input {
+        font-size: 1rem;
+    }
+
+    .contact-page [type="submit"] {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body#starry-sky.contact-page .site-header .header-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+    }
+
+    body#starry-sky.contact-page .site-header .site-title {
+        flex: 1 1 190px;
+        min-width: 0;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    body#starry-sky.contact-page .site-header .site-title a {
+        display: block;
+        overflow-wrap: anywhere;
+    }
+
+    body#starry-sky.contact-page .site-header .menu-toggle,
+    body#starry-sky.contact-page .site-header #nav-text {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+
+    body#starry-sky.contact-page .site-header #nav-images {
+        order: 3 !important;
+        display: flex !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+    }
+
+    body#starry-sky.contact-page .site-header #nav-images ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 10px;
+        min-width: max-content;
+        padding: 0;
+        margin: 0;
+    }
+
+    body#starry-sky.contact-page .site-header #nav-images li {
+        margin: 0 !important;
+    }
+
+    body#starry-sky.contact-page .site-header .header-img {
+        height: 34px !important;
+        width: auto;
+    }
+
+    body#starry-sky.contact-page .site-header .language-switcher {
+        flex: 0 0 auto;
+        margin-left: auto;
+        gap: 6px;
+    }
+
+    body#starry-sky.contact-page .site-header .language-switcher .lang-btn img {
+        width: 42px !important;
+    }
+}
+

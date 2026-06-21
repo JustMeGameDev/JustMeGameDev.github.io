@@ -319,7 +319,8 @@ body#starry-sky[data-card-page] .social-links li {
 
 @media (max-width: 768px) {
   .cards-page {
-    margin-top: 92px;
+    width: min(calc(100% - 24px), 560px);
+    margin: 122px auto 36px;
   }
 
   .card-grid,
@@ -335,20 +336,47 @@ body#starry-sky[data-card-page] .social-links li {
   body#starry-sky[data-card-page] #nav-images {
     order: 3;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-x: auto;
   }
 
   body#starry-sky[data-card-page] .header-img {
     height: 34px;
   }
 
+  .cards-intro h2 {
+    font-size: 1.08rem;
+  }
+
+  .filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filter-btn,
+  .card-link {
+    flex: 0 0 auto;
+  }
+
+  .skill-set-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .carousel-panel {
-    padding: 54px 46px 18px;
+    width: 96vw;
+    padding: 56px 40px 18px;
     min-height: 62vh;
   }
 
   .carousel-stage {
     min-height: 260px;
+  }
+
+  .carousel-nav {
+    width: 34px;
+    height: 48px;
   }
 }
 

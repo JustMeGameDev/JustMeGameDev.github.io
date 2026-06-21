@@ -173,6 +173,13 @@ function applyTranslations(xmlDoc) {
         }
     })
 
+    document.querySelectorAll("[data-text-translation-id]").forEach((element) => {
+        const key = element.getAttribute("data-text-translation-id")
+        if (translations[key]) {
+            element.innerHTML = translations[key]
+        }
+    })
+
     var resumeNode = xmlDoc.querySelector('translation[id="resumeEmbedSrc"]')
     if (resumeNode) {
         document.getElementById("resumeEmbed").src = resumeNode.textContent

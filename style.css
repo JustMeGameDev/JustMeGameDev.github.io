@@ -555,3 +555,259 @@ main {
   animation: twinkle 2s linear infinite; /* Apply the twinkle animation */
 }
 
+@media (max-width: 768px) {
+  body,
+  html {
+    width: 100%;
+    min-height: 100%;
+    align-items: stretch;
+  }
+
+  .home-page {
+    padding-top: 72px;
+  }
+
+  .index-page-header {
+    top: 8px !important;
+  }
+
+  .content-wrapper {
+    min-height: 100vh;
+    height: auto;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 74px 14px 24px;
+    box-sizing: border-box;
+  }
+
+  .content-wrapper h1 {
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: clamp(1.35rem, 7vw, 2.05rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .content-wrapper h2 {
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: clamp(1rem, 4.6vw, 1.35rem);
+    line-height: 1.35;
+  }
+
+  .solar-system {
+    width: min(86vw, 330px);
+    height: min(86vw, 330px);
+    margin: 8px auto;
+  }
+
+  .sun {
+    width: 48px;
+    height: 48px;
+  }
+
+  .orbit:nth-child(2) {
+    --orbit-size: 84px;
+    --orbit-radius: 42px;
+  }
+
+  .orbit:nth-child(3) {
+    --orbit-size: 136px;
+    --orbit-radius: 68px;
+  }
+
+  .orbit:nth-child(4) {
+    --orbit-size: 202px;
+    --orbit-radius: 101px;
+  }
+
+  .orbit:nth-child(5) {
+    --orbit-size: 292px;
+    --orbit-radius: 146px;
+  }
+
+  .planet1 {
+    width: 22px;
+    height: 22px;
+  }
+
+  .planet2 {
+    width: 28px;
+    height: 28px;
+  }
+
+  .planet3 {
+    width: 34px;
+    height: 34px;
+  }
+
+  .planet4 {
+    width: 38px;
+    height: 38px;
+  }
+
+  .site-header {
+    padding: 8px 0;
+  }
+
+  .header-content {
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .site-title {
+    flex: 1 1 220px;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    min-width: max-content;
+  }
+
+  .site-nav li {
+    margin: 0;
+  }
+
+  .header-img {
+    height: 34px;
+  }
+
+  .language-switcher .lang-btn img {
+    width: 42px;
+  }
+
+  .footer {
+    padding: 16px 10px;
+    box-sizing: border-box;
+  }
+
+  .social-links ul {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    padding: 0 10px;
+  }
+
+  .social-links li {
+    margin: 0;
+  }
+
+  .social-links a {
+    font-size: 1rem;
+  }
+
+  .footer h6,
+  #footerDisclaimer {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 390px) {
+  .solar-system {
+    width: min(82vw, 286px);
+    height: min(82vw, 286px);
+  }
+
+  .orbit:nth-child(5) {
+    --orbit-size: 250px;
+    --orbit-radius: 125px;
+  }
+
+  .orbit:nth-child(4) {
+    --orbit-size: 184px;
+    --orbit-radius: 92px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header .header-content {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+  }
+
+  .site-header .site-title {
+    flex: 1 1 190px;
+    min-width: 0;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .site-header .site-title a {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+
+  .site-header .menu-toggle,
+  .site-header #nav-text {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .site-header #nav-images {
+    order: 3 !important;
+    display: flex !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+  }
+
+  .site-header #nav-images ul {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px;
+    min-width: max-content;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-header #nav-images li {
+    margin: 0 !important;
+  }
+
+  .site-header .header-img {
+    height: 34px !important;
+    width: auto;
+  }
+
+  .site-header .language-switcher {
+    flex: 0 0 auto;
+    margin-left: auto;
+    gap: 6px;
+  }
+
+  .site-header .language-switcher .lang-btn img {
+    width: 42px !important;
+  }
+}
+

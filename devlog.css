@@ -147,7 +147,8 @@ body#starry-sky[data-devlog-page] .social-links li {
 
 @media (max-width: 768px) {
   .devlog-page {
-    margin-top: 92px;
+    width: min(calc(100% - 24px), 560px);
+    margin: 122px auto 36px;
   }
 
   .devlog-grid {
@@ -162,11 +163,21 @@ body#starry-sky[data-devlog-page] .social-links li {
   body#starry-sky[data-devlog-page] #nav-images {
     order: 3;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-x: auto;
   }
 
   body#starry-sky[data-devlog-page] .header-img {
     height: 34px;
+  }
+
+  .devlog-intro h2 {
+    font-size: 1.2rem;
+  }
+
+  .devlog-card {
+    min-height: 168px;
+    padding: 18px;
   }
 }
 
